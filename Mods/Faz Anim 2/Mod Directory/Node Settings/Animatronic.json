@@ -31,5 +31,9 @@
 	"Armature_001|Shoulder R": 0.0,
 	"Armature_001|Underlid L": 0.0,
 	"Armature_001|Underlid R": 0.0
+	},
+	"AA_FD": {
+	"FD|Jaw": 0.0,
+	"FD|Microphone": 0.0,
 	}
 }

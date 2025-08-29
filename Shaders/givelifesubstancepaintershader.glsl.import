@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://083l8nhvda74"
+path="res://.godot/imported/givelifesubstancepaintershader.glsl-a560d2c00f7f9201e1df46335832ee8f.res"
+
+[deps]
+
+source_file="res://Shaders/givelifesubstancepaintershader.glsl"
+dest_files=["res://.godot/imported/givelifesubstancepaintershader.glsl-a560d2c00f7f9201e1df46335832ee8f.res"]
+
+[params]
+

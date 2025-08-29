@@ -32,7 +32,46 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Alt Cylinders": {
+"use_external/enabled": true,
+"use_external/path": "uid://birk5r0s5o8d0"
+},
+"Cylinders": {
+"use_external/enabled": true,
+"use_external/path": "uid://k7jss4yy3n64"
+},
+"Endo": {
+"use_external/enabled": true,
+"use_external/path": "uid://bo4jm6kxggs8i"
+},
+"FD Cosmetics": {
+"use_external/enabled": true,
+"use_external/path": "uid://c4033b7jk882m"
+},
+"FD Fur": {
+"use_external/enabled": true,
+"use_external/path": "uid://bels6bfxn5l0o"
+},
+"FD Mic": {
+"use_external/enabled": true,
+"use_external/path": "uid://71ebdw0gjw2m"
+},
+"Fur Brown": {
+"use_external/enabled": true,
+"use_external/path": "uid://1v7img47uff"
+},
+"Fur Orange": {
+"use_external/enabled": true,
+"use_external/path": "uid://c68oys3deh0xy"
+},
+"The Head": {
+"use_external/enabled": true,
+"use_external/path": "uid://cs1y3ja383yyr"
+}
+}
+}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

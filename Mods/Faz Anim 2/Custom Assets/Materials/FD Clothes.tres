@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://c4033b7jk882m"]
+
+[ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/Chica.gdshader" id="1_a0ofi"]
+[ext_resource type="Texture2D" uid="uid://c330f5i1evxnd" path="res://Mods/Faz Anim 2/Custom Assets/Textures/fd clothes_Diffuse.png" id="2_a0ofi"]
+[ext_resource type="Texture2D" uid="uid://d31db5o5e73b4" path="res://Mods/Faz Anim 2/Custom Assets/Textures/fd clothes_Mask.png" id="3_vn7qq"]
+[ext_resource type="Texture2D" uid="uid://cmvrs2b5conu2" path="res://Mods/Faz Anim 2/Custom Assets/Textures/fd clothes_Normal.png" id="4_wy8lk"]
+[ext_resource type="Texture2D" uid="uid://s6l32q2i1cq4" path="res://Mods/Faz Anim 2/Custom Assets/Textures/fd clothes_Paint.png" id="5_k26uw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_a0ofi")
+shader_parameter/diffuse_texture = ExtResource("2_a0ofi")
+shader_parameter/normal_map = ExtResource("4_wy8lk")
+shader_parameter/normal_scale = 1.0
+shader_parameter/mask_map = ExtResource("3_vn7qq")
+shader_parameter/paint_map = ExtResource("5_k26uw")
+shader_parameter/paint_color_r = Color(0.870588, 0.184314, 0.054902, 1)
+shader_parameter/paint_color_g = Color(1, 0.407843, 0.356863, 1)
+shader_parameter/paint_color_b = Color(1, 1, 1, 1)
+shader_parameter/paint_color_a = Color(0, 0, 0, 1)
+shader_parameter/blacklight_color = Vector3(0.423, 0.361, 0.851)

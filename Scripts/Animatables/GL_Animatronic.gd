@@ -1,7 +1,8 @@
 extends GL_Animatable
 var anim_tree: AnimationTree
 var blend_tree: AnimationNodeBlendTree
-@export var animParameters: Dictionary
+var animParameters: Dictionary
+@export var animParametersFileName: String
 
 var initialPos: Vector3
 var initialRot: Vector3
@@ -33,13 +34,18 @@ func _ready():
 	if animations.size() == 0:
 		return
 		
+	# Try to load animParameters from JSON file if filename is provided
+	if animParametersFileName.strip_edges() != "":
+		_load_anim_parameters(animParametersFileName)
+	
+	# If still empty, fall back to auto-populating
 	if animParameters.size() == 0:
 		for key in animations:
 			_create_anim_dict(key)
 	
 	# Handle the case where there is only one animation
 	if animations.size() == 1:
-		printerr("STILL NEED TO FIX THIS AHEM")
+		printerr("STILL NEED TO FIX THIS AHEM" + name)
 		return
 
 	# Start with the first animation node
@@ -98,6 +104,36 @@ func _ready():
 
 func _create_anim_dict(name:String):
 	animParameters[name] = {"type":"standard","out_speed":5.0,"in_speed":5.0,"value":0,"signal_value":0}
+
+# Scan the Mods folder for JSON files with the given filename
+func _load_anim_parameters(file_name: String) -> void:
+	var mods_dir = DirAccess.open("res://Mods")
+	if not mods_dir:
+		push_error("Mods folder not found.")
+		return
+	
+	mods_dir.list_dir_begin()
+	var mod_name = mods_dir.get_next()
+	while mod_name != "":
+		if mods_dir.current_is_dir() and mod_name != "." and mod_name != "..":
+			var anim_params_path = "res://Mods/%s/Mod Directory/Anim Parameters/%s.json" % [mod_name, file_name]
+			if FileAccess.file_exists(anim_params_path):
+				var file = FileAccess.open(anim_params_path, FileAccess.READ)
+				if file:
+					var json_text = file.get_as_text()
+					file.close()
+					var result = JSON.parse_string(json_text)
+					if typeof(result) == TYPE_DICTIONARY:
+						for key in result.keys():
+							if typeof(result[key]) == TYPE_DICTIONARY:
+								var dict_data = result[key]
+								# Inject missing runtime-only keys
+								dict_data["value"] = 0
+								dict_data["signal_value"] = 0
+								animParameters[key] = dict_data
+				# ✅ Stop after the first successful load
+				return
+		mod_name = mods_dir.get_next()
 
 func _process(delta):
 	if not anim_tree:
