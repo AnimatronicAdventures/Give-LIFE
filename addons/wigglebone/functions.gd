@@ -53,8 +53,10 @@ static func create_sphere_lines() -> PackedVector3Array:
 	return lines
 
 
-## Draw line segments created with [member create_cone_lines] to [param gizmo].
-static func gizmo_draw_cone(gizmo: EditorNode3DGizmo, material: StandardMaterial3D, lines: PackedVector3Array, angle: float, length: float) -> void:
+# Runtime-safe version: remove type hint
+static func gizmo_draw_cone(gizmo, material: StandardMaterial3D, lines: PackedVector3Array, angle: float, length: float) -> void:
+	if not Engine.is_editor_hint():
+		return
 	var scale_x := sin(angle)
 	var scale_y := cos(angle)
 	var scale := Vector3(scale_x, scale_y, scale_x) * length * 0.75
@@ -66,8 +68,9 @@ static func gizmo_draw_cone(gizmo: EditorNode3DGizmo, material: StandardMaterial
 	gizmo.add_lines(lines, material, false)
 
 
-## Draw line segments created with [member create_sphere_lines] to [param gizmo].
-static func gizmo_draw_sphere(gizmo: EditorNode3DGizmo, material: StandardMaterial3D, lines: PackedVector3Array, length: float) -> void:
+static func gizmo_draw_sphere(gizmo, material: StandardMaterial3D, lines: PackedVector3Array, length: float) -> void:
+	if not Engine.is_editor_hint():
+		return
 	var scale := Vector3.ONE * length
 	var transform := Transform3D().scaled(scale)
 

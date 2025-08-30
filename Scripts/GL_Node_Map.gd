@@ -76,6 +76,10 @@ func _on_mouse_exited():
 	is_hovered = false
 
 func _process(_delta):
+	is_panning = Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
+	if is_panning:
+		last_mouse_pos = get_viewport().get_mouse_position()
+	
 	if background.material is ShaderMaterial:
 		var scale = Vector2.ONE / holder.scale * carpetScale
 		var offset = -holder.position / holder.scale * 0.001 * carpetScale
@@ -86,12 +90,6 @@ func _process(_delta):
 func _input(event: InputEvent) -> void:
 	if not is_hovered:
 		return
-
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_MIDDLE:
-			is_panning = event.pressed
-			if is_panning:
-				last_mouse_pos = event.position
 
 		if event.pressed and (event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN):
 			var mouse_pos = event.position

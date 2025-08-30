@@ -10,6 +10,7 @@ var initialScale: Vector3
 
 # Assuming this node has a child node with an AnimationPlayer
 func _ready():
+	print(name + " Animatable Loaded " + str(position))
 	initialPos = position
 	initialRot = rotation
 	initialScale = scale
