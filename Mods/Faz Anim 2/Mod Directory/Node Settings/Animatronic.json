@@ -35,5 +35,9 @@
 	"AA_FD": {
 	"FD|Jaw": 0.0,
 	"FD|Microphone": 0.0,
+	"FD|Body Turn R": 0.0,
+	"FD|Body Turn L": 0.0,
+	"FD|Body Lean R": 0.0,
+	"FD|Body Lean L": 0.0,
 	}
 }

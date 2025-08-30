@@ -9,4 +9,24 @@
 "out_speed": 6.5,
 "type": "standard",
 },
+"FD|Body Turn L": {
+"in_speed": 2.5,
+"out_speed": 2.5,
+"type": "standard",
+},
+"FD|Body Turn R": {
+"in_speed": 2.5,
+"out_speed": 2.5,
+"type": "standard",
+},
+"FD|Body Lean R": {
+"in_speed": 2.5,
+"out_speed": 2.5,
+"type": "standard",
+},
+"FD|Body Lean L": {
+"in_speed": 2.5,
+"out_speed": 2.5,
+"type": "standard",
+},
 }
