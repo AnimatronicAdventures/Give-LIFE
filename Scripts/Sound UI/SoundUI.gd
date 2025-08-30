@@ -56,13 +56,13 @@ func _on_hover():
 		player_ref.pitch_scale = pitch	
 		player_ref.play()
 
-func _on_changed_text(unused:String):
+func _on_changed_text(_unused:String):
 	_on_press(false)
 
-func on_tab_click(unused:int):
+func on_tab_click(_unused:int):
 	_on_press(false)
 	
-func on_tab_hover(unused:int):
+func on_tab_hover(_unused:int):
 	_on_hover()
 
 func _on_pressed_button():

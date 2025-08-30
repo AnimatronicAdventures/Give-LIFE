@@ -3,7 +3,7 @@ class_name GL_Node_Picker
 var mainNode : GL_Node
 var valueName:String
 
-func _process(delta):
+func _process(_delta):
 	if mainNode == null:
 		return
 	visible = !mainNode.rows[valueName]["backConnected"]

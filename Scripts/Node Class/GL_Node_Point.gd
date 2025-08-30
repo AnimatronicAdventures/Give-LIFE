@@ -9,7 +9,7 @@ var mouseInside:bool
 var lastToDrag:bool
 var allLines: Array
 
-func _process(delta):
+func _process(_delta):
 	if dragging:
 		if previewLine == null:
 			previewLine = _create_line()

@@ -75,7 +75,7 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	is_hovered = false
 
-func _process(delta):
+func _process(_delta):
 	if background.material is ShaderMaterial:
 		var scale = Vector2.ONE / holder.scale * carpetScale
 		var offset = -holder.position / holder.scale * 0.001 * carpetScale

@@ -31,7 +31,7 @@ func reset():
 	mainNode._update_visuals()
 
 
-func _process(delta):
+func _process(_delta):
 	mainNode.apply_pick_values()
 	for node in get_tree().get_nodes_in_group(mainNode.special_saved_values.get("currentKey","")):
 		if node is GL_Animatable:
