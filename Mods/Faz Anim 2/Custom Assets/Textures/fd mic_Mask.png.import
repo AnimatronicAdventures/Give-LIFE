@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3slygxldp2rf"
-path.s3tc="res://.godot/imported/fd mic_Mask.png-ee0e5cdf80bc9f42a6ecad250ce62294.s3tc.ctex"
-path.etc2="res://.godot/imported/fd mic_Mask.png-ee0e5cdf80bc9f42a6ecad250ce62294.etc2.ctex"
+path.bptc="res://.godot/imported/fd mic_Mask.png-ee0e5cdf80bc9f42a6ecad250ce62294.bptc.ctex"
+path.astc="res://.godot/imported/fd mic_Mask.png-ee0e5cdf80bc9f42a6ecad250ce62294.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,12 +13,12 @@ metadata={
 [deps]
 
 source_file="res://Mods/Faz Anim 2/Custom Assets/Textures/fd mic_Mask.png"
-dest_files=["res://.godot/imported/fd mic_Mask.png-ee0e5cdf80bc9f42a6ecad250ce62294.s3tc.ctex", "res://.godot/imported/fd mic_Mask.png-ee0e5cdf80bc9f42a6ecad250ce62294.etc2.ctex"]
+dest_files=["res://.godot/imported/fd mic_Mask.png-ee0e5cdf80bc9f42a6ecad250ce62294.bptc.ctex", "res://.godot/imported/fd mic_Mask.png-ee0e5cdf80bc9f42a6ecad250ce62294.astc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

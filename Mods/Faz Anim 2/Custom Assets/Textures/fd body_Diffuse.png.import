@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfftynijlnxg1"
-path.s3tc="res://.godot/imported/fd body_Diffuse.png-97a795c999e87a05744c0c4ff4339882.s3tc.ctex"
-path.etc2="res://.godot/imported/fd body_Diffuse.png-97a795c999e87a05744c0c4ff4339882.etc2.ctex"
+path.bptc="res://.godot/imported/fd body_Diffuse.png-97a795c999e87a05744c0c4ff4339882.bptc.ctex"
+path.astc="res://.godot/imported/fd body_Diffuse.png-97a795c999e87a05744c0c4ff4339882.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,12 +13,12 @@ metadata={
 [deps]
 
 source_file="res://Mods/Faz Anim 2/Custom Assets/Textures/fd body_Diffuse.png"
-dest_files=["res://.godot/imported/fd body_Diffuse.png-97a795c999e87a05744c0c4ff4339882.s3tc.ctex", "res://.godot/imported/fd body_Diffuse.png-97a795c999e87a05744c0c4ff4339882.etc2.ctex"]
+dest_files=["res://.godot/imported/fd body_Diffuse.png-97a795c999e87a05744c0c4ff4339882.bptc.ctex", "res://.godot/imported/fd body_Diffuse.png-97a795c999e87a05744c0c4ff4339882.astc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

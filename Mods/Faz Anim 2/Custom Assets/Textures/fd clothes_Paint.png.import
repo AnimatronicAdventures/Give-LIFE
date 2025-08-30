@@ -3,22 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://s6l32q2i1cq4"
-path.s3tc="res://.godot/imported/fd clothes_Paint.png-7a17e4b6c61f495d560aca24392d0931.s3tc.ctex"
-path.etc2="res://.godot/imported/fd clothes_Paint.png-7a17e4b6c61f495d560aca24392d0931.etc2.ctex"
+path="res://.godot/imported/fd clothes_Paint.png-7a17e4b6c61f495d560aca24392d0931.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Mods/Faz Anim 2/Custom Assets/Textures/fd clothes_Paint.png"
-dest_files=["res://.godot/imported/fd clothes_Paint.png-7a17e4b6c61f495d560aca24392d0931.s3tc.ctex", "res://.godot/imported/fd clothes_Paint.png-7a17e4b6c61f495d560aca24392d0931.etc2.ctex"]
+dest_files=["res://.godot/imported/fd clothes_Paint.png-7a17e4b6c61f495d560aca24392d0931.ctex"]
 
 [params]
 
-compress/mode=2
-compress/high_quality=false
+compress/mode=3
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

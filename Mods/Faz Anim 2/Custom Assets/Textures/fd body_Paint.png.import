@@ -3,22 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1fk5d527fdno"
-path.s3tc="res://.godot/imported/fd body_Paint.png-c9c93fb52bc6e80b4cc0b209daa4c894.s3tc.ctex"
-path.etc2="res://.godot/imported/fd body_Paint.png-c9c93fb52bc6e80b4cc0b209daa4c894.etc2.ctex"
+path="res://.godot/imported/fd body_Paint.png-c9c93fb52bc6e80b4cc0b209daa4c894.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Mods/Faz Anim 2/Custom Assets/Textures/fd body_Paint.png"
-dest_files=["res://.godot/imported/fd body_Paint.png-c9c93fb52bc6e80b4cc0b209daa4c894.s3tc.ctex", "res://.godot/imported/fd body_Paint.png-c9c93fb52bc6e80b4cc0b209daa4c894.etc2.ctex"]
+dest_files=["res://.godot/imported/fd body_Paint.png-c9c93fb52bc6e80b4cc0b209daa4c894.ctex"]
 
 [params]
 
-compress/mode=2
-compress/high_quality=false
+compress/mode=3
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

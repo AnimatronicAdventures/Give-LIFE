@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bv0sw7q0klm8c"]
+
+[resource]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.772549)
+metallic = 1.0
+roughness = 0.27
+anisotropy_enabled = true
+anisotropy = 0.35
+refraction_texture_channel = 2

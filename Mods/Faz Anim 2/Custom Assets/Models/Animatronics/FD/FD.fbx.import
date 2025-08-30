@@ -69,6 +69,10 @@ _subresources={
 "The Head": {
 "use_external/enabled": true,
 "use_external/path": "uid://cs1y3ja383yyr"
+},
+"Visor Plastic": {
+"use_external/enabled": true,
+"use_external/path": "uid://bv0sw7q0klm8c"
 }
 }
 }
