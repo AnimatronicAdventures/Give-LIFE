@@ -10,73 +10,19 @@ enum BonePreset {
 	ANIMATRONIC_MOVEMENT_HEAVY,
 }
 
-# Define bones and presets here
-@export var bone_config := {
-	"hair": BonePreset.HAIR_NO_GRAVITY,
-	"pigtail 0 a": BonePreset.HAIR_NO_GRAVITY,
-	"pigtail 1 a": BonePreset.HAIR_NO_GRAVITY,
-	"pigtail 2 a": BonePreset.HAIR,
-	"pigtail 0 b": BonePreset.HAIR_NO_GRAVITY,
-	"pigtail 1 b": BonePreset.HAIR_NO_GRAVITY,
-	"pigtail 2 b": BonePreset.HAIR,
-	"pigtail 0 c": BonePreset.HAIR_NO_GRAVITY,
-	"pigtail 1 c": BonePreset.HAIR_NO_GRAVITY,
-	"pigtail 2 c" : BonePreset.HAIR,
-	"feather 0 a r": BonePreset.SLOW_HAIR,
-	"feather 1 a r": BonePreset.SLOW_HAIR,
-	"feather 0 b r": BonePreset.SLOW_HAIR,
-	"feather 1 b r": BonePreset.SLOW_HAIR,
-	"feather 0 c r": BonePreset.SLOW_HAIR,
-	"feather 1 c r": BonePreset.SLOW_HAIR,
-	"feather 0 d r": BonePreset.SLOW_HAIR,
-	"feather 1 d r": BonePreset.SLOW_HAIR,
-	"feather 0 e r": BonePreset.SLOW_HAIR,
-	"feather 1 e r": BonePreset.SLOW_HAIR,
-	"feather 0 f r": BonePreset.SLOW_HAIR,
-	"feather 1 f r": BonePreset.SLOW_HAIR,
-	"feather 0 a l": BonePreset.SLOW_HAIR,
-	"feather 1 a l": BonePreset.SLOW_HAIR,
-	"feather 0 b l": BonePreset.SLOW_HAIR,
-	"feather 1 b l": BonePreset.SLOW_HAIR,
-	"feather 0 c l": BonePreset.SLOW_HAIR,
-	"feather 1 c l": BonePreset.SLOW_HAIR,
-	"feather 0 d l": BonePreset.SLOW_HAIR,
-	"feather 1 d l": BonePreset.SLOW_HAIR,
-	"feather 0 e l": BonePreset.SLOW_HAIR,
-	"feather 1 e l": BonePreset.SLOW_HAIR,
-	"feather 0 f l": BonePreset.SLOW_HAIR,
-	"feather 1 f l": BonePreset.SLOW_HAIR,
-	"tail 0 up": BonePreset.SLOW_HAIR,
-	"tail 1 up": BonePreset.SLOW_HAIR,
-	"tail 2 up": BonePreset.SLOW_HAIR,
-	"tail 0 down": BonePreset.SLOW_HAIR,
-	"tail 1 down": BonePreset.SLOW_HAIR,
-	"tail 2 down": BonePreset.SLOW_HAIR,
-	"tail 0 r": BonePreset.SLOW_HAIR,
-	"tail 1 r": BonePreset.SLOW_HAIR,
-	"tail 2 r": BonePreset.SLOW_HAIR,
-	"tail 0 l": BonePreset.SLOW_HAIR,
-	"tail 1 l": BonePreset.SLOW_HAIR,
-	"tail 2 l": BonePreset.SLOW_HAIR,
-	"jaw": BonePreset.ANIMATRONIC_MOVEMENT_LIGHT,
-	"eyebrow_r": BonePreset.ANIMATRONIC_MOVEMENT_LIGHT,
-	"eyebrow_l": BonePreset.ANIMATRONIC_MOVEMENT_LIGHT,
-	"head rotate": BonePreset.ANIMATRONIC_MOVEMENT_MEDIUM,
-	"arm r": BonePreset.ANIMATRONIC_MOVEMENT_HEAVY,
-	"arm l": BonePreset.ANIMATRONIC_MOVEMENT_HEAVY,
-	"forearm r": BonePreset.ANIMATRONIC_MOVEMENT_LIGHT,
-	"arm mech bend l": BonePreset.ANIMATRONIC_MOVEMENT_LIGHT,
-	"hand 0 r": BonePreset.ANIMATRONIC_MOVEMENT_LIGHT,
-	"hand 0 l": BonePreset.ANIMATRONIC_MOVEMENT_LIGHT,
-	"apron r": BonePreset.SLOW_HAIR,
-	"apron": BonePreset.SLOW_HAIR,
-	"apron l": BonePreset.SLOW_HAIR,
-	"spine": BonePreset.ANIMATRONIC_MOVEMENT_HEAVY,
-}
+var bone_config := {}
+
+#Override filename
+@export var boneConfigFileName: String
+
 var currentPhysicsToggle = true
 var skeleton: Skeleton3D = null
 
 func _ready():
+	# Try loading override if filename provided
+	if boneConfigFileName.strip_edges() != "":
+		_load_bone_config(boneConfigFileName)
+
 	add_to_group("SettingsReceivers")
 	skeleton = find_skeleton(self)
 	if skeleton == null:
@@ -86,6 +32,33 @@ func _ready():
 	for bone_name in bone_config.keys():
 		var preset = bone_config[bone_name]
 		apply_physics_bone_to(bone_name, preset)
+
+# Loads bone config from Mods folder
+func _load_bone_config(file_name: String) -> void:
+	var mods_dir = DirAccess.open("res://Mods")
+	if not mods_dir:
+		push_error("Mods folder not found.")
+		return
+	
+	mods_dir.list_dir_begin()
+	var mod_name = mods_dir.get_next()
+	while mod_name != "":
+		if mods_dir.current_is_dir() and mod_name != "." and mod_name != "..":
+			var config_path = "res://Mods/%s/Mod Directory/Physics Bones/%s.json" % [mod_name, file_name]
+			if FileAccess.file_exists(config_path):
+				var file = FileAccess.open(config_path, FileAccess.READ)
+				if file:
+					var json_text = file.get_as_text()
+					file.close()
+					var result = JSON.parse_string(json_text)
+					if typeof(result) == TYPE_DICTIONARY:
+						# Overwrite defaults completely
+						bone_config = {}
+						for key in result.keys():
+							var preset_value = int(result[key])
+							bone_config[key] = preset_value
+				return
+		mod_name = mods_dir.get_next()
 
 func find_skeleton(node: Node) -> Skeleton3D:
 	if node is Skeleton3D:

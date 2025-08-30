@@ -10,31 +10,4 @@ animParametersFileName = "FD"
 
 [node name="FD" parent="." instance=ExtResource("2_80nc4")]
 script = ExtResource("3_nfbpk")
-bone_config = {
-"arm l": 6,
-"arm mech bend l": 4,
-"cigar": 5,
-"ear_l": 3,
-"ear_r": 3,
-"eyebrow_l": 4,
-"eyebrow_r": 4,
-"hand 0 l": 4,
-"hand 1 r": 4,
-"hand fur 1 l": 0,
-"hand fur 1 r": 0,
-"hand fur 2 l": 0,
-"hand fur 2 r": 0,
-"hand fur 3 l": 0,
-"hand fur 3 r": 0,
-"head rotate": 5,
-"jaw": 4,
-"mic end": 5,
-"spine": 6,
-"visor": 0,
-"whisker 1 l": 0,
-"whisker 1 r": 0,
-"whisker 2 l": 0,
-"whisker 2 r": 0,
-"whisker 3 l": 0,
-"whisker 3 r": 0
-}
+boneConfigFileName = "FD"
