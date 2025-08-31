@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bels6bfxn5l0o"]
 
-[ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/Chica.gdshader" id="1_pdsak"]
+[ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/GL_Paintable.gdshader" id="1_pdsak"]
 [ext_resource type="Texture2D" uid="uid://dfftynijlnxg1" path="res://Mods/Faz Anim 2/Custom Assets/Textures/fd body_Diffuse.png" id="2_70imb"]
 [ext_resource type="Texture2D" uid="uid://b5sj8ofmchiqu" path="res://Mods/Faz Anim 2/Custom Assets/Textures/fd body_Mask.png" id="3_pdsak"]
 [ext_resource type="Texture2D" uid="uid://b360nhayha0ed" path="res://Mods/Faz Anim 2/Custom Assets/Textures/fd body_Normal.png" id="4_ddgjs"]

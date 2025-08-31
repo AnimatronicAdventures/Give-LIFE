@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://ib27jt1hintu"]
 
-[ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/Chica.gdshader" id="1_x2806"]
+[ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/GL_Paintable.gdshader" id="1_x2806"]
 [ext_resource type="Texture2D" uid="uid://heaosayfawt" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_BlacklightMap.png" id="2_ra1hk"]
 [ext_resource type="Texture2D" uid="uid://d2njms16g6vfl" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_Main.png" id="2_x2806"]
 [ext_resource type="Texture2D" uid="uid://ds153o06s3h2o" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cupcake_MaskMap.png" id="3_ra1hk"]

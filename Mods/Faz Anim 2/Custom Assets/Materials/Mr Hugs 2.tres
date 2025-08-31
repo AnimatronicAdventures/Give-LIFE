@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://2katefgfkg4"]
 
-[ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/Chica.gdshader" id="1_oqyua"]
+[ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/GL_Paintable.gdshader" id="1_oqyua"]
 [ext_resource type="Texture2D" uid="uid://bxgst4ttsm7u4" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Possessed Mr Hugs Canon_BlacklightMap.png" id="2_oqyua"]
 [ext_resource type="Texture2D" uid="uid://6x0bt7ltocwk" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Possessed Mr Hugs Canon_Main.png" id="3_oyvcq"]
 [ext_resource type="Texture2D" uid="uid://kq0thiofqcj8" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Possessed Mr Hugs Canon_MaskMap.png" id="4_x5m4m"]

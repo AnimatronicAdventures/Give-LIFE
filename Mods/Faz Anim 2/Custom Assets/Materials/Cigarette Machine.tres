@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dencrv3tt2vv6"]
 
-[ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/Chica.gdshader" id="1_2w4bv"]
+[ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/GL_Paintable.gdshader" id="1_2w4bv"]
 [ext_resource type="Texture2D" uid="uid://dq7tm66jw4a3e" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cig_Machine_BlacklightMap.png" id="2_2w4bv"]
 [ext_resource type="Texture2D" uid="uid://cu4rpqvj12xm7" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cig_Machine_Main.png" id="3_lxqx7"]
 [ext_resource type="Texture2D" uid="uid://k48ny4uh1vyk" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Cig_Machine_MaskMap.png" id="4_ygeg8"]

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bo4jm6kxggs8i"]
 
-[ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/Chica.gdshader" id="1_mxus2"]
+[ext_resource type="Shader" uid="uid://des8a3glk3x31" path="res://Shaders/GL_Paintable.gdshader" id="1_mxus2"]
 [ext_resource type="Texture2D" uid="uid://dqgkm1kqniev5" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica Body Mech_Main.png" id="2_ey2d8"]
 [ext_resource type="Texture2D" uid="uid://crh2cbyabn7t5" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica Body Mech_MaskMap.png" id="3_htfq6"]
 [ext_resource type="Texture2D" uid="uid://btavyn4d2mi38" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Chica Body Mech_NormalMap.png" id="4_mxus2"]

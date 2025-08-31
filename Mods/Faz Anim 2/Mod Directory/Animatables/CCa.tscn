@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cry2msqosqx0u"]
+[gd_scene load_steps=5 format=3 uid="uid://cry2msqosqx0u"]
 
 [ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_kdyes"]
 [ext_resource type="PackedScene" uid="uid://m7s5j51nrkg1" path="res://Mods/Faz Anim 2/Custom Assets/Models/Animatronics/Chica/Chica.fbx" id="2_86lff"]
 [ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Physics_Bones.gd" id="3_8pgn4"]
+[ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Node Class/GL_Colorable.gd" id="4_86lff"]
 
 [node name="CCa" type="Node3D" groups=["AA_CCA"]]
 script = ExtResource("1_kdyes")
@@ -11,3 +12,7 @@ animParametersFileName = "CCa"
 [node name="CCa" parent="." instance=ExtResource("2_86lff")]
 script = ExtResource("3_8pgn4")
 boneConfigFileName = "CCa"
+
+[node name="Color Check" type="Node3D" parent="."]
+script = ExtResource("4_86lff")
+check_siblings = true
