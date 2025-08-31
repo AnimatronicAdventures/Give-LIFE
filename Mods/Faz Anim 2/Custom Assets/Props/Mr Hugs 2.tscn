@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://clrd0pn1h5j4b"]
+[gd_scene load_steps=12 format=3 uid="uid://clrd0pn1h5j4b"]
 
 [ext_resource type="Script" uid="uid://ifsfe3g1x8cv" path="res://Scripts/Animatables/GL_Movable.gd" id="1_aji4r"]
 [ext_resource type="PackedScene" uid="uid://ceevf34i7lohs" path="res://Mods/Faz Anim 2/Custom Assets/Models/Props/Mr. Hugs 2.fbx" id="1_kfwm8"]
+[ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="2_a08n8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kfwm8"]
 size = Vector3(0.53833, 0.198151, 0.701416)
@@ -66,4 +67,7 @@ shape = SubResource("BoxShape3D_fip82")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00680339, 0.937591, -0.436109)
 shape = SubResource("CapsuleShape3D_kfwm8")
 
-[node name="Mr_ Hugs 2" parent="RigidBody3D" instance=ExtResource("1_kfwm8")]
+[node name="Color Check" type="Node3D" parent="RigidBody3D" groups=["PROP_MRHUGS_2"]]
+script = ExtResource("2_a08n8")
+
+[node name="Mr_ Hugs 2" parent="RigidBody3D/Color Check" instance=ExtResource("1_kfwm8")]

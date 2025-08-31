@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bimexjbcml72"]
+
+[ext_resource type="Shader" uid="uid://doorkirs5lkwv" path="res://Shaders/Paintable_Simple.gdshader" id="1_5gfpf"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5gfpf")
+shader_parameter/albedo = Color(0.901961, 0.745098, 0.239216, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.63
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/normal_scale = 0.0
+shader_parameter/anisotropy_ratio = 0.0
+shader_parameter/subsurface_scattering_strength = 1.0
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)

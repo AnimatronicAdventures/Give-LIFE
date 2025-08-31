@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcvouknjqqb8l"]
+[gd_scene load_steps=5 format=3 uid="uid://dcvouknjqqb8l"]
 
 [ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_nfbpk"]
 [ext_resource type="PackedScene" uid="uid://7ydjydwhrneg" path="res://Mods/Faz Anim 2/Custom Assets/Models/Animatronics/FD/FD.fbx" id="2_80nc4"]
 [ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Physics_Bones.gd" id="3_nfbpk"]
+[ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="4_6yq8t"]
 
 [node name="FD" type="Node3D" groups=["AA_FD"]]
 script = ExtResource("1_nfbpk")
@@ -11,3 +12,7 @@ animParametersFileName = "FD"
 [node name="FD" parent="." instance=ExtResource("2_80nc4")]
 script = ExtResource("3_nfbpk")
 boneConfigFileName = "FD"
+
+[node name="Color Check" type="Node3D" parent="." groups=["AA_FD"]]
+script = ExtResource("4_6yq8t")
+check_siblings = true

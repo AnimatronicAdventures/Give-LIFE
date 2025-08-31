@@ -1,5 +1,5 @@
 extends GL_Animatable
-class_name GL_Colorable
+class_name GL_Paintable
 
 @export var check_siblings: bool = false   # If true, also checks sibling nodes recursively
 
@@ -31,7 +31,7 @@ func _cache_materials_in_tree(node: Node) -> void:
 			if mesh:
 				for surface_idx in range(mesh.get_surface_count()):
 					var mat: Material = child.get_active_material(surface_idx)
-					if mat and mat is ShaderMaterial:
+					if mat:
 						var mat_name = ""
 
 						if mat.resource_path != "":
@@ -49,38 +49,35 @@ func _cache_materials_in_tree(node: Node) -> void:
 		_cache_materials_in_tree(child)
 
 
-# Helper to recursively collect meshes
-func _collect_meshes_recursive(node: Node, meshes: Array) -> void:
-	for child in node.get_children():
-		if child is MeshInstance3D:
-			meshes.append(child)
-		if child is Node: # only recurse into Nodes
-			_collect_meshes_recursive(child, meshes)
-
-
 # Called externally to change a shader param color
-# Example: _sent_signals("green_material|0", Color(0.8,0.2,0.2))
+# Example custom shader: _sent_signals("green_material|0", Color(0.8,0.2,0.2))
+# Example standard Godot shader: _sent_signals("green_mat|A", Color(0.8,0.2,0.2))
 func _sent_signals(_signal_ID: String, _the_signal: Color) -> void:
 	if not _signal_ID.contains("|"):
-		push_error("Invalid signal ID format, expected 'material_name|index'")
+		push_error("Invalid signal ID format, expected 'material_name|index_or_code'")
 		return
 
 	var parts = _signal_ID.split("|")
 	if parts.size() != 2:
-		push_error("Invalid signal ID format, expected 'material_name|index'")
+		push_error("Invalid signal ID format, expected 'material_name|index_or_code'")
 		return
 
 	var mat_name: String = parts[0]
-	var index: int = int(parts[1])
+	var key: String = parts[1]
 
-	if index < 0 or index >= param_names.size():
-		push_error("Invalid parameter index: " + str(index))
+	if not material_cache.has(mat_name):
+		push_warning("Material not found in cache: " + mat_name)
 		return
 
-	var target_param = param_names[index]
-
-	# Look up cached materials
-	if material_cache.has(mat_name):
-		for mat in material_cache[mat_name]:
-			if mat is ShaderMaterial:
+	for mat in material_cache[mat_name]:
+		if mat is ShaderMaterial:
+			if key == "A":
+				mat.set_shader_parameter("albedo", _the_signal)
+			elif key.is_valid_int():
+				var index = int(key)
+				if index < 0 or index >= param_names.size():
+					push_error("Invalid parameter index: " + str(index))
+					return
+				var target_param = param_names[index]
 				mat.set_shader_parameter(target_param, _the_signal)
+			
