@@ -1,156 +1,156 @@
 {
-"Armature_001|Arm L Bend": {
+"CCa|Arm L Bend": {
 "in_speed": 2.0,
 "out_speed": 3.0,
 "type": "standard",
 },
-"Armature_001|Arm L Turn": {
+"CCa|Arm L Turn": {
 "in_speed": 2.7,
 "out_speed": 3.0,
 "type": "standard",
 },
-"Armature_001|Arm R Bend": {
+"CCa|Arm R Bend": {
 "in_speed": 3.0,
 "out_speed": 2.5,
 "type": "standard",
 },
-"Armature_001|Arm R Out": {
+"CCa|Arm R Out": {
 "in_speed": 2.5,
 "out_speed": 1.0,
 "type": "standard",
 },
-"Armature_001|Body Lean": {
+"CCa|Body Lean": {
 "in_speed": 2.0,
 "out_speed": 2.5,
 "type": "standard",
 },
-"Armature_001|Body Turn L": {
+"CCa|Body Turn L": {
 "in_speed": 2.5,
 "out_speed": 2.5,
 "type": "standard",
 },
-"Armature_001|Body Turn R": {
+"CCa|Body Turn R": {
 "in_speed": 2.5,
 "out_speed": 2.5,
 "type": "standard",
 },
-"Armature_001|Cupcake Candle": {
+"CCa|Cupcake Candle": {
 "in_speed": 1.0,
 "out_speed": 1.0,
 "type": "standard",
 },
-"Armature_001|Cupcake Mouth": {
+"CCa|Cupcake Mouth": {
 "in_speed": 5.0,
 "out_speed": 4.0,
 "type": "standard",
 },
-"Armature_001|Eyebrow L Down": {
+"CCa|Eyebrow L Down": {
 "in_speed": 7.0,
 "out_speed": 9.0,
 "type": "standard",
 },
-"Armature_001|Eyebrow L Up": {
+"CCa|Eyebrow L Up": {
 "in_speed": 7.0,
 "out_speed": 9.0,
 "type": "standard",
 },
-"Armature_001|Eyebrow R Down": {
+"CCa|Eyebrow R Down": {
 "in_speed": 7.0,
 "out_speed": 9.0,
 "type": "standard",
 },
-"Armature_001|Eyebrow R Up": {
+"CCa|Eyebrow R Up": {
 "in_speed": 7.0,
 "out_speed": 9.0,
 "type": "standard",
 },
-"Armature_001|Eyelid L": {
+"CCa|Eyelid L": {
 "in_speed": 5.0,
 "out_speed": 10.0,
 "type": "move_to",
 },
-"Armature_001|Eyelid R": {
+"CCa|Eyelid R": {
 "in_speed": 5.0,
 "out_speed": 10.0,
 "type": "move_to",
 },
-"Armature_001|Eyes Down": {
+"CCa|Eyes Down": {
 "in_speed": 6.0,
 "out_speed": 7.0,
 "type": "standard",
 },
-"Armature_001|Eyes Left": {
+"CCa|Eyes Left": {
 "in_speed": 6.0,
 "out_speed": 7.0,
 "type": "standard",
 },
-"Armature_001|Eyes Right": {
+"CCa|Eyes Right": {
 "in_speed": 6.0,
 "out_speed": 7.0,
 "type": "standard",
 },
-"Armature_001|Eyes Up": {
+"CCa|Eyes Up": {
 "in_speed": 6.0,
 "out_speed": 7.0,
 "type": "standard",
 },
-"Armature_001|Hand R Bend": {
+"CCa|Hand R Bend": {
 "in_speed": 3.0,
 "out_speed": 4.0,
 "type": "standard",
 },
-"Armature_001|Head L": {
+"CCa|Head L": {
 "in_speed": 5.0,
 "out_speed": 5.0,
 "type": "standard",
 },
-"Armature_001|Head R": {
+"CCa|Head R": {
 "in_speed": 5.0,
 "out_speed": 5.0,
 "type": "standard",
 },
-"Armature_001|Head Tilt Down L": {
+"CCa|Head Tilt Down L": {
 "in_speed": 4.0,
 "out_speed": 5.0,
 "type": "standard",
 },
-"Armature_001|Head Tilt Down R": {
+"CCa|Head Tilt Down R": {
 "in_speed": 4.0,
 "out_speed": 5.0,
 "type": "standard",
 },
-"Armature_001|Head Tilt Up L": {
+"CCa|Head Tilt Up L": {
 "in_speed": 4.0,
 "out_speed": 5.0,
 "type": "standard",
 },
-"Armature_001|Head Tilt Up R": {
+"CCa|Head Tilt Up R": {
 "in_speed": 4.0,
 "out_speed": 5.0,
 "type": "standard",
 },
-"Armature_001|Jaw": {
+"CCa|Jaw": {
 "in_speed": 5.5,
 "out_speed": 6.5,
 "type": "standard",
 },
-"Armature_001|Shoulder L": {
+"CCa|Shoulder L": {
 "in_speed": 2.5,
 "out_speed": 1.5,
 "type": "standard",
 },
-"Armature_001|Shoulder R": {
+"CCa|Shoulder R": {
 "in_speed": 2.5,
 "out_speed": 1.5,
 "type": "standard",
 },
-"Armature_001|Underlid L": {
+"CCa|Underlid L": {
 "in_speed": 5.0,
 "out_speed": 10.0,
 "type": "move_to",
 "value": 5.70421e-21
 },
-"Armature_001|Underlid R": {
+"CCa|Underlid R": {
 "in_speed": 5.0,
 "out_speed": 10.0,
 "type": "move_to",

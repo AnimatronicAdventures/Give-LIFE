@@ -90,7 +90,7 @@ func _process(_delta):
 func _input(event: InputEvent) -> void:
 	if not is_hovered:
 		return
-
+	if event is InputEventMouseButton:
 		if event.pressed and (event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN):
 			var mouse_pos = event.position
 			var global_xform = holder.get_global_transform()
@@ -197,9 +197,6 @@ func save_everything():
 
 	populate_workspace_options()
 
-
-
-
 func load_everything():
 	var file_path = "user://My Precious Save Files/" + str(_workspace_ID) + "/node_workspace.tres"
 	var resource = ConfigFile.new()
@@ -227,14 +224,13 @@ func load_everything():
 
 	var version_num = float(version)
 	var needs_special_value_fix = version_num <= 0.11
+	var needs_armature_fix = version_num <= 0.13
 
 	# Load nodes
 	var data = resource.get_value("workspace", "data", {})
 	for key in data:
 		var original_path = data[key].get("path", "")
 		var packed_scene = load(original_path)
-		
-		# ... (your existing Mods folder search code remains unchanged) ...
 
 		if packed_scene == null:
 			push_error("Could not load resource at path: " + data[key].get("path", "ERR"))
@@ -247,9 +243,31 @@ func load_everything():
 		node.nodePath = data[key].get("path", "ERR")
 		node.uuid = data[key].get("uuid", "ERR_" + key + str(Time.get_ticks_msec()))
 		node._set_title(data[key].get("name", "???"))
-		
+
 		# Merge saved rows into existing rows
 		var saved_rows = data[key].get("rows", {})
+
+		# === ARMATURE FIX FOR OLD VERSIONS ===
+		if needs_armature_fix:
+			var fixed_rows := {}
+			for row_key in saved_rows.keys():
+				var new_key = row_key
+				if "Armature_001" in row_key:
+					new_key = row_key.replace("Armature_001", "CCa")
+
+				# Copy the row data
+				var row_data = saved_rows[row_key]
+
+				# Fix inside connections
+				if row_data.has("connections") and typeof(row_data["connections"]) == TYPE_ARRAY:
+					for connection in row_data["connections"]:
+						if connection.has("input_name") and typeof(connection["input_name"]) == TYPE_STRING:
+							if "Armature_001" in connection["input_name"]:
+								connection["input_name"] = connection["input_name"].replace("Armature_001", "CCa")
+
+				fixed_rows[new_key] = row_data
+			saved_rows = fixed_rows
+
 		for row_key in saved_rows.keys():
 			if node.rows.has(row_key):
 				for sub_key in saved_rows[row_key].keys():

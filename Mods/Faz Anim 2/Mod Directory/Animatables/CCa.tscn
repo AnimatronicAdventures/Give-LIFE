@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://m7s5j51nrkg1" path="res://Mods/Faz Anim 2/Custom Assets/Models/Animatronics/Chica/Chica.fbx" id="2_86lff"]
 [ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Physics_Bones.gd" id="3_8pgn4"]
 
-[node name="Chica" type="Node3D" groups=["AA_CCA"]]
+[node name="CCa" type="Node3D" groups=["AA_CCA"]]
 script = ExtResource("1_kdyes")
 animParametersFileName = "CCa"
 
-[node name="Chica" parent="." instance=ExtResource("2_86lff")]
+[node name="CCa" parent="." instance=ExtResource("2_86lff")]
 script = ExtResource("3_8pgn4")
 boneConfigFileName = "CCa"
