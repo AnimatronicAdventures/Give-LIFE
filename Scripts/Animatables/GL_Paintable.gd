@@ -6,6 +6,7 @@ class_name GL_Colorable
 # Cache of materials → list of ShaderMaterials
 # Example: { "green_material": [ShaderMaterial, ShaderMaterial, ...] }
 var material_cache: Dictionary = {}
+var param_names = ["paint_color_r", "paint_color_g", "paint_color_b", "paint_color_a"]
 
 func _ready() -> void:
 	_build_material_cache()
@@ -72,7 +73,6 @@ func _sent_signals(_signal_ID: String, _the_signal: Color) -> void:
 	var mat_name: String = parts[0]
 	var index: int = int(parts[1])
 
-	var param_names = ["paint_color_r", "paint_color_g", "paint_color_b", "paint_color_a"]
 	if index < 0 or index >= param_names.size():
 		push_error("Invalid parameter index: " + str(index))
 		return

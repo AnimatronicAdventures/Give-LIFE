@@ -161,7 +161,9 @@ func _process(delta):
 		anim_tree.set(anim_path, time_value)
 
 # Function to set the time of the animation based on a normalized value (0.0 to 1.0)
-func _sent_signals(anim_name: String, value: float):
+func _sent_signals(anim_name: String, value):
+	if value is not float:
+		return
 	
 	#Non Animations
 	match(anim_name):

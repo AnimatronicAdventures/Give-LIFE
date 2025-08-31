@@ -9,8 +9,10 @@ func _ready():
 	initialRot = rotation
 	initialScale = scale
 
-func _sent_signals(anim_name: String, value: float):
-
+func _sent_signals(anim_name: String, value):
+	if value is not float:
+		return
+		
 	match(anim_name):
 		"Position X":
 			position.x = initialPos.x + value
