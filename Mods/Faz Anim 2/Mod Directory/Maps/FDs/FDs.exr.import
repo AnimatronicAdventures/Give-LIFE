@@ -2,7 +2,7 @@
 
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
-uid="uid://ddlh3iiimwmm0"
+uid="uid://bh50tporqiatf"
 path.bptc="res://.godot/imported/FDs.exr-ce935d89c865bfd5197184cfe04e118d.bptc.ctexarray"
 path.astc="res://.godot/imported/FDs.exr-ce935d89c865bfd5197184cfe04e118d.astc.ctexarray"
 metadata={
@@ -20,9 +20,11 @@ dest_files=["res://.godot/imported/FDs.exr-ce935d89c865bfd5197184cfe04e118d.bptc
 compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 slices/horizontal=1
-slices/vertical=8
+slices/vertical=16

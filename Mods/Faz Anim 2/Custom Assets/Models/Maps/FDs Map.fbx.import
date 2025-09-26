@@ -1,0 +1,182 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bs3etg0u8ps04"
+path="res://.godot/imported/FDs Map.fbx-cab1a9a804af8c6d6506c845ca73a17d.scn"
+
+[deps]
+
+source_file="res://Mods/Faz Anim 2/Custom Assets/Models/Maps/FDs Map.fbx"
+dest_files=["res://.godot/imported/FDs Map.fbx-cab1a9a804af8c6d6506c845ca73a17d.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=2
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Black Shiny": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Shiny Black.tres",
+"use_external/path": "uid://d0i7i6ix51nlw"
+},
+"Carpet Red": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Carpet Red.tres",
+"use_external/path": "uid://bih5rftylul4y"
+},
+"Carpet Yellow": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Carpet Yellow.tres",
+"use_external/path": "uid://hk132lbstb07"
+},
+"Desert": {
+"use_external/enabled": false,
+"use_external/fallback_path": "",
+"use_external/path": "uid://hk132lbstb07"
+},
+"Fake Grass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Grass.tres",
+"use_external/path": "uid://d3330uwlgm4d2"
+},
+"Floor Tiles": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Floor Tiles.tres",
+"use_external/path": "uid://b45mwkysd7f0m"
+},
+"Glass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Glass.tres",
+"use_external/path": "uid://ddx50lgsgirmm"
+},
+"Light Emission": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Puck Lights.tres",
+"use_external/path": "uid://d2pj88wya6o7w"
+},
+"Outside Tiles": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Outside Tiles.tres",
+"use_external/path": "uid://birmh2dr3tsyo"
+},
+"Plaster": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Plaster.tres",
+"use_external/path": "uid://xqugp8oihvr8"
+},
+"Plaster Black": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Plaster Black.tres",
+"use_external/path": "uid://bb215h5xd0t5"
+},
+"Tan Bricks": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Bricks.tres",
+"use_external/path": "uid://tyjx0mlx3f2h"
+},
+"Wood A": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Wood A.tres",
+"use_external/path": "uid://cmlg4aw2f86wl"
+},
+"Wood B": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Wood B.tres",
+"use_external/path": "uid://d1c22fl7hw3cp"
+}
+},
+"meshes": {
+"Ceiling_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Models/Maps/Ceiling.res",
+"save_to_file/path": "uid://bslyjkp3qagqd"
+},
+"Circle_010": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Models/Maps/Lights.res",
+"save_to_file/path": "uid://b5wy8if0ymrvb"
+},
+"Floor_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Models/Maps/Floor.res",
+"save_to_file/path": "uid://cqdsb032mkya7"
+},
+"Ground": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Models/Maps/Ground.res",
+"save_to_file/path": "uid://b6jq8xg1k3rp8"
+},
+"Outer Store_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Models/Maps/outerstore.res",
+"save_to_file/path": "uid://51jf62g1up5l"
+},
+"Plane_002": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Models/Maps/Ceiling Tiles.res",
+"save_to_file/path": "uid://cvhd764lxneg1"
+},
+"Walls_002": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Models/Maps/Walls.res",
+"save_to_file/path": "uid://did0a8ibpw52y"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2
