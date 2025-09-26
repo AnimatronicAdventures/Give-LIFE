@@ -52,7 +52,10 @@ func _cache_materials_in_tree(node: Node) -> void:
 # Called externally to change a shader param color
 # Example custom shader: _sent_signals("green_material|0", Color(0.8,0.2,0.2))
 # Example standard Godot shader: _sent_signals("green_mat|A", Color(0.8,0.2,0.2))
-func _sent_signals(_signal_ID: String, _the_signal: Color) -> void:
+func _sent_signals(_signal_ID: String, _the_signal) -> void:
+	if typeof(_the_signal) != TYPE_COLOR:
+		return
+	
 	if not _signal_ID.contains("|"):
 		push_error("Invalid signal ID format, expected 'material_name|index_or_code'")
 		return

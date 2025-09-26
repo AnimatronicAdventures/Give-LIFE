@@ -2836,6 +2836,108 @@ canChangeColor = true
 canChangeSize = true
 lerp_speed = 15.0
 
+[node name="Backlight Bonnie 1" type="SpotLight3D" parent="Map/Animatables"]
+transform = Transform3D(0.8889305, 0.020348437, -0.45758998, 0.42194512, -0.42510116, 0.8007818, -0.17822737, -0.9049172, -0.38647136, -4.183295, 7.053027, -5.0487566)
+light_color = Color(0.49226153, 0.89911574, 0, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 26.03
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Backlight Bonnie 1" groups=["L_BACK_GUEST"]]
+script = ExtResource("9_qjcwm")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Backlight Bonnie 2" type="SpotLight3D" parent="Map/Animatables"]
+transform = Transform3D(0.5041679, -0.6677882, 0.54760724, -0.7217319, 0.022411318, 0.6918099, -0.47425506, -0.7440139, -0.470665, 0.51575685, 7.053027, -5.0487566)
+light_color = Color(0.49411765, 0.8980392, 0, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 26.03
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Backlight Bonnie 2" groups=["L_BACK_GUEST"]]
+script = ExtResource("9_qjcwm")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Backlight Chica 1" type="SpotLight3D" parent="Map/Animatables"]
+transform = Transform3D(0.65803826, -0.6370983, 0.401362, -0.5407571, -0.028914198, 0.84068173, -0.5239919, -0.77024007, -0.36354205, 4.0615163, 7.053027, -5.0487566)
+light_color = Color(0.4862745, 0.1882353, 0.9843137, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 26.03
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Backlight Chica 1" groups=["L_BACK_CCA"]]
+script = ExtResource("9_qjcwm")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Backlight Chica 2" type="SpotLight3D" parent="Map/Animatables"]
+transform = Transform3D(0.7724748, 0.07642545, -0.6304299, 0.5479, -0.5821242, 0.6007803, -0.3210736, -0.80950016, -0.49154982, -0.95074224, 7.053027, -5.0487566)
+light_color = Color(0.48629373, 0.18965682, 0.98548466, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 26.03
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Backlight Chica 2" groups=["L_BACK_CCA"]]
+script = ExtResource("9_qjcwm")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Backlight FD 1" type="SpotLight3D" parent="Map/Animatables"]
+transform = Transform3D(0.85166365, -0.04239276, -0.5223714, 0.2225932, -0.8730968, 0.43376723, -0.47446954, -0.4857002, -0.73414874, -2.3501406, 7.053027, -5.0487566)
+light_color = Color(0.89569616, 0, 0.042155065, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 26.03
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Backlight FD 1" groups=["L_BACK_FD"]]
+script = ExtResource("9_qjcwm")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
+[node name="Backlight FD 2" type="SpotLight3D" parent="Map/Animatables"]
+transform = Transform3D(0.72382605, -0.61071026, 0.32110542, -0.67071444, -0.51356244, 0.53515965, -0.16191982, -0.60273254, -0.78134215, 2.2435718, 7.053027, -5.0487566)
+light_color = Color(0.89411765, 0, 0.043137256, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 26.03
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Backlight FD 2" groups=["L_BACK_FD"]]
+script = ExtResource("9_qjcwm")
+canChangeColor = true
+canChangeSize = true
+lerp_speed = 15.0
+
 [node name="Freddy Spot" type="SpotLight3D" parent="Map/Animatables"]
 transform = Transform3D(0.99984, 0.00601344, 0.0168257, -0.00854907, 0.987885, 0.154949, -0.0156901, -0.155068, 0.987779, 0.202691, 5.91597, 5.13714)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)

@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_pdohy")
-shader_parameter/albedo = Color(0.890196, 0.545098, 0.176471, 1)
+shader_parameter/albedo = Color(0.9098039, 0.5568628, 0.18039216, 1)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 0.0
 shader_parameter/roughness = 0.63
