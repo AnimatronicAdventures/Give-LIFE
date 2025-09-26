@@ -50,6 +50,11 @@ func _process(_delta):
 					child.default_color = Color.BLACK
 				else:
 					child.default_color = Color.BLUE_VIOLET
+			elif output is GL_VideoType:
+				if output.value == "":
+					child.default_color = Color.BLACK
+				else:
+					child.default_color = Color.SEA_GREEN
 			child.points[0] = global_position + Vector2(size.x / 2, size.y / 2)
 			if typeof(connections[iter]["target"]) != TYPE_INT:
 				child.points[1] = (connections[iter]["target"] as GL_Node).give_input_point_pos(connections[iter]["input_name"])# - child.global_position

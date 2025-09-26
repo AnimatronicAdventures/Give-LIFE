@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdcxusbd86oox"]
+[gd_scene load_steps=8 format=3 uid="uid://bdcxusbd86oox"]
 
 [ext_resource type="Script" uid="uid://dwl36vn5chqmq" path="res://Scripts/Node Class/GL_Node_Point.gd" id="1_fygh4"]
 [ext_resource type="Script" uid="uid://detlnnhbk4w38" path="res://Scripts/Node Class/GL_Node_R_Click_Row.gd" id="2_4uocr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dflftb37a7ind" path="res://Scripts/Node Class/GL_Node_Picker_Color.gd" id="3_tf34m"]
 [ext_resource type="Script" uid="uid://b7ysqwtxh8pf" path="res://Scripts/Node Class/GL_Node_Picker_Bool.gd" id="4_yal7b"]
 [ext_resource type="Script" uid="uid://rmlqvxot3kys" path="res://Scripts/Node Class/GL_Node_Picker_Audio.gd" id="5_yal7b"]
+[ext_resource type="Script" uid="uid://dwdtagak33ujl" path="res://Scripts/Node Class/GL_Node_Picker_Video.gd" id="7_us714"]
 
 [node name="Node Row" type="HBoxContainer"]
 
@@ -58,9 +59,33 @@ allow_reselect = true
 
 [node name="Button" type="Button" parent="Pick Audio/HBox"]
 layout_mode = 2
-text = "🗀"
+text = "♫"
 
 [node name="FileDialog" type="FileDialog" parent="Pick Audio"]
+title = "Open a File"
+initial_position = 1
+size = Vector2i(960, 480)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+
+[node name="Pick Video" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("7_us714")
+
+[node name="HBox" type="HBoxContainer" parent="Pick Video"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="Pick Video/HBox"]
+layout_mode = 2
+allow_reselect = true
+
+[node name="Button" type="Button" parent="Pick Video/HBox"]
+layout_mode = 2
+text = "📽"
+
+[node name="FileDialog" type="FileDialog" parent="Pick Video"]
 title = "Open a File"
 initial_position = 1
 size = Vector2i(960, 480)
@@ -84,4 +109,6 @@ script = ExtResource("1_fygh4")
 [connection signal="toggled" from="Pick Bool" to="Pick Bool" method="toggled"]
 [connection signal="item_selected" from="Pick Audio/HBox/OptionButton" to="Pick Audio" method="_on_audio_option_selected"]
 [connection signal="pressed" from="Pick Audio/HBox/Button" to="Pick Audio" method="_on_audio_button_pressed"]
+[connection signal="item_selected" from="Pick Video/HBox/OptionButton" to="Pick Video" method="_on_video_option_selected"]
+[connection signal="pressed" from="Pick Video/HBox/Button" to="Pick Video" method="_on_video_button_pressed"]
 [connection signal="button_down" from="Output" to="Output" method="_start_drag"]

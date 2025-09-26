@@ -163,6 +163,10 @@ func _update_visuals():
 				assignPick(nodeRow.get_node("Pick Audio"),str(key))
 				if rows[key]["pickValue"] == null:
 					rows[key]["pickValue"] = GL_AudioType.new()
+			if rows[key]["pickValue"] is GL_VideoType:
+				assignPick(nodeRow.get_node("Pick Video"),str(key))
+				if rows[key]["pickValue"] == null:
+					rows[key]["pickValue"] = GL_VideoType.new()
 		else:
 			(nodeRow.get_node("Label") as Label).size_flags_horizontal = Control.SIZE_EXPAND_FILL
 				
@@ -205,6 +209,9 @@ func _set_inout_type(label:Button, value):
 	if value is GL_AudioType:
 		label.text = "♫"
 		label.add_theme_color_override("font_color", Color.BLUE_VIOLET)
+	elif value is GL_VideoType:
+		label.text = "📽"
+		label.add_theme_color_override("font_color", Color.SEA_GREEN)
 	if value == null:
 		label.visible = false
 

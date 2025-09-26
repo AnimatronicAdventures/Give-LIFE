@@ -11,7 +11,7 @@ mouse_filter = 1
 [node name="Node" parent="." groups=["GL Node"] instance=ExtResource("1_uifvy")]
 clip_contents = false
 layout_mode = 0
-tooltip_text = "Outputs audio directly to your device speakers."
+tooltip_text = "Outputs audio to various sources."
 script = ExtResource("2_nkf8v")
 className = "Speaker"
 

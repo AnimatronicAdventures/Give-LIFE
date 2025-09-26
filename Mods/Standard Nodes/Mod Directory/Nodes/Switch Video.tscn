@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c271c06y5c1ls"]
+
+[ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_i4cti"]
+[ext_resource type="Script" uid="uid://b3ce4c5ngm45s" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Switch_Video.gd" id="2_i4cti"]
+
+[node name="Node" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+
+[node name="Node" parent="." groups=["GL Node"] instance=ExtResource("1_i4cti")]
+clip_contents = false
+layout_mode = 0
+tooltip_text = "Toggles between two video sources using the 'Toggle' input."
+script = ExtResource("2_i4cti")
+
+[connection signal="mouse_entered" from="Node" to="Node" method="mouse_enter"]
+[connection signal="mouse_exited" from="Node" to="Node" method="mouse_exit"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://doe47bro2kqt6"]
+[gd_scene load_steps=35 format=4 uid="uid://doe47bro2kqt6"]
 
 [ext_resource type="PackedScene" uid="uid://c5dh0vxqdur1v" path="res://Scenes/player.tscn" id="1_keexa"]
 [ext_resource type="Texture2D" uid="uid://ktqnj6yjrsbn" path="res://UI/Flashlight.png" id="4_c2ebw"]
@@ -14,6 +14,7 @@
 [ext_resource type="ArrayMesh" uid="uid://did0a8ibpw52y" path="res://Mods/Faz Anim 2/Custom Assets/Models/Maps/Walls.res" id="9_frh36"]
 [ext_resource type="Script" uid="uid://c5uawj66escut" path="res://Scripts/Animatables/GL_Spotlight.gd" id="9_qjcwm"]
 [ext_resource type="ArrayMesh" uid="uid://51jf62g1up5l" path="res://Mods/Faz Anim 2/Custom Assets/Models/Maps/outerstore.res" id="10_mnjuw"]
+[ext_resource type="Script" uid="uid://cyoki6p7gu41e" path="res://Scripts/Animatables/GL_Light_Projector.gd" id="20_0fewr"]
 [ext_resource type="PackedScene" uid="uid://dq1h06s0snrud" path="res://Mods/Faz Anim 2/Custom Assets/Props/Cigarette Machine.tscn" id="25_krma8"]
 [ext_resource type="PackedScene" uid="uid://dcvouknjqqb8l" path="res://Mods/Faz Anim 2/Mod Directory/Animatables/FD.tscn" id="26_sceim"]
 [ext_resource type="PackedScene" uid="uid://cm6xii444sjb2" path="res://Mods/Faz Anim 2/Custom Assets/Models/Arcade/Fight.fbx" id="26_twv3y"]
@@ -2784,6 +2785,31 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.9581, 1.74247, -3.
 [node name="FD" parent="Map/Animatables" instance=ExtResource("26_sceim")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.107827, 1.74247, -1.81819)
 
+[node name="Projector" type="SpotLight3D" parent="Map/Animatables"]
+transform = Transform3D(1, 0, 0, 0, 0.9371603, 0.3488992, 0, -0.3488992, 0.9371603, 0.15763903, 6.5825133, -1.4346392)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 1.28
+spot_angle = 41.27
+spot_angle_attenuation = 0.06208374
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Projector" groups=["TV_PROJECTOR"]]
+script = ExtResource("20_0fewr")
+canChangeColor = true
+energyMultiplier = 50.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Map/Animatables/Projector/Node" groups=["TV_PROJECTOR"]]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+volume_db = -80.0
+
 [node name="Chica Spot" type="SpotLight3D" parent="Map/Animatables"]
 transform = Transform3D(0.976123, 0.0551108, -0.210114, -0.0368523, 0.995274, 0.0898469, 0.214072, -0.0799584, 0.97354, 1.01632, 5.91597, 5.13714)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)
@@ -2854,7 +2880,7 @@ canChangeSize = true
 lerp_speed = 15.0
 
 [node name="Backlight Bonnie 2" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.5041679, -0.6677882, 0.54760724, -0.7217319, 0.022411318, 0.6918099, -0.47425506, -0.7440139, -0.470665, 0.51575685, 7.053027, -5.0487566)
+transform = Transform3D(0.5041679, -0.6677882, 0.54760724, -0.7217319, 0.022411296, 0.6918099, -0.47425506, -0.7440139, -0.470665, 1.084602, 7.053027, -5.0487566)
 light_color = Color(0.49411765, 0.8980392, 0, 1)
 light_energy = 0.0
 light_size = 0.124
@@ -2888,7 +2914,7 @@ canChangeSize = true
 lerp_speed = 15.0
 
 [node name="Backlight Chica 2" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.7724748, 0.07642545, -0.6304299, 0.5479, -0.5821242, 0.6007803, -0.3210736, -0.80950016, -0.49154982, -0.95074224, 7.053027, -5.0487566)
+transform = Transform3D(0.7724748, 0.076425456, -0.6304299, 0.5479, -0.58212423, 0.60078037, -0.3210736, -0.8095002, -0.49154982, -0.6033286, 7.053027, -5.0487566)
 light_color = Color(0.48629373, 0.18965682, 0.98548466, 1)
 light_energy = 0.0
 light_size = 0.124
