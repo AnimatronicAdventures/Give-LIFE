@@ -2877,6 +2877,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("9_qjcwm")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 100.0
 lerp_speed = 15.0
 
 [node name="Backlight Bonnie 2" type="SpotLight3D" parent="Map/Animatables"]
@@ -2894,6 +2895,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("9_qjcwm")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 100.0
 lerp_speed = 15.0
 
 [node name="Backlight Chica 1" type="SpotLight3D" parent="Map/Animatables"]
@@ -2911,6 +2913,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("9_qjcwm")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 100.0
 lerp_speed = 15.0
 
 [node name="Backlight Chica 2" type="SpotLight3D" parent="Map/Animatables"]
@@ -2928,6 +2931,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("9_qjcwm")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 100.0
 lerp_speed = 15.0
 
 [node name="Backlight FD 1" type="SpotLight3D" parent="Map/Animatables"]
@@ -2945,6 +2949,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("9_qjcwm")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 100.0
 lerp_speed = 15.0
 
 [node name="Backlight FD 2" type="SpotLight3D" parent="Map/Animatables"]
@@ -2962,6 +2967,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("9_qjcwm")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 100.0
 lerp_speed = 15.0
 
 [node name="Freddy Spot" type="SpotLight3D" parent="Map/Animatables"]
