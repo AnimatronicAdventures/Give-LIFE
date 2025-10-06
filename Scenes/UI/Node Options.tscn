@@ -38,14 +38,54 @@ layout_mode = 2
 text = "New Name"
 alignment = 1
 
+[node name="shift 16" type="Button" parent="Panel/ScrollContainer/Container"]
+layout_mode = 2
+text = "Shift +16ms"
+
+[node name="shift 17" type="Button" parent="Panel/ScrollContainer/Container"]
+layout_mode = 2
+text = "Shift +64ms"
+
+[node name="shift 18" type="Button" parent="Panel/ScrollContainer/Container"]
+layout_mode = 2
+text = "Shift +128ms"
+
+[node name="shift 19" type="Button" parent="Panel/ScrollContainer/Container"]
+layout_mode = 2
+text = "Shift +1s"
+
+[node name="shift 20" type="Button" parent="Panel/ScrollContainer/Container"]
+layout_mode = 2
+text = "Shift -1s"
+
+[node name="shift 21" type="Button" parent="Panel/ScrollContainer/Container"]
+layout_mode = 2
+text = "Shift -128ms"
+
+[node name="shift 22" type="Button" parent="Panel/ScrollContainer/Container"]
+layout_mode = 2
+text = "Shift -64ms"
+
+[node name="shift 23" type="Button" parent="Panel/ScrollContainer/Container"]
+layout_mode = 2
+text = "Shift -16ms"
+
 [node name="Button" type="Button" parent="Panel/ScrollContainer/Container"]
 layout_mode = 2
 text = "Clear Row Recordings"
 
-[node name="Button2" type="Button" parent="Panel/ScrollContainer/Container"]
+[node name="Button3" type="Button" parent="Panel/ScrollContainer/Container"]
 layout_mode = 2
 text = "Delete Row"
 
 [connection signal="text_submitted" from="Panel/ScrollContainer/Container/Name Edit" to="." method="finish_rename"]
+[connection signal="pressed" from="Panel/ScrollContainer/Container/shift 16" to="." method="shift_row" binds= [0.016]]
+[connection signal="pressed" from="Panel/ScrollContainer/Container/shift 17" to="." method="shift_row" binds= [0.064]]
+[connection signal="pressed" from="Panel/ScrollContainer/Container/shift 18" to="." method="shift_row" binds= [0.128]]
+[connection signal="pressed" from="Panel/ScrollContainer/Container/shift 19" to="." method="shift_row" binds= [1.0]]
+[connection signal="pressed" from="Panel/ScrollContainer/Container/shift 20" to="." method="shift_row" binds= [-1.0]]
+[connection signal="pressed" from="Panel/ScrollContainer/Container/shift 21" to="." method="shift_row" binds= [-0.128]]
+[connection signal="pressed" from="Panel/ScrollContainer/Container/shift 22" to="." method="shift_row" binds= [-0.064]]
+[connection signal="pressed" from="Panel/ScrollContainer/Container/shift 23" to="." method="shift_row" binds= [-0.016]]
 [connection signal="pressed" from="Panel/ScrollContainer/Container/Button" to="." method="clear_row_recording"]
-[connection signal="pressed" from="Panel/ScrollContainer/Container/Button2" to="." method="delete_row"]
+[connection signal="pressed" from="Panel/ScrollContainer/Container/Button3" to="." method="delete_row"]

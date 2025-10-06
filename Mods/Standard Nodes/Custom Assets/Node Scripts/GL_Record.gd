@@ -169,6 +169,18 @@ func _rename_row(rowName:String, newName:String):
 func _clear_row_recordings(rowName:String):
 	recording[rowName] = {"start":null,"end":null,"current":null,"list":{},"lastUsed":null}
 
+func _shift_row_timeline(rowName:String, amount:float):
+	if not recording.has(rowName):
+		return
+	
+	var rowData = recording[rowName]
+	if rowData["start"] == null:
+		return
+	
+	for key in rowData["list"]:
+		rowData["list"][key]["time"] += amount
+
+
 func _create_row(name:String,input,output,picker:bool,pickDefault,pickFloatMaximum:float):
 	super._create_row(name,input,output,picker,pickDefault,pickFloatMaximum)
 	if name == "Recording" || name == "Current Time":

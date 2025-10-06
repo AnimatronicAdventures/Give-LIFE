@@ -24,6 +24,10 @@ func delete_row():
 	mainNode.delete_node_row(valueName)
 	queue_free()
 	
+func shift_row(amount:float):
+	mainCheck()
+	(mainNode as GL_Record)._shift_row_timeline(valueName,amount)
+	
 func set_line_name(name:String):
 	lineEdit.text = name
 	

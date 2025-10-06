@@ -52,6 +52,8 @@ func _sent_signals(anim_name: String, value):
 			if video_player.stream:
 				if abs(video_player.get_stream_position() - value) > 0.05:
 					video_player.stream_position = value
+					if not video_player.is_playing():
+						video_player.play()
 
 		"intensity":
 			if typeof(value) == TYPE_BOOL:
