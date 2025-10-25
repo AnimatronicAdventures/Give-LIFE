@@ -1,0 +1,92 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cqpcvyw2572l"
+path="res://.godot/imported/Restaurant.fbx-5afce771511024c8249a8608fa0eb215.scn"
+
+[deps]
+
+source_file="res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Restaurant.fbx"
+dest_files=["res://.godot/imported/Restaurant.fbx-5afce771511024c8249a8608fa0eb215.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Brown Carpet": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Carpet Brown.tres",
+"use_external/path": "uid://b8vukvsqypi5h"
+},
+"Glass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Glass.tres",
+"use_external/path": "uid://ddx50lgsgirmm"
+},
+"Lights": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Light.tres",
+"use_external/path": "uid://dfbo7jeyvkn0r"
+},
+"White Plaster": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Plaster White.tres",
+"use_external/path": "uid://c82bv1j076it0"
+},
+"Yellow Plaster": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Plaster Yellow.tres",
+"use_external/path": "uid://kf3vgipyx4v2"
+}
+},
+"meshes": {
+"Circle_002": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Circle_002.res",
+"save_to_file/path": "uid://1we47rdyu4n6"
+},
+"Circle_003": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Circle_003.res",
+"save_to_file/path": "uid://dji6aatoeydkj"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2
