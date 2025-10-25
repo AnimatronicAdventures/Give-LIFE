@@ -5,7 +5,7 @@
 	"size": 0.3
 	},
 	"FA_CLR_CHICA": {
-	"color": [1, 0.521496, 0.136316, 1],
+	"color": [0.275, 0.604, 0.0, 1],
 	"intensity": 0.0,
 	"size": 0.3
 	},
@@ -15,28 +15,28 @@
 	"size": 0.3
 	},
 	"FA_SPOT_CHICA": {
-	"color": [0.275, 0.604, 0.0, 1],
+	"color": [1, 0.890196, 0.768627, 1],
 	"intensity": 0.0,
-	"size": 0.15
+	"size": 0.12
 	},
 	"FA_SPOT_FREDDY": {
 	"color": [1, 0.890196, 0.768627, 1],
 	"intensity": 0.0,
-	"size": 0.15
+	"size": 0.12
 	},
 	"FA_SPOT_BONNIE": {
 	"color": [1, 0.890196, 0.768627, 1],
 	"intensity": 0.0,
-	"size": 0.15
+	"size": 0.12
 	},
 	"FA_SPOT_PARROT": {
 	"color": [1, 0.890196, 0.768627, 1],
 	"intensity": 0.0,
-	"size": 0.15
+	"size": 0.12
 	},
 	"FA_SPOT_FOXY": {
 	"color": [1, 0.890196, 0.768627, 1],
 	"intensity": 0.0,
-	"size": 0.15
+	"size": 0.12
 	},
 }

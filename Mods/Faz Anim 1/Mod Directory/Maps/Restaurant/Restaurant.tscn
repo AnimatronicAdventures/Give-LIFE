@@ -776,7 +776,7 @@ transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09
 [node name="Chica Spot" type="SpotLight3D" parent="Map/Animatables"]
 transform = Transform3D(-0.10634748, 0.27134392, -0.95658916, 0.0007334403, 0.962066, 0.27281594, 0.9943288, 0.028311685, -0.10251231, 35.29725, 5.2828364, -52.7928)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)
-light_energy = 30.0
+light_energy = 0.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
@@ -794,7 +794,7 @@ lerp_speed = 15.0
 [node name="Chica Light 1" type="SpotLight3D" parent="Map/Animatables"]
 transform = Transform3D(-0.038725894, 0.34319836, -0.9384643, -0.08246228, 0.93486786, 0.34528595, 0.9958415, 0.09075942, -0.007902665, 35.29686, 5.282857, -52.011086)
 light_color = Color(0.56078434, 0.8, 0, 1)
-light_energy = 30.0
+light_energy = 0.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
@@ -811,7 +811,7 @@ lerp_speed = 15.0
 [node name="Freddy Spot" type="SpotLight3D" parent="Map/Animatables"]
 transform = Transform3D(-0.054730702, 0.30782774, -0.9498666, -0.010942088, 0.95105046, 0.30884185, 0.9984412, 0.027296657, -0.048683383, 35.29712, 5.282857, -54.36983)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)
-light_energy = 30.0
+light_energy = 0.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
@@ -829,7 +829,7 @@ lerp_speed = 15.0
 [node name="Freddy Light 1" type="SpotLight3D" parent="Map/Animatables"]
 transform = Transform3D(-0.0036499063, 0.32825854, -0.9445809, -0.020898908, 0.9443559, 0.32826114, 0.999775, 0.020938834, 0.003413436, 35.296703, 5.282857, -53.6132)
 light_color = Color(1, 0.53333336, 0, 1)
-light_energy = 30.0
+light_energy = 0.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
@@ -846,7 +846,7 @@ lerp_speed = 15.0
 [node name="Bonnie Spot" type="SpotLight3D" parent="Map/Animatables"]
 transform = Transform3D(-0.020624757, 0.26461756, -0.96413285, -0.020285506, 0.9640287, 0.26502296, 0.9995816, 0.025023958, -0.014514953, 35.296993, 5.282877, -56.02205)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)
-light_energy = 30.0
+light_energy = 0.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
@@ -864,7 +864,7 @@ lerp_speed = 15.0
 [node name="Bonnie Light 1" type="SpotLight3D" parent="Map/Animatables"]
 transform = Transform3D(0.0587681, 0.32946968, -0.9423355, -0.032150567, 0.94410205, 0.32808226, 0.997754, 0.011015853, 0.06607572, 35.296528, 5.282857, -55.29446)
 light_color = Color(0.73333335, 0, 1, 1)
-light_energy = 30.0
+light_energy = 0.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
