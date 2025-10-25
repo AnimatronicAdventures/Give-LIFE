@@ -38,6 +38,38 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
+"materials": {
+"Alluminum": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Aluminum.tres",
+"use_external/path": "uid://cqmifmmuddlrb"
+},
+"BlackWood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Black and Wood.tres",
+"use_external/path": "uid://b5lii7slbqa1f"
+},
+"ChicaFur": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Chica Fur.tres",
+"use_external/path": "uid://c685nparahseq"
+},
+"Cyber Eye": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/FNaF Eyes.tres",
+"use_external/path": "uid://djcithm8n6w47"
+},
+"Fiberglass Tubes": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/Tubes.tres",
+"use_external/path": "uid://gqg1vhd1jc6g"
+},
+"Other Metals": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 1/Custom Assets/Materials/OtherMetals.tres",
+"use_external/path": "uid://uf460btwh83m"
+}
+},
 "nodes": {
 "PATH:Armature/Skeleton3D/Beta": {
 "mesh_instance/layers": 0

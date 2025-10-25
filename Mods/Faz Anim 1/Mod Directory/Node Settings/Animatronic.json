@@ -1,5 +1,28 @@
 {
   "FA_CHICA": {
+	"Armature|CupEyelidL": 0.0,
+	"Armature|CupEyelidR": 0.0,
+	"Armature|CupEyesLeft": 0.0,
+	"Armature|CupEyesRight": 0.0,
+	"Armature|FNAFArmTwistL": 0.0,
+	"Armature|FNAFArmTwistR": 0.0,
+	"Armature|FNAFArmUpR": 0.0,
+	"Armature|FNaFBodyLean": 0.0,
+	"Armature|FNaFBodyTurnLeft": 0.0,
+	"Armature|FNaFBodyTurnRight": 0.0,
+	"Armature|FNAFEyelidL": 0.0,
+	"Armature|FNAFEyelidR": 0.0,
+	"Armature|FNAFEyesLeft": 0.0,
+	"Armature|FNAFEyesRight": 0.0,
+	"Armature|FNAFForearmBendR": 0.0,
+	"Armature|FNAFForearmTwist": 0.0,
+	"Armature|FNAFForearmTwistL": 0.0,
+	"Armature|FNAFHeadTurnL": 0.0,
+	"Armature|FNAFHeadTurnR": 0.0,
+	"Armature|FNAFHeadUp": 0.0,
 	"Armature|FNAFJaw": 0.0,
-	}
+	"Armature|FNAFWristBendR": 0.0,
+	"Armature|FNAFWristTwistL": 0.0,
+	"Armature|FNAFWristTwistR": 0.0
+  }
 }

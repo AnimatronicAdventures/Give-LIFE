@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b5lii7slbqa1f"]
+
+[ext_resource type="Texture2D" uid="uid://cjf7cqi661k4a" path="res://Mods/Faz Anim 1/Custom Assets/Textures/BlackWood.png" id="1_s8og6"]
+
+[resource]
+albedo_texture = ExtResource("1_s8og6")
+normal_enabled = true
+subsurf_scatter_strength = 0.36
+subsurf_scatter_transmittance_depth = 3.889
