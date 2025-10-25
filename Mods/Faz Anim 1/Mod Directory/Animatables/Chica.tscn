@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://clgjgcycemmrk"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_pw3yd"]
+[ext_resource type="PackedScene" uid="uid://d1pts3y0r3up8" path="res://Mods/Faz Anim 1/Custom Assets/Models/Animatronics/Chica FNaF1.fbx" id="2_5oist"]
+[ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="3_53281"]
+
+[node name="Chica" type="Node3D" groups=["FA_CHICA"]]
+script = ExtResource("1_pw3yd")
+animParametersFileName = "Chica"
+
+[node name="Chica FNaF1" parent="." instance=ExtResource("2_5oist")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="Color Check" type="Node3D" parent="." groups=["AA_CCA"]]
+script = ExtResource("3_53281")
+check_siblings = true

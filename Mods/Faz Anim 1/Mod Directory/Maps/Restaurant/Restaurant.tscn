@@ -1,13 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdib2vwki0c1b"]
+[gd_scene load_steps=13 format=3 uid="uid://bdib2vwki0c1b"]
 
 [ext_resource type="PackedScene" uid="uid://c5dh0vxqdur1v" path="res://Scenes/player.tscn" id="1_8mu32"]
 [ext_resource type="ArrayOccluder3D" uid="uid://cwo7fakn5qcjo" path="res://Mods/Faz Anim 1/Mod Directory/Maps/Restaurant/Restaurant.occ" id="2_0w123"]
 [ext_resource type="LightmapGIData" uid="uid://dsoqqhju5wanj" path="res://Mods/Faz Anim 1/Mod Directory/Maps/Restaurant/Restaurant.lmbake" id="2_4tduh"]
 [ext_resource type="ArrayMesh" uid="uid://1we47rdyu4n6" path="res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Circle_002.res" id="3_4tduh"]
 [ext_resource type="ArrayMesh" uid="uid://dji6aatoeydkj" path="res://Mods/Faz Anim 1/Custom Assets/Models/Maps/Circle_003.res" id="4_0w123"]
+[ext_resource type="PackedScene" uid="uid://clgjgcycemmrk" path="res://Mods/Faz Anim 1/Mod Directory/Animatables/Chica.tscn" id="8_4tduh"]
 [ext_resource type="Texture2D" uid="uid://ktqnj6yjrsbn" path="res://UI/Flashlight.png" id="12_1oshl"]
-[ext_resource type="PackedScene" uid="uid://cry2msqosqx0u" path="res://Mods/Faz Anim 2/Mod Directory/Animatables/CCa.tscn" id="18_tecc5"]
-[ext_resource type="PackedScene" uid="uid://dcvouknjqqb8l" path="res://Mods/Faz Anim 2/Mod Directory/Animatables/FD.tscn" id="19_8n4hr"]
 [ext_resource type="Script" uid="uid://c5uawj66escut" path="res://Scripts/Animatables/GL_Spotlight.gd" id="21_6uox6"]
 
 [sub_resource type="Environment" id="Environment_dsuk6"]
@@ -771,16 +770,13 @@ spot_angle_attenuation = 0.366022
 
 [node name="Animatables" type="Node" parent="Map"]
 
-[node name="Chica" parent="Map/Animatables" instance=ExtResource("18_tecc5")]
-transform = Transform3D(2.3561119e-05, 0, -0.14999999, 0, 0.14999999, 0, 0.14999999, 0, 2.3561119e-05, 43.71908, 0.049209118, -51.06275)
-
-[node name="FD" parent="Map/Animatables" instance=ExtResource("19_8n4hr")]
-transform = Transform3D(2.3561119e-05, 0, -0.14999999, 0, 0.14999999, 0, 0.14999999, 0, 2.3561119e-05, 42.252434, 0.049209118, -53.912792)
+[node name="Chica" parent="Map/Animatables" instance=ExtResource("8_4tduh")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 43.9716, 0.07575935, -52.062572)
 
 [node name="Chica Spot" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(-0.21391858, 0.07996701, -0.9735729, -0.036852285, 0.9952736, 0.08984683, 0.9761561, 0.05509829, -0.20996054, 35.29725, 5.282857, -53.00321)
+transform = Transform3D(-0.10634748, 0.27134392, -0.95658916, 0.0007334403, 0.962066, 0.27281594, 0.9943288, 0.028311685, -0.10251231, 35.29725, 5.2828364, -52.7928)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)
-light_energy = 0.0
+light_energy = 30.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
@@ -788,7 +784,7 @@ spot_attenuation = 2.0
 spot_angle = 5.59
 spot_angle_attenuation = 0.329877
 
-[node name="Node" type="Node3D" parent="Map/Animatables/Chica Spot" groups=["L_SPOT_CCA"]]
+[node name="Node" type="Node3D" parent="Map/Animatables/Chica Spot" groups=["FA_SPOT_CHICA"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
@@ -796,9 +792,9 @@ energyMultiplier = 200.0
 lerp_speed = 15.0
 
 [node name="Chica Light 1" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(-0.46755868, 0.1028046, -0.8779636, -0.085088775, 0.98336786, 0.16046077, 0.8798573, 0.14972967, -0.45103464, 35.29686, 5.282857, -55.46573)
-light_color = Color(0.863315, 3.85046e-06, 0.524494, 1)
-light_energy = 0.0
+transform = Transform3D(-0.038725894, 0.34319836, -0.9384643, -0.08246228, 0.93486786, 0.34528595, 0.9958415, 0.09075942, -0.007902665, 35.29686, 5.282857, -52.011086)
+light_color = Color(0.56078434, 0.8, 0, 1)
+light_energy = 30.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
@@ -806,141 +802,16 @@ spot_attenuation = 2.0
 spot_angle = 11.7
 spot_angle_attenuation = 0.329877
 
-[node name="Node" type="Node3D" parent="Map/Animatables/Chica Light 1" groups=["L_COLOR_A_CCA"]]
+[node name="Node" type="Node3D" parent="Map/Animatables/Chica Light 1" groups=["FA_CLR_CHICA"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-lerp_speed = 15.0
-
-[node name="Chica Light 2" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.1870623, 0.18427347, -0.96490985, 0.013338005, 0.98168147, 0.1900622, 0.98225754, -0.048423443, 0.18117774, 35.29772, 5.282857, -49.991676)
-light_color = Color(0.336683, 0.394011, 1, 1)
-light_energy = 0.0
-light_size = 0.124
-shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 11.7
-spot_angle_attenuation = 0.329877
-
-[node name="Node" type="Node3D" parent="Map/Animatables/Chica Light 2" groups=["L_COLOR_B_CCA"]]
-script = ExtResource("21_6uox6")
-canChangeColor = true
-canChangeSize = true
-lerp_speed = 15.0
-
-[node name="Backlight Bonnie 1" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.178367, 0.9049203, 0.3863994, 0.42194512, -0.4251011, 0.8007818, 0.8889025, 0.02020628, -0.45765075, 45.482327, 6.4199142, -58.204422)
-light_color = Color(0.49226153, 0.89911574, 0, 1)
-light_energy = 0.0
-light_size = 0.124
-shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 26.03
-spot_angle_attenuation = 0.329877
-
-[node name="Node" type="Node3D" parent="Map/Animatables/Backlight Bonnie 1" groups=["L_BACK_GUEST"]]
-script = ExtResource("21_6uox6")
-canChangeColor = true
-canChangeSize = true
-energyMultiplier = 100.0
-lerp_speed = 15.0
-
-[node name="Backlight Bonnie 2" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.47433418, 0.743909, 0.47075105, -0.72173196, 0.022411248, 0.69180983, 0.5040934, -0.6679051, 0.5475333, 45.48315, 6.4199142, -52.936523)
-light_color = Color(0.49411765, 0.8980392, 0, 1)
-light_energy = 0.0
-light_size = 0.124
-shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 26.03
-spot_angle_attenuation = 0.329877
-
-[node name="Node" type="Node3D" parent="Map/Animatables/Backlight Bonnie 2" groups=["L_BACK_GUEST"]]
-script = ExtResource("21_6uox6")
-canChangeColor = true
-canChangeSize = true
-energyMultiplier = 100.0
-lerp_speed = 15.0
-
-[node name="Backlight Chica 1" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.52409524, 0.77014, 0.36360502, -0.5407571, -0.028914064, 0.8406817, 0.6579559, -0.6372193, 0.40130493, 45.48362, 6.4199142, -49.95961)
-light_color = Color(0.4862745, 0.1882353, 0.9843137, 1)
-light_energy = 0.0
-light_size = 0.124
-shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 26.03
-spot_angle_attenuation = 0.329877
-
-[node name="Node" type="Node3D" parent="Map/Animatables/Backlight Chica 1" groups=["L_BACK_CCA"]]
-script = ExtResource("21_6uox6")
-canChangeColor = true
-canChangeSize = true
-energyMultiplier = 100.0
-lerp_speed = 15.0
-
-[node name="Backlight Chica 2" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.32119492, 0.8095122, 0.49145082, 0.54789996, -0.58212423, 0.60078037, 0.7724244, 0.07629828, -0.63050705, 45.482887, 6.4199142, -54.624454)
-light_color = Color(0.48629373, 0.18965682, 0.98548466, 1)
-light_energy = 0.0
-light_size = 0.124
-shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 26.03
-spot_angle_attenuation = 0.329877
-
-[node name="Node" type="Node3D" parent="Map/Animatables/Backlight Chica 2" groups=["L_BACK_CCA"]]
-script = ExtResource("21_6uox6")
-canChangeColor = true
-canChangeSize = true
-energyMultiplier = 100.0
-lerp_speed = 15.0
-
-[node name="Backlight FD 1" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.47460333, 0.4856935, 0.7340665, 0.22259319, -0.87309694, 0.43376732, 0.85158914, -0.04246922, -0.52248675, 45.482613, 6.4199142, -56.371265)
-light_color = Color(0.89569616, 0, 0.042155065, 1)
-light_energy = 0.0
-light_size = 0.124
-shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 26.03
-spot_angle_attenuation = 0.329877
-
-[node name="Node" type="Node3D" parent="Map/Animatables/Backlight FD 1" groups=["L_BACK_FD"]]
-script = ExtResource("21_6uox6")
-canChangeColor = true
-canChangeSize = true
-energyMultiplier = 100.0
-lerp_speed = 15.0
-
-[node name="Backlight FD 2" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.1620335, 0.60263664, 0.7813925, -0.67071444, -0.51356244, 0.53515965, 0.7238006, -0.61080503, 0.32098278, 45.483334, 6.4199142, -51.777554)
-light_color = Color(0.89411765, 0, 0.043137256, 1)
-light_energy = 0.0
-light_size = 0.124
-shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 26.03
-spot_angle_attenuation = 0.329877
-
-[node name="Node" type="Node3D" parent="Map/Animatables/Backlight FD 2" groups=["L_BACK_FD"]]
-script = ExtResource("21_6uox6")
-canChangeColor = true
-canChangeSize = true
-energyMultiplier = 100.0
 lerp_speed = 15.0
 
 [node name="Freddy Spot" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.015847156, 0.15506902, -0.9877766, -0.008549072, 0.9878855, 0.15494898, 0.99983793, 0.005989072, 0.016980872, 35.29712, 5.282857, -53.816837)
+transform = Transform3D(-0.054730702, 0.30782774, -0.9498666, -0.010942088, 0.95105046, 0.30884185, 0.9984412, 0.027296657, -0.048683383, 35.29712, 5.282857, -54.36983)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)
-light_energy = 0.0
+light_energy = 30.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
@@ -948,7 +819,7 @@ spot_attenuation = 2.0
 spot_angle = 5.59
 spot_angle_attenuation = 0.329877
 
-[node name="Node" type="Node3D" parent="Map/Animatables/Freddy Spot" groups=["L_SPOT_FD"]]
+[node name="Node" type="Node3D" parent="Map/Animatables/Freddy Spot" groups=["FA_SPOT_FREDDY"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
@@ -956,9 +827,9 @@ energyMultiplier = 200.0
 lerp_speed = 15.0
 
 [node name="Freddy Light 1" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(-0.32047036, 0.26708153, -0.9088268, -0.021485314, 0.9571322, 0.28885344, 0.94701487, 0.112095386, -0.3009942, 35.296703, 5.282857, -56.462997)
-light_color = Color(0.863315, 3.85046e-06, 0.524494, 1)
-light_energy = 0.0
+transform = Transform3D(-0.0036499063, 0.32825854, -0.9445809, -0.020898908, 0.9443559, 0.32826114, 0.999775, 0.020938834, 0.003413436, 35.296703, 5.282857, -53.6132)
+light_color = Color(1, 0.53333336, 0, 1)
+light_energy = 30.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
@@ -966,33 +837,16 @@ spot_attenuation = 2.0
 spot_angle = 11.7
 spot_angle_attenuation = 0.329877
 
-[node name="Node" type="Node3D" parent="Map/Animatables/Freddy Light 1" groups=["L_COLOR_A_FD"]]
+[node name="Node" type="Node3D" parent="Map/Animatables/Freddy Light 1" groups=["FA_CLR_FREDDY"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
 lerp_speed = 15.0
 
-[node name="Freddy Light 2" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.35467473, 0.25224483, -0.9003213, 0.0062384754, 0.96226114, 0.27205625, 0.93496895, -0.102108106, 0.3397161, 35.29756, 5.282857, -51.002438)
-light_color = Color(0.336683, 0.394011, 1, 1)
-light_energy = 0.0
-light_size = 0.124
-shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 11.7
-spot_angle_attenuation = 0.329877
-
-[node name="Node" type="Node3D" parent="Map/Animatables/Freddy Light 2" groups=["L_COLOR_B_FD"]]
-script = ExtResource("21_6uox6")
-canChangeColor = true
-canChangeSize = true
-lerp_speed = 15.0
-
-[node name="Guest Spot" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.22732896, 0.083508365, -0.9702309, 0.019469403, 0.99572754, 0.09026463, 0.9736234, -0.039409578, 0.22473185, 35.296993, 5.282857, -54.618313)
+[node name="Bonnie Spot" type="SpotLight3D" parent="Map/Animatables"]
+transform = Transform3D(-0.020624757, 0.26461756, -0.96413285, -0.020285506, 0.9640287, 0.26502296, 0.9995816, 0.025023958, -0.014514953, 35.296993, 5.282877, -56.02205)
 light_color = Color(0.944285, 0.839984, 0.7003, 1)
-light_energy = 0.0
+light_energy = 30.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
@@ -1000,17 +854,17 @@ spot_attenuation = 2.0
 spot_angle = 5.59
 spot_angle_attenuation = 0.329877
 
-[node name="Node" type="Node3D" parent="Map/Animatables/Guest Spot" groups=["L_SPOT_GUEST"]]
+[node name="Node" type="Node3D" parent="Map/Animatables/Bonnie Spot" groups=["FA_SPOT_BONNIE"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
 energyMultiplier = 200.0
 lerp_speed = 15.0
 
-[node name="Guest Light 1" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(-0.10866089, 0.18578391, -0.976564, -0.023377398, 0.9816315, 0.18934914, 0.993804, 0.04340437, -0.1023218, 35.296528, 5.282857, -57.596737)
-light_color = Color(0.863315, 3.85046e-06, 0.524494, 1)
-light_energy = 0.0
+[node name="Bonnie Light 1" type="SpotLight3D" parent="Map/Animatables"]
+transform = Transform3D(0.0587681, 0.32946968, -0.9423355, -0.032150567, 0.94410205, 0.32808226, 0.997754, 0.011015853, 0.06607572, 35.296528, 5.282857, -55.29446)
+light_color = Color(0.73333335, 0, 1, 1)
+light_energy = 30.0
 light_size = 0.124
 shadow_enabled = true
 spot_range = 25.0
@@ -1018,24 +872,7 @@ spot_attenuation = 2.0
 spot_angle = 11.7
 spot_angle_attenuation = 0.329877
 
-[node name="Node" type="Node3D" parent="Map/Animatables/Guest Light 1" groups=["L_COLOR_A_GUEST"]]
-script = ExtResource("21_6uox6")
-canChangeColor = true
-canChangeSize = true
-lerp_speed = 15.0
-
-[node name="Guest Light 2" type="SpotLight3D" parent="Map/Animatables"]
-transform = Transform3D(0.45537448, 0.11367782, -0.8830127, 0.063613616, 0.98512524, 0.15962954, 0.88802445, -0.12886284, 0.44136944, 35.297394, 5.282857, -52.08159)
-light_color = Color(0.336683, 0.394011, 1, 1)
-light_energy = 0.0
-light_size = 0.124
-shadow_enabled = true
-spot_range = 25.0
-spot_attenuation = 2.0
-spot_angle = 11.7
-spot_angle_attenuation = 0.329877
-
-[node name="Node" type="Node3D" parent="Map/Animatables/Guest Light 2" groups=["L_COLOR_B_GUEST"]]
+[node name="Node" type="Node3D" parent="Map/Animatables/Bonnie Light 1" groups=["FA_CLR_BONNIE"]]
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
