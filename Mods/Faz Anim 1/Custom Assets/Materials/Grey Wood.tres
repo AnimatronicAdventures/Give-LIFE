@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dbd4n7x4gpdc8"]
+
+[ext_resource type="Texture2D" uid="uid://c7n603i673juv" path="res://Mods/Faz Anim 1/Custom Assets/Textures/plank_flooring_04_diff_2k.jpg" id="1_31nq4"]
+[ext_resource type="Texture2D" uid="uid://c4jf6oboglfiv" path="res://Mods/Faz Anim 1/Custom Assets/Textures/plank_flooring_04_nor_gl_2k.jpg" id="2_t8x8n"]
+[ext_resource type="Texture2D" uid="uid://ev2by3rhs1s4" path="res://Mods/Faz Anim 1/Custom Assets/Textures/plank_flooring_04_rough_2k.jpg" id="3_qqjfi"]
+
+[resource]
+albedo_texture = ExtResource("1_31nq4")
+roughness = 0.86
+roughness_texture = ExtResource("3_qqjfi")
+normal_enabled = true
+normal_scale = 9.11
+normal_texture = ExtResource("2_t8x8n")

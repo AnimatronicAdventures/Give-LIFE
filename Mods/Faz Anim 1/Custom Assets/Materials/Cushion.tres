@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cppidxsgahmrt"]
+
+[ext_resource type="Texture2D" uid="uid://covqhkei6r1rn" path="res://Mods/Faz Anim 1/Custom Assets/Textures/Cushon.png" id="1_tfw75"]
+[ext_resource type="Texture2D" uid="uid://6ind3itsmu4g" path="res://Mods/Faz Anim 2/Custom Assets/Textures/painted_plaster_wall_rough_4k.jpg" id="3_xnugc"]
+
+[resource]
+albedo_texture = ExtResource("1_tfw75")
+roughness = 0.22
+roughness_texture = ExtResource("3_xnugc")
+normal_enabled = true

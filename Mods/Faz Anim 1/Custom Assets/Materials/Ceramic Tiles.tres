@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://siahffy3bf8"]
+
+[ext_resource type="Texture2D" uid="uid://bxv277stywa27" path="res://Mods/Faz Anim 1/Custom Assets/Textures/dirty_tiles_diff_2k.jpg" id="1_f6eyo"]
+[ext_resource type="Texture2D" uid="uid://80jt18mfs0sv" path="res://Mods/Faz Anim 1/Custom Assets/Textures/dirty_tiles_nor_gl_2k.png" id="2_dw4yd"]
+[ext_resource type="Texture2D" uid="uid://c8xtflu488q1v" path="res://Mods/Faz Anim 1/Custom Assets/Textures/dirty_tiles_rough_2k.png" id="3_iq8qi"]
+
+[resource]
+albedo_texture = ExtResource("1_f6eyo")
+roughness = 0.26
+roughness_texture = ExtResource("3_iq8qi")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("2_dw4yd")

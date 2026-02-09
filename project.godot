@@ -8,13 +8,17 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Give LIFE"
 config/description="The successor to the RR-Engine!"
 config/version="0.14"
 run/main_scene="uid://bm4wgtmgyci17"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="uid://bumrryxwwf62o"
@@ -271,7 +275,7 @@ common/physics_interpolation=true
 textures/vram_compression/import_etc2_astc=true
 global_illumination/gi/use_half_resolution=true
 anti_aliasing/quality/msaa_3d=1
-environment/screen_space_reflection/roughness_quality=2
-environment/volumetric_fog/volume_size=128
 anti_aliasing/quality/use_debanding=true
+environment/volumetric_fog/volume_size=128
 occlusion_culling/use_occlusion_culling=true
+environment/screen_space_reflection/roughness_quality=2
