@@ -1,18 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2bkg67ii1e4p"]
+[gd_scene format=3 uid="uid://b2bkg67ii1e4p"]
 
 [ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_cnobp"]
 [ext_resource type="Script" uid="uid://b325grg0122jn" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Float.gd" id="2_cnobp"]
 
-[node name="Node" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 1
+[node name="Node" type="Node3D" unique_id=1266931293]
 
-[node name="Node" parent="." groups=["GL Node"] instance=ExtResource("1_cnobp")]
-clip_contents = false
-layout_mode = 0
-tooltip_text = "A float refers to any decimal number."
+[node name="Node" parent="." unique_id=240100021 groups=["GL Node"] instance=ExtResource("1_cnobp")]
 script = ExtResource("2_cnobp")
-
-[connection signal="mouse_entered" from="Node" to="Node" method="mouse_enter"]
-[connection signal="mouse_exited" from="Node" to="Node" method="mouse_exit"]

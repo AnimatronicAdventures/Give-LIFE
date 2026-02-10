@@ -72,7 +72,7 @@ func _create_node(name: String):
 	var node = load(path).instantiate()
 	var holder = get_parent().get_node("Holder")
 	holder.add_child(node)
-	node = (node as Control).get_child(0) as GL_Node
+	node = (node as Node3D).get_child(0) as GL_Node
 	node.nodePath = path
-	node.global_position = (get_viewport().size / 2.0) - (node.get_child(0).size / 2.0)
+	node.global_position = Vector3(0,0,0)
 	node._create_uuid()

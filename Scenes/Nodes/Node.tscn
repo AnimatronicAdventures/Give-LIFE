@@ -1,35 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0arjg8r75f8y"]
+[gd_scene format=3 uid="uid://b0arjg8r75f8y"]
 
-[ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_arhwt"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3fknp"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arhwt"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_3fknp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mu1yt"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_arhwt")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_arhwt"]
 
-[node name="Node" type="PanelContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(200, 100)
-offset_right = 200.0
-offset_bottom = 100.0
-pivot_offset = Vector2(100, 50)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_default_cursor_shape = 6
-theme = ExtResource("1_arhwt")
+[node name="Node" type="Node3D" unique_id=371169024]
 
-[node name="Margins" type="MarginContainer" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1165603802]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_mu1yt")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=943031112]
+transparent_bg = true
+
+[node name="Margins" type="MarginContainer" parent="SubViewport" unique_id=519605379]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 195.0
+offset_bottom = 95.0
+
+[node name="Holder" type="VBoxContainer" parent="SubViewport/Margins" unique_id=20974574]
 layout_mode = 2
 
-[node name="Holder" type="VBoxContainer" parent="Margins"]
+[node name="Title" type="HBoxContainer" parent="SubViewport/Margins/Holder" unique_id=882041926]
 layout_mode = 2
 
-[node name="Title" type="HBoxContainer" parent="Margins/Holder"]
-layout_mode = 2
-
-[node name="Title Label" type="LineEdit" parent="Margins/Holder/Title"]
+[node name="Title Label" type="LineEdit" parent="SubViewport/Margins/Holder/Title" unique_id=163861169]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_arhwt")
 
-[node name="Exit Button" type="Button" parent="Margins/Holder/Title"]
+[node name="Exit Button" type="Button" parent="SubViewport/Margins/Holder/Title" unique_id=1964427374]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0

@@ -1,7 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://bm4wgtmgyci17"]
+[gd_scene format=3 uid="uid://bm4wgtmgyci17"]
 
 [ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_ory21"]
-[ext_resource type="Texture2D" uid="uid://cvudj0qai2hrn" path="res://UI/Nodes/Backing.jpg" id="2_j3kos"]
 [ext_resource type="Script" uid="uid://d0xp5idbh7y7v" path="res://Scripts/Pause_Menu.gd" id="2_q5xte"]
 [ext_resource type="Texture2D" uid="uid://dwgnmfn6864ro" path="res://UI/thelogogreen.png" id="3_2glbi"]
 [ext_resource type="Script" uid="uid://b4aa4vacbh1ln" path="res://Scripts/Sound UI/SoundUI.gd" id="5_8r7np"]
@@ -22,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bbnbaxncick0a" path="res://Sounds/Tck.wav" id="11_oqrga"]
 [ext_resource type="Texture2D" uid="uid://dyiswdb1owyty" path="res://UI/Icons/trash-can-solid-full.svg" id="13_mu3iq"]
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("fpsButton")]
+[node name="PauseMenu" type="Control" unique_id=22474638 node_paths=PackedStringArray("fpsButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,18 +34,7 @@ theme = ExtResource("1_ory21")
 script = ExtResource("2_q5xte")
 fpsButton = NodePath("MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/FPS/CheckButton")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_j3kos")
-expand_mode = 1
-stretch_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1828179665]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,10 +46,10 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1827697843]
 layout_mode = 2
 
-[node name="Version Number" type="Label" parent="MarginContainer/PanelContainer"]
+[node name="Version Number" type="Label" parent="MarginContainer/PanelContainer" unique_id=627527707]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 0.129412)
@@ -69,22 +57,22 @@ text = "v.test"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Title Screen" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+[node name="Title Screen" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1581710754]
 layout_mode = 2
 alignment = 1
 
-[node name="Logo" type="TextureRect" parent="MarginContainer/PanelContainer/Title Screen"]
+[node name="Logo" type="TextureRect" parent="MarginContainer/PanelContainer/Title Screen" unique_id=1764196566]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("3_2glbi")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Title Screen"]
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Title Screen" unique_id=2000321026]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Start Button" type="Button" parent="MarginContainer/PanelContainer/Title Screen"]
+[node name="Start Button" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=730019406]
 custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -99,7 +87,7 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../AudioStreamPlayer2D")
 
-[node name="Mods" type="Button" parent="MarginContainer/PanelContainer/Title Screen"]
+[node name="Mods" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=1121930228]
 custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -114,7 +102,7 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../AudioStreamPlayer2D")
 
-[node name="Settings" type="Button" parent="MarginContainer/PanelContainer/Title Screen"]
+[node name="Settings" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=750860307]
 custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -129,7 +117,7 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../AudioStreamPlayer2D")
 
-[node name="Exit" type="Button" parent="MarginContainer/PanelContainer/Title Screen"]
+[node name="Exit" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=956128641]
 custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -144,7 +132,7 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../AudioStreamPlayer2D")
 
-[node name="Settings" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="Settings" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=509896792]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 50
@@ -152,20 +140,20 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="Settings" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings"]
+[node name="Settings" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings" unique_id=268139392]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings" unique_id=2014807957]
 layout_mode = 2
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Settings/Settings"]
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Settings/Settings" unique_id=1713281498]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="MarginContainer/PanelContainer/Settings/Settings"]
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/PanelContainer/Settings/Settings" unique_id=226765265]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -180,29 +168,29 @@ press_pitch_multiplier_on = 2.0
 press_pitch_multiplier_off = 2.0
 audio_player_path = NodePath("../../../../../AudioStreamPlayer2D")
 
-[node name="General" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer"]
+[node name="General" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer" unique_id=349956025]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General" unique_id=1832408357]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Username" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer"]
+[node name="Username" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer" unique_id=835588970]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Username"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Username" unique_id=371457743]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Username"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Username"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Username" unique_id=1564398885]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Unknown Author"
@@ -216,19 +204,19 @@ press_pitch_multiplier_on = 1.5
 press_pitch_multiplier_off = 1.5
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="Boot on Start" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer"]
+[node name="Boot on Start" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer" unique_id=1909171116]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Boot on Start"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Boot on Start" unique_id=2145558198]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Boot On Start"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Boot on Start"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Boot on Start" unique_id=351839980]
 layout_mode = 2
 action_mode = 1
 selected = 0
@@ -246,19 +234,19 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="Show Pressed Keys" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer"]
+[node name="Show Pressed Keys" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer" unique_id=239557491]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Show Pressed Keys"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Show Pressed Keys" unique_id=2062235435]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Show Pressed Keys"
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Show Pressed Keys"]
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Show Pressed Keys" unique_id=1908129154]
 layout_mode = 2
 script = ExtResource("5_8r7np")
 hover_sound = ExtResource("6_571ku")
@@ -267,19 +255,19 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="Autorun" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer"]
+[node name="Autorun" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer" unique_id=1327039178]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Autorun"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Autorun" unique_id=1904888633]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Auto Run"
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Autorun"]
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Autorun" unique_id=1598435488]
 layout_mode = 2
 script = ExtResource("5_8r7np")
 hover_sound = ExtResource("6_571ku")
@@ -288,19 +276,19 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="FPS" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer"]
+[node name="FPS" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer" unique_id=1213109753]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/FPS"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/FPS" unique_id=679463711]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Show FPS"
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/FPS"]
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/FPS" unique_id=2106225714]
 layout_mode = 2
 script = ExtResource("5_8r7np")
 hover_sound = ExtResource("6_571ku")
@@ -309,30 +297,30 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="Graphical" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer"]
+[node name="Graphical" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer" unique_id=1619214599]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical" unique_id=381800631]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Window Mode" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer"]
+[node name="Window Mode" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer" unique_id=515176983]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Window Mode"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Window Mode" unique_id=1925768184]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Window Mode"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Window Mode"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Window Mode" unique_id=1628309168]
 layout_mode = 2
 action_mode = 1
 selected = 0
@@ -348,19 +336,19 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="Anti-Aliasing" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer"]
+[node name="Anti-Aliasing" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer" unique_id=667348079]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Anti-Aliasing"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Anti-Aliasing" unique_id=1239001964]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Anti-Aliasing"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Anti-Aliasing"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Anti-Aliasing" unique_id=1724547477]
 layout_mode = 2
 action_mode = 1
 selected = 0
@@ -380,19 +368,19 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="Render Scale" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer"]
+[node name="Render Scale" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer" unique_id=174571073]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale" unique_id=263875351]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Render Scale (100%) "
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale" unique_id=1429921731]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 0.1
@@ -407,19 +395,19 @@ press_min_pitch = 0.9
 press_max_pitch = 1.1
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="Render Scale Mode" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer"]
+[node name="Render Scale Mode" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer" unique_id=1718787805]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale Mode"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale Mode" unique_id=2053798029]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Scale Mode"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale Mode"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Render Scale Mode" unique_id=648212933]
 layout_mode = 2
 action_mode = 1
 selected = 0
@@ -437,19 +425,19 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="Physics Bones" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer"]
+[node name="Physics Bones" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer" unique_id=1549961033]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Physics Bones"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Physics Bones" unique_id=1604152136]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Physics Bones"
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Physics Bones"]
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Graphical/VBoxContainer/Physics Bones" unique_id=1526534879]
 layout_mode = 2
 script = ExtResource("5_8r7np")
 hover_sound = ExtResource("6_571ku")
@@ -458,30 +446,30 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="Audio" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer"]
+[node name="Audio" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer" unique_id=899395397]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Audio"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Audio" unique_id=464312618]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Master Volume" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Audio/VBoxContainer"]
+[node name="Master Volume" type="HBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Audio/VBoxContainer" unique_id=463011602]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Audio/VBoxContainer/Master Volume"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Audio/VBoxContainer/Master Volume" unique_id=244405245]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Master Volume"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Audio/VBoxContainer/Master Volume"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Audio/VBoxContainer/Master Volume" unique_id=659650719]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 1.0
@@ -495,18 +483,18 @@ press_min_pitch = 0.9
 press_max_pitch = 1.1
 audio_player_path = NodePath("../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="Control" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer"]
+[node name="Control" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer" unique_id=1367870832]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Control" unique_id=644402549]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Control/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Control/VBoxContainer" unique_id=1364570390]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -529,18 +517,18 @@ V: Fly
 	Space: Ascend
 (Temporary) H: Toggle Cosmetics"
 
-[node name="Credits" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer"]
+[node name="Credits" type="ScrollContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer" unique_id=1132207488]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Credits"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Credits" unique_id=613071665]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Credits/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Settings/Settings/TabContainer/Credits/VBoxContainer" unique_id=1921006653]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -555,11 +543,11 @@ github.com/The64thGamer/Give-LIFE
 
 GNU General Public License v3.0"
 
-[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/Settings/Settings"]
+[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/Settings/Settings" unique_id=902699344]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="Back Button" type="Button" parent="MarginContainer/PanelContainer/Settings/Settings"]
+[node name="Back Button" type="Button" parent="MarginContainer/PanelContainer/Settings/Settings" unique_id=1066397968]
 custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -574,7 +562,7 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../AudioStreamPlayer2D")
 
-[node name="Mod Menu" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="Mod Menu" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=593236440]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 50
@@ -582,54 +570,54 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="Mods" type="VBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu"]
+[node name="Mods" type="VBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu" unique_id=1382740714]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Mod Menu/Mods"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Mod Menu/Mods" unique_id=1482435291]
 layout_mode = 2
 text = "Mod Menu"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Mod Menu/Mods"]
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Mod Menu/Mods" unique_id=1193528649]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods" unique_id=875107997]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme = ExtResource("5_q5xte")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer" unique_id=1676992663]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer" unique_id=563134310]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Mod Holder" type="VBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer" unique_id=856462781]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="Mod Holder" type="VBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer/ScrollContainer" unique_id=373825673]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1504034082]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1970075966]
 layout_mode = 2
 
-[node name="Import Mod" type="Button" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Import Mod" type="Button" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=782620345]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 toggle_mode = true
@@ -641,7 +629,7 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../../../../../../AudioStreamPlayer2D")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/Import Mod"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/Import Mod" unique_id=1651398533]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -652,7 +640,7 @@ texture = ExtResource("8_ld2c0")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer" unique_id=1106808872]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 0
@@ -660,53 +648,53 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Mod Desc" type="PanelContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer"]
+[node name="Mod Desc" type="PanelContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer" unique_id=2145855952]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("6_wdhx8")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc" unique_id=2086706065]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer" unique_id=568247894]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Mod Title" type="Label" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer"]
+[node name="Mod Title" type="Label" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer" unique_id=1050675908]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Mod Name"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer" unique_id=2046591288]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 texture = ExtResource("7_s4v1y")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Mod Author" type="Label" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer"]
+[node name="Mod Author" type="Label" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer" unique_id=1111556330]
 layout_mode = 2
 text = "By: Author"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer" unique_id=553636215]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Mod Author2" type="Label" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="Mod Author2" type="Label" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/ScrollContainer" unique_id=1389698984]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Description Example"
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer" unique_id=1056783893]
 layout_mode = 2
 
-[node name="Export" type="Button" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Export" type="Button" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer" unique_id=772174297]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer/Export"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer/Export" unique_id=1376727733]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -717,15 +705,15 @@ texture = ExtResource("10_ld2c0")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2057644343]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Delete" type="Button" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Delete" type="Button" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1753477945]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer/Delete"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/HBoxContainer/Delete" unique_id=796219223]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -736,11 +724,11 @@ texture = ExtResource("13_mu3iq")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/Mod Menu/Mods"]
+[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/Mod Menu/Mods" unique_id=1792421018]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="Back Button" type="Button" parent="MarginContainer/PanelContainer/Mod Menu/Mods"]
+[node name="Back Button" type="Button" parent="MarginContainer/PanelContainer/Mod Menu/Mods" unique_id=1344233006]
 custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -755,7 +743,7 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../AudioStreamPlayer2D")
 
-[node name="Map Menu" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="Map Menu" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=168487221]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 50
@@ -763,45 +751,45 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="Mods" type="VBoxContainer" parent="MarginContainer/PanelContainer/Map Menu"]
+[node name="Mods" type="VBoxContainer" parent="MarginContainer/PanelContainer/Map Menu" unique_id=1445057558]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Map Menu/Mods"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Map Menu/Mods" unique_id=2065353670]
 layout_mode = 2
 text = "Maps"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Map Menu/Mods"]
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Map Menu/Mods" unique_id=872665847]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/Map Menu/Mods"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/Map Menu/Mods" unique_id=849879837]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme = ExtResource("5_q5xte")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Map Menu/Mods/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Map Menu/Mods/PanelContainer" unique_id=744903173]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/Map Menu/Mods/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Map Holder" type="VBoxContainer" parent="MarginContainer/PanelContainer/Map Menu/Mods/PanelContainer/VBoxContainer/ScrollContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/Map Menu/Mods/PanelContainer/VBoxContainer" unique_id=2041860503]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/Map Menu/Mods"]
+[node name="Map Holder" type="VBoxContainer" parent="MarginContainer/PanelContainer/Map Menu/Mods/PanelContainer/VBoxContainer/ScrollContainer" unique_id=1187975721]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/Map Menu/Mods" unique_id=1916035223]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="Back Button" type="Button" parent="MarginContainer/PanelContainer/Map Menu/Mods"]
+[node name="Back Button" type="Button" parent="MarginContainer/PanelContainer/Map Menu/Mods" unique_id=650513690]
 custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -816,13 +804,13 @@ press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 audio_player_path = NodePath("../../../../../AudioStreamPlayer2D")
 
-[node name="ExportDialog" type="FileDialog" parent="."]
+[node name="ExportDialog" type="FileDialog" parent="." unique_id=939270388]
 auto_translate_mode = 1
 size = Vector2i(1086, 360)
 access = 2
 filters = PackedStringArray("*.pck")
 
-[node name="ImportDialog" type="FileDialog" parent="."]
+[node name="ImportDialog" type="FileDialog" parent="." unique_id=1693520275]
 auto_translate_mode = 1
 title = "Open a File"
 size = Vector2i(1086, 360)
@@ -831,7 +819,7 @@ file_mode = 0
 access = 2
 filters = PackedStringArray("*.pck")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=163544133]
 volume_db = 4.0
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Start Button" to="." method="_on_simulator_button_pressed"]

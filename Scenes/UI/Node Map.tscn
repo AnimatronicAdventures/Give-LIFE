@@ -1,10 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://c57u187iciexi"]
+[gd_scene format=3 uid="uid://c57u187iciexi"]
 
-[ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_aip54"]
 [ext_resource type="Script" uid="uid://i4p62x8fnqpn" path="res://Scripts/GL_Node_Map.gd" id="1_jyqbx"]
 [ext_resource type="PackedScene" uid="uid://mowdu1i1rldt" path="res://Scenes/UI/Search.tscn" id="1_xwfut"]
-[ext_resource type="Texture2D" uid="uid://cvudj0qai2hrn" path="res://UI/Nodes/Backing.jpg" id="2_msys2"]
-[ext_resource type="Shader" uid="uid://dx643ne23bukf" path="res://Shaders/Node Map.gdshader" id="2_x1ecx"]
 [ext_resource type="Texture2D" uid="uid://g3x10ge11yel" path="res://UI/Icons/file-pen-solid-full.svg" id="4_jwprv"]
 [ext_resource type="Texture2D" uid="uid://c1iaey3sulam2" path="res://UI/Icons/eye-solid-full.svg" id="4_x1ecx"]
 [ext_resource type="Texture2D" uid="uid://bjp6oqfovb8yk" path="res://UI/Icons/floppy-disk-solid-full.svg" id="5_df00g"]
@@ -14,42 +11,18 @@
 [ext_resource type="Texture2D" uid="uid://c7e2wn02ty2xx" path="res://UI/Icons/file-import-solid-full.svg" id="9_ci56e"]
 [ext_resource type="PackedScene" uid="uid://dffakik4vokde" path="res://Scenes/UI/Actions.tscn" id="13_63spv"]
 [ext_resource type="Script" uid="uid://c5kxam0k3beml" path="res://Scripts/Animatables/GL_Speaker.gd" id="14_fnko5"]
+[ext_resource type="Material" uid="uid://dtb2dg51oedjv" path="res://Mods/Standard Nodes/Custom Assets/Materials/Backing.tres" id="14_sva77"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1m68g"]
-shader = ExtResource("2_x1ecx")
-shader_parameter/uv_offset = Vector2(0, 0)
-shader_parameter/uv_scale = Vector2(1, 1)
+[sub_resource type="PlaneMesh" id="PlaneMesh_63spv"]
+size = Vector2(1000, 1000)
 
-[node name="NodeMap" type="Control" groups=["Node Map", "SettingsReceivers"]]
+[node name="NodeMap" type="Node3D" unique_id=629430436 groups=["Node Map", "SettingsReceivers"]]
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_aip54")
 script = ExtResource("1_jyqbx")
 
-[node name="Background" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_1m68g")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_msys2")
-expand_mode = 1
-stretch_mode = 1
+[node name="Holder" type="Node3D" parent="." unique_id=1578871203]
 
-[node name="Holder" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=201855409]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -61,17 +34,17 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer" unique_id=523180306]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="Search" type="Button" parent="MarginContainer/HBoxContainer2"]
+[node name="Search" type="Button" parent="MarginContainer/HBoxContainer2" unique_id=63350733]
 layout_mode = 2
 tooltip_text = "Search Nodes"
 text = "     "
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer2/Search"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer2/Search" unique_id=432327515]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,13 +55,13 @@ texture = ExtResource("6_ci56e")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Toggle Background" type="Button" parent="MarginContainer/HBoxContainer2"]
+[node name="Toggle Background" type="Button" parent="MarginContainer/HBoxContainer2" unique_id=652194719]
 layout_mode = 2
 tooltip_text = "Toggle Background"
 text = "     "
 expand_icon = true
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer2/Toggle Background"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer2/Toggle Background" unique_id=2120992635]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,12 +72,12 @@ texture = ExtResource("4_x1ecx")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2143687373]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer" unique_id=1244383715]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -113,12 +86,12 @@ item_count = 1
 popup/item_0/text = "Test"
 popup/item_0/id = 0
 
-[node name="Edit" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="Edit" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1210447024]
 layout_mode = 2
 tooltip_text = "Edit Metadata"
 text = "     "
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Edit"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Edit" unique_id=1067280375]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,12 +102,12 @@ texture = ExtResource("4_jwprv")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Actions" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="Actions" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1740993871]
 layout_mode = 2
 tooltip_text = "Actions"
 text = "     "
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Actions"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Actions" unique_id=2082887645]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -145,12 +118,12 @@ texture = ExtResource("7_qqq3r")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Save" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="Save" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1595208836]
 layout_mode = 2
 tooltip_text = "Save File"
 text = "     "
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Save"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Save" unique_id=1226174857]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,16 +134,16 @@ texture = ExtResource("5_df00g")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1478489879]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="Share" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="Share" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1898332513]
 layout_mode = 2
 tooltip_text = "Export Save File for Sharing"
 text = "     "
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Share"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Share" unique_id=937498132]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -181,12 +154,12 @@ texture = ExtResource("8_df00g")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Import" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="Import" type="Button" parent="MarginContainer/HBoxContainer" unique_id=2019040121]
 layout_mode = 2
 tooltip_text = "Import External Save File"
 text = "     "
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Import"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Import" unique_id=547055343]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,8 +170,7 @@ texture = ExtResource("9_ci56e")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Search" parent="." instance=ExtResource("1_xwfut")]
-layout_mode = 1
+[node name="Search" parent="." unique_id=624289166 instance=ExtResource("1_xwfut")]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
@@ -209,8 +181,7 @@ offset_bottom = -53.0
 grow_horizontal = 1
 grow_vertical = 0
 
-[node name="Actions" parent="." node_paths=PackedStringArray("toggle_button") instance=ExtResource("13_63spv")]
-layout_mode = 1
+[node name="Actions" parent="." unique_id=620518165 node_paths=PackedStringArray("toggle_button") instance=ExtResource("13_63spv")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -222,9 +193,8 @@ grow_horizontal = 0
 grow_vertical = 0
 toggle_button = NodePath("../MarginContainer/HBoxContainer/Actions")
 
-[node name="Edit Menu" type="PanelContainer" parent="."]
+[node name="Edit Menu" type="PanelContainer" parent="." unique_id=1776518909]
 visible = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -237,22 +207,22 @@ offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Edit Menu"]
+[node name="MarginContainer" type="MarginContainer" parent="Edit Menu" unique_id=1500907792]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Edit Menu/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Edit Menu/MarginContainer" unique_id=299139008]
 layout_mode = 2
 
-[node name="Title" type="LineEdit" parent="Edit Menu/MarginContainer/VBoxContainer"]
+[node name="Title" type="LineEdit" parent="Edit Menu/MarginContainer/VBoxContainer" unique_id=1939645487]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Save Title"
 
-[node name="MarginContainer" type="MarginContainer" parent="Edit Menu/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Edit Menu/MarginContainer/VBoxContainer" unique_id=278580216]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -260,32 +230,32 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Edit Menu/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Edit Menu/MarginContainer/VBoxContainer/MarginContainer" unique_id=87702988]
 layout_mode = 2
 alignment = 1
 
-[node name="Author" type="LineEdit" parent="Edit Menu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Author" type="LineEdit" parent="Edit Menu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1078743527]
 layout_mode = 2
 placeholder_text = "Author"
 
-[node name="Made In" type="Label" parent="Edit Menu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Made In" type="Label" parent="Edit Menu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=70507032]
 layout_mode = 2
 text = "Made in Give-LIFE v.0.0.0.0.0.0.1"
 
-[node name="Created" type="Label" parent="Edit Menu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Created" type="Label" parent="Edit Menu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2131725685]
 layout_mode = 2
 text = "Created: 10:00pm July 24th"
 
-[node name="Updated" type="Label" parent="Edit Menu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Updated" type="Label" parent="Edit Menu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1549409414]
 layout_mode = 2
 text = "Last Updated: 2:00pm December 9th"
 
-[node name="ExportDialog" type="FileDialog" parent="."]
+[node name="ExportDialog" type="FileDialog" parent="." unique_id=1069738247]
 size = Vector2i(1086, 360)
 access = 2
 filters = PackedStringArray("*.zip")
 
-[node name="ImportDialog" type="FileDialog" parent="."]
+[node name="ImportDialog" type="FileDialog" parent="." unique_id=2083988608]
 auto_translate_mode = 1
 title = "Open a File"
 size = Vector2i(1086, 360)
@@ -294,10 +264,23 @@ file_mode = 0
 access = 2
 filters = PackedStringArray("*.zip")
 
-[node name="Direct Output" type="Node3D" parent="." groups=["DIRECT_OUTPUT"]]
+[node name="Direct Output" type="Node3D" parent="." unique_id=545215705 groups=["DIRECT_OUTPUT"]]
 script = ExtResource("14_fnko5")
 
-[node name="Speaker" type="AudioStreamPlayer" parent="Direct Output"]
+[node name="Speaker" type="AudioStreamPlayer" parent="Direct Output" unique_id=1706998243]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1468401175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.06477265)
+fov = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1971211232]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.1)
+material_override = ExtResource("14_sva77")
+mesh = SubResource("PlaneMesh_63spv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=540215539]
+transform = Transform3D(0.9708965, 0.059386976, -0.23201978, 2.220446e-16, 0.96876955, 0.24796286, 0.23949945, -0.24074629, 0.94057494, 0, 0, 0.36525258)
+shadow_enabled = true
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer2/Search" to="Search" method="toggleSearch"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer2/Toggle Background" to="." method="toggle_background"]

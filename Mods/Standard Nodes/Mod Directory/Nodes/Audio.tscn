@@ -1,18 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://lossothjt5ye"]
+[gd_scene format=3 uid="uid://lossothjt5ye"]
 
 [ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_db1pk"]
 [ext_resource type="Script" uid="uid://bmukxrwmoyc20" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Audio.gd" id="2_db1pk"]
 
-[node name="Node" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 1
+[node name="Node" type="Node3D" unique_id=1970660041]
 
-[node name="Node" parent="." groups=["GL Node"] instance=ExtResource("1_db1pk")]
-clip_contents = false
-layout_mode = 0
-tooltip_text = "Outputs the path to an audio source saved in the workspace. Does not output live audio playback on nodes this is plugged into, must be handled by a Timeline node or similar."
+[node name="Node" parent="." unique_id=1827050114 groups=["GL Node"] instance=ExtResource("1_db1pk")]
 script = ExtResource("2_db1pk")
-
-[connection signal="mouse_entered" from="Node" to="Node" method="mouse_enter"]
-[connection signal="mouse_exited" from="Node" to="Node" method="mouse_exit"]

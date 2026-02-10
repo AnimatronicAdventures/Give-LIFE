@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Node3D
 class_name GL_Node
 var rows : Dictionary
 var uuid : String
@@ -17,14 +17,15 @@ const dragScalingSpeed : float = 8
 
 func _ready():
 	loadNodeRow = preload("res://Scenes/Nodes/Node Row.tscn")
-	(get_node("Margins").get_node("Holder").get_node("Title").get_node("Exit Button") as Button).connect("button_down",self.delete_whole_node)
+	(get_node("SubViewport/Margins/Holder/Title/Exit Button") as Button).connect("button_down",self.delete_whole_node)
 	
 func _process(delta):
 	if dragging:
-		position = get_viewport().get_mouse_position() + dragOffset
-		scale = lerp(scale,Vector2.ONE * draggingScale,delta * dragScalingSpeed)
+		var pos = get_viewport().get_mouse_position() + dragOffset
+		position = Vector3(pos.x,pos.y,0)
+		scale = lerp(scale,Vector3.ONE * draggingScale,delta * dragScalingSpeed)
 	else:
-		scale = lerp(scale,Vector2.ONE,delta * dragScalingSpeed)
+		scale = lerp(scale,Vector3.ONE,delta * dragScalingSpeed)
 	for key in rows:
 		for connection in rows[key].get("connections",[]):
 			if typeof(connection.target) == TYPE_STRING:
@@ -39,7 +40,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed && canDrag:
 			dragging = true
-			dragOffset = position - get_viewport().get_mouse_position()
+			dragOffset = Vector2(position.x,position.y) - get_viewport().get_mouse_position()
 		if event.button_index == MOUSE_BUTTON_LEFT && !event.pressed && dragging:
 			dragging = false
 func _replace_script_paths_and_colors(data):
@@ -111,7 +112,7 @@ func _create_uuid():
 	uuid = str(rand.randi())
 
 func _update_visuals():
-	var holder = get_node("Margins").get_node("Holder")
+	var holder = get_node("SubViewport/Margins/Holder")
 	for child in holder.get_children():
 		if child.name.contains("Node Row"):
 			child.queue_free()
@@ -185,9 +186,9 @@ func assignPick(pick:GL_Node_Picker,key:String):
 		pick.valueName = key
 
 func give_input_point_pos(name:String) -> Vector2:
-	var holder = get_node("Margins").get_node("Holder")
+	var holder = get_node("SubViewport/Margins/Holder")
 	if holder == null:
-		return global_position
+		return Vector2(global_position.x,global_position.y)
 	else:
 		for child in holder.get_children():
 			if child.name.contains("Node Row") && (child.get_node("Label") as Label).text == name:
@@ -216,10 +217,10 @@ func _set_inout_type(label:Button, value):
 		label.visible = false
 
 func _set_title(name:String):
-	(get_node("Margins").get_node("Holder").get_node("Title").get_node("Title Label") as LineEdit).text = name
+	(get_node("SubViewport/Margins/Holder/Title/Title Label") as LineEdit).text = name
 
 func _get_title() -> String:
-	return (get_node("Margins").get_node("Holder").get_node("Title").get_node("Title Label") as LineEdit).text
+	return (get_node("SubViewport/Margins/Holder/Title/Title Label") as LineEdit).text
 
 
 func _create_row(name:String,input,output,picker:bool,pickDefault,pickFloatMaximum:float):
@@ -292,7 +293,7 @@ func destroy_connection(target:GL_Node,input_name:String):
 			if connections[i].target == target and connections[i].input_name == input_name:
 				connections.remove_at(i)
 				rows[key]["connections"] = connections
-				var holder = get_node("Margins").get_node("Holder")
+				var holder = get_node("Margins/Holder")
 				for child in holder.get_children():
 					if child.name.contains("Node Row"):
 						(child.get_node("Input") as GL_Node_Point).update_lines()

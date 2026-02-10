@@ -1,18 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ul4mdxf3qx5b"]
+[gd_scene format=3 uid="uid://ul4mdxf3qx5b"]
 
 [ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_qf2se"]
 [ext_resource type="Script" uid="uid://3rg2qunautt5" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Bool.gd" id="2_qf2se"]
 
-[node name="Node" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 1
+[node name="Node" type="Node3D" unique_id=1521788703]
 
-[node name="Node" parent="." groups=["GL Node"] instance=ExtResource("1_qf2se")]
-clip_contents = false
-layout_mode = 0
-tooltip_text = "A bool refers to something on or off. Can also connect to float inputs as a converted 0.0 or 1.0."
+[node name="Node" parent="." unique_id=1141397752 groups=["GL Node"] instance=ExtResource("1_qf2se")]
 script = ExtResource("2_qf2se")
-
-[connection signal="mouse_entered" from="Node" to="Node" method="mouse_enter"]
-[connection signal="mouse_exited" from="Node" to="Node" method="mouse_exit"]

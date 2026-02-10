@@ -1,18 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://drsi02xhgrtsc"]
+[gd_scene format=3 uid="uid://drsi02xhgrtsc"]
 
 [ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_m6pki"]
 [ext_resource type="Script" uid="uid://cetd8fp5y2ls0" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Sine.gd" id="2_claki"]
 
-[node name="Node" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 1
+[node name="Node" type="Node3D" unique_id=627520844]
 
-[node name="Node" parent="." groups=["GL Node"] instance=ExtResource("1_m6pki")]
-clip_contents = false
-layout_mode = 0
-tooltip_text = "Outputs a sin wave from 0.0 to 1.0. 'Length' changes how long it takes for the sin to loop."
+[node name="Node" parent="." unique_id=819489241 groups=["GL Node"] instance=ExtResource("1_m6pki")]
 script = ExtResource("2_claki")
-
-[connection signal="mouse_entered" from="Node" to="Node" method="mouse_enter"]
-[connection signal="mouse_exited" from="Node" to="Node" method="mouse_exit"]

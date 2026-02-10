@@ -1,11 +1,9 @@
-extends Control
+extends Node3D
 class_name GL_Node_Map
 
-var background: TextureRect
-var holder: Control
+var camera: Camera3D
+var holder: Node3D
 var is_panning: bool = false
-var last_mouse_pos: Vector2
-var is_hovered: bool = false
 
 # Fix for save files v0.11 or before
 var special_value_fix_map := {
@@ -38,8 +36,14 @@ var version: String = ProjectSettings.get_setting("application/config/version")
 var game_title: String = ProjectSettings.get_setting("application/config/name")
 var time_created: String = ""
 var last_updated: String = ""
+var last_mouse_pos: Vector2
+var cam_pos: float = closest_cam_length
 
-const carpetScale:float = 1.5
+const pan_speed: float = 0.001
+const closest_cam_length: float = 1.0
+const farthest_cam_length: float = 10.0
+const cam_back_forth_speed: float = 1.0
+const cam_pan_by_zoom_factor: float = 11
 
 var loadedUsername:String = "Unnamed Author"
 
@@ -48,7 +52,7 @@ func _notification(what):
 		save_everything()
 
 func _ready():
-	background = get_node("Background")
+	camera = get_node("Camera3D")
 	holder = get_node("Holder")
 	optionsVar = get_node("MarginContainer/HBoxContainer/OptionButton")
 	editMenu = get_node("Edit Menu")
@@ -57,70 +61,41 @@ func _ready():
 	madeInLabel = get_node("Edit Menu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Made In")
 	createdLabel = get_node("Edit Menu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Created")
 	updatedLabel = get_node("Edit Menu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Updated")	
-	
-	connect("mouse_entered", _on_mouse_entered)
-	connect("mouse_exited", _on_mouse_exited)
 
 	auto_populate_metadata()
 	populate_workspace_options()
 	optionsVar.connect("item_selected", Callable(self, "_on_workspace_selected"))
+	camera.position.z = cam_pos;
 	
-	if background.material is ShaderMaterial:
-		background.material.set_shader_parameter("uv_offset", Vector2.ZERO)
-		background.material.set_shader_parameter("uv_scale", Vector2.ONE)
-
-func _on_mouse_entered():
-	is_hovered = true
-
-func _on_mouse_exited():
-	is_hovered = false
-
 func _process(_delta):
 	is_panning = Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE)
-	if is_panning:
+	if is_panning and last_mouse_pos == Vector2.ZERO:
 		last_mouse_pos = get_viewport().get_mouse_position()
-	
-	if background.material is ShaderMaterial:
-		var scale = Vector2.ONE / holder.scale * carpetScale
-		var offset = -holder.position / holder.scale * 0.001 * carpetScale
-
-		background.material.set_shader_parameter("uv_scale", scale)
-		background.material.set_shader_parameter("uv_offset", offset)
-
+	elif not is_panning:
+		last_mouse_pos = Vector2.ZERO
+	camera.position.z = cam_pos;
+		
 func _input(event: InputEvent) -> void:
-	if not is_hovered:
-		return
 	if event is InputEventMouseButton:
 		if event.pressed and (event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN):
-			var mouse_pos = event.position
-			var global_xform = holder.get_global_transform()
-			var local_mouse_pos = global_xform.affine_inverse().basis_xform(mouse_pos)
-
-			var zoom_factor := 1.0
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				zoom_factor = 1.1
+				cam_pos = clamp(cam_pos - cam_back_forth_speed, closest_cam_length, farthest_cam_length)
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				zoom_factor = 0.9
-
-			holder.scale *= zoom_factor
-			
-			holder.scale.x = clamp(holder.scale.x, 0.1, 10.0)
-			holder.scale.y = clamp(holder.scale.y, 0.1, 10.0)	
-
-			var new_global_xform = holder.get_global_transform()
-			var new_local_mouse_pos = new_global_xform.affine_inverse().basis_xform(mouse_pos)
-
-			var delta = (new_local_mouse_pos - local_mouse_pos)
-			holder.position += delta * holder.scale
+				cam_pos = clamp(cam_pos + cam_back_forth_speed, closest_cam_length, farthest_cam_length)
+			camera.position.z = cam_pos;
 
 	if event is InputEventMouseMotion and is_panning:
 		var delta = event.position - last_mouse_pos
-		holder.position += delta
+		var camZoomFactor = (((cam_pos - closest_cam_length)* cam_pan_by_zoom_factor / farthest_cam_length)+1) 
+		
+		camera.position.x -= delta.x * pan_speed * camZoomFactor
+		camera.position.y += delta.y * pan_speed * camZoomFactor
+		
 		last_mouse_pos = event.position
 
-
 func toggle_background():
-	background.visible = !background.visible
+	return
+	#background.visible = !background.visible
 
 func save_everything():
 	var saveDict := {}
@@ -236,10 +211,11 @@ func load_everything():
 			push_error("Could not load resource at path: " + data[key].get("path", "ERR"))
 			continue
 
-		var node = packed_scene.instantiate() as Control
+		var node = packed_scene.instantiate() as Node3D
 		holder.add_child(node)
 		node = node.get_child(0) as GL_Node
-		node.position = data[key].get("position", Vector2.ZERO)
+		var pos = data[key].get("position", Vector2.ZERO)
+		node.position = Vector3(pos.x,pos.y,0)
 		node.nodePath = data[key].get("path", "ERR")
 		node.uuid = data[key].get("uuid", "ERR_" + key + str(Time.get_ticks_msec()))
 		node._set_title(data[key].get("name", "???"))

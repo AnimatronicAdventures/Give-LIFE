@@ -1,18 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxul7axscpysc"]
+[gd_scene format=3 uid="uid://dxul7axscpysc"]
 
 [ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_gwol6"]
 [ext_resource type="Script" uid="uid://brssocni8n01t" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Toggle.gd" id="2_gwol6"]
 
-[node name="Node" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 1
+[node name="Node" type="Node3D" unique_id=1047383451]
 
-[node name="Node" parent="." groups=["GL Node"] instance=ExtResource("1_gwol6")]
-clip_contents = false
-layout_mode = 0
-tooltip_text = "Takes an input bool and uses its changing of states to toggle the output bool."
+[node name="Node" parent="." unique_id=133435323 groups=["GL Node"] instance=ExtResource("1_gwol6")]
 script = ExtResource("2_gwol6")
-
-[connection signal="mouse_entered" from="Node" to="Node" method="mouse_enter"]
-[connection signal="mouse_exited" from="Node" to="Node" method="mouse_exit"]
