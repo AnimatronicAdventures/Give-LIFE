@@ -200,6 +200,7 @@ func load_everything():
 	var version_num = float(version)
 	var needs_special_value_fix = version_num <= 0.11
 	var needs_armature_fix = version_num <= 0.13
+	var needs_position_scale_fix = version_num <= 0.14
 
 	# Load nodes
 	var data = resource.get_value("workspace", "data", {})
@@ -259,6 +260,9 @@ func load_everything():
 				var current_val = node.special_saved_values[sv_key]
 				if typeof(current_val) == TYPE_STRING and special_value_fix_map.has(current_val):
 					node.special_saved_values[sv_key] = special_value_fix_map[current_val]
+					
+		if needs_position_scale_fix:
+			node.position = Vector3(pos.x * 0.01, pos.y * 0.01, 0)
 
 		node._update_visuals()
 

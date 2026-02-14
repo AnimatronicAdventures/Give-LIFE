@@ -12,16 +12,15 @@ var special_saved_values : Dictionary
 var optionsMenu : Node
 var customRows : Dictionary
 
-const draggingScale : float = 1.05
-const dragScalingSpeed : float = 8
-
 var mesh_instance: MeshInstance3D
 var camera: Camera3D
 var static_body: StaticBody3D
 var collision_shape: CollisionShape3D
+var drag_plane: Plane  # Add this variable at the top
 
 # Queue for input events to process in physics frame
 var queued_events: Array = []
+
 func _ready():
 	loadNodeRow = preload("res://Scenes/Nodes/Node Row.tscn")
 	(get_node("SubViewport/Margins/Holder/Title/Exit Button") as Button).connect("button_down",self.delete_whole_node)
@@ -29,9 +28,6 @@ func _ready():
 	# Get references
 	mesh_instance = get_node("MeshInstance3D")
 	camera = get_viewport().get_camera_3d()
-	
-	print("MeshInstance found: ", mesh_instance != null)
-	print("Camera found: ", camera != null)
 	
 	# Set up collision
 	_setup_collision()
@@ -41,20 +37,18 @@ func _ready():
 	subviewport.gui_disable_input = false
 	subviewport.handle_input_locally = false
 	
-	print("SubViewport size: ", subviewport.size)
-	
 	# Connect to Margins to track size changes
 	var margins = get_node("SubViewport/Margins")
 	if margins:
 		margins.resized.connect(_on_margins_resized)
-		# Initial size update
-		_update_viewport_and_collision_size()
-
-
+	
+	# Wait for scene to be fully ready before initial size update
+	await get_tree().process_frame
+	await get_tree().process_frame
+	_update_viewport_and_collision_size()
 
 func _handle_viewport_input(event: InputEvent):
 	if not camera or not mesh_instance:
-		print("Missing camera or mesh_instance")
 		return
 	
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -63,7 +57,6 @@ func _handle_viewport_input(event: InputEvent):
 	
 	var space_state = get_world_3d().direct_space_state
 	if not space_state:
-		print("No space state available")
 		return
 		
 	var query = PhysicsRayQueryParameters3D.create(from, to)
@@ -71,18 +64,11 @@ func _handle_viewport_input(event: InputEvent):
 	query.collide_with_bodies = true
 	var result = space_state.intersect_ray(query)
 	
-	print("Raycast hit: ", result.size() > 0)
-	if result.size() > 0:
-		print("Hit collider: ", result.collider, " (looking for: ", static_body, ")")
-	
 	if result and result.collider == static_body:
-		print("Hit our static body!")
 		var uv = _get_uv_from_hit(result)
-		print("UV coords: ", uv)
 		if uv != Vector2(-1, -1):
 			var subviewport = get_node("SubViewport") as SubViewport
 			var viewport_pos = uv * Vector2(subviewport.size)
-			print("Viewport pos: ", viewport_pos)
 			
 			var new_event = event.duplicate()
 			if new_event is InputEventMouse:
@@ -91,7 +77,6 @@ func _handle_viewport_input(event: InputEvent):
 			
 			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 				canDrag = _is_over_title(viewport_pos)
-				print("Can drag: ", canDrag)
 
 func _setup_collision():
 	# Create StaticBody3D if it doesn't exist
@@ -112,45 +97,69 @@ func _update_viewport_and_collision_size():
 	if not margins:
 		return
 	
-	# Wait one frame to ensure layout is complete
-	await get_tree().process_frame
-	
 	var margins_size = margins.size
+	var real_size = margins.size * 0.01
+	
+	# Don't update if size is invalid
+	if margins_size.x <= 0 or margins_size.y <= 0:
+		return
+	
 	var subviewport = get_node("SubViewport") as SubViewport
 	
-	print("Updating sizes to: ", margins_size)
-	
 	# Update SubViewport size to match Margins
-	var lolwhat : float = sin(Time.get_ticks_msec()) * 0.02
-	subviewport.size = Vector2i(int(margins_size.x), int(margins_size.y)) 
+	subviewport.size = Vector2i(int(margins_size.x), int(margins_size.y))
 	
 	# Update mesh size (works for both QuadMesh and PlaneMesh)
 	if mesh_instance and mesh_instance.mesh:
 		var mesh = mesh_instance.mesh
 		if mesh is QuadMesh:
-			mesh.size = margins_size * lolwhat
-			print("Set QuadMesh size to: ", mesh.size)
+			mesh.size = real_size
 		elif mesh is PlaneMesh:
-			mesh.size = margins_size * lolwhat
-			print("Set PlaneMesh size to: ", mesh.size)
+			mesh.size = real_size
 	
 	# Update collision shape size
 	if collision_shape and collision_shape.shape is BoxShape3D:
 		var box_shape = collision_shape.shape as BoxShape3D
 		var mesh = mesh_instance.mesh
+		box_shape.size = Vector3(real_size.x, real_size.y, 0.01)
+
+func _input(event): 
+	# Queue mouse events for processing in physics frame
+	if event is InputEventMouseButton or event is InputEventMouseMotion:
+		queued_events.append(event)
+	
+	# Handle dragging (doesn't need physics)
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed && canDrag:
+			dragging = true
+			# Create a plane at the node's current Z position, facing the camera
+			drag_plane = Plane(Vector3(0, 0, 1), position.z)
+			# Calculate where the mouse currently intersects this plane
+			var mouse_pos = get_viewport().get_mouse_position()
+			var from = camera.project_ray_origin(mouse_pos)
+			var normal = camera.project_ray_normal(mouse_pos)
+			var intersection = drag_plane.intersects_ray(from, normal)
+			if intersection:
+				# Store offset from intersection point to node position
+				dragOffset = Vector2(position.x - intersection.x, position.y - intersection.y)
+		if event.button_index == MOUSE_BUTTON_LEFT && !event.pressed && dragging:
+			dragging = false
+			canDrag = false
+
+func _process(_delta):
+	if dragging and camera:
+		# Raycast from mouse to the drag plane
+		var mouse_pos = get_viewport().get_mouse_position()
+		var from = camera.project_ray_origin(mouse_pos)
+		var normal = camera.project_ray_normal(mouse_pos)
+		var intersection = drag_plane.intersects_ray(from, normal)
 		
-		if mesh is PlaneMesh:
-			box_shape.size = Vector3(margins_size.x * lolwhat,margins_size.y * lolwhat, 0.01)
+		if intersection:
+			# Apply the offset to keep the grab point consistent
+			position.x = intersection.x + dragOffset.x
+			position.y = intersection.y + dragOffset.y
+			# Z stays the same as the drag plane
 		
-		print("Set collision box size to: ", box_shape.size)
-		
-func _process(delta):
-	if dragging:
-		var pos = get_viewport().get_mouse_position() + dragOffset
-		position = Vector3(pos.x,pos.y,0)
-		scale = lerp(scale,Vector3.ONE * draggingScale,delta * dragScalingSpeed)
-	else:
-		scale = lerp(scale,Vector3.ONE,delta * dragScalingSpeed)
 	for key in rows:
 		for connection in rows[key].get("connections",[]):
 			if typeof(connection.target) == TYPE_STRING:
@@ -161,31 +170,14 @@ func _process(delta):
 							break
 
 func _physics_process(_delta):
-	# Process queued input events during physics frame
-	if queued_events.size() > 0:
-		print("Processing ", queued_events.size(), " events")
 	for event in queued_events:
 		_handle_viewport_input(event)
 	queued_events.clear()
 		
-func _input(event): 
-	# Queue mouse events for processing in physics frame
-	if event is InputEventMouseButton or event is InputEventMouseMotion:
-		queued_events.append(event)
-	
-	# Handle dragging (doesn't need physics)
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed && canDrag:
-			dragging = true
-			dragOffset = Vector2(position.x,position.y) - get_viewport().get_mouse_position()
-		if event.button_index == MOUSE_BUTTON_LEFT && !event.pressed && dragging:
-			dragging = false
 func _get_uv_from_hit(result: Dictionary) -> Vector2:
 	var local_pos = mesh_instance.to_local(result.position)
-	print("Local hit position: ", local_pos)
 	
 	var mesh = mesh_instance.mesh
-	print("Mesh type: ", mesh.get_class() if mesh else "null")
 	
 	# Support both QuadMesh and PlaneMesh
 	if mesh is QuadMesh or mesh is PlaneMesh:
@@ -195,14 +187,6 @@ func _get_uv_from_hit(result: Dictionary) -> Vector2:
 			size = mesh.size
 		elif mesh is PlaneMesh:
 			size = mesh.size
-			print("PlaneMesh size: ", size)
-			print("PlaneMesh orientation: ", mesh.orientation)
-		
-		print("Mesh size: ", size)
-		print("MeshInstance rotation: ", mesh_instance.rotation_degrees)
-		
-		# PlaneMesh is in the XZ plane by default (horizontal)
-		# QuadMesh is in the XY plane by default (vertical)
 		
 		var uv_x: float
 		var uv_y: float
@@ -210,25 +194,18 @@ func _get_uv_from_hit(result: Dictionary) -> Vector2:
 		if mesh is PlaneMesh:
 			# PlaneMesh uses XZ plane
 			uv_x = (local_pos.x / size.x) + 0.5
-			uv_y = 0.5 - (local_pos.z / size.y)  # Note: Z for PlaneMesh
-			print("Using XZ plane for PlaneMesh")
+			uv_y = (local_pos.z / size.y) + 0.5
 		else:
 			# QuadMesh uses XY plane
 			uv_x = (local_pos.x / size.x) + 0.5
 			uv_y = 0.5 - (local_pos.y / size.y)
-			print("Using XY plane for QuadMesh")
-		
-		print("Calculated UV: ", Vector2(uv_x, uv_y))
 		
 		# Clamp to valid range
 		uv_x = clamp(uv_x, 0.0, 1.0)
 		uv_y = clamp(uv_y, 0.0, 1.0)
 		
 		return Vector2(uv_x, uv_y)
-	else:
-		print("Mesh is not a QuadMesh or PlaneMesh!")
 	
-	print("All UV calculations failed")
 	return Vector2(-1, -1)
 	
 func _is_over_title(viewport_pos: Vector2) -> bool:
