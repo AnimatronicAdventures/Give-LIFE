@@ -41,9 +41,9 @@ var cam_pos: float = closest_cam_length
 
 const pan_speed: float = 0.001
 const closest_cam_length: float = 1.0
-const farthest_cam_length: float = 10.0
+const farthest_cam_length: float = 30.0
 const cam_back_forth_speed: float = 1.0
-const cam_pan_by_zoom_factor: float = 11
+const cam_pan_by_zoom_factor: float = farthest_cam_length + (farthest_cam_length / 10.0)
 
 var loadedUsername:String = "Unnamed Author"
 
