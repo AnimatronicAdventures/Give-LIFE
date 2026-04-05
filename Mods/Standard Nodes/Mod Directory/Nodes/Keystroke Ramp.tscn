@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://cbd4dlsco2wls"]
-
-[ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_lgcd0"]
-[ext_resource type="Script" uid="uid://dhw0vlsb0bb8r" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Keystroke_Ramp.gd" id="2_lgcd0"]
-
-[node name="Node" type="Node3D" unique_id=1483460867]
-
-[node name="Node" parent="." unique_id=1073641802 groups=["GL Node"] instance=ExtResource("1_lgcd0")]
-script = ExtResource("2_lgcd0")

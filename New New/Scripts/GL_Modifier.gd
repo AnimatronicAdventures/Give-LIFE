@@ -1,18 +1,17 @@
 extends Node
-@onready var master : GL_Master = $"../../../Master"
-@onready var saveLoad : GL_SaveLoad = $"../../../Master/SaveLoad"
-@onready var settings : TabContainer = $Settings
-@onready var startNew : Control = $"Start New"
-@onready var timeline : GL_Timeline = $"../../Data Timeline"
-@onready var titleVar : LineEdit = $Settings/General/MarginContainer/VBoxContainer/Title/LineEdit
-@onready var authorVar : LineEdit = $Settings/General/MarginContainer/VBoxContainer/Author/LineEdit
-@onready var createdVar : Label = $Settings/General/MarginContainer/VBoxContainer/Created/Label2
+@onready var master : GL_Master = $"../Master"
+@onready var saveLoad : GL_SaveLoad = $"../Master/SaveLoad"
+@onready var fullEditor : Control = $"../Full Editor"
+@onready var timeline : GL_Timeline = $"../Full Editor/Data Timeline"
+@onready var titleVar : LineEdit = $"../Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Title/LineEdit"
+@onready var authorVar : LineEdit = $"../Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Author/LineEdit"
+@onready var createdVar : Label = $"../Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Created/Label2"
 
 const defaultShowName = "My Unnamed Show"
 
 func _ready() -> void:
-	startNew.visible = true
-	settings.visible = false
+	self.visible = true
+	fullEditor.visible = false
 
 func _create_new_show():
 	var path = saveLoad.generate_savefile(defaultShowName)
@@ -22,8 +21,8 @@ func _create_new_show():
 			timeline.reload_timeline()
 
 func _load_settings_general() -> void:
-	startNew.visible = false
-	settings.visible = true
+	self.visible = false
+	fullEditor.visible = true
 	titleVar.text = master.currentlyLoadedFile.get("title")
 	authorVar.text = master.currentlyLoadedFile.get("author")
 	createdVar.text = master.currentlyLoadedFile.get("timeCreated")

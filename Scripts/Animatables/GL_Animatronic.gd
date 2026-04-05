@@ -132,7 +132,6 @@ func _load_anim_parameters(file_name: String) -> void:
 								dict_data["value"] = 0
 								dict_data["signal_value"] = 0
 								animParameters[key] = dict_data
-				# ✅ Stop after the first successful load
 				return
 		mod_name = mods_dir.get_next()
 
@@ -164,6 +163,11 @@ func _process(delta):
 func _sent_signals(anim_name: String, value):
 	if value is not float:
 		return
+
+	if animParameters.has(anim_name):
+		value = float(value)
+		animParameters[anim_name]["signal_value"] = clamp(value,0,1)
+		return
 	
 	#Non Animations
 	match(anim_name):
@@ -194,6 +198,3 @@ func _sent_signals(anim_name: String, value):
 		"Scale Z":
 			scale.z = initialScale.z + value
 			return
-			
-	value = float(value)
-	animParameters[anim_name]["signal_value"] = clamp(value,0,1)

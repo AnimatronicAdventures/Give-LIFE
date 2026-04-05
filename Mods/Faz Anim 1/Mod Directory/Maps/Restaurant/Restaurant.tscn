@@ -114,6 +114,7 @@ mesh = ExtResource("4_cx6yn")
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/Map Mesh & Collision/Restaurant" unique_id=456951512]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Map Mesh & Collision/Restaurant/StaticBody3D" unique_id=466416428]
+transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, 0, 0, 0)
 visible = false
 shape = SubResource("ConcavePolygonShape3D_4tduh")
 
@@ -124,6 +125,7 @@ mesh = ExtResource("5_dsuk6")
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/Map Mesh & Collision/Props" unique_id=164136502]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Map Mesh & Collision/Props/StaticBody3D" unique_id=33749281]
+transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, 0, 0, 0)
 visible = false
 shape = SubResource("ConcavePolygonShape3D_0w123")
 

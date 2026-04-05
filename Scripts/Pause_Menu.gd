@@ -84,7 +84,7 @@ func _ready():
 	_load_mods()
 	_populate_mod_list()
 
-	nodeMapScene = load("res://Scenes/UI/Node Map.tscn")
+	nodeMapScene = load("res://New New/GL_Editor.tscn")
 	keypresssScene = load("res://Scenes/UI/Key Presses.tscn")
 
 	mapListContainer = get_node("MarginContainer/PanelContainer/Map Menu/Mods/PanelContainer/VBoxContainer/ScrollContainer/Map Holder") 
@@ -93,6 +93,7 @@ func _ready():
 
 	editorInstance = nodeMapScene.instantiate()
 	get_tree().root.add_child.call_deferred(editorInstance)
+	(editorInstance as Control).visible = false
 	keypressInstance = keypresssScene.instantiate()
 	get_tree().root.add_child.call_deferred(keypressInstance)
 	await editorInstance.ready

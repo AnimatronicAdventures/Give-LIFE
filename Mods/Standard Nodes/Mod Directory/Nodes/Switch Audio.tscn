@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://eoidlfg4tkux"]
-
-[ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_mx713"]
-[ext_resource type="Script" uid="uid://dvk3lfcqg4nwr" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Switch_Audio.gd" id="2_mx713"]
-
-[node name="Node" type="Node3D" unique_id=1249208718]
-
-[node name="Node" parent="." unique_id=312094187 groups=["GL Node"] instance=ExtResource("1_mx713")]
-script = ExtResource("2_mx713")

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://lossothjt5ye"]
-
-[ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_db1pk"]
-[ext_resource type="Script" uid="uid://bmukxrwmoyc20" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Audio.gd" id="2_db1pk"]
-
-[node name="Node" type="Node3D" unique_id=1970660041]
-
-[node name="Node" parent="." unique_id=1827050114 groups=["GL Node"] instance=ExtResource("1_db1pk")]
-script = ExtResource("2_db1pk")

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://bwcuye45ift61"]
-
-[ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_5vmnd"]
-[ext_resource type="Script" uid="uid://bmnxkp7ge8wu1" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Multiply.gd" id="2_5vmnd"]
-
-[node name="Node" type="Node3D" unique_id=55582027]
-
-[node name="Node" parent="." unique_id=1477511809 groups=["GL Node"] instance=ExtResource("1_5vmnd")]
-script = ExtResource("2_5vmnd")

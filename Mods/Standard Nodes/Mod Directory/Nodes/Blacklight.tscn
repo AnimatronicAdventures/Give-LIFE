@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://orb8ktn8fpup"]
-
-[ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_jwmxn"]
-[ext_resource type="Script" uid="uid://dbqob0b43rqef" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Blacklight.gd" id="2_jwmxn"]
-
-[node name="Node" type="Node3D" unique_id=1696888072]
-
-[node name="Node" parent="." unique_id=1007712586 groups=["GL Node"] instance=ExtResource("1_jwmxn")]
-script = ExtResource("2_jwmxn")

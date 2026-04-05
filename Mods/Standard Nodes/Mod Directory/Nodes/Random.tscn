@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://dhn8qtyeny0sm"]
-
-[ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_wswgt"]
-[ext_resource type="Script" uid="uid://3vek1806nwqj" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Random.gd" id="2_wswgt"]
-
-[node name="Node" type="Node3D" unique_id=204637139]
-
-[node name="Node" parent="." unique_id=1779404238 groups=["GL Node"] instance=ExtResource("1_wswgt")]
-script = ExtResource("2_wswgt")

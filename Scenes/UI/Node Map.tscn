@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c7e2wn02ty2xx" path="res://UI/Icons/file-import-solid-full.svg" id="9_ci56e"]
 [ext_resource type="PackedScene" uid="uid://dffakik4vokde" path="res://Scenes/UI/Actions.tscn" id="13_63spv"]
 [ext_resource type="Script" uid="uid://c5kxam0k3beml" path="res://Scripts/Animatables/GL_Speaker.gd" id="14_fnko5"]
-[ext_resource type="Material" uid="uid://dtb2dg51oedjv" path="res://Mods/Standard Nodes/Custom Assets/Materials/Backing.tres" id="14_sva77"]
+[ext_resource type="Material" uid="uid://dtb2dg51oedjv" path="res://Mods/Faz Anim 2/Custom Assets/Materials/Backing.tres" id="14_sva77"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_63spv"]
 size = Vector2(1000, 1000)

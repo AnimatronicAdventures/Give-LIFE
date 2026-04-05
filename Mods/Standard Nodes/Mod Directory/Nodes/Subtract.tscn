@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://dk4kpw62fma4m"]
-
-[ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_vak63"]
-[ext_resource type="Script" uid="uid://bxaml7g17kutm" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Subtract.gd" id="2_vak63"]
-
-[node name="Node" type="Node3D" unique_id=1337134901]
-
-[node name="Node" parent="." unique_id=1762275998 groups=["GL Node"] instance=ExtResource("1_vak63")]
-script = ExtResource("2_vak63")

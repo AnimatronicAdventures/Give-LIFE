@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://03io62ffg5i7"]
-
-[ext_resource type="PackedScene" uid="uid://b0arjg8r75f8y" path="res://Scenes/Nodes/Node.tscn" id="1_w45a2"]
-[ext_resource type="Script" uid="uid://byqidgk64eqpc" path="res://Mods/Standard Nodes/Custom Assets/Node Scripts/GL_Sawtooth.gd" id="2_w45a2"]
-
-[node name="Node" type="Node3D" unique_id=1978478691]
-
-[node name="Node" parent="." unique_id=1263929516 groups=["GL Node"] instance=ExtResource("1_w45a2")]
-script = ExtResource("2_w45a2")

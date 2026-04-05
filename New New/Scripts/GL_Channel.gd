@@ -15,9 +15,7 @@ var editStart = null
 var _bit_panels: Array = []
 
 const timeUnits = 1.0 / 120.0
-const bytesPerStamp = 4
 const bitColor = Color(0.4, 0.8, 1.0)
-
 
 func start() -> void:
 	title.text = id
@@ -52,27 +50,6 @@ func time_to_int(t: float) -> int:
 func int_to_time(i: int) -> float:
 	return i * timeUnits
 
-func stamps_to_str(stamps: Array) -> String:
-	var buf = PackedByteArray()
-	buf.resize(stamps.size() * 4)
-	for i in range(stamps.size()):
-		var s = stamps[i]
-		buf[i * 4 + 0] = (s >> 24) & 0xFF
-		buf[i * 4 + 1] = (s >> 16) & 0xFF
-		buf[i * 4 + 2] = (s >> 8) & 0xFF
-		buf[i * 4 + 3] = s & 0xFF
-	return Marshalls.raw_to_base64(buf)
-
-func parse_stamps(b64: String) -> Array:
-	var buf = Marshalls.base64_to_raw(b64)
-	var stamps = []
-	for i in range(0, buf.size(), 4):
-		if i + 3 >= buf.size():
-			break
-		var s = (buf[i] << 24) | (buf[i+1] << 16) | (buf[i+2] << 8) | buf[i+3]
-		stamps.append(s)
-	return stamps
-
 func get_state_at_index(stamps: Array, idx: int) -> bool:
 	return idx % 2 != 0
 
@@ -84,44 +61,50 @@ func bindReleased(force_on: bool = true) -> void:
 	editStart = null
 	if range_end - range_start < timeUnits:
 		range_end = range_start + timeUnits
-	var hex: String = master.currentlyLoadedFile["channels"][id]["data"]
-	var stamps: Array = parse_stamps(hex)
+
+	var raw = master.currentlyLoadedFile["channels"][id]["data"]
+	var stamps: Array = raw if raw is Array else []
+
 	var start_int = time_to_int(range_start)
-	var end_int = time_to_int(range_end)
+	var end_int   = time_to_int(range_end)
+
 	var insert_idx = stamps.size()
 	for i in range(stamps.size()):
 		if stamps[i] >= start_int:
 			insert_idx = i
 			break
 	var state_before_range: bool = get_state_at_index(stamps, insert_idx)
+
 	var end_idx = stamps.size()
 	for i in range(stamps.size()):
 		if stamps[i] > end_int:
 			end_idx = i
 			break
 	var state_after_range: bool = get_state_at_index(stamps, end_idx)
-	var new_stamps: Array = []
+
+	for i in range(stamps.size() - 1, -1, -1):
+		if stamps[i] >= start_int and stamps[i] <= end_int:
+			stamps.remove_at(i)
+
+	var ins = stamps.size()
 	for i in range(stamps.size()):
-		if stamps[i] < start_int or stamps[i] > end_int:
-			new_stamps.append(stamps[i])
-	var ins = new_stamps.size()
-	for i in range(new_stamps.size()):
-		if new_stamps[i] >= start_int:
+		if stamps[i] >= start_int:
 			ins = i
 			break
+
 	var desired_state: bool = force_on
 	if state_before_range != desired_state:
-		new_stamps.insert(ins, start_int)
+		stamps.insert(ins, start_int)
 		ins += 1
 	if state_after_range != desired_state:
-		new_stamps.insert(ins, end_int)
-	master.currentlyLoadedFile["channels"][id]["data"] = stamps_to_str(new_stamps)
+		stamps.insert(ins, end_int)
+
+	master.currentlyLoadedFile["channels"][id]["data"] = stamps
 	master.save()
 	renderBits()
 
 func renderBits() -> void:
-	var hex: String = master.currentlyLoadedFile["channels"][id]["data"]
-	var stamps: Array = parse_stamps(hex)
+	var stamps: Array = master.currentlyLoadedFile["channels"][id]["data"]
 	var width: float = bitHolder.size.x
 	var t_start: float = timeline.timeStart
 	var t_end: float = timeline.timeEnd
