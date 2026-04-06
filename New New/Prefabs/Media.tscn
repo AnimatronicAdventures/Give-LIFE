@@ -28,7 +28,8 @@ layout_mode = 2
 [node name="filename" type="Label" parent="Control/HBoxContainer" unique_id=1287023291]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "???"
+text = "???????????????????????????"
+clip_text = true
 
 [node name="delete" type="TextureButton" parent="Control/HBoxContainer" unique_id=727361765]
 custom_minimum_size = Vector2(20, 20)

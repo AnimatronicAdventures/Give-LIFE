@@ -2,6 +2,7 @@ extends Node
 class_name GL_Master
 @onready var root = $".."
 @onready var saveLoad : GL_SaveLoad = $SaveLoad
+@onready var playback : GL_Playback = $Playback
 @onready var fullEditor : Control = $"../Full Editor"
 @onready var mediaLoader : GL_Media = $"../Full Editor/Editor/Modifiers/Media/VBoxContainer/MediaContainer"
 @onready var fileLoader : Control = $"../File Loader"
@@ -60,13 +61,11 @@ func save() -> void:
 
 func _create_new_show():
 	load_show(saveLoad.generate_savefile(defaultShowName))
-		
-func _import_rr(path : String):
-	load_show(saveLoad.generate_savefile(defaultShowName))
-			
+	
 func _load_settings_general() -> void:
 	timeline.reload_timeline()
 	mediaLoader.reload_media()
+	playback.reload_audio()
 	fileLoader.visible = false
 	fullEditor.visible = true
 	titleVar.text = currentlyLoadedFile.get("title")

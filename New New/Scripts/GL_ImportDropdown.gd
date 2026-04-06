@@ -21,7 +21,7 @@ func _on_chart_selected(id: int) -> void:
 		file_dialog.queue_free()
 		var save_root = save_load.xshw_convert_file(path, chart_name)
 		if save_root != "":
-			modifier._import_rr(save_root)
+			modifier.load_show(save_root)
 	)
 	file_dialog.canceled.connect(func(): file_dialog.queue_free())
 	add_child(file_dialog)
