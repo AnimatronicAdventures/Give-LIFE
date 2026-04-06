@@ -53,6 +53,7 @@ func _cache_materials_in_tree(node: Node) -> void:
 # Example custom shader: _sent_signals("green_material|0", Color(0.8,0.2,0.2))
 # Example standard Godot shader: _sent_signals("green_mat|A", Color(0.8,0.2,0.2))
 func _sent_signals(_signal_ID: String, _the_signal) -> void:
+	_signal_ID = _signal_ID.split("|", true, 1)[-1]
 	if typeof(_the_signal) != TYPE_COLOR:
 		return
 	

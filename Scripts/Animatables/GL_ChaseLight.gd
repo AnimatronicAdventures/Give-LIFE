@@ -18,6 +18,7 @@ func _ready():
 	visible_energy = light.light_energy
 
 func _sent_signals(signal_ID: String, the_signal):
+	anim_name = anim_name.split("|", true, 1)[-1]
 	match signal_ID:
 		"intensity":
 			if typeof(the_signal) == TYPE_BOOL:

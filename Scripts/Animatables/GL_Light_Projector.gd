@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 		spot_light.light_projector = video_player.get_video_texture()
 
 func _sent_signals(anim_name: String, value):
+	anim_name = anim_name.split("|", true, 1)[-1]
 	if not video_player:
 		printerr("Can't find VideoPlayer, needs to be first child")
 		return

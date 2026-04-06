@@ -1,120 +1,144 @@
 {
-  "Armature|CupEyelidL": {
+  "FA_CHICA|Cupcake Eyelid Left": {
+	"animation": "Armature|CupEyelidL",
 	"in_speed": 5.0,
 	"out_speed": 10.0,
 	"type": "move_to"
   },
-  "Armature|CupEyelidR": {
+  "FA_CHICA|Cupcake Eyelid Right": {
+	"animation": "Armature|CupEyelidR",
 	"in_speed": 5.0,
 	"out_speed": 10.0,
 	"type": "move_to"
   },
-  "Armature|CupEyesLeft": {
+  "FA_CHICA|Cupcake Eyes Left": {
+	"animation": "Armature|CupEyesLeft",
 	"in_speed": 6.0,
 	"out_speed": 7.0,
 	"type": "standard"
   },
-  "Armature|CupEyesRight": {
+  "FA_CHICA|Cupcake Eyes Right": {
+	"animation": "Armature|CupEyesRight",
 	"in_speed": 6.0,
 	"out_speed": 7.0,
 	"type": "standard"
   },
-  "Armature|FNAFArmTwistL": {
+  "FA_CHICA|Arm Twist Left": {
+	"animation": "Armature|FNAFArmTwistL",
 	"in_speed": 3.0,
 	"out_speed": 2.5,
 	"type": "standard"
   },
-  "Armature|FNAFArmTwistR": {
+  "FA_CHICA|Arm Twist Right": {
+	"animation": "Armature|FNAFArmTwistR",
 	"in_speed": 3.0,
 	"out_speed": 2.5,
 	"type": "standard"
   },
-  "Armature|FNAFArmUpR": {
+  "FA_CHICA|Arm Up Right": {
+	"animation": "Armature|FNAFArmUpR",
 	"in_speed": 2.5,
 	"out_speed": 1.0,
 	"type": "standard"
   },
-  "Armature|FNaFBodyLean": {
+  "FA_CHICA|Body Lean": {
+	"animation": "Armature|FNaFBodyLean",
 	"in_speed": 2.0,
 	"out_speed": 2.5,
 	"type": "standard"
   },
-  "Armature|FNaFBodyTurnLeft": {
+  "FA_CHICA|Body Turn Left": {
+	"animation": "Armature|FNaFBodyTurnLeft",
 	"in_speed": 2.5,
 	"out_speed": 2.5,
 	"type": "standard"
   },
-  "Armature|FNaFBodyTurnRight": {
+  "FA_CHICA|Body Turn Right": {
+	"animation": "Armature|FNaFBodyTurnRight",
 	"in_speed": 2.5,
 	"out_speed": 2.5,
 	"type": "standard"
   },
-  "Armature|FNAFEyelidL": {
+  "FA_CHICA|Eyelid Left": {
+	"animation": "Armature|FNAFEyelidL",
 	"in_speed": 5.0,
 	"out_speed": 10.0,
 	"type": "move_to"
   },
-  "Armature|FNAFEyelidR": {
+  "FA_CHICA|Eyelid Right": {
+	"animation": "Armature|FNAFEyelidR",
 	"in_speed": 5.0,
 	"out_speed": 10.0,
 	"type": "move_to"
   },
-  "Armature|FNAFEyesLeft": {
+  "FA_CHICA|Eyes Left": {
+	"animation": "Armature|FNAFEyesLeft",
 	"in_speed": 6.0,
 	"out_speed": 7.0,
 	"type": "standard"
   },
-  "Armature|FNAFEyesRight": {
+  "FA_CHICA|Eyes Right": {
+	"animation": "Armature|FNAFEyesRight",
 	"in_speed": 6.0,
 	"out_speed": 7.0,
 	"type": "standard"
   },
-  "Armature|FNAFForearmBendR": {
+  "FA_CHICA|Forearm Bend Right": {
+	"animation": "Armature|FNAFForearmBendR",
 	"in_speed": 3.0,
 	"out_speed": 4.0,
 	"type": "standard"
   },
-  "Armature|FNAFForearmTwist": {
+  "FA_CHICA|Forearm Twist": {
+	"animation": "Armature|FNAFForearmTwist",
 	"in_speed": 3.0,
 	"out_speed": 2.5,
 	"type": "standard"
   },
-  "Armature|FNAFForearmTwistL": {
+  "FA_CHICA|Forearm Twist Left": {
+	"animation": "Armature|FNAFForearmTwistL",
 	"in_speed": 3.0,
 	"out_speed": 2.5,
 	"type": "standard"
   },
-  "Armature|FNAFHeadTurnL": {
+  "FA_CHICA|Head Turn Left": {
+	"animation": "Armature|FNAFHeadTurnL",
 	"in_speed": 2.0,
 	"out_speed": 2.0,
 	"type": "standard"
   },
-  "Armature|FNAFHeadTurnR": {
+  "FA_CHICA|Head Turn Right": {
+	"animation": "Armature|FNAFHeadTurnR",
 	"in_speed": 2.0,
 	"out_speed": 2.0,
 	"type": "standard"
   },
-  "Armature|FNAFHeadUp": {
+  "FA_CHICA|Head Up": {
+	"animation": "Armature|FNAFHeadUp",
 	"in_speed": 4.0,
 	"out_speed": 5.0,
 	"type": "standard"
   },
-  "Armature|FNAFJaw": {
+  "FA_CHICA|Jaw": {
+	"animation": "Armature|FNAFJaw",
 	"in_speed": 5.5,
 	"out_speed": 6.5,
 	"type": "standard"
   },
-  "Armature|FNAFWristBendR": {
+  "FA_CHICA|Wrist Bend Right": {
+	"animation": "Armature|FNAFWristBendR",
 	"in_speed": 3.0,
 	"out_speed": 4.0,
 	"type": "standard"
   },
-  "Armature|FNAFWristTwistL": {
+  "FA_CHICA|Wrist Twist Left": {
+	"animation": "Armature|FNAFWristTwistL",
 	"in_speed": 3.0,
 	"out_speed": 2.5,
 	"type": "standard"
   },
-  "Armature|FNAFWristTwistR": {
+  "FA_CHICA|Wrist Twist Right": {
+	"animation": "Armature|FNAFWristTwistR",
 	"in_speed": 3.0,
 	"out_speed": 2.5,
 	"type": "standard"

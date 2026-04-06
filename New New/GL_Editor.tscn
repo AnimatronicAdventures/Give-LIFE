@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://pvrp1i0n4eqx"]
 
-[ext_resource type="Script" uid="uid://s4tjqnmiuuu3" path="res://New New/Scripts/GL_Modifier.gd" id="1_2bvfm"]
 [ext_resource type="Script" uid="uid://123cosa0dlrp" path="res://New New/Scripts/GL_Master.gd" id="1_4kpso"]
 [ext_resource type="Script" uid="uid://cfp3tpowbcpot" path="res://New New/Scripts/GL_SaveLoad.gd" id="2_2bvfm"]
 [ext_resource type="Script" uid="uid://cv0ko0w0oijq4" path="res://New New/Scripts/GL_LoadTapes.gd" id="2_7jq2w"]
 [ext_resource type="Script" uid="uid://cphs62vbpa8ja" path="res://New New/Scripts/GL_Timeline.gd" id="2_c0c77"]
 [ext_resource type="Script" uid="uid://dvdojljxguwdc" path="res://New New/Scripts/GL_ImportDropdown.gd" id="2_y4xxp"]
+[ext_resource type="Script" uid="uid://bcv5vgupc8mjt" path="res://New New/Scripts/GL_LastSaved.gd" id="4_jpu5j"]
 [ext_resource type="Script" uid="uid://ckgpu8qo8u8vw" path="res://New New/Scripts/GL_Playback.gd" id="5_4tobp"]
+[ext_resource type="Script" uid="uid://2esvktatiq0x" path="res://New New/Scripts/GL_Media.gd" id="5_mtjvt"]
 
 [node name="GlEditor" type="Control" unique_id=270496900]
 layout_mode = 3
@@ -17,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="File Loader" type="PanelContainer" parent="." unique_id=657194110]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +27,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_2bvfm")
 
 [node name="MarginContainer" type="MarginContainer" parent="File Loader" unique_id=639739632]
 layout_mode = 2
@@ -65,7 +66,6 @@ alignment = 1
 last_wrap_alignment = 2
 
 [node name="Full Editor" type="VBoxContainer" parent="." unique_id=113343057]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,9 +80,10 @@ size_flags_vertical = 3
 [node name="Modifiers" type="TabContainer" parent="Full Editor/Editor" unique_id=120351013]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 0
+current_tab = 2
 
 [node name="Settings" type="PanelContainer" parent="Full Editor/Editor/Modifiers" unique_id=1426267622]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -101,7 +102,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Title" unique_id=1220462098]
 layout_mode = 2
-text = "Title: "
+text = "Title:      "
 
 [node name="LineEdit" type="LineEdit" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Title" unique_id=1788731704]
 layout_mode = 2
@@ -133,6 +134,40 @@ text = "???"
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Full Editor/Editor/Modifiers/Save & Quit" unique_id=145945991]
+layout_mode = 2
+alignment = 1
+
+[node name="LastSaved" type="Label" parent="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer" unique_id=1132209526]
+layout_mode = 2
+text = "Last Saved 1 sec ago"
+horizontal_alignment = 1
+script = ExtResource("4_jpu5j")
+
+[node name="Button" type="Button" parent="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer" unique_id=2094382263]
+layout_mode = 2
+text = "Save"
+
+[node name="Button2" type="Button" parent="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer" unique_id=421195070]
+layout_mode = 2
+text = "Save & Quit"
+
+[node name="Media" type="PanelContainer" parent="Full Editor/Editor/Modifiers" unique_id=284313337]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Full Editor/Editor/Modifiers/Media" unique_id=2066953861]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Full Editor/Editor/Modifiers/Media/VBoxContainer" unique_id=1558043606]
+layout_mode = 2
+text = "Add Media"
+
+[node name="MediaContainer" type="HFlowContainer" parent="Full Editor/Editor/Modifiers/Media/VBoxContainer" unique_id=351307767]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("5_mtjvt")
 
 [node name="Viewer" type="PanelContainer" parent="Full Editor/Editor" unique_id=1912449849]
 layout_mode = 2
@@ -228,10 +263,16 @@ vertical_alignment = 1
 script = ExtResource("1_4kpso")
 
 [node name="SaveLoad" type="Node" parent="Master" unique_id=1672595791]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
 script = ExtResource("2_2bvfm")
 
 [node name="Playback" type="Node" parent="Master" unique_id=1240717136]
 script = ExtResource("5_4tobp")
 
 [connection signal="pressed" from="File Loader/MarginContainer/VBoxContainer/HBoxContainer/Button" to="File Loader" method="_create_new_show"]
+[connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button" to="Master" method="save"]
+[connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button2" to="Master" method="save_and_quit"]
+[connection signal="pressed" from="Full Editor/TimeManager/HBoxContainer/Play Button" to="Full Editor/Data Timeline" method="togglePlayback"]
 [connection signal="item_selected" from="Full Editor/Data Timeline/MarginContainer/TimelineBox/CreateChannel" to="Full Editor/Data Timeline" method="create_channel"]

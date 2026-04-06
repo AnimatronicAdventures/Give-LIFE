@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 		light.visible = true
 
 func _sent_signals(signal_ID:String,the_signal):
+	signal_ID = signal_ID.split("|", true, 1)[-1]
 	match(signal_ID):
 		"intensity":
 			if typeof(the_signal) == TYPE_BOOL:

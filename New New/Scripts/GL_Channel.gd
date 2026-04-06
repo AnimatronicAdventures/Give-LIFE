@@ -2,7 +2,7 @@ extends Node
 class_name GL_Channel
 @onready var title : LineEdit = $ChannelTimeline/title
 @onready var bindLabel : Label = $"Bind/Bind Label"
-@onready var channelTimeline = $ChannelTimeline
+@onready var channelTimeline : Control = $ChannelTimeline
 @onready var bitHolder = $ChannelTimeline/BitHolder
 
 var id = ""
@@ -22,9 +22,8 @@ func start() -> void:
 	updateBindLabel()
 
 func _process(delta: float) -> void:
-	if insideTimeline:
-		timeline.updateTimelineBarX()
-		timeline.setCurrentTime(clamp(channelTimeline.get_local_mouse_position().x / channelTimeline.size.x, 0.0, 1.0))
+	if insideTimeline && !timeline.playing:
+		timeline.setTimeFromTimeline(channelTimeline.get_local_mouse_position().x,channelTimeline.position.x,channelTimeline.size.x)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:

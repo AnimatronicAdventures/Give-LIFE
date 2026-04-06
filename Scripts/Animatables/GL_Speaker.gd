@@ -7,6 +7,7 @@ func _ready():
 	speaker = get_child(0)
 	
 func _sent_signals(anim_name: String, value):
+	anim_name = anim_name.split("|", true, 1)[-1]
 	if speaker == null:
 		printerr("Can't find Animatable Speaker, needs to be the first child of node")
 		return

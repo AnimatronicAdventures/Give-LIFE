@@ -8,17 +8,23 @@ class_name GL_Timeline
 @onready var timeEndText : Label = $"../TimeManager/MarginContainer/EndTime"
 @onready var timelinePositionBar : ColorRect = $TimelineBar
 @onready var currentTimeText : Label = $TimelineBar/currentTime
+
 var channelPrefab = preload("res://New New/Prefabs/Channel.tscn")
 var scrolledIndex = 0
 var timeStart = 0.0
 var timeEnd = 10.0
 var timeCurrent = timeStart
+var playing = false
+var channelXs = 0
+var channelWidths = 1920
+
 const zoomMultOut = 1.1
 const zoomMultIn = 0.9
 const zoomMin = 0.1
 const zoomMax = 60
 const panAmount = 0.1
 const MAX_VISIBLE_CHANNELS = 10
+
 
 func format_time(seconds: float) -> String:
 	var h = int(seconds) / 3600
@@ -29,10 +35,24 @@ func format_time(seconds: float) -> String:
 func _process(delta: float) -> void:
 	timeStartText.text = format_time(timeStart)
 	timeEndText.text = format_time(timeEnd)
+	if playing:
+		setCurrentTime(delta)
+		
 
-func setCurrentTime(current: float) -> void:
-	timeCurrent = timeStart + current * (timeEnd - timeStart)
+func setCurrentTime(delta: float) -> void:
+	timeCurrent += delta
 	currentTimeText.text = format_time(timeCurrent)
+	updateTimelineBarX()
+	
+func setTimeFromTimeline(mouse: float,pos: float, width: float) -> void:
+	channelXs = pos
+	channelWidths = width
+	timeCurrent = timeStart + clamp(mouse / width, 0.0, 1.0) * (timeEnd - timeStart)
+	currentTimeText.text = format_time(timeCurrent)
+	updateTimelineBarX()
+
+func togglePlayback():
+	playing = !playing
 
 func _input(event: InputEvent) -> void:
 	if master.currentlyLoadedPath != "":
@@ -53,7 +73,11 @@ func _input(event: InputEvent) -> void:
 					scroll(true)
 
 func updateTimelineBarX() -> void:
-	timelinePositionBar.position.x = get_viewport().get_mouse_position().x
+	if playing:
+		var t = (timeCurrent - timeStart) / (timeEnd - timeStart)
+		timelinePositionBar.position.x = channelXs + t * channelWidths
+	else:
+		timelinePositionBar.position.x = get_viewport().get_mouse_position().x
 
 func zoom(out: bool):
 	if out:
@@ -192,7 +216,7 @@ func reload_timeline() -> void:
 	for i in range(slots_needed):
 		var channelBox : GL_Channel = channelPrefab.instantiate()
 		timelineBox.add_child(channelBox)
-
+	
 	# Always keep CreateChannel at the bottom
 	timelineBox.move_child(timelineBox.get_node("CreateChannel"), timelineBox.get_child_count() - 1)
 

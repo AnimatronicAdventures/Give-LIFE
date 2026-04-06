@@ -7,49 +7,44 @@ var animParameters: Dictionary
 var initialPos: Vector3
 var initialRot: Vector3
 var initialScale: Vector3
+var animCache: Dictionary   # raw anim name → animParameters key
+var displayCache: Dictionary  # stripped display name → animParameters key
 
-# Assuming this node has a child node with an AnimationPlayer
 func _ready():
 	print(name + " Animatable Loaded " + str(position))
 	initialPos = position
 	initialRot = rotation
 	initialScale = scale
 	
-	# Grab the AnimationPlayer from the first child
 	var anim_player := get_child(0).get_node("AnimationPlayer") as AnimationPlayer
 	
-	# Initialize the AnimationTree and set up the blend tree
 	anim_tree = AnimationTree.new()
-	anim_tree.anim_player = anim_player.get_path()  # Set the path to the AnimationPlayer
+	anim_tree.anim_player = anim_player.get_path()
 	add_child(anim_tree)
 
-	# Create the blend tree
 	anim_tree.tree_root = AnimationNodeBlendTree.new()
 	anim_tree.active = true
 	blend_tree = anim_tree.tree_root as AnimationNodeBlendTree
 	
-	# Disable automatic playback of animations
-	anim_player.speed_scale = 0  # This will stop the animation from automatically playing
+	anim_player.speed_scale = 0
 	
 	var animations = anim_player.get_animation_list()
 	if animations.size() == 0:
 		return
 		
-	# Try to load animParameters from JSON file if filename is provided
 	if animParametersFileName.strip_edges() != "":
 		_load_anim_parameters(animParametersFileName)
 	
-	# If still empty, fall back to auto-populating
 	if animParameters.size() == 0:
 		for key in animations:
 			_create_anim_dict(key)
 	
-	# Handle the case where there is only one animation
+	_build_caches()
+	
 	if animations.size() == 1:
 		printerr("STILL NEED TO FIX THIS AHEM" + name)
 		return
 
-	# Start with the first animation node
 	var prev_name = "Anim_" + animations[0]
 	var old_time_name = "Time_" + animations[0]
 	var old_seek_name = "Seek_" + animations[0]
@@ -59,16 +54,15 @@ func _ready():
 	blend_tree.add_node(prev_name, prev_anim_node)
 	
 	var old_time_node := AnimationNodeTimeScale.new()
-	blend_tree.add_node(old_time_name,old_time_node)
+	blend_tree.add_node(old_time_name, old_time_node)
 		
 	var _old_seek_node := AnimationNodeTimeSeek.new()
-	blend_tree.add_node(old_seek_name,_old_seek_node)
+	blend_tree.add_node(old_seek_name, _old_seek_node)
 		
-	blend_tree.connect_node(old_time_name,0,prev_name)
-	blend_tree.connect_node(old_seek_name,0,old_time_name)
+	blend_tree.connect_node(old_time_name, 0, prev_name)
+	blend_tree.connect_node(old_seek_name, 0, old_time_name)
 	prev_name = old_seek_name
 
-	# Iteratively add and connect animations through Add2 nodes
 	for i in range(1, animations.size()):
 		var anim_name = "Anim_" + animations[i]
 		var add_name = "Add_" + animations[i]
@@ -80,33 +74,39 @@ func _ready():
 		blend_tree.add_node(anim_name, new_anim_node)
 		
 		var time_node := AnimationNodeTimeScale.new()
-		blend_tree.add_node(time_name,time_node)
+		blend_tree.add_node(time_name, time_node)
 		
 		var seek_node := AnimationNodeTimeSeek.new()
-		blend_tree.add_node(seek_name,seek_node)
+		blend_tree.add_node(seek_name, seek_node)
 
 		var add_node := AnimationNodeAdd2.new()
 		blend_tree.add_node(add_name, add_node)
 		
-		blend_tree.connect_node(time_name,0,anim_name)
-		blend_tree.connect_node(seek_name,0,time_name)
+		blend_tree.connect_node(time_name, 0, anim_name)
+		blend_tree.connect_node(seek_name, 0, time_name)
 		blend_tree.connect_node(add_name, 0, prev_name)
 		blend_tree.connect_node(add_name, 1, seek_name)
 		prev_name = add_name
 
-	# Final output node connection
 	blend_tree.connect_node("output", 0, prev_name)
 
-	# Set the blend amount for each additive node
 	for i in range(0, animations.size()):
 		anim_tree.set("parameters/Add_" + str(animations[i]) + "/add_amount", 1.0)
 		anim_tree.set("parameters/Seek_" + str(animations[i]) + "/seek_request", 0)
 		anim_tree.set("parameters/Time_" + str(animations[i]) + "/scale", 0)
 
-func _create_anim_dict(name:String):
-	animParameters[name] = {"type":"standard","out_speed":5.0,"in_speed":5.0,"value":0,"signal_value":0}
+func _build_caches() -> void:
+	animCache.clear()
+	displayCache.clear()
+	for key in animParameters:
+		var raw_anim = animParameters[key].get("animation", key)
+		animCache[raw_anim] = key
+		var stripped = key.split("|", true, 1)[-1]
+		displayCache[stripped] = key
 
-# Scan the Mods folder for JSON files with the given filename
+func _create_anim_dict(anim_name: String):
+	animParameters[anim_name] = {"type": "standard", "out_speed": 5.0, "in_speed": 5.0, "value": 0, "signal_value": 0}
+
 func _load_anim_parameters(file_name: String) -> void:
 	var mods_dir = DirAccess.open("res://Mods")
 	if not mods_dir:
@@ -128,7 +128,6 @@ func _load_anim_parameters(file_name: String) -> void:
 						for key in result.keys():
 							if typeof(result[key]) == TYPE_DICTIONARY:
 								var dict_data = result[key]
-								# Inject missing runtime-only keys
 								dict_data["value"] = 0
 								dict_data["signal_value"] = 0
 								animParameters[key] = dict_data
@@ -138,62 +137,56 @@ func _load_anim_parameters(file_name: String) -> void:
 func _process(delta):
 	if not anim_tree:
 		return
-	for key in animParameters:
-		var anim_path = "parameters/Seek_" + key + "/seek_request"
-		var anim_player = get_child(0).get_node("AnimationPlayer") as AnimationPlayer
+	var anim_player = get_child(0).get_node("AnimationPlayer") as AnimationPlayer
+	for raw_anim in anim_player.get_animation_list():
+		var key = animCache.get(raw_anim, raw_anim)
+		if not animParameters.has(key):
+			continue
+		var params = animParameters[key]
+		var anim_path = "parameters/Seek_" + raw_anim + "/seek_request"
 
-		if not anim_player.has_animation(key):
-			print("Animation not found: ", key)
-			return
-		match(animParameters[key]["type"]):
+		match(params["type"]):
 			"standard":
-				var value = float(animParameters[key]["signal_value"])
-				if value > 0.5:
-					animParameters[key]["value"] = clamp(float(animParameters[key]["value"]) + (delta * animParameters[key]["out_speed"] * value),0,1)
-				elif value < 0.5:
-					animParameters[key]["value"] = clamp(float(animParameters[key]["value"]) - (delta * animParameters[key]["in_speed"] * (1 - value)),0,1)
-			"move_to":	
-				animParameters[key]["value"] = lerp(float(animParameters[key]["value"]), float(animParameters[key]["signal_value"]),delta * animParameters[key]["out_speed"])
-		var anim_length = anim_player.get_animation(key).length
-		var time_value = clamp(animParameters[key].get("value",0), 0.0, 1.0) * anim_length
+				var signal_val = float(params["signal_value"])
+				if signal_val > 0.5:
+					params["value"] = clamp(float(params["value"]) + (delta * params["out_speed"] * signal_val), 0, 1)
+				elif signal_val < 0.5:
+					params["value"] = clamp(float(params["value"]) - (delta * params["in_speed"] * (1.0 - signal_val)), 0, 1)
+			"move_to":
+				params["value"] = lerp(float(params["value"]), float(params["signal_value"]), delta * params["out_speed"])
 
+		var anim_length = anim_player.get_animation(raw_anim).length
+		var time_value = clamp(float(params.get("value", 0)), 0.0, 1.0) * anim_length
 		anim_tree.set(anim_path, time_value)
 
 func _sent_signals(anim_name: String, value):
+	anim_name = anim_name.split("|", true, 1)[-1]
 	if value is not float:
 		return
+	value = float(value)
 
-	if animParameters.has(anim_name):
-		value = float(value)
-		animParameters[anim_name]["signal_value"] = clamp(value,0,1)
+	var key = displayCache.get(anim_name, anim_name)
+	if animParameters.has(key):
+		animParameters[key]["signal_value"] = clamp(value, 0, 1)
 		return
-	
-	#Non Animations
+
+	# Non-animations
 	match(anim_name):
 		"Position X":
 			position.x = initialPos.x + value
-			return
 		"Position Y":
 			position.y = initialPos.y + value
-			return
 		"Position Z":
 			position.z = initialPos.z + value
-			return
 		"Rotation X":
-			rotation.x = initialRot.x + (value*TAU)
-			return
+			rotation.x = initialRot.x + (value * TAU)
 		"Rotation Y":
-			rotation.y = initialRot.y + (value*TAU)
-			return
+			rotation.y = initialRot.y + (value * TAU)
 		"Rotation Z":
-			rotation.z = initialRot.z + (value*TAU)
-			return
+			rotation.z = initialRot.z + (value * TAU)
 		"Scale X":
 			scale.x = initialScale.x + value
-			return
 		"Scale Y":
 			scale.y = initialScale.y + value
-			return
 		"Scale Z":
 			scale.z = initialScale.z + value
-			return

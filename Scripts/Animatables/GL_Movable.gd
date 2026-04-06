@@ -10,6 +10,7 @@ func _ready():
 	initialScale = scale
 
 func _sent_signals(anim_name: String, value):
+	anim_name = anim_name.split("|", true, 1)[-1]
 	if value is not float:
 		return
 		

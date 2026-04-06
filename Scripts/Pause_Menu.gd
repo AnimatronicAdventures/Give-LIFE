@@ -141,12 +141,27 @@ func _ready():
 				print("No recent map to load or map not found.")
 		2:
 			self.visible = false
-			editorInstance.visible = true
+			
+			setEditorVisibility(true)
+
+func toggleEditorVisibility():
+	if editorInstance == null:
+		editorInstance = get_tree().root.get_node("GlEditor")
+		if editorInstance == null:
+			editorInstance = get_tree().root.get_node("GlEditor2")
+	editorInstance.visible = !editorInstance.visible
+
+func setEditorVisibility(visible: bool):
+	if editorInstance == null:
+		editorInstance = get_tree().root.get_node("GlEditor")
+		if editorInstance == null:
+			editorInstance = get_tree().root.get_node("GlEditor2")
+	editorInstance.visible = visible
 
 func _unhandled_input(event):	
 	if currentMapInstance == null:
 		if event.is_action_pressed("Pause") or event.is_action_pressed("Editor"):
-			editorInstance.visible = !editorInstance.visible
+			toggleEditorVisibility()
 			self.visible = !editorInstance.visible
 	else:
 		if event.is_action_pressed("Pause"):
@@ -269,14 +284,12 @@ func toggle_pause_menu():
 	var will_show = not self.visible
 	self.visible = will_show
 	if will_show:
-		editorInstance.visible = false
+		setEditorVisibility(false)
 	update_mouse_mode()
 
 func toggle_editor():
-	var will_show = not editorInstance.visible
-	editorInstance.visible = will_show
-	if will_show:
-		self.visible = false
+	toggleEditorVisibility()
+	self.visible = !editorInstance.visible
 	update_mouse_mode()
 
 func update_mouse_mode():

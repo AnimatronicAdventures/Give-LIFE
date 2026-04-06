@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bwjdxhvus3nnu"]
+
+[ext_resource type="Texture2D" uid="uid://d0mxte7fpaomy" path="res://Mods/SongCode/Mod Icon.png" id="1_3n4im"]
+[ext_resource type="Texture2D" uid="uid://dyiswdb1owyty" path="res://UI/Icons/trash-can-solid-full.svg" id="2_0ksyx"]
+
+[node name="MarginContainer" type="MarginContainer" unique_id=1584577794]
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Control" type="VBoxContainer" parent="." unique_id=101360311]
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="cover" type="TextureRect" parent="Control" unique_id=774288883]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_3n4im")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=234724933]
+layout_mode = 2
+
+[node name="filename" type="Label" parent="Control/HBoxContainer" unique_id=1287023291]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "???"
+
+[node name="delete" type="TextureButton" parent="Control/HBoxContainer" unique_id=727361765]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture_normal = ExtResource("2_0ksyx")
+ignore_texture_size = true
+stretch_mode = 6

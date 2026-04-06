@@ -4,7 +4,7 @@ class_name GL_LoadTapes
 const SAVE_ROOT = "user://My Precious Save Files"
 const DATA_FILE = "data.json"
 @onready var container : HFlowContainer = $HFlowContainer
-@onready var modifier : GL_Modifier =  $"../../.."
+@onready var modifier : GL_Master = $"../../../../Master"
 
 var showEntryPrefab = preload("res://New New/Prefabs/LoadedShow.tscn") 
 

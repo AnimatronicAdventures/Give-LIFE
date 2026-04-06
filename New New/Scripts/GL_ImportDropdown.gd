@@ -1,5 +1,5 @@
 extends MenuButton
-@onready var modifier : GL_Modifier = $"../../../.."
+@onready var modifier : GL_Master = $"../../../../../Master"
 @onready var save_load : GL_SaveLoad = $"../../../../../Master/SaveLoad"
 
 func _ready() -> void:
