@@ -15,14 +15,20 @@ func _process(_delta):
 	if master.currentlyLoadedPath != "":
 		for key in master.currentlyLoadedFile["channels"]:
 			var data = master.currentlyLoadedFile["channels"][key]["data"]
-			if not data is Array or data.is_empty():
+			if not data is Array:
 				continue
 			var pipe = key.find("|")
 			if pipe == -1:
 				continue
 			var group = key.left(pipe)
 			var signal_key = key.substr(pipe + 1)
-			var state = float(get_bool_state_at_time(data, timeline.timeCurrent))
+			var effective_data = data
+			if timeline.activeEdit.has(key):
+				effective_data = _merge_active_edit(data, key)
+			if effective_data.is_empty():
+				continue
+
+			var state = float(get_bool_state_at_time(effective_data, timeline.timeCurrent))
 			for node in get_tree().get_nodes_in_group(group):
 				node._sent_signals(signal_key, state)
 
@@ -114,3 +120,45 @@ func get_bool_state_at_time(stamps: Array, current_time: float) -> bool:
 	if result_idx == -1:
 		return false
 	return result_idx % 2 == 0
+
+func _merge_active_edit(base: Array, channel_id: String) -> Array:
+	var stamps = base.duplicate()
+	var edit = timeline.activeEdit[channel_id]
+	var range_start = min(edit["start"], timeline.timeCurrent)
+	var range_end = max(edit["start"], timeline.timeCurrent)
+	if range_end - range_start < (1.0 / 120.0):
+		range_end = range_start + (1.0 / 120.0)
+	var start_int = timeline.time_to_int(range_start)
+	var end_int = timeline.time_to_int(range_end)
+
+	var insert_idx = stamps.size()
+	for i in range(stamps.size()):
+		if stamps[i] >= start_int:
+			insert_idx = i
+			break
+	var state_before: bool = insert_idx % 2 == 0
+
+	var end_idx = stamps.size()
+	for i in range(stamps.size()):
+		if stamps[i] > end_int:
+			end_idx = i
+			break
+	var state_after: bool = end_idx % 2 == 0
+
+	for i in range(stamps.size() - 1, -1, -1):
+		if stamps[i] >= start_int and stamps[i] <= end_int:
+			stamps.remove_at(i)
+
+	var ins = stamps.size()
+	for i in range(stamps.size()):
+		if stamps[i] >= start_int:
+			ins = i
+			break
+
+	if state_before:   
+		stamps.insert(ins, start_int)
+		ins += 1
+	if not state_after:   
+		stamps.insert(ins, end_int)
+
+	return stamps

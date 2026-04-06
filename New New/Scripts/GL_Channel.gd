@@ -11,7 +11,6 @@ var timeline : GL_Timeline
 var changingBind = false
 var currentBind = null
 var insideTimeline = false
-var editStart = null
 var _bit_panels: Array = []
 
 const timeUnits = 1.0 / 120.0
@@ -26,22 +25,14 @@ func _process(delta: float) -> void:
 		timeline.setTimeFromTimeline(channelTimeline.get_local_mouse_position().x,channelTimeline.position.x,channelTimeline.size.x)
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.keycode == currentBind:
-			if event.pressed:
-				bindPressed()
-			else:
-				bindReleased()
 	if changingBind:
 		if event is InputEventKey and event.pressed:
 			if event.keycode >= KEY_0 and event.keycode <= KEY_9:
-				currentBind = event.keycode
+				timeline.channelBinds[id] = event.keycode
 			elif event.keycode == KEY_BACKSPACE:
-				currentBind = null
+				timeline.channelBinds.erase(id)
 			updateBindLabel()
 
-func bindPressed() -> void:
-	editStart = timeline.timeCurrent
 
 func time_to_int(t: float) -> int:
 	return int(t / timeUnits)
@@ -51,56 +42,6 @@ func int_to_time(i: int) -> float:
 
 func get_state_at_index(stamps: Array, idx: int) -> bool:
 	return idx % 2 != 0
-
-func bindReleased(force_on: bool = true) -> void:
-	if editStart == null:
-		return
-	var range_start = min(editStart, timeline.timeCurrent)
-	var range_end = max(editStart, timeline.timeCurrent)
-	editStart = null
-	if range_end - range_start < timeUnits:
-		range_end = range_start + timeUnits
-
-	var raw = master.currentlyLoadedFile["channels"][id]["data"]
-	var stamps: Array = raw if raw is Array else []
-
-	var start_int = time_to_int(range_start)
-	var end_int   = time_to_int(range_end)
-
-	var insert_idx = stamps.size()
-	for i in range(stamps.size()):
-		if stamps[i] >= start_int:
-			insert_idx = i
-			break
-	var state_before_range: bool = get_state_at_index(stamps, insert_idx)
-
-	var end_idx = stamps.size()
-	for i in range(stamps.size()):
-		if stamps[i] > end_int:
-			end_idx = i
-			break
-	var state_after_range: bool = get_state_at_index(stamps, end_idx)
-
-	for i in range(stamps.size() - 1, -1, -1):
-		if stamps[i] >= start_int and stamps[i] <= end_int:
-			stamps.remove_at(i)
-
-	var ins = stamps.size()
-	for i in range(stamps.size()):
-		if stamps[i] >= start_int:
-			ins = i
-			break
-
-	var desired_state: bool = force_on
-	if state_before_range != desired_state:
-		stamps.insert(ins, start_int)
-		ins += 1
-	if state_after_range != desired_state:
-		stamps.insert(ins, end_int)
-
-	master.currentlyLoadedFile["channels"][id]["data"] = stamps
-	master.save()
-	renderBits()
 
 func renderBits() -> void:
 	var stamps: Array = master.currentlyLoadedFile["channels"][id]["data"]
@@ -148,12 +89,34 @@ func renderBits() -> void:
 		var w = ((clamped_end - clamped_start) / t_range) * width
 		_bit_panels[i].position = Vector2(x, 0)
 		_bit_panels[i].size = Vector2(max(w, 1.0), bitHolder.size.y)
+	if not has_node("ChannelTimeline/BitHolder/PreviewPanel"):
+		var preview = Panel.new()
+		preview.name = "PreviewPanel"
+		preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var style = StyleBoxFlat.new()
+		style.bg_color = Color(1.0, 1.0, 0.4, 0.5)
+		preview.add_theme_stylebox_override("panel", style)
+		bitHolder.add_child(preview)
+
+	var preview_panel = bitHolder.get_node("PreviewPanel")
+	if timeline.activeEdit.has(id):
+		var edit = timeline.activeEdit[id]
+		var seg_start = min(edit["start"], timeline.timeCurrent)
+		var seg_end = max(edit["start"], timeline.timeCurrent)
+		var cs = clamp(seg_start, t_start, t_end)
+		var ce = clamp(seg_end, t_start, t_end)
+		preview_panel.position = Vector2(((cs - t_start) / t_range) * width, 0)
+		preview_panel.size = Vector2(max(((ce - cs) / t_range) * width, 1.0), bitHolder.size.y)
+		preview_panel.visible = true
+	else:
+		preview_panel.visible = false
 
 func updateBindLabel() -> void:
-	if currentBind == null:
+	var bind = timeline.channelBinds.get(id, null)
+	if bind == null:
 		bindLabel.text = "[   ]"
 	else:
-		bindLabel.text = str(currentBind)
+		bindLabel.text = OS.get_keycode_string(bind)
 
 func _on_title_text_submitted(new_text: String) -> void:
 	var final_text = new_text

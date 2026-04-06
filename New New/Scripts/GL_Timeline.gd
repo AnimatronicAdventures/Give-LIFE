@@ -17,6 +17,8 @@ var timeCurrent = timeStart
 var playing = false
 var channelXs = 0
 var channelWidths = 1920
+var activeEdit: Dictionary = {}
+var channelBinds: Dictionary = {}
 
 const zoomMultOut = 1.1
 const zoomMultIn = 0.9
@@ -25,6 +27,26 @@ const zoomMax = 60
 const panAmount = 0.1
 const MAX_VISIBLE_CHANNELS = 10
 
+func startEdit(channel_id: String, start_time: float, value: bool) -> void:
+	activeEdit[channel_id] = {"start": start_time, "value": value}
+	repaintTimeline()
+
+func endEdit(channel_id: String) -> void:
+	activeEdit.erase(channel_id)
+	repaintTimeline()
+
+func getDataForChannel(channel_id: String) -> Array:
+	var base: Array = master.currentlyLoadedFile["channels"][channel_id]["data"].duplicate()
+	if activeEdit.get("id", "") == channel_id:
+		# Inject a preview stamp for the active edit
+		var start_int = time_to_int(activeEdit["start"])
+		var end_int = time_to_int(timeCurrent)
+		# Just return the base data with the active range visible
+		# Channel's renderBits will handle the preview panel separately
+	return base
+
+func time_to_int(t: float) -> int:
+	return int(t / (1.0 / 120.0))
 
 func format_time(seconds: float) -> String:
 	var h = int(seconds) / 3600
@@ -37,7 +59,8 @@ func _process(delta: float) -> void:
 	timeEndText.text = format_time(timeEnd)
 	if playing:
 		setCurrentTime(delta)
-		
+	if activeEdit.size() > 0:
+		repaintTimeline()
 
 func setCurrentTime(delta: float) -> void:
 	timeCurrent += delta
@@ -55,22 +78,80 @@ func togglePlayback():
 	playing = !playing
 
 func _input(event: InputEvent) -> void:
-	if master.currentlyLoadedPath != "":
-		if event is InputEventMouseButton and event.pressed:
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				if event.ctrl_pressed:
-					zoom(false)
-				elif event.shift_pressed:
-					pan(true)
-				else:
-					scroll(false)
-			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				if event.ctrl_pressed:
-					zoom(true)
-				elif event.shift_pressed:
-					pan(false)
-				else:
-					scroll(true)
+	if master.currentlyLoadedPath == "":
+		return
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			if event.ctrl_pressed:
+				zoom(false)
+			elif event.shift_pressed:
+				pan(true)
+			else:
+				scroll(false)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			if event.ctrl_pressed:
+				zoom(true)
+			elif event.shift_pressed:
+				pan(false)
+			else:
+				scroll(true)
+
+	if event is InputEventKey:
+		for key in master.currentlyLoadedFile["channels"]:
+			var bind = channelBinds.get(key, null)
+			if bind == null:
+				continue
+			if event.keycode == bind:
+				if event.pressed and not event.echo:
+					startEdit(key, timeCurrent, true)
+				elif not event.pressed:
+					_commit_edit(key)
+
+func _commit_edit(channel_id: String) -> void:
+	if not activeEdit.has(channel_id):
+		return
+	var edit_start = activeEdit[channel_id]["start"]
+	var range_start = min(edit_start, timeCurrent)
+	var range_end = max(edit_start, timeCurrent)
+	if range_end - range_start < (1.0 / 120.0):
+		range_end = range_start + (1.0 / 120.0)
+	
+	var raw = master.currentlyLoadedFile["channels"][channel_id]["data"]
+	var stamps: Array = raw if raw is Array else []
+	var start_int = time_to_int(range_start)
+	var end_int = time_to_int(range_end)
+
+	var insert_idx = stamps.size()
+	for i in range(stamps.size()):
+		if stamps[i] >= start_int:
+			insert_idx = i
+			break
+	var state_before: bool = insert_idx % 2 != 0
+	var end_idx = stamps.size()
+	for i in range(stamps.size()):
+		if stamps[i] > end_int:
+			end_idx = i
+			break
+	var state_after: bool = end_idx % 2 != 0
+	for i in range(stamps.size() - 1, -1, -1):
+		if stamps[i] >= start_int and stamps[i] <= end_int:
+			stamps.remove_at(i)
+
+	var ins = stamps.size()
+	for i in range(stamps.size()):
+		if stamps[i] >= start_int:
+			ins = i
+			break
+
+	if not state_before:
+		stamps.insert(ins, start_int)
+		ins += 1
+	if not state_after:
+		stamps.insert(ins, end_int)
+
+	master.currentlyLoadedFile["channels"][channel_id]["data"] = stamps
+	call_deferred("endEdit", channel_id)
+	repaintTimeline()
 
 func updateTimelineBarX() -> void:
 	if playing:
@@ -80,10 +161,6 @@ func updateTimelineBarX() -> void:
 		timelinePositionBar.position.x = get_viewport().get_mouse_position().x
 
 func zoom(out: bool):
-	if out:
-		print("Zoomed Out")
-	else:
-		print("Zoomed In")
 	var mid = (timeStart + timeEnd) / 2.0
 	var dist = timeEnd - timeStart
 	var new_dist = dist * (zoomMultOut if out else zoomMultIn)
@@ -96,10 +173,6 @@ func zoom(out: bool):
 	repaintTimeline()
 
 func pan(left: bool):
-	if left:
-		print("Panned Left")
-	else:
-		print("Panned Right")
 	var dist = timeEnd - timeStart
 	var offset = dist * panAmount * (-1.0 if left else 1.0)
 	timeStart += offset
@@ -116,11 +189,9 @@ func scroll(down: bool):
 	if down:
 		if scrolledIndex < total - 1:
 			scrolledIndex += 1
-			print("Scrolled Down to index: ", scrolledIndex)
 	else:
 		if scrolledIndex > 0:
 			scrolledIndex -= 1
-			print("Scrolled Up to index: ", scrolledIndex)
 	_reassign_channel_slots()
 
 # Gets the sorted channel keys from master, same order as before
