@@ -61,7 +61,42 @@ func save() -> void:
 
 func _create_new_show():
 	load_show(saveLoad.generate_savefile(defaultShowName))
+
+func _export_show():
+	saveLoad.export_save_as_zip(currentlyLoadedPath)
+
+func _import_show() -> void:
+	var file_dialog := FileDialog.new()
+	file_dialog.access = FileDialog.ACCESS_FILESYSTEM
+	file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	file_dialog.filters = ["*.zip ; Showtape Archives"]
+	file_dialog.title = "Import Save ZIP"
 	
+	file_dialog.file_selected.connect(func(path: String):
+		currentlyLoadedFile = saveLoad.import_and_load_zip(path)
+		if currentlyLoadedFile != {}:
+			currentlyLoadedPath = path
+			_load_settings_general()
+		file_dialog.queue_free()
+	)
+	
+	file_dialog.canceled.connect(func(): file_dialog.queue_free())
+	add_child(file_dialog)
+	file_dialog.popup_centered_ratio(0.6)
+
+func _create_new_show_template(template: Dictionary):
+	load_show(saveLoad.generate_savefile(defaultShowName))
+	for key in template:
+		if key == "channels":
+			for channel_name in template["channels"]:
+				var ch = template["channels"][channel_name].duplicate(true)
+				ch["data"] = []
+				currentlyLoadedFile["channels"][channel_name] = ch
+		else:
+			currentlyLoadedFile[key] = template[key]
+	save()
+	_load_settings_general()
+
 func _load_settings_general() -> void:
 	timeline.reload_timeline()
 	mediaLoader.reload_media()

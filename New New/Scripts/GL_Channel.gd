@@ -21,17 +21,29 @@ func start() -> void:
 	updateBindLabel()
 
 func _process(delta: float) -> void:
-	if insideTimeline && !timeline.playing:
-		timeline.setTimeFromTimeline(channelTimeline.get_local_mouse_position().x,channelTimeline.position.x,channelTimeline.size.x)
+	var timeline_rect = Rect2(Vector2.ZERO, channelTimeline.size)
+	
+	var mouse_pos = channelTimeline.get_local_mouse_position()
+	var mouse_is_inside = timeline_rect.has_point(mouse_pos)
 
+	if mouse_is_inside and !timeline.playing:
+			timeline.setTimeFromTimeline(
+				mouse_pos.x,
+				channelTimeline.position.x,
+				channelTimeline.size.x
+			)
+			
 func _input(event: InputEvent) -> void:
 	if changingBind:
 		if event is InputEventKey and event.pressed:
+			get_viewport().set_input_as_handled() 
+
 			if event.keycode >= KEY_0 and event.keycode <= KEY_9:
 				timeline.channelBinds[id] = event.keycode
+				updateBindLabel()
 			elif event.keycode == KEY_BACKSPACE:
 				timeline.channelBinds.erase(id)
-			updateBindLabel()
+				updateBindLabel()
 
 
 func time_to_int(t: float) -> int:
@@ -71,12 +83,25 @@ func renderBits() -> void:
 	var needed = segments.size()
 	while _bit_panels.size() < needed:
 		var panel = Panel.new()
-		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		panel.set_script(GL_BitPanel)
+		panel.channel = self
+		panel.mouse_filter = Control.MOUSE_FILTER_PASS
 		var style = StyleBoxFlat.new()
 		style.bg_color = bitColor
 		panel.add_theme_stylebox_override("panel", style)
 		bitHolder.add_child(panel)
 		_bit_panels.append(panel)
+
+	for i in range(needed):
+		var seg = segments[i]
+		var clamped_start = clamp(seg[0], t_start, t_end)
+		var clamped_end = clamp(seg[1], t_start, t_end)
+		var x = ((clamped_start - t_start) / t_range) * width
+		var w = ((clamped_end - clamped_start) / t_range) * width
+		_bit_panels[i].position = Vector2(x, 0)
+		_bit_panels[i].size = Vector2(max(w, 1.0), bitHolder.size.y)
+		_bit_panels[i].seg_index = i
+		
 	while _bit_panels.size() > needed:
 		var panel = _bit_panels.pop_back()
 		panel.queue_free()
@@ -143,9 +168,3 @@ func binder_entered() -> void:
 
 func binder_exited() -> void:
 	changingBind = false
-
-func timelineEntered() -> void:
-	insideTimeline = true
-
-func timelineExited() -> void:
-	insideTimeline = false

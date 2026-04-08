@@ -38,7 +38,7 @@ func _sent_signals(anim_name: String, value):
 
 	match anim_name:
 		"Video":
-			if value is GL_VideoType:
+			#if value is GL_VideoType:
 				var path = value.value
 				if path != "" and path != oldPath:
 					var stream: VideoStream = load(path)

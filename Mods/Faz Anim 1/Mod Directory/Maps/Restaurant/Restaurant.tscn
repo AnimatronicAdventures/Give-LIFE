@@ -837,7 +837,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 200.0
+energyMultiplier = 250.0
 lerp_speed = 15.0
 
 [node name="Chica Light 1" type="SpotLight3D" parent="Map/Animatables" unique_id=274073957]
@@ -872,7 +872,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 200.0
+energyMultiplier = 250.0
 lerp_speed = 15.0
 
 [node name="Freddy Light 1" type="SpotLight3D" parent="Map/Animatables" unique_id=1260758631]
@@ -907,7 +907,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
-energyMultiplier = 200.0
+energyMultiplier = 250.0
 lerp_speed = 15.0
 
 [node name="Bonnie Light 1" type="SpotLight3D" parent="Map/Animatables" unique_id=194052567]
@@ -942,6 +942,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Yellow 1" type="SpotLight3D" parent="Map/Animatables" unique_id=139094741]
@@ -959,6 +960,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Green 1" type="SpotLight3D" parent="Map/Animatables" unique_id=501166901]
@@ -976,6 +978,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Blue 1" type="SpotLight3D" parent="Map/Animatables" unique_id=519720562]
@@ -993,6 +996,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Red 2" type="SpotLight3D" parent="Map/Animatables" unique_id=355246370]
@@ -1010,6 +1014,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Yellow 2" type="SpotLight3D" parent="Map/Animatables" unique_id=416640598]
@@ -1027,6 +1032,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Green 2" type="SpotLight3D" parent="Map/Animatables" unique_id=793174439]
@@ -1044,6 +1050,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Blue 2" type="SpotLight3D" parent="Map/Animatables" unique_id=2065092649]
@@ -1061,6 +1068,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Speaker Red 1" type="SpotLight3D" parent="Map/Animatables" unique_id=1527371527]
@@ -1078,6 +1086,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Curtain Blue 1" type="SpotLight3D" parent="Map/Animatables" unique_id=723970858]
@@ -1095,6 +1104,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Speaker Red 2" type="SpotLight3D" parent="Map/Animatables" unique_id=1923921572]
@@ -1112,6 +1122,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Curtain Blue 2" type="SpotLight3D" parent="Map/Animatables" unique_id=152357043]
@@ -1129,6 +1140,7 @@ spot_angle_attenuation = 0.329877
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 50.0
 lerp_speed = 15.0
 
 [node name="Spot Sun" type="SpotLight3D" parent="Map/Animatables" unique_id=1202014103]
@@ -1146,4 +1158,5 @@ spot_angle_attenuation = 0.044194303
 script = ExtResource("21_6uox6")
 canChangeColor = true
 canChangeSize = true
+energyMultiplier = 100.0
 lerp_speed = 15.0

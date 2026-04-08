@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Give LIFE"
+config/name="Faz-Anim 2"
 config/description="The successor to the RR-Engine!"
 config/version="0.15"
 run/main_scene="uid://bm4wgtmgyci17"
@@ -34,6 +34,10 @@ enabled=PackedStringArray("res://addons/wigglebone/plugin.cfg")
 [filesystem]
 
 import/blender/enabled=false
+
+[global_group]
+
+Player=""
 
 [input]
 

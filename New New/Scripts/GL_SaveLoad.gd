@@ -70,6 +70,77 @@ func copy_file_to_folder(file_path: String, save_dir: String) -> void:
 	if err != OK:
 		push_error("Could not copy file from: " + file_path + " to: " + save_dir)
 
+func export_save_as_zip(save_dir: String) -> void:
+	var data = load_savefile(save_dir)
+	if data.is_empty():
+		push_error("Cannot export: Save data is invalid or missing.")
+		return
+	
+	var default_name = data.get("title", "ExportedSave").validate_filename() + ".zip"
+	
+	var file_dialog := FileDialog.new()
+	file_dialog.access = FileDialog.ACCESS_FILESYSTEM
+	file_dialog.filters = ["*.zip ; ZIP Archive"]
+	file_dialog.title = "Export Save as ZIP"
+	file_dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	file_dialog.current_file = default_name
+	
+	file_dialog.file_selected.connect(func(dest_path: String):
+		file_dialog.queue_free()
+		_pack_folder_to_zip(save_dir, dest_path)
+	)
+	file_dialog.canceled.connect(func(): file_dialog.queue_free())
+	add_child(file_dialog)
+	file_dialog.popup_centered_ratio()
+
+func _pack_folder_to_zip(source_dir: String, dest_zip: String) -> void:
+	var writer = ZIPPacker.new()
+	var err = writer.open(dest_zip)
+	if err != OK:
+		push_error("Failed to create ZIP at: " + dest_zip)
+		return
+		
+	var dir = DirAccess.open(source_dir)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if not dir.current_is_dir():
+				var file_path = source_dir + "/" + file_name
+				var content = FileAccess.get_file_as_bytes(file_path)
+				writer.start_file(file_name)
+				writer.write_file(content)
+				writer.close_file()
+			file_name = dir.get_next()
+		writer.close()
+		print("Export successful: " + dest_zip)
+
+func import_and_load_zip(zip_path: String) -> Dictionary:
+	var reader = ZIPReader.new()
+	var err = reader.open(zip_path)
+	if err != OK:
+		push_error("Failed to open ZIP: " + zip_path)
+		return {}
+		
+	var rng = RandomNumberGenerator.new()
+	rng.seed = Time.get_ticks_msec()
+	var new_save_dir = "user://My Precious Save Files/" + str(rng.randi())
+	DirAccess.make_dir_recursive_absolute(new_save_dir)
+	
+	var files = reader.get_files()
+	for f in files:
+		var content = reader.read_file(f)
+		var write_path = new_save_dir + "/" + f.get_file()
+		var file = FileAccess.open(write_path, FileAccess.WRITE)
+		if file:
+			file.store_buffer(content)
+			file.close()
+			
+	reader.close()
+	print("Imported ZIP to: " + new_save_dir)
+	
+	return load_savefile(new_save_dir)
+
 func _decompress_channels(data: Dictionary) -> void:
 	if not data.has("channels"):
 		return

@@ -209,15 +209,19 @@ func _get_channel_slots() -> Array:
 			slots.append(child)
 	return slots
 
-# Reconfigures existing channel node slots to display the correct channel data
-# based on scrolledIndex. No nodes are created or destroyed.
 func _reassign_channel_slots() -> void:
 	if master.currentlyLoadedPath == "":
 		return
+		
+	await get_tree().process_frame
+	
 	var sorted_keys = _get_sorted_keys()
 	var slots = _get_channel_slots()
+	
 	for i in range(slots.size()):
 		var data_index = scrolledIndex + i
+		if i >= slots.size(): break 
+		
 		var slot : GL_Channel = slots[i]
 		if data_index < sorted_keys.size():
 			var key = sorted_keys[data_index]
@@ -226,12 +230,10 @@ func _reassign_channel_slots() -> void:
 			slot.timeline = self
 			slot.visible = true
 			slot.start()
+			slot.renderBits() 
 		else:
-			# No channel data for this slot, hide it
 			slot.visible = false
-	repaintTimeline()
 
-# Only repaints bits on visible channels, no structural changes
 func repaintTimeline() -> void:
 	for child in timelineBox.get_children():
 		if child.name != "CreateChannel" and child.visible:
@@ -260,8 +262,6 @@ func create_channel(type: int) -> void:
 	else:
 		print("Creating Channel Failed")
 
-# Only called when a file is loaded/unloaded or a channel is added/removed.
-# Destroys and recreates exactly MAX_VISIBLE_CHANNELS slot nodes, then assigns data.
 func reload_timeline() -> void:
 	if master.currentlyLoadedPath == "":
 		createChannel.visible = false
@@ -278,18 +278,14 @@ func reload_timeline() -> void:
 
 	var total = master.currentlyLoadedFile["channels"].size()
 
-	# Clamp scroll so it never goes out of range after a reload
 	if scrolledIndex >= total:
 		scrolledIndex = max(0, total - 1)
 
-	# Instantiate only as many slots as needed (up to MAX_VISIBLE_CHANNELS)
 	var slots_needed = min(MAX_VISIBLE_CHANNELS, total)
 	for i in range(slots_needed):
 		var channelBox : GL_Channel = channelPrefab.instantiate()
 		timelineBox.add_child(channelBox)
 	
-	# Always keep CreateChannel at the bottom
 	timelineBox.move_child(timelineBox.get_node("CreateChannel"), timelineBox.get_child_count() - 1)
 
-	# Assign the correct data to each slot
-	_reassign_channel_slots()
+	call_deferred("_reassign_channel_slots")

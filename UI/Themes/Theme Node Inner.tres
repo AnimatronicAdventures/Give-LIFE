@@ -1,15 +1,21 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://csctk60s8jar3"]
+[gd_resource type="Theme" format=3 uid="uid://csctk60s8jar3"]
 
 [ext_resource type="FontFile" uid="uid://d1fox3cy2qhx" path="res://UI/Fonts/lectus.otf" id="1_w4j5g"]
 [ext_resource type="StyleBox" uid="uid://crsm0yvhb6rv1" path="res://UI/Themes/Box.tres" id="2_sqsqq"]
 [ext_resource type="StyleBox" uid="uid://8vn4doi14jgv" path="res://UI/Themes/BoxInner.tres" id="3_2i8ac"]
 
 [resource]
+Button/font_sizes/font_size = 12
+Button/fonts/font = ExtResource("1_w4j5g")
 Label/font_sizes/font_size = 12
 Label/fonts/font = ExtResource("1_w4j5g")
+LineEdit/font_sizes/font_size = 12
+LineEdit/fonts/font = ExtResource("1_w4j5g")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 Panel/styles/panel = ExtResource("2_sqsqq")
 PanelContainer/styles/panel = ExtResource("3_2i8ac")
+TabContainer/font_sizes/font_size = 12
+TabContainer/fonts/font = ExtResource("1_w4j5g")

@@ -29,6 +29,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="title" type="LineEdit" parent="ChannelTimeline" unique_id=56768950]
 layout_mode = 2
@@ -39,11 +40,9 @@ expand_to_text_length = true
 
 [node name="BitHolder" type="Control" parent="ChannelTimeline" unique_id=1733267290]
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 1
 
 [connection signal="mouse_entered" from="Bind" to="." method="binder_entered"]
 [connection signal="mouse_exited" from="Bind" to="." method="binder_exited"]
-[connection signal="mouse_entered" from="ChannelTimeline" to="." method="timelineEntered"]
-[connection signal="mouse_exited" from="ChannelTimeline" to="." method="timelineExited"]
 [connection signal="focus_exited" from="ChannelTimeline/title" to="." method="_on_title_focus_exited"]
 [connection signal="text_submitted" from="ChannelTimeline/title" to="." method="_on_title_text_submitted"]

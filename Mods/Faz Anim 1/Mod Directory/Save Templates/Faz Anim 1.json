@@ -1,0 +1,750 @@
+{
+	"channels": {
+		"FA_BONNIE|Arm Bend Left": {
+			"data": "",
+			"index": 44.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Arm Twist Left": {
+			"data": "",
+			"index": 42.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Arm Twist Right": {
+			"data": "",
+			"index": 41.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Body Lean": {
+			"data": "",
+			"index": 52.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Body Turn Left": {
+			"data": "",
+			"index": 51.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Body Turn Right": {
+			"data": "",
+			"index": 50.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Dual Pressure": {
+			"data": "",
+			"index": 130.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Ear Left": {
+			"data": "",
+			"index": 43.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Ear Right": {
+			"data": "",
+			"index": 40.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Eyelids Left": {
+			"data": "",
+			"index": 36.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Eyelids Right": {
+			"data": "",
+			"index": 35.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Eyes Left": {
+			"data": "",
+			"index": 34.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Eyes Right": {
+			"data": "",
+			"index": 33.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Head Turn Left": {
+			"data": "",
+			"index": 49.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Head Turn Right": {
+			"data": "",
+			"index": 48.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Head Up": {
+			"data": "",
+			"index": 32.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Jaw": {
+			"data": "",
+			"index": 31.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Shoulder Twist Left": {
+			"data": "",
+			"index": 38.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Shoulder Twist Right": {
+			"data": "",
+			"index": 37.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Shoulder Up Right": {
+			"data": "",
+			"index": 39.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Wrist Out Right": {
+			"data": "",
+			"index": 47.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Wrist Twist Left": {
+			"data": "",
+			"index": 46.0,
+			"type": "bool"
+		},
+		"FA_BONNIE|Wrist Twist Right": {
+			"data": "",
+			"index": 45.0,
+			"type": "bool"
+		},
+		"FA_BULBS_1|intensity1": {
+			"data": "",
+			"index": 109.0,
+			"type": "bool"
+		},
+		"FA_BULBS_2|intensity": {
+			"data": "",
+			"index": 110.0,
+			"type": "bool"
+		},
+		"FA_BULBS_3|intensity": {
+			"data": "",
+			"index": 111.0,
+			"type": "bool"
+		},
+		"FA_BULBS_4|intensity": {
+			"data": "",
+			"index": 112.0,
+			"type": "bool"
+		},
+		"FA_BULBS_5|intensity": {
+			"data": "",
+			"index": 113.0,
+			"type": "bool"
+		},
+		"FA_BULBS_6|intensity": {
+			"data": "",
+			"index": 114.0,
+			"type": "bool"
+		},
+		"FA_BULBS_7|intensity": {
+			"data": "",
+			"index": 115.0,
+			"type": "bool"
+		},
+		"FA_CHANDELIER_ALT|intensity": {
+			"data": "",
+			"index": 135.0,
+			"type": "bool"
+		},
+		"FA_CHANDELIER_MAIN|intensity": {
+			"data": "",
+			"index": 134.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Arm Twist Left": {
+			"data": "",
+			"index": 25.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Arm Twist Right": {
+			"data": "",
+			"index": 61.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Body Lean": {
+			"data": "",
+			"index": 53.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Body Turn Left": {
+			"data": "",
+			"index": 55.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Body Turn Right": {
+			"data": "",
+			"index": 54.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Cupcake Eyelid Left": {
+			"data": "",
+			"index": 68.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Cupcake Eyelid Right": {
+			"data": "",
+			"index": 67.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Cupcake Eyes Left": {
+			"data": "",
+			"index": 66.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Cupcake Eyes Right": {
+			"data": "",
+			"index": 65.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Dual Pressure": {
+			"data": "",
+			"index": 131.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Eyelid Left": {
+			"data": "",
+			"index": 27.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Eyelid Right": {
+			"data": "",
+			"index": 26.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Eyes Left": {
+			"data": "",
+			"index": 30.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Eyes Right": {
+			"data": "",
+			"index": 29.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Forearm Bend Right": {
+			"data": "",
+			"index": 62.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Head Turn Left": {
+			"data": "",
+			"index": 57.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Head Turn Right": {
+			"data": "",
+			"index": 56.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Head Up": {
+			"data": "",
+			"index": 58.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Jaw": {
+			"data": "",
+			"index": 28.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Shoulder Twist Left": {
+			"data": "",
+			"index": 24.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Shoulder Twist Right": {
+			"data": "",
+			"index": 59.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Shoulder Up Right": {
+			"data": "",
+			"index": 60.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Wrist Bend Right": {
+			"data": "",
+			"index": 64.0,
+			"type": "bool"
+		},
+		"FA_CHICA|Wrist Twist Right": {
+			"data": "",
+			"index": 63.0,
+			"type": "bool"
+		},
+		"FA_CLR_BLUE|intensity": {
+			"data": "",
+			"index": 121.0,
+			"type": "bool"
+		},
+		"FA_CLR_BONNIE|intensity": {
+			"data": "",
+			"index": 106.0,
+			"type": "bool"
+		},
+		"FA_CLR_CHICA|intensity": {
+			"data": "",
+			"index": 107.0,
+			"type": "bool"
+		},
+		"FA_CLR_CURTAIN|intensity": {
+			"data": "",
+			"index": 124.0,
+			"type": "bool"
+		},
+		"FA_CLR_FREDDY|intensity": {
+			"data": "",
+			"index": 108.0,
+			"type": "bool"
+		},
+		"FA_CLR_GREEN|intensity": {
+			"data": "",
+			"index": 120.0,
+			"type": "bool"
+		},
+		"FA_CLR_RED|intensity": {
+			"data": "",
+			"index": 118.0,
+			"type": "bool"
+		},
+		"FA_CLR_SPEAKER|intensity": {
+			"data": "",
+			"index": 123.0,
+			"type": "bool"
+		},
+		"FA_CLR_YELLOW|intensity": {
+			"data": "",
+			"index": 119.0,
+			"type": "bool"
+		},
+		"FA_CURTAINS|Main Close": {
+			"data": "",
+			"index": 79.0,
+			"type": "bool"
+		},
+		"FA_CURTAINS|Main Open": {
+			"data": "",
+			"index": 78.0,
+			"type": "bool"
+		},
+		"FA_CURTAINS|Side Close": {
+			"data": "",
+			"index": 81.0,
+			"type": "bool"
+		},
+		"FA_CURTAINS|Side Open": {
+			"data": "",
+			"index": 80.0,
+			"type": "bool"
+		},
+		"FA_DECK_DAY|intensity": {
+			"data": "",
+			"index": 136.0,
+			"type": "bool"
+		},
+		"FA_DECK_FLASH|intensity": {
+			"data": "",
+			"index": 139.0,
+			"type": "bool"
+		},
+		"FA_DECK_NIGHT|intensity": {
+			"data": "",
+			"index": 138.0,
+			"type": "bool"
+		},
+		"FA_DECK_SUNSET|intensity": {
+			"data": "",
+			"index": 137.0,
+			"type": "bool"
+		},
+		"FA_FIBER_OPTIC|intensity": {
+			"data": "",
+			"index": 125.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Arm Twist Left": {
+			"data": "",
+			"index": 77.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Arm Twist Right": {
+			"data": "",
+			"index": 70.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Arm Up Left": {
+			"data": "",
+			"index": 89.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Arm Up Right": {
+			"data": "",
+			"index": 88.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Body Lean": {
+			"data": "",
+			"index": 102.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Body Turn Left": {
+			"data": "",
+			"index": 101.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Body Turn Right": {
+			"data": "",
+			"index": 100.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Dual Pressure": {
+			"data": "",
+			"index": 132.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Eyelid Right": {
+			"data": "",
+			"index": 74.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Eyepatch": {
+			"data": "",
+			"index": 75.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Eyes Left": {
+			"data": "",
+			"index": 73.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Eyes Right": {
+			"data": "",
+			"index": 72.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Foot Tap Left": {
+			"data": "",
+			"index": 104.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Foot Tap Right": {
+			"data": "",
+			"index": 103.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Forearm Bend Left": {
+			"data": "",
+			"index": 93.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Forearm Bend Right": {
+			"data": "",
+			"index": 92.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Forearm Twist Left": {
+			"data": "",
+			"index": 91.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Forearm Twist Right": {
+			"data": "",
+			"index": 90.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Head Turn Left": {
+			"data": "",
+			"index": 99.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Head Turn Right": {
+			"data": "",
+			"index": 98.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Head Up": {
+			"data": "",
+			"index": 71.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Jaw": {
+			"data": "",
+			"index": 76.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Wrist Bend Left": {
+			"data": "",
+			"index": 97.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Wrist Bend Right": {
+			"data": "",
+			"index": 96.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Wrist Twist Left": {
+			"data": "",
+			"index": 95.0,
+			"type": "bool"
+		},
+		"FA_FOXY|Wrist Twist Right": {
+			"data": "",
+			"index": 94.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Arm Bend Left": {
+			"data": "",
+			"index": 13.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Arm Bend Right": {
+			"data": "",
+			"index": 12.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Arm Twist Left": {
+			"data": "",
+			"index": 11.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Arm Twist Right": {
+			"data": "",
+			"index": 10.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Body Lean": {
+			"data": "",
+			"index": 22.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Body Turn Left": {
+			"data": "",
+			"index": 21.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Body Turn Right": {
+			"data": "",
+			"index": 20.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Dual Pressure": {
+			"data": "",
+			"index": 129.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Eyelids Left": {
+			"data": "",
+			"index": 5.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Eyelids Right": {
+			"data": "",
+			"index": 4.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Eyes Left": {
+			"data": "",
+			"index": 3.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Eyes Right": {
+			"data": "",
+			"index": 2.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Foot Tap": {
+			"data": "",
+			"index": 23.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Head Turn Left": {
+			"data": "",
+			"index": 19.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Head Turn Right": {
+			"data": "",
+			"index": 18.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Head Up": {
+			"data": "",
+			"index": 1.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Jaw": {
+			"data": "",
+			"index": 0.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Shoulder Twist Left": {
+			"data": "",
+			"index": 7.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Shoulder Twist Right": {
+			"data": "",
+			"index": 6.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Shoulder Up Left": {
+			"data": "",
+			"index": 9.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Shoulder Up Right": {
+			"data": "",
+			"index": 8.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Wrist Out Left": {
+			"data": "",
+			"index": 17.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Wrist Out Right": {
+			"data": "",
+			"index": 16.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Wrist Twist Left": {
+			"data": "",
+			"index": 15.0,
+			"type": "bool"
+		},
+		"FA_FREDDY|Wrist Twist Right": {
+			"data": "",
+			"index": 14.0,
+			"type": "bool"
+		},
+		"FA_MOOD_MAIN|intensity": {
+			"data": "",
+			"index": 127.0,
+			"type": "bool"
+		},
+		"FA_MOOD_SIDE|intensity": {
+			"data": "",
+			"index": 128.0,
+			"type": "bool"
+		},
+		"FA_MOVIE_SNACKS|intensity": {
+			"data": "",
+			"index": 148.0,
+			"type": "bool"
+		},
+		"FA_MOVIE_SPOT|intensity": {
+			"data": "",
+			"index": 146.0,
+			"type": "bool"
+		},
+		"FA_MOVIE_UPPER|intensity": {
+			"data": "",
+			"index": 147.0,
+			"type": "bool"
+		},
+		"FA_PARROT|Arms": {
+			"data": "",
+			"index": 85.0,
+			"type": "bool"
+		},
+		"FA_PARROT|Body Lean Back": {
+			"data": "",
+			"index": 84.0,
+			"type": "bool"
+		},
+		"FA_PARROT|Body Lean Forward": {
+			"data": "",
+			"index": 83.0,
+			"type": "bool"
+		},
+		"FA_PARROT|Cage": {
+			"data": "",
+			"index": 82.0,
+			"type": "bool"
+		},
+		"FA_PARROT|Head Tip Back": {
+			"data": "",
+			"index": 87.0,
+			"type": "bool"
+		},
+		"FA_PARROT|Head Tip Forward": {
+			"data": "",
+			"index": 86.0,
+			"type": "bool"
+		},
+		"FA_PARROT|Jaw": {
+			"data": "",
+			"index": 69.0,
+			"type": "bool"
+		},
+		"FA_SPOT_BIRD|intensity": {
+			"data": "",
+			"index": 140.0,
+			"type": "bool"
+		},
+		"FA_SPOT_BLUE|intensity": {
+			"data": "",
+			"index": 143.0,
+			"type": "bool"
+		},
+		"FA_SPOT_BONNIE|intensity": {
+			"data": "",
+			"index": 116.0,
+			"type": "bool"
+		},
+		"FA_SPOT_CHICA|intensity": {
+			"data": "",
+			"index": 117.0,
+			"type": "bool"
+		},
+		"FA_SPOT_FOXY|Upper": {
+			"data": "",
+			"index": 133.0,
+			"type": "bool"
+		},
+		"FA_SPOT_FOXY|intensity": {
+			"data": "",
+			"index": 126.0,
+			"type": "bool"
+		},
+		"FA_SPOT_FREDDY|intensity": {
+			"data": "",
+			"index": 105.0,
+			"type": "bool"
+		},
+		"FA_SPOT_RED|intensity": {
+			"data": "",
+			"index": 141.0,
+			"type": "bool"
+		},
+		"FA_SPOT_SUN|intensity": {
+			"data": "",
+			"index": 122.0,
+			"type": "bool"
+		},
+		"FA_SPOT_YELLOW|intensity": {
+			"data": "",
+			"index": 142.0,
+			"type": "bool"
+		},
+		"FA_TVS_MAIN|off": {
+			"data": "",
+			"index": 144.0,
+			"type": "bool"
+		},
+		"FA_TVS_SIDE|off": {
+			"data": "",
+			"index": 145.0,
+			"type": "bool"
+		}
+	},
+	"template": "Faz-Anim 1"
+}
