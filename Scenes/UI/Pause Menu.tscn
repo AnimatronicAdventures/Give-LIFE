@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_ory21"]
 [ext_resource type="Script" uid="uid://d0xp5idbh7y7v" path="res://Scripts/Pause_Menu.gd" id="2_q5xte"]
-[ext_resource type="Texture2D" uid="uid://dwgnmfn6864ro" path="res://UI/thelogogreen.png" id="3_2glbi"]
+[ext_resource type="Texture2D" uid="uid://cggqhltds7t7" path="res://Mods/Faz Anim 2/Custom Assets/UI/NewLogo 1k.png" id="3_mq5vs"]
 [ext_resource type="Script" uid="uid://b4aa4vacbh1ln" path="res://Scripts/Sound UI/SoundUI.gd" id="5_8r7np"]
 [ext_resource type="Theme" uid="uid://csctk60s8jar3" path="res://UI/Themes/Theme Node Inner.tres" id="5_q5xte"]
 [ext_resource type="AudioStream" uid="uid://cron3phbvrasi" path="res://Sounds/Tick2.wav" id="6_571ku"]
@@ -62,9 +62,9 @@ layout_mode = 2
 alignment = 1
 
 [node name="Logo" type="TextureRect" parent="MarginContainer/PanelContainer/Title Screen" unique_id=1764196566]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
-texture = ExtResource("3_2glbi")
+texture = ExtResource("3_mq5vs")
 expand_mode = 1
 stretch_mode = 5
 
