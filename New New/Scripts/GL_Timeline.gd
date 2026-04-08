@@ -1,4 +1,4 @@
-extends Node
+extends Control
 class_name GL_Timeline
 @onready var master = $"../../Master"
 @onready var createChannel : OptionButton = $MarginContainer/TimelineBox/CreateChannel
@@ -80,21 +80,24 @@ func togglePlayback():
 func _input(event: InputEvent) -> void:
 	if master.currentlyLoadedPath == "":
 		return
-	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			if event.ctrl_pressed:
-				zoom(false)
-			elif event.shift_pressed:
-				pan(true)
-			else:
-				scroll(false)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			if event.ctrl_pressed:
-				zoom(true)
-			elif event.shift_pressed:
-				pan(false)
-			else:
-				scroll(true)
+	if is_visible_in_tree():
+		if event is InputEventMouseButton and event.pressed:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				if event.ctrl_pressed:
+					zoom(false)
+				elif event.shift_pressed:
+					pan(true)
+				else:
+					scroll(false)
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				if event.ctrl_pressed:
+					zoom(true)
+				elif event.shift_pressed:
+					pan(false)
+				else:
+					scroll(true)
+	if event.is_action_pressed("Toggle Play"):
+		togglePlayback()
 
 	if event is InputEventKey:
 		for key in master.currentlyLoadedFile["channels"]:

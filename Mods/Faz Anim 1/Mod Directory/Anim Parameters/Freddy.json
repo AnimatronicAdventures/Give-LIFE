@@ -61,26 +61,26 @@
   },
   "FA_FREDDY|Arm Twist Right": {
 	"animation": "Armature|FNAFForearmTwist",
-	"in_speed": 3.0,
-	"out_speed": 2.5,
+	"in_speed": 2.0,
+	"out_speed": 1.5,
 	"type": "standard"
   },
   "FA_FREDDY|Arm Twist Left": {
 	"animation": "Armature|FNAFForearmTwistL",
-	"in_speed": 3.0,
-	"out_speed": 2.5,
+	"in_speed": 2.0,
+	"out_speed": 1.5,
 	"type": "standard"
   },
   "FA_FREDDY|Arm Bend Right": {
 	"animation": "Armature|FNAFForearmBendR",
-	"in_speed": 3.0,
-	"out_speed": 4.0,
+	"in_speed": 1.0,
+	"out_speed": 2.0,
 	"type": "standard"
   },
   "FA_FREDDY|Arm Bend Left": {
 	"animation": "Armature|FNAFForearmBendL",
-	"in_speed": 3.0,
-	"out_speed": 4.0,
+	"in_speed": 1.0,
+	"out_speed": 2.0,
 	"type": "standard"
   },
   "FA_FREDDY|Wrist Twist Right": {
