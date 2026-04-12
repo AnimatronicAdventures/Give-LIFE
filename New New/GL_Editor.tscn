@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://da4kwr34io6fy" path="res://New New/Scripts/GL_EditorCam.gd" id="6_rjqd4"]
 
 [node name="GlEditor" type="Control" unique_id=270496900]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -201,7 +202,7 @@ script = ExtResource("6_rjqd4")
 
 [node name="SubViewport" type="SubViewport" parent="Full Editor/Editor/Viewer" unique_id=1017673735]
 handle_input_locally = false
-size = Vector2i(958, 516)
+size = Vector2i(958, 519)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Full Editor/Editor/Viewer/SubViewport" unique_id=439023362]

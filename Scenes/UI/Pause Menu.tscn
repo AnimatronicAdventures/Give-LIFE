@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_ory21"]
 [ext_resource type="Script" uid="uid://d0xp5idbh7y7v" path="res://Scripts/Pause_Menu.gd" id="2_q5xte"]
 [ext_resource type="Texture2D" uid="uid://cggqhltds7t7" path="res://Mods/Faz Anim 2/Custom Assets/UI/NewLogo 1k.png" id="3_mq5vs"]
+[ext_resource type="Shader" uid="uid://qbdqxi2mqiwq" path="res://Shaders/GUI.gdshader" id="3_xrto2"]
 [ext_resource type="Script" uid="uid://b4aa4vacbh1ln" path="res://Scripts/Sound UI/SoundUI.gd" id="5_8r7np"]
 [ext_resource type="AudioStream" uid="uid://cron3phbvrasi" path="res://Sounds/Tick2.wav" id="6_571ku"]
 [ext_resource type="AudioStream" uid="uid://cnu056nqhchk1" path="res://Sounds/Thack.wav" id="7_mu3iq"]
@@ -21,6 +22,20 @@
 [ext_resource type="StyleBox" uid="uid://crsm0yvhb6rv1" path="res://UI/Themes/Main.tres" id="15_o2xf1"]
 [ext_resource type="StyleBox" uid="uid://8vn4doi14jgv" path="res://UI/Themes/Button.tres" id="16_xrto2"]
 [ext_resource type="FontFile" uid="uid://5wbjikluy4eo" path="res://UI/Fonts/3270-Regular.otf" id="17_l5do0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5do0"]
+shader = ExtResource("3_xrto2")
+shader_parameter/SCANLINE_COUNT = 56.4710022073725
+shader_parameter/BAR_MIN = 0.1430000067925
+shader_parameter/BAR_MAX = 2.0650000980875
+shader_parameter/NOISE_SCALE_X = 3.0460001414251203
+shader_parameter/NOISE_SCALE_Y = 10.97600051810012
+shader_parameter/SCROLL_SPEED = 0.0450000021375
+shader_parameter/DRIFT_SPEED = 0.0230000010925
+shader_parameter/NOISE_CONTRAST = 1.9480000687799999
+shader_parameter/NOISE_DENSITY = 0.0
+shader_parameter/COLOR_FG = Color(0.93, 0.95, 0, 1)
+shader_parameter/COLOR_BG = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_6gw5s"]
 default_font = ExtResource("17_l5do0")
@@ -51,6 +66,7 @@ Panel/styles/panel = SubResource("StyleBoxFlat_mwy0e")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_mwy0e")
 
 [node name="PauseMenu" type="Control" unique_id=22474638 node_paths=PackedStringArray("fpsButton")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,6 +101,7 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1827697843]
+material = SubResource("ShaderMaterial_l5do0")
 layout_mode = 2
 
 [node name="Version Number" type="Label" parent="MarginContainer/PanelContainer" unique_id=627527707]
