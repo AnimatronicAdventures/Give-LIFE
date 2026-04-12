@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://pvrp1i0n4eqx"]
 
 [ext_resource type="Script" uid="uid://123cosa0dlrp" path="res://New New/Scripts/GL_Master.gd" id="1_4kpso"]
-[ext_resource type="Theme" uid="uid://csctk60s8jar3" path="res://UI/Themes/Theme Node Inner.tres" id="1_j1env"]
+[ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_j1env"]
 [ext_resource type="Script" uid="uid://cwcncmd4ee1xf" path="res://New New/Scripts/GL_ImportSaveTemplates.gd" id="1_mtjvt"]
 [ext_resource type="Script" uid="uid://cfp3tpowbcpot" path="res://New New/Scripts/GL_SaveLoad.gd" id="2_2bvfm"]
 [ext_resource type="Script" uid="uid://cv0ko0w0oijq4" path="res://New New/Scripts/GL_LoadTapes.gd" id="2_7jq2w"]
@@ -90,21 +90,25 @@ layout_mode = 2
 size_flags_horizontal = 3
 current_tab = 1
 
-[node name="Settings" type="PanelContainer" parent="Full Editor/Editor/Modifiers" unique_id=1426267622]
+[node name="Settings" type="MarginContainer" parent="Full Editor/Editor/Modifiers" unique_id=2042416531]
 visible = false
 self_modulate = Color(1, 1, 1, 0.5019608)
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="Full Editor/Editor/Modifiers/Settings" unique_id=473937999]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="Control" parent="Full Editor/Editor/Modifiers/Settings" unique_id=244532628]
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer" unique_id=220569561]
-layout_mode = 2
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 918.0
+offset_bottom = 444.0
 
 [node name="Title" type="HBoxContainer" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer" unique_id=1702252599]
 layout_mode = 2
@@ -139,7 +143,7 @@ text = "Created: "
 layout_mode = 2
 text = "???"
 
-[node name="Save & Quit" type="PanelContainer" parent="Full Editor/Editor/Modifiers" unique_id=450722086]
+[node name="Save & Quit" type="MarginContainer" parent="Full Editor/Editor/Modifiers" unique_id=525679963]
 self_modulate = Color(1, 1, 1, 0.5019608)
 layout_mode = 2
 metadata/_tab_index = 1
@@ -170,7 +174,7 @@ text = "Export File to Share"
 layout_mode = 2
 text = "Delete ( Hold )"
 
-[node name="Media" type="PanelContainer" parent="Full Editor/Editor/Modifiers" unique_id=284313337]
+[node name="Media" type="MarginContainer" parent="Full Editor/Editor/Modifiers" unique_id=634770456]
 visible = false
 self_modulate = Color(1, 1, 1, 0.5019608)
 layout_mode = 2
@@ -197,7 +201,7 @@ script = ExtResource("6_rjqd4")
 
 [node name="SubViewport" type="SubViewport" parent="Full Editor/Editor/Viewer" unique_id=1017673735]
 handle_input_locally = false
-size = Vector2i(574, 308)
+size = Vector2i(958, 516)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Full Editor/Editor/Viewer/SubViewport" unique_id=439023362]

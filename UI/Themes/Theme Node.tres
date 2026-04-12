@@ -1,14 +1,43 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b3wjoiiv6sq22"]
+[gd_resource type="Theme" format=3 uid="uid://b3wjoiiv6sq22"]
 
-[ext_resource type="FontFile" uid="uid://d1fox3cy2qhx" path="res://UI/Fonts/lectus.otf" id="1_crk4k"]
-[ext_resource type="StyleBox" uid="uid://crsm0yvhb6rv1" path="res://UI/Themes/Box.tres" id="1_ne1i0"]
+[ext_resource type="StyleBox" uid="uid://8vn4doi14jgv" path="res://UI/Themes/Button.tres" id="1_dllc3"]
+[ext_resource type="FontFile" uid="uid://5wbjikluy4eo" path="res://UI/Fonts/3270-Regular.otf" id="2_b4qbd"]
+[ext_resource type="StyleBox" uid="uid://bmfcgubvuielb" path="res://UI/Themes/Text.tres" id="2_fgr1g"]
+[ext_resource type="StyleBox" uid="uid://cokku1o1gddg0" path="res://UI/Themes/Button Hover.tres" id="2_wrwtm"]
+[ext_resource type="StyleBox" uid="uid://crsm0yvhb6rv1" path="res://UI/Themes/Main.tres" id="3_eowlx"]
+[ext_resource type="StyleBox" uid="uid://dc8kkag77ptu2" path="res://UI/Themes/Sub.tres" id="4_eowlx"]
+[ext_resource type="StyleBox" uid="uid://b5dkye08fay43" path="res://UI/Themes/Tabs.tres" id="5_cyw2r"]
+[ext_resource type="StyleBox" uid="uid://dg3qbdbv84aih" path="res://UI/Themes/Tabs Deselected.tres" id="6_cyw2r"]
+[ext_resource type="StyleBox" uid="uid://bta5qvpnhlsrt" path="res://UI/Themes/Tabs Background.tres" id="7_vo8ru"]
 
 [resource]
-Label/font_sizes/font_size = 12
-Label/fonts/font = ExtResource("1_crk4k")
+default_font = ExtResource("2_b4qbd")
+default_font_size = 20
+Button/colors/font_color = Color(1, 0.99607843, 0.83137256, 1)
+Button/colors/font_disabled_color = Color(0.44313726, 0.2509804, 0, 1)
+Button/colors/font_focus_color = Color(0.44313726, 0.2509804, 0, 1)
+Button/colors/font_hover_color = Color(0.44313726, 0.2509804, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0.44313726, 0.2509804, 0, 1)
+Button/colors/font_pressed_color = Color(0.44313726, 0.2509804, 0, 1)
+Button/styles/disabled = ExtResource("6_cyw2r")
+Button/styles/hover = ExtResource("2_wrwtm")
+Button/styles/hover_pressed = ExtResource("2_wrwtm")
+Button/styles/normal = ExtResource("1_dllc3")
+Button/styles/pressed = ExtResource("2_wrwtm")
+Label/colors/font_color = Color(1, 0.99607843, 0.83137256, 1)
+LineEdit/colors/font_color = Color(0.06734529, 0.21852615, 0.1717411, 1)
+LineEdit/styles/normal = ExtResource("2_fgr1g")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
-Panel/styles/panel = ExtResource("1_ne1i0")
-PanelContainer/styles/panel = ExtResource("1_ne1i0")
+Panel/styles/panel = ExtResource("3_eowlx")
+PanelContainer/styles/panel = ExtResource("3_eowlx")
+TabContainer/styles/panel = ExtResource("4_eowlx")
+TabContainer/styles/tab_disabled = ExtResource("6_cyw2r")
+TabContainer/styles/tab_focus = ExtResource("6_cyw2r")
+TabContainer/styles/tab_hovered = ExtResource("6_cyw2r")
+TabContainer/styles/tab_selected = ExtResource("5_cyw2r")
+TabContainer/styles/tab_unselected = ExtResource("6_cyw2r")
+TabContainer/styles/tabbar_background = ExtResource("7_vo8ru")
+TextEdit/styles/normal = ExtResource("2_fgr1g")

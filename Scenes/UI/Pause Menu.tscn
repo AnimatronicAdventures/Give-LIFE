@@ -4,9 +4,7 @@
 [ext_resource type="Script" uid="uid://d0xp5idbh7y7v" path="res://Scripts/Pause_Menu.gd" id="2_q5xte"]
 [ext_resource type="Texture2D" uid="uid://cggqhltds7t7" path="res://Mods/Faz Anim 2/Custom Assets/UI/NewLogo 1k.png" id="3_mq5vs"]
 [ext_resource type="Script" uid="uid://b4aa4vacbh1ln" path="res://Scripts/Sound UI/SoundUI.gd" id="5_8r7np"]
-[ext_resource type="Theme" uid="uid://csctk60s8jar3" path="res://UI/Themes/Theme Node Inner.tres" id="5_q5xte"]
 [ext_resource type="AudioStream" uid="uid://cron3phbvrasi" path="res://Sounds/Tick2.wav" id="6_571ku"]
-[ext_resource type="Theme" uid="uid://cuyeyw4lvn5op" path="res://UI/Themes/Theme Node NoShadow.tres" id="6_wdhx8"]
 [ext_resource type="AudioStream" uid="uid://cnu056nqhchk1" path="res://Sounds/Thack.wav" id="7_mu3iq"]
 [ext_resource type="Texture2D" uid="uid://cmt4jve3igkmj" path="res://UI/GJ Thumbnail.png" id="7_s4v1y"]
 [ext_resource type="AudioStream" uid="uid://c3238o6m5b4we" path="res://Sounds/Clic.wav" id="8_lcruc"]
@@ -20,6 +18,37 @@
 [ext_resource type="AudioStream" uid="uid://bq5a3xyfofaaa" path="res://Sounds/Tip.wav" id="10_oqrga"]
 [ext_resource type="AudioStream" uid="uid://bbnbaxncick0a" path="res://Sounds/Tck.wav" id="11_oqrga"]
 [ext_resource type="Texture2D" uid="uid://dyiswdb1owyty" path="res://UI/Icons/trash-can-solid-full.svg" id="13_mu3iq"]
+[ext_resource type="StyleBox" uid="uid://crsm0yvhb6rv1" path="res://UI/Themes/Main.tres" id="15_o2xf1"]
+[ext_resource type="StyleBox" uid="uid://8vn4doi14jgv" path="res://UI/Themes/Button.tres" id="16_xrto2"]
+[ext_resource type="FontFile" uid="uid://5wbjikluy4eo" path="res://UI/Fonts/3270-Regular.otf" id="17_l5do0"]
+
+[sub_resource type="Theme" id="Theme_6gw5s"]
+default_font = ExtResource("17_l5do0")
+default_font_size = 20
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+Panel/styles/panel = ExtResource("15_o2xf1")
+PanelContainer/styles/panel = ExtResource("16_xrto2")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwy0e"]
+bg_color = Color(0.36862746, 0.2784314, 0.043137256, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+
+[sub_resource type="Theme" id="Theme_mwji0"]
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+Panel/styles/panel = SubResource("StyleBoxFlat_mwy0e")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_mwy0e")
 
 [node name="PauseMenu" type="Control" unique_id=22474638 node_paths=PackedStringArray("fpsButton")]
 layout_mode = 3
@@ -597,7 +626,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-theme = ExtResource("5_q5xte")
+theme = SubResource("Theme_6gw5s")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer" unique_id=1676992663]
 layout_mode = 2
@@ -660,7 +689,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Mod Desc" type="PanelContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer" unique_id=2145855952]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("6_wdhx8")
+theme = SubResource("Theme_mwji0")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc" unique_id=2086706065]
 layout_mode = 2
@@ -778,7 +807,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-theme = ExtResource("5_q5xte")
+theme = SubResource("Theme_6gw5s")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Map Menu/Mods/PanelContainer" unique_id=744903173]
 layout_mode = 2
