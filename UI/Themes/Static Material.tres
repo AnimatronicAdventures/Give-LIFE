@@ -14,4 +14,4 @@ shader_parameter/DRIFT_SPEED = 0.0230000010925
 shader_parameter/NOISE_CONTRAST = 1.482000046645
 shader_parameter/NOISE_DENSITY = 0.0
 shader_parameter/COLOR_FG = Color(0.98333335, 1, 0, 1)
-shader_parameter/COLOR_BG = Color(0.05882353, 0, 0.14117648, 1)
+shader_parameter/COLOR_BG = Color(0.05882353, 0, 0.14117648, 0)

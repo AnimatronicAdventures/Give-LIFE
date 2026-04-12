@@ -5,6 +5,10 @@
 [ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Physics_Bones.gd" id="3_6cgbm"]
 [ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="4_bqrdj"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h3jdu"]
+radius = 5.5683594
+height = 14.482178
+
 [node name="Bird" type="Node3D" unique_id=233530727 groups=["FA_PARROT"]]
 script = ExtResource("1_h3jdu")
 animParametersFileName = "Bird"
@@ -17,3 +21,9 @@ boneConfigFileName = "Bird"
 [node name="Color Check" type="Node3D" parent="." unique_id=268845291 groups=["FA_PARROT"]]
 script = ExtResource("4_bqrdj")
 check_siblings = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=723801955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1095323835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5497484, 4.225708, 1.1413536)
+shape = SubResource("CapsuleShape3D_h3jdu")

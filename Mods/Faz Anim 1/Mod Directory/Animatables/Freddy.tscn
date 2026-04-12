@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cljlv47hkqh44" path="res://Mods/Faz Anim 1/Custom Assets/Models/Animatronics/Freddy.glb" id="3_v24xh"]
 [ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Physics_Bones.gd" id="4_ih3pj"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ih3pj"]
+height = 38.186676
+radius = 4.594
+
 [node name="Freddy" type="Node3D" unique_id=233530727 groups=["FA_FREDDY"]]
 script = ExtResource("1_v24xh")
 animParametersFileName = "Freddy"
@@ -17,3 +21,9 @@ boneConfigFileName = "Freddy"
 [node name="Color Check" type="Node3D" parent="." unique_id=268845291 groups=["FA_FREDDY"]]
 script = ExtResource("3_baeyu")
 check_siblings = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=184460475]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1893282418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.461838, 0)
+shape = SubResource("CylinderShape3D_ih3pj")

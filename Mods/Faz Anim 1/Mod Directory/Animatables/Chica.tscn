@@ -5,6 +5,13 @@
 [ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Physics_Bones.gd" id="3_5oist"]
 [ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="3_53281"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5oist"]
+height = 1.6492462
+radius = 0.25048828
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5oist"]
+radius = 0.29141408
+
 [node name="Chica" type="Node3D" unique_id=233530727 groups=["FA_CHICA"]]
 script = ExtResource("1_pw3yd")
 animParametersFileName = "Chica"
@@ -17,3 +24,14 @@ boneConfigFileName = "Chica"
 [node name="Color Check" type="Node3D" parent="." unique_id=268845291 groups=["FA_CHICA"]]
 script = ExtResource("3_53281")
 check_siblings = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=641989216]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1594710748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8055649, 0)
+shape = SubResource("CylinderShape3D_5oist")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1682264106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34497532, 1.0220578, 0.18556659)
+shape = SubResource("SphereShape3D_5oist")

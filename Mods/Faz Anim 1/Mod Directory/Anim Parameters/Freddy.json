@@ -60,25 +60,25 @@
 	"type": "standard"
   },
   "FA_FREDDY|Arm Twist Right": {
-	"animation": "Armature|FNAFForearmTwist",
+	"animation": "Armature|FNAFForearmTwis",
 	"in_speed": 2.0,
 	"out_speed": 1.5,
 	"type": "standard"
   },
   "FA_FREDDY|Arm Twist Left": {
-	"animation": "Armature|FNAFForearmTwistL",
+	"animation": "Armature|FNAFForearmTwi",
 	"in_speed": 2.0,
 	"out_speed": 1.5,
 	"type": "standard"
   },
   "FA_FREDDY|Arm Bend Right": {
-	"animation": "Armature|FNAFForearmBendR",
+	"animation": "Armature|FNAFForearmBend_001",
 	"in_speed": 1.0,
 	"out_speed": 2.0,
 	"type": "standard"
   },
   "FA_FREDDY|Arm Bend Left": {
-	"animation": "Armature|FNAFForearmBendL",
+	"animation": "Armature|FNAFForearmBend",
 	"in_speed": 1.0,
 	"out_speed": 2.0,
 	"type": "standard"
@@ -119,13 +119,13 @@
 	"out_speed": 2.0,
 	"type": "standard"
   },
-  "FA_FREDDY|Body Turn Right": {
+  "FA_FREDDY|Body Turn Ri": {
 	"animation": "Armature|FNaFBodyTurnRight",
 	"in_speed": 2.5,
 	"out_speed": 2.5,
 	"type": "standard"
   },
-  "FA_FREDDY|Body Turn Left": {
+  "FA_FREDDY|Body Turn Lef": {
 	"animation": "Armature|FNaFBodyTurnLeft",
 	"in_speed": 2.5,
 	"out_speed": 2.5,

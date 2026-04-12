@@ -298,6 +298,6 @@ environment/ssao/half_size=false
 anti_aliasing/quality/msaa_3d=1
 anti_aliasing/quality/use_debanding=true
 environment/volumetric_fog/volume_size=128
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.05882353, 0, 0.14117648, 1)
 occlusion_culling/use_occlusion_culling=true
 environment/screen_space_reflection/roughness_quality=2

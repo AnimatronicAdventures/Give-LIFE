@@ -23,7 +23,13 @@
 	"out_speed": 7.0,
 	"type": "standard"
   },
-  "FA_FOXY|Eyelid Right": {
+  "FA_FOXY|Eyelid Left": {
+	"animation": "Armature|FNAFEyelidL",
+	"in_speed": 5.0,
+	"out_speed": 10.0,
+	"type": "move_to"
+  },
+  "FA_FOXY|Eyepatch": {
 	"animation": "Armature|FNAFEyelidR",
 	"in_speed": 5.0,
 	"out_speed": 10.0,

@@ -14,7 +14,6 @@ var scaleMode: OptionButton
 var renderscale: Slider
 var renderScaleText: Label
 @export var fpsButton: CheckButton
-@onready var background : Control = $Background
 
 var simulatorButton: Button
 
@@ -402,7 +401,6 @@ func load_map_scene(map_name: String):
 			editorInstance.visible = false
 			update_mouse_mode()
 			update_simulator_button_text()
-			background.modulate.a = 0
 			switchMenu("title")
 			currentSettings["recent_map"] = map_name
 			save_settings()
@@ -417,7 +415,6 @@ func unload_current_map():
 		self.visible = true
 		update_mouse_mode()
 		update_simulator_button_text()
-		background.modulate.a = 1
 
 func _load_user_pcks():
 	# First pass — existing mods
