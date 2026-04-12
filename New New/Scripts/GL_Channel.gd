@@ -22,13 +22,17 @@ func start() -> void:
 	style.bg_color = Color.WHITE
 	channelTimeline.add_theme_stylebox_override("panel", style)
 	channelTimeline.self_modulate = color
+	channelTimeline.self_modulate.a = 0.4
 	updateBindLabel()
 
 func _process(delta: float) -> void:
+	if timeline == null:
+		return
 	var timeline_rect = Rect2(Vector2.ZERO, channelTimeline.size)
 	
 	var mouse_pos = channelTimeline.get_local_mouse_position()
 	var mouse_is_inside = timeline_rect.has_point(mouse_pos)
+
 
 	if mouse_is_inside and !timeline.playing:
 			timeline.setTimeFromTimeline(
@@ -145,7 +149,7 @@ func renderBits() -> void:
 func updateBindLabel() -> void:
 	var bind = timeline.channelBinds.get(id, null)
 	if bind == null:
-		bindLabel.text = "[   ]"
+		bindLabel.text = "[]"
 	else:
 		bindLabel.text = OS.get_keycode_string(bind)
 

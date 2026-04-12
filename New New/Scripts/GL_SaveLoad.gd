@@ -54,6 +54,34 @@ func load_savefile(save_dir: String) -> Dictionary:
 	var data: Dictionary = json.data
 	_decompress_channels(data)
 	return data
+	
+func delete_savefile(save_dir: String) -> bool:
+	if not DirAccess.dir_exists_absolute(save_dir):
+		push_error("Save directory does not exist: " + save_dir)
+		return false
+	
+	var dir = DirAccess.open(save_dir)
+	if not dir:
+		push_error("Could not open save directory: " + save_dir)
+		return false
+	
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if not dir.current_is_dir():
+			var err = dir.remove(file_name)
+			if err != OK:
+				push_error("Could not delete file: " + file_name)
+				return false
+		file_name = dir.get_next()
+	dir.list_dir_end()
+	
+	var err = DirAccess.remove_absolute(save_dir)
+	if err != OK:
+		push_error("Could not delete save directory: " + save_dir)
+		return false
+	
+	return true
 
 func save_to_folder(data: Dictionary, save_dir: String) -> void:
 	var file = FileAccess.open(save_dir + "/data.json", FileAccess.WRITE)

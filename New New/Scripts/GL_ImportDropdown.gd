@@ -1,6 +1,6 @@
 extends MenuButton
-@onready var modifier : GL_Master = $"../../../../../Master"
-@onready var save_load : GL_SaveLoad = $"../../../../../Master/SaveLoad"
+@onready var modifier : GL_Master = $"../../../../../../Master"
+@onready var save_load : GL_SaveLoad = $"../../../../../../Master/SaveLoad"
 
 func _ready() -> void:
 	save_load.xshw_load_bit_charts()

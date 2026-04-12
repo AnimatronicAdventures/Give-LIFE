@@ -3,7 +3,7 @@ class_name GL_ImportSaveTemplates
 
 const TEMPLATES_SUBPATH = "Mod Directory/Save Templates"
 
-@onready var master : GL_Master = $"../../../../../Master"
+@onready var master : GL_Master = $"../../../../../../Master"
 
 var _templates: Dictionary = {}
 
@@ -65,3 +65,7 @@ func _on_item_selected(id: int) -> void:
 		master._create_new_show()
 	elif _templates.has(basename):
 		master._create_new_show_template(_templates[basename])
+
+
+func setAuthor(new_text: String) -> void:
+	pass # Replace with function body.

@@ -1,13 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://7p1y5e2toakm"]
+[gd_scene format=3 uid="uid://7p1y5e2toakm"]
 
-[ext_resource type="Theme" uid="uid://cuyeyw4lvn5op" path="res://UI/Themes/Theme Node NoShadow.tres" id="1_rmmn0"]
-[ext_resource type="Theme" uid="uid://csctk60s8jar3" path="res://UI/Themes/Theme Node Inner.tres" id="2_aop8t"]
+[ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="2_aop8t"]
 [ext_resource type="Texture2D" uid="uid://bumrryxwwf62o" path="res://UI/IconGreen.png" id="3_aiaj2"]
 [ext_resource type="Script" uid="uid://b4aa4vacbh1ln" path="res://Scripts/Sound UI/SoundUI.gd" id="4_eqh7j"]
 [ext_resource type="AudioStream" uid="uid://bevbh0ckbw0o4" path="res://Sounds/Tick.wav" id="5_hcf2h"]
 [ext_resource type="AudioStream" uid="uid://dajwfjwf772x" path="res://Sounds/Donk.wav" id="6_e6w2d"]
 
-[node name="Map Box" type="MarginContainer"]
+[node name="Map Box" type="MarginContainer" unique_id=758855042]
 offset_right = 355.0
 offset_bottom = 65.0
 theme_override_constants/margin_left = 5
@@ -15,20 +14,25 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1734598215]
 custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme = ExtResource("1_rmmn0")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 theme = ExtResource("2_aop8t")
 
-[node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=124200771]
+layout_mode = 2
+
+[node name="PanelContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer" unique_id=172074282]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_aop8t")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer/PanelContainer" unique_id=167880632]
 custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -37,13 +41,13 @@ texture = ExtResource("3_aiaj2")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="PanelContainer/HBoxContainer"]
+[node name="Name" type="Label" parent="PanelContainer/HBoxContainer" unique_id=714143824]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Mod Name"
 clip_text = true
 
-[node name="Button" type="Button" parent="PanelContainer"]
+[node name="Button" type="Button" parent="PanelContainer" unique_id=1009659776]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -57,5 +61,5 @@ press_pitch_multiplier_on = 2.0
 press_pitch_multiplier_off = 2.0
 audio_player_path = NodePath("../../AudioStreamPlayer2D")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=612133060]
 volume_db = 4.0

@@ -33,6 +33,7 @@
 [ext_resource type="StyleBox" uid="uid://crsm0yvhb6rv1" path="res://UI/Themes/Main.tres" id="15_o2xf1"]
 [ext_resource type="StyleBox" uid="uid://8vn4doi14jgv" path="res://UI/Themes/Button.tres" id="16_xrto2"]
 [ext_resource type="FontFile" uid="uid://5wbjikluy4eo" path="res://UI/Fonts/3270-Regular.otf" id="17_l5do0"]
+[ext_resource type="StyleBox" uid="uid://dc8kkag77ptu2" path="res://UI/Themes/Sub.tres" id="28_lijsr"]
 
 [sub_resource type="Theme" id="Theme_6gw5s"]
 default_font = ExtResource("17_l5do0")
@@ -43,24 +44,6 @@ MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 Panel/styles/panel = ExtResource("15_o2xf1")
 PanelContainer/styles/panel = ExtResource("16_xrto2")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwy0e"]
-bg_color = Color(0.36862746, 0.2784314, 0.043137256, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_blend = true
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-
-[sub_resource type="Theme" id="Theme_mwji0"]
-MarginContainer/constants/margin_bottom = 10
-MarginContainer/constants/margin_left = 10
-MarginContainer/constants/margin_right = 10
-MarginContainer/constants/margin_top = 10
-Panel/styles/panel = SubResource("StyleBoxFlat_mwy0e")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_mwy0e")
 
 [node name="PauseMenu" type="Control" unique_id=22474638 node_paths=PackedStringArray("fpsButton")]
 texture_filter = 1
@@ -651,7 +634,6 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-theme = SubResource("Theme_6gw5s")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer" unique_id=1676992663]
 layout_mode = 2
@@ -714,7 +696,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Mod Desc" type="PanelContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer" unique_id=2145855952]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = SubResource("Theme_mwji0")
+theme_override_styles/panel = ExtResource("28_lijsr")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc" unique_id=2086706065]
 layout_mode = 2
@@ -833,6 +815,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme = SubResource("Theme_6gw5s")
+theme_override_styles/panel = ExtResource("15_o2xf1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Map Menu/Mods/PanelContainer" unique_id=744903173]
 layout_mode = 2

@@ -8,10 +8,12 @@
 [ext_resource type="Material" uid="uid://csvd0ihwnb3ov" path="res://UI/Themes/Static Material.tres" id="2_a842l"]
 [ext_resource type="Script" uid="uid://cphs62vbpa8ja" path="res://New New/Scripts/GL_Timeline.gd" id="2_c0c77"]
 [ext_resource type="Script" uid="uid://dvdojljxguwdc" path="res://New New/Scripts/GL_ImportDropdown.gd" id="2_y4xxp"]
+[ext_resource type="StyleBox" uid="uid://8vn4doi14jgv" path="res://UI/Themes/Button.tres" id="3_1mlnq"]
 [ext_resource type="Script" uid="uid://bcv5vgupc8mjt" path="res://New New/Scripts/GL_LastSaved.gd" id="4_jpu5j"]
 [ext_resource type="Script" uid="uid://ckgpu8qo8u8vw" path="res://New New/Scripts/GL_Playback.gd" id="5_4tobp"]
 [ext_resource type="Script" uid="uid://2esvktatiq0x" path="res://New New/Scripts/GL_Media.gd" id="5_mtjvt"]
 [ext_resource type="Script" uid="uid://da4kwr34io6fy" path="res://New New/Scripts/GL_EditorCam.gd" id="6_rjqd4"]
+[ext_resource type="Script" uid="uid://ckgshfwm3gia5" path="res://New New/Scripts/GL_HoldButton.gd" id="7_037lw"]
 
 [node name="GlEditor" type="Control" unique_id=270496900]
 texture_filter = 1
@@ -50,7 +52,11 @@ alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="MenuButton2" type="MenuButton" parent="File Loader/MarginContainer/VBoxContainer/HBoxContainer" unique_id=985709907]
+[node name="PanelContainer" type="PanelContainer" parent="File Loader/MarginContainer/VBoxContainer/HBoxContainer" unique_id=587185754]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_1mlnq")
+
+[node name="MenuButton2" type="MenuButton" parent="File Loader/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=985709907]
 layout_mode = 2
 text = "Create Showtape"
 script = ExtResource("1_mtjvt")
@@ -59,7 +65,11 @@ script = ExtResource("1_mtjvt")
 layout_mode = 2
 text = "Import Showtape"
 
-[node name="MenuButton" type="MenuButton" parent="File Loader/MarginContainer/VBoxContainer/HBoxContainer" unique_id=107956870]
+[node name="PanelContainer2" type="PanelContainer" parent="File Loader/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1972246689]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_1mlnq")
+
+[node name="MenuButton" type="MenuButton" parent="File Loader/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=107956870]
 layout_mode = 2
 text = "Import RR-Engine Showtape"
 script = ExtResource("2_y4xxp")
@@ -91,10 +101,9 @@ size_flags_vertical = 3
 [node name="Modifiers" type="TabContainer" parent="Full Editor/Editor" unique_id=120351013]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 1
+current_tab = 0
 
 [node name="Settings" type="MarginContainer" parent="Full Editor/Editor/Modifiers" unique_id=2042416531]
-visible = false
 self_modulate = Color(1, 1, 1, 0.5019608)
 layout_mode = 2
 theme_override_constants/margin_left = 10
@@ -147,6 +156,7 @@ layout_mode = 2
 text = "???"
 
 [node name="Save & Quit" type="MarginContainer" parent="Full Editor/Editor/Modifiers" unique_id=525679963]
+visible = false
 self_modulate = Color(1, 1, 1, 0.5019608)
 layout_mode = 2
 metadata/_tab_index = 1
@@ -176,6 +186,7 @@ text = "Export File to Share"
 [node name="Button4" type="Button" parent="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer" unique_id=1730162617]
 layout_mode = 2
 text = "Delete ( Hold )"
+script = ExtResource("7_037lw")
 
 [node name="Media" type="MarginContainer" parent="Full Editor/Editor/Modifiers" unique_id=634770456]
 visible = false
@@ -240,6 +251,7 @@ layout_mode = 2
 text = " ▶ "
 
 [node name="Data Timeline" type="PanelContainer" parent="Full Editor" unique_id=149432049]
+self_modulate = Color(1, 1, 1, 0.06666667)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -310,10 +322,14 @@ script = ExtResource("5_4tobp")
 volume_db = 10.0
 
 [connection signal="pressed" from="File Loader/MarginContainer/VBoxContainer/HBoxContainer/Button" to="Master" method="_import_show"]
+[connection signal="text_changed" from="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Title/LineEdit" to="Master" method="setTitle"]
+[connection signal="text_changed" from="Full Editor/Editor/Modifiers/Settings/MarginContainer/VBoxContainer/Author/LineEdit" to="File Loader/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MenuButton2" method="setAuthor"]
 [connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button" to="Master" method="save"]
 [connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button2" to="Master" method="save_and_quit"]
 [connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button3" to="Master" method="_export_show"]
-[connection signal="pressed" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button4" to="Master" method="_export_show"]
+[connection signal="button_down" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button4" to="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button4" method="_on_button_down"]
+[connection signal="button_held" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button4" to="Master" method="_delete_show"]
+[connection signal="button_up" from="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button4" to="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer/Button4" method="_on_button_up"]
 [connection signal="pressed" from="Full Editor/Editor/Modifiers/Media/VBoxContainer/Button" to="Full Editor/Editor/Modifiers/Media/VBoxContainer/MediaContainer" method="import_file"]
 [connection signal="pressed" from="Full Editor/TimeManager/HBoxContainer/Play Button" to="Full Editor/Data Timeline" method="togglePlayback"]
 [connection signal="item_selected" from="Full Editor/Data Timeline/MarginContainer/TimelineBox/CreateChannel" to="Full Editor/Data Timeline" method="create_channel"]

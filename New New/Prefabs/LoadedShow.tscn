@@ -6,10 +6,11 @@
 
 [node name="LoadedShow" type="Button" unique_id=402885482]
 custom_minimum_size = Vector2(225, 250)
-offset_right = 225.0
-offset_bottom = 250.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_hhvpp")
 theme_override_styles/normal = ExtResource("2_7qf0n")
 theme_override_styles/pressed = ExtResource("2_7qf0n")
@@ -40,9 +41,11 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=191697213]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 text = "My Showtape"
 horizontal_alignment = 1
+autowrap_mode = 1
 
 [node name="Author" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2106246586]
 layout_mode = 2

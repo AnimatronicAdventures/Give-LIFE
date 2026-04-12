@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dcwid2ms4grak"]
 
+[ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_4wtt3"]
 [ext_resource type="Script" uid="uid://ejomt33cgxyv" path="res://New New/Scripts/GL_Channel.gd" id="1_y15e8"]
 
 [node name="HBoxContainer" type="HBoxContainer" unique_id=573888745]
@@ -7,23 +8,24 @@ custom_minimum_size = Vector2(0, 40)
 offset_right = 438.0
 offset_bottom = 40.0
 size_flags_horizontal = 3
+theme = ExtResource("1_4wtt3")
 script = ExtResource("1_y15e8")
 
-[node name="Bind" type="PanelContainer" parent="." unique_id=624577050]
+[node name="Bind" type="Control" parent="." unique_id=1308582413]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Bind Label" type="Label" parent="Bind" unique_id=1844535330]
-layout_mode = 2
-text = "[   ]"
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "[]"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Bind2" type="PanelContainer" parent="." unique_id=1342965726]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="ChannelTimeline" type="PanelContainer" parent="." unique_id=1042388189]
 layout_mode = 2

@@ -65,6 +65,15 @@ func _create_new_show():
 func _export_show():
 	saveLoad.export_save_as_zip(currentlyLoadedPath)
 
+func _delete_show():
+	print("Deleting Show")
+	saveLoad.delete_savefile(currentlyLoadedPath)
+	var parentRoot = root.get_parent()
+	var newEditor = preload("res://New New/GL_Editor.tscn").instantiate()
+	parentRoot.add_child(newEditor)
+	newEditor.name = "GlEditor"
+	root.queue_free()
+
 func _import_show() -> void:
 	var file_dialog := FileDialog.new()
 	file_dialog.access = FileDialog.ACCESS_FILESYSTEM
@@ -96,6 +105,16 @@ func _create_new_show_template(template: Dictionary):
 			currentlyLoadedFile[key] = template[key]
 	save()
 	_load_settings_general()
+
+func setAuthor(changed: String):
+	if currentlyLoadedPath == "":
+		return
+	currentlyLoadedFile["author"] = changed
+	
+func setTitle(changed: String):
+	if currentlyLoadedPath == "":
+		return
+	currentlyLoadedFile["title"] = changed
 
 func _load_settings_general() -> void:
 	timeline.reload_timeline()
