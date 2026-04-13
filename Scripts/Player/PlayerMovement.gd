@@ -24,16 +24,18 @@ const MIN_ACCEL_LERP = 0.01
 const MAX_ACCEL_LERP = 2.5
 const ACCEL_LERP_STEP = 0.05
 
+# Maximum speed added per second when perfectly hugging the red line
+const AIR_STRAFE_BOOST: float = 5
 # Air strafe tuning
 # How fast the tracked movement angle chases the camera yaw (degrees per second)
 const AIR_ANGLE_TRACK_SPEED: float = 120.0
 # If the tracked angle is more than this many degrees away from camera yaw, bleed speed
-const AIR_ANGLE_TOLERANCE: float = 60.0
+const AIR_ANGLE_TOLERANCE: float = 55.0
 # How fast speed bleeds when outside the tolerance window (fraction of speed per second)
-const AIR_DRAG_OUT_OF_WINDOW: float = 1.5
+const AIR_DRAG_OUT_OF_WINDOW: float = 4
 # When a key is held, how strongly it biases the track target toward that key's world direction
 # (blends between camera yaw and key direction as the lerp target)
-const AIR_KEY_BIAS: float = 0.5
+const AIR_KEY_BIAS: float = 1
 
 const STAND_HEIGHT: float = 3.0
 const CROUCH_HEIGHT: float = 1.2
@@ -68,14 +70,11 @@ var was_move_pressed: bool = false
 var is_adjusting_move: bool = false
 
 var settings_autorun: bool = false
-var settings_always_crouch: bool = false
+@export var night_mode: bool = false
 
 var is_crouched: bool = false
 
-# The horizontal direction the player was moving when they left the ground.
-# Stored as a yaw angle (radians) so we can do clean angular math.
 var air_move_angle: float = 0.0
-# The horizontal speed magnitude preserved through the air
 var air_horiz_speed: float = 0.0
 var is_airborne: bool = false
 
@@ -147,7 +146,7 @@ func _process(delta: float) -> void:
 
 	was_move_pressed = Input.is_action_pressed("Smooth Movement")
 
-	if Input.is_action_just_pressed("Fly"):
+	if Input.is_action_just_pressed("Fly") && !night_mode:
 		fly_mode = !fly_mode
 
 	if not Input.is_action_pressed("Cam Tilt Modifier"):
@@ -175,7 +174,7 @@ func _process(delta: float) -> void:
 func _wants_crouch() -> bool:
 	if fly_mode:
 		return false
-	if settings_always_crouch:
+	if night_mode:
 		return not Input.is_action_pressed("Sprint")
 	return Input.is_action_pressed("Crouch")
 
@@ -234,14 +233,13 @@ func _physics_process(delta: float) -> void:
 			air_horiz_speed = 0.0
 		is_airborne = true
 
-		if Input.is_action_pressed("Sprint") or settings_autorun:
-			currentSpeed = SPRINT_SPEED
+	if Input.is_action_pressed("Sprint") or settings_autorun:
+		currentSpeed = SPRINT_SPEED
 
 		var crouch_button_held = Input.is_action_pressed("Crouch")
 		if is_crouched and not fly_mode:
-			if crouch_button_held or not settings_always_crouch:
+			if crouch_button_held or not night_mode:
 				currentSpeed = CROUCH_SPEED
-
 	var forward = -camera.global_basis.z
 	var right = camera.global_basis.x
 	forward.y = 0.0
@@ -260,18 +258,19 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.y = target_y
 
-	speed_mult_target = get_collision_speed_multiplier()
-	speed_mult = lerp(speed_mult, speed_mult_target, delta * 0.5)
+	if is_on_floor() or fly_mode:
+		speed_mult_target = get_collision_speed_multiplier()
+		speed_mult = lerp(speed_mult, speed_mult_target, delta * 5.0) 
+	else:
+		speed_mult = lerp(speed_mult, 1.0, delta * 2.0)
 
-	# Clear airborne flag once we actually land (not the same frame we jumped)
 	if is_on_floor() and is_airborne and velocity.y <= 0.0:
 		is_airborne = false
 
 	if (is_on_floor() and not is_airborne) or fly_mode:
-		air_horiz_speed = 0.0
-
 		var target_vel = Vector3.ZERO
 		if direction:
+			# Multiplier only affects ground movement
 			target_vel.x = direction.x * currentSpeed * speed_mult
 			target_vel.z = direction.z * currentSpeed * speed_mult
 		if smooth_move:
@@ -334,50 +333,64 @@ func _apply_air_strafe(wish_dir: Vector3, delta: float) -> void:
 		return
 
 	var cam_yaw = rotation_y
-	var track_target = cam_yaw
+	var track_target = air_move_angle 
 
 	if wish_dir.length() > 0.1:
-		# Mirror the snapshot logic: use -x and -z
-		var key_angle = atan2(-wish_dir.x, -wish_dir.z)
-		var key_diff = _angle_diff(key_angle, cam_yaw)
-		track_target = cam_yaw + key_diff * AIR_KEY_BIAS
+		var cam_forward = -camera.global_basis.z
+		cam_forward.y = 0
+		cam_forward = cam_forward.normalized()
+		var is_pressing_forward = wish_dir.dot(cam_forward) > 0.5
+		
+		if is_pressing_forward:
+			track_target = cam_yaw
+		else:
+			var key_angle = atan2(-wish_dir.x, -wish_dir.z)
+			var key_diff = _angle_diff(key_angle, cam_yaw)
+			track_target = cam_yaw + key_diff * AIR_KEY_BIAS
 
+	# --- Distance from center to target ---
+	var steering_diff = abs(_angle_diff(track_target, air_move_angle))
+	var tolerance_rad = deg_to_rad(AIR_ANGLE_TOLERANCE)
+
+	# --- SPEED BOOST LOGIC (The Reward) ---
+	# We calculate a 0.0 to 1.0 value based on how close Blue is to Red
+	if steering_diff > 0.001 and steering_diff <= tolerance_rad:
+		# Closer to tolerance = higher reward
+		var reward_factor = steering_diff / tolerance_rad 
+		air_horiz_speed += AIR_STRAFE_BOOST * reward_factor * delta
+	
+	# --- DRAG LOGIC (The Penalty) ---
+	if steering_diff > tolerance_rad:
+		var overflow = clamp((steering_diff - tolerance_rad) / deg_to_rad(90.0), 0.0, 1.0)
+		air_horiz_speed = max(air_horiz_speed - air_horiz_speed * AIR_DRAG_OUT_OF_WINDOW * overflow * delta, 0.0)
+
+	# --- CHASE LOGIC ---
 	var angle_to_target = _angle_diff(track_target, air_move_angle)
 	var max_step = deg_to_rad(AIR_ANGLE_TRACK_SPEED) * delta
 	air_move_angle += clamp(angle_to_target, -max_step, max_step)
 
-	var angle_from_cam = abs(_angle_diff(air_move_angle, cam_yaw))
-	var tolerance_rad = deg_to_rad(AIR_ANGLE_TOLERANCE)
-
-	if angle_from_cam > tolerance_rad:
-		var overflow = clamp((angle_from_cam - tolerance_rad) / deg_to_rad(90.0), 0.0, 1.0)
-		air_horiz_speed = max(air_horiz_speed - air_horiz_speed * AIR_DRAG_OUT_OF_WINDOW * overflow * delta, 0.0)
-
+	# --- Visuals ---
 	var debug_origin = camera.global_position + (-camera.global_basis.z * 1.5) + (Vector3.DOWN * 0.3)
 	var lines_to_draw = []
 
-	# Blue: Track Target (Where your momentum is being pulled)
-	# This will now shift when you hold A or D
 	var target_dir = Vector3(-sin(track_target), 0, -cos(track_target))
-	lines_to_draw.append({"start": debug_origin, "end": debug_origin + target_dir * 0.5, "color": Color.BLUE})
+	# Visual flare: Make the Blue line Cyan if it's in the "Boost Zone"
+	var blue_color = Color.CYAN if (steering_diff > 0.1 and steering_diff <= tolerance_rad) else Color.BLUE
+	lines_to_draw.append({"start": debug_origin, "end": debug_origin + target_dir * 0.5, "color": blue_color})
 
-	# Green: Current Momentum
 	var move_dir = Vector3(-sin(air_move_angle), 0, -cos(air_move_angle))
 	lines_to_draw.append({"start": debug_origin, "end": debug_origin + move_dir * 0.5, "color": Color.GREEN})
 
-	# Red: Tolerance Bounds (These still follow Camera Yaw)
-	var l_bound = Vector3(-sin(cam_yaw + tolerance_rad), 0, -cos(cam_yaw + tolerance_rad))
-	var r_bound = Vector3(-sin(cam_yaw - tolerance_rad), 0, -cos(cam_yaw - tolerance_rad))
+	var l_bound = Vector3(-sin(air_move_angle + tolerance_rad), 0, -cos(air_move_angle + tolerance_rad))
+	var r_bound = Vector3(-sin(air_move_angle - tolerance_rad), 0, -cos(air_move_angle - tolerance_rad))
 	lines_to_draw.append({"start": debug_origin, "end": debug_origin + l_bound * 0.4, "color": Color.RED})
 	lines_to_draw.append({"start": debug_origin, "end": debug_origin + r_bound * 0.4, "color": Color.RED})
 
 	_draw_debug_lines(lines_to_draw)
 
-	# --- Apply Velocity (Using negative sin/cos to move Forward) ---
 	velocity.x = -sin(air_move_angle) * air_horiz_speed
 	velocity.z = -cos(air_move_angle) * air_horiz_speed
-	
-	
+
 # Returns the shortest signed angular difference from angle a to angle b (radians), range [-PI, PI]
 func _angle_diff(target: float, current: float) -> float:
 	var diff = fmod(target - current, TAU)
@@ -417,4 +430,3 @@ func _draw_debug_lines(lines: Array):
 
 func on_settings_applied(settings: Dictionary) -> void:
 	settings_autorun = settings["auto_run"]
-	settings_always_crouch = settings.get("always_crouch", false)
