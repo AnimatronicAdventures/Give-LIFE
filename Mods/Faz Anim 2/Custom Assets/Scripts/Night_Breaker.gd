@@ -55,7 +55,6 @@ func _play_sound(prefix: String, count: int) -> void:
 func interact() -> void:
 	if is_manipulated or is_animating:
 		return
-	player = get_tree().get_first_node_in_group("Player")
 	if not is_open:
 		animate_door(true)
 		panel_ready_to_close = night_master == null or _all_switches_closed()
@@ -77,6 +76,7 @@ func _handle_space_press() -> void:
 
 func manipulate_start() -> void:
 	is_manipulated = true
+	check_player()
 	for i in SWITCH_COUNT:
 		switch_states[i] = true
 		_set_switch_rotation(i, 1.0)
@@ -87,6 +87,10 @@ func manipulate_start() -> void:
 	if was_frozen:
 		player.unfreeze_player()
 
+func check_player():
+	if player == null:
+		player = get_tree().get_first_node_in_group("Player")
+
 func manipulate_end() -> void:
 	animate_door(false)
 	await animation_done
@@ -94,6 +98,7 @@ func manipulate_end() -> void:
 
 func animate_door(opening: bool) -> void:
 	is_animating = true
+	check_player()
 	if opening:
 		_play_sound("BreakerOpen", DOOR_OPEN_SOUNDS)
 		if not is_manipulated:

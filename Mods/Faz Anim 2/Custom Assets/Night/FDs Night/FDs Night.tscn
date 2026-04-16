@@ -4,10 +4,14 @@
 [ext_resource type="Script" uid="uid://ct5cftkh6yj2v" path="res://Mods/Faz Anim 2/Custom Assets/Scripts/Night_Master.gd" id="1_t72bn"]
 [ext_resource type="Texture2D" uid="uid://bsghw3q1squ6b" path="res://Mods/Faz Anim 2/Custom Assets/Textures/kloppenheim_07_puresky_2k.hdr" id="3_4it3c"]
 [ext_resource type="PackedScene" uid="uid://53p73rn2nase" path="res://Mods/Faz Anim 2/Custom Assets/Night/Map.tscn" id="3_begtv"]
+[ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="3_enmxd"]
 [ext_resource type="LightmapGIData" uid="uid://2p7utu7af8oe" path="res://Mods/Faz Anim 2/Custom Assets/Night/FDs Night/FDs.lmbake" id="3_gifk4"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dpa8fy0dsc7vi" path="res://Mods/Faz Anim 2/Custom Assets/Night/FDs Night/FDs.occ" id="3_m4cyl"]
 [ext_resource type="PackedScene" uid="uid://de7xn7up267hb" path="res://Mods/Faz Anim 2/Custom Assets/Models/Animatronics/CCa/CCA Night.glb" id="7_uctub"]
 [ext_resource type="Script" uid="uid://d2oc8gpodw0eh" path="res://Mods/Faz Anim 2/Custom Assets/Scripts/Night_CCA.gd" id="9_tc6ck"]
+[ext_resource type="Script" uid="uid://bmcjeapv6h1ew" path="res://Mods/Faz Anim 2/Custom Assets/Scripts/Night_Warning_Flicker.gd" id="10_lqjpi"]
+[ext_resource type="Script" uid="uid://dbvog1xkua4w0" path="res://Mods/Faz Anim 2/Custom Assets/Scripts/Night_Kill.gd" id="11_wbby4"]
+[ext_resource type="Script" uid="uid://c57bt0o3amo32" path="res://Mods/Faz Anim 2/Custom Assets/Scripts/Night_Timer.gd" id="13_l865m"]
 [ext_resource type="Script" uid="uid://ogfk024h6qmr" path="res://Mods/Faz Anim 2/Custom Assets/Scripts/Night_StartButton.gd" id="28_v23dj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tc6ck"]
@@ -42,6 +46,14 @@ adjustment_saturation = 1.3
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_stiks"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ms5e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lqjpi"]
+radius = 3.2871094
+height = 12.465088
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wbby4"]
+radius = 5.6240234
+height = 17.67044
 
 [node name="Night Mode" type="Node3D" unique_id=2114037581 groups=["NightMaster"]]
 script = ExtResource("1_t72bn")
@@ -2148,13 +2160,67 @@ shape = SubResource("BoxShape3D_0ms5e")
 transform = Transform3D(0.026047226, 0, -0.14772113, 0, 0.14999995, 0, 0.14772113, 0, 0.026047226, -13.930094, -1.1920929e-06, -24.21699)
 script = ExtResource("9_tc6ck")
 
-[node name="CCA Night2" parent="Map/Characters" unique_id=1571727885 instance=ExtResource("7_uctub")]
+[node name="Warning" type="Node3D" parent="Map/Characters/CCA Night" unique_id=1704462327]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 0, 17.884958, 0)
+script = ExtResource("10_lqjpi")
+drain_range = 5.0
+
+[node name="Area3D" type="Area3D" parent="Map/Characters/CCA Night" unique_id=258602991]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("11_wbby4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Characters/CCA Night/Area3D" unique_id=259083778]
+transform = Transform3D(0.9999999, 0, 1.4901161e-08, 0, 0.9999846, 0, -1.4901161e-08, 0, 0.9999999, 0.34524536, 5.357786, -1.9579773)
+shape = SubResource("CapsuleShape3D_lqjpi")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Map/Characters/CCA Night/Area3D" unique_id=2030158001]
+transform = Transform3D(0.9999999, 0, 1.4901161e-08, 0, 0.9999723, 0, -1.4901161e-08, 0, 0.9999999, 0.34524536, 16.694458, -1.9579773)
+shape = SubResource("CapsuleShape3D_wbby4")
+
+[node name="CCA Night2" parent="Map/Characters" unique_id=544202303 instance=ExtResource("7_uctub")]
 transform = Transform3D(0.026047226, 0, -0.14772113, 0, 0.14999995, 0, 0.14772113, 0, 0.026047226, -13.930094, -1.1920929e-06, -24.21699)
 script = ExtResource("9_tc6ck")
 
-[node name="CCA Night3" parent="Map/Characters" unique_id=351384888 instance=ExtResource("7_uctub")]
+[node name="Warning" type="Node3D" parent="Map/Characters/CCA Night2" unique_id=2924601]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 0, 17.884958, 0)
+script = ExtResource("10_lqjpi")
+drain_range = 5.0
+
+[node name="Area3D" type="Area3D" parent="Map/Characters/CCA Night2" unique_id=779319478]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("11_wbby4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Characters/CCA Night2/Area3D" unique_id=580934539]
+transform = Transform3D(0.9999999, 0, 1.4901161e-08, 0, 0.9999846, 0, -1.4901161e-08, 0, 0.9999999, 0.34524536, 5.357786, -1.9579773)
+shape = SubResource("CapsuleShape3D_lqjpi")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Map/Characters/CCA Night2/Area3D" unique_id=832821205]
+transform = Transform3D(0.9999999, 0, 1.4901161e-08, 0, 0.9999723, 0, -1.4901161e-08, 0, 0.9999999, 0.34524536, 16.694458, -1.9579773)
+shape = SubResource("CapsuleShape3D_wbby4")
+
+[node name="CCA Night3" parent="Map/Characters" unique_id=97876783 instance=ExtResource("7_uctub")]
 transform = Transform3D(0.026047226, 0, -0.14772113, 0, 0.14999995, 0, 0.14772113, 0, 0.026047226, -13.930094, -1.1920929e-06, -24.21699)
 script = ExtResource("9_tc6ck")
+
+[node name="Warning" type="Node3D" parent="Map/Characters/CCA Night3" unique_id=1158989191]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 0, 17.884958, 0)
+script = ExtResource("10_lqjpi")
+drain_range = 5.0
+
+[node name="Area3D" type="Area3D" parent="Map/Characters/CCA Night3" unique_id=211381474]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("11_wbby4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Characters/CCA Night3/Area3D" unique_id=467498644]
+transform = Transform3D(0.9999999, 0, 1.4901161e-08, 0, 0.9999846, 0, -1.4901161e-08, 0, 0.9999999, 0.34524536, 5.357786, -1.9579773)
+shape = SubResource("CapsuleShape3D_lqjpi")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Map/Characters/CCA Night3/Area3D" unique_id=1891313629]
+transform = Transform3D(0.9999999, 0, 1.4901161e-08, 0, 0.9999723, 0, -1.4901161e-08, 0, 0.9999999, 0.34524536, 16.694458, -1.9579773)
+shape = SubResource("CapsuleShape3D_wbby4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map" unique_id=1960076591]
 transform = Transform3D(0.039183717, 0.67597616, -0.735881, 0.055635743, 0.73382825, 0.677053, 0.99768186, -0.06747077, -0.008854318, -48.404068, 20.167963, 0)
@@ -2165,6 +2231,9 @@ light_specular = 0.111
 light_bake_mode = 1
 shadow_enabled = true
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Map" unique_id=2095974999]
-transform = Transform3D(1, 0, 0, 0, 0.80385685, 0.5948228, 0, -0.5948228, 0.80385685, 0, 0, 0)
-visible = false
+[node name="Label" type="Label" parent="Map" unique_id=260628595]
+offset_right = 76.0
+offset_bottom = 23.0
+theme = ExtResource("3_enmxd")
+text = "12:00AM"
+script = ExtResource("13_l865m")

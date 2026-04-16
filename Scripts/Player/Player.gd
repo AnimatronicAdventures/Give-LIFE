@@ -40,6 +40,12 @@ const CROUCH_EYE_HEIGHT: float = 0.6
 @onready var camera = $Camera3D
 @onready var foot_probe: Node3D = $FootProbe
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
+@onready var interact_ray: RayCast3D = $Camera3D/RayCast3D
+@onready var nightLight: NightLight = $"Camera3D/Night Light"
+
+@export var night_mode: bool = false
+@export var frozen_mode: bool = false
+@export var debug_mode: bool = false
 
 var rotation_y: float = 0.0
 var rotation_x: float = 0.0
@@ -64,10 +70,6 @@ var was_move_pressed: bool = false
 var is_adjusting_move: bool = false
 
 var settings_autorun: bool = false
-@export var night_mode: bool = false
-@export var frozen_mode: bool = false
-@export var debug_mode: bool = false
-@onready var interact_ray: RayCast3D = $Camera3D/RayCast3D
 
 var is_crouched: bool = false
 
