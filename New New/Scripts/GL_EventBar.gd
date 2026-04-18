@@ -54,8 +54,6 @@ func _delete_bar() -> void:
 	channel.renderBits()
 
 func _open_edit_popup() -> void:
-	# Color gets special treatment: add a ColorPickerButton directly to root
-	# so its picker popup isn't clipped or obscured by any Window.
 	if entry_type == GL_ChannelData.TYPE_COLOR:
 		_open_color_picker()
 		return
@@ -74,12 +72,15 @@ func _open_edit_popup() -> void:
 
 	match entry_type:
 		GL_ChannelData.TYPE_AUDIO, GL_ChannelData.TYPE_VIDEO:
-			var ext = GL_Playback.AUDIO_EXTENSIONS if entry_type == GL_ChannelData.TYPE_AUDIO else ["mp4", "webm", "ogv"]
+			var audio_exts = ["mp3", "wav", "ogg"]
+			var video_exts = ["mp4", "webm", "ogv"]
+			var ext = audio_exts if entry_type == GL_ChannelData.TYPE_AUDIO else video_exts
 			var files = _get_files_of_types(ext)
 			var drop = OptionButton.new()
 			drop.add_item("null")
 			for f in files:
 				drop.add_item(f)
+			# Select current value
 			var current_file = entry.get("file", "null")
 			for i in range(drop.item_count):
 				if drop.get_item_text(i) == current_file:
@@ -134,20 +135,19 @@ func _open_edit_popup() -> void:
 	close_btn.pressed.connect(func(): popup.queue_free())
 
 func _open_color_picker() -> void:
-	# Spawn a ColorPickerButton at root level so the picker popup renders above everything.
-	var btn = ColorPickerButton.new()
-	btn.color = entry.get("color", Color.WHITE)
-	btn.size = Vector2(1, 1)
-	btn.flat = true
-	btn.position = Vector2(-9999, -9999)
-	get_tree().root.add_child(btn)
-	await btn.ready
-	btn.get_picker().color_changed.connect(func(c: Color):
+	var popup = PopupPanel.new()
+	popup.always_on_top = true
+	get_tree().root.add_child(popup)
+	var picker = ColorPicker.new()
+	picker.color = entry.get("color", Color.WHITE)
+	picker.custom_minimum_size = Vector2(400, 300)
+	popup.add_child(picker)
+	picker.color_changed.connect(func(c: Color):
 		_update_entry_field("color", c)
 	)
-	btn.pressed.emit()
-	btn.popup_closed.connect(func():
-		btn.queue_free()
+	popup.popup_centered()
+	popup.popup_hide.connect(func():
+		popup.queue_free()
 	)
 
 func _update_entry_field(field: String, value) -> void:
@@ -160,10 +160,13 @@ func _update_entry_field(field: String, value) -> void:
 
 func _get_files_of_types(extensions: Array) -> Array:
 	var results = []
-	var folder = channel.master.currentlyLoadedPath
+	var folder = ProjectSettings.globalize_path(channel.master.currentlyLoadedPath)
 	var dir = DirAccess.open(folder)
 	if not dir:
-		return results
+		# Fallback: try the path as-is
+		dir = DirAccess.open(channel.master.currentlyLoadedPath)
+		if not dir:
+			return results
 	dir.list_dir_begin()
 	var f = dir.get_next()
 	while f != "":

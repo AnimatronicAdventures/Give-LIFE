@@ -6,32 +6,67 @@ class_name GL_Playback
 
 const _TIME_UNITS = 1.0 / 120.0
 const AUDIO_EXTENSIONS = ["mp3", "wav", "ogg"]
+const VIDEO_EXTENSIONS = ["mp4", "webm", "ogv"]
+const _VIDEO_TIMESTAMP_INTERVAL = 0.1
 
 var _lastTime : float = -1.0
 var _scrubTimer : float = 0.0
 var _isScrubbing : bool = false
+var _video_state: Dictionary = {}
+var _video_timers: Dictionary = {}
 
-func _process(_delta):
+func _process(delta: float):
 	if master.currentlyLoadedPath != "":
 		for key in master.currentlyLoadedFile["channels"]:
 			var ch = master.currentlyLoadedFile["channels"][key]
 			var data = ch["data"]
 			var type = GL_ChannelData.get_type(ch)
-
 			var pipe = key.find("|")
 			if pipe == -1:
 				continue
 			var group = key.left(pipe)
 			var signal_key = key.substr(pipe + 1)
+			if type == GL_ChannelData.TYPE_VIDEO:
+				_process_video_channel(key, data, group, signal_key, delta)
+			else:
+				var state = _get_state_for_type(type, data, key)
+				for node in get_tree().get_nodes_in_group(group):
+					node._sent_signals(signal_key, state)
+		_process_audio(delta)
 
-			var state: float = _get_state_for_type(type, data, key)
+func _process_video_channel(channel_id: String, data, group: String, signal_key: String, delta: float) -> void:
+	var entries: Array = GL_ChannelData.decode_entries(GL_ChannelData.TYPE_VIDEO, data)
+	if entries.is_empty():
+		return
+	var t_int = int(timeline.timeCurrent / _TIME_UNITS)
+	var active_entry: Dictionary = {}
+	for e in entries:
+		if e["time"] <= t_int:
+			active_entry = e
+		else:
+			break
+	if active_entry.is_empty():
+		return
+	var file: String = active_entry.get("file", "null")
+	var offset: float = active_entry.get("offset", 0.0)
+	var stamp_time: float = GL_ChannelData.int_to_time(active_entry["time"])
+	var prev = _video_state.get(channel_id, {})
+	if prev.get("file", "") != file:
+		_video_state[channel_id] = { "file": file, "offset": offset, "stamp_time": stamp_time }
+		_video_timers[channel_id] = 0.0
+		# Send full path so projector can load it directly
+		var full_path = master.currentlyLoadedPath.path_join(file)
+		for node in get_tree().get_nodes_in_group(group):
+			node._sent_signals(signal_key, full_path)
+	_video_timers[channel_id] = _video_timers.get(channel_id, 0.0) + delta
+	if _video_timers[channel_id] >= _VIDEO_TIMESTAMP_INTERVAL:
+		_video_timers[channel_id] = 0.0
+		var live_timestamp: float = offset + (timeline.timeCurrent - stamp_time)
+		live_timestamp = max(live_timestamp, 0.0)
+		for node in get_tree().get_nodes_in_group(group):
+			node._sent_signals("Current Time", live_timestamp)
 
-			for node in get_tree().get_nodes_in_group(group):
-				node._sent_signals(signal_key, state)
-
-		_process_audio(_delta)
-
-func _get_state_for_type(type: String, data, channel_id: String) -> float:
+func _get_state_for_type(type: String, data, channel_id: String):
 	match type:
 		GL_ChannelData.TYPE_BOOL:
 			var stamps: Array = data if data is Array else []
@@ -40,53 +75,133 @@ func _get_state_for_type(type: String, data, channel_id: String) -> float:
 			if stamps.is_empty():
 				return 0.0
 			return float(get_bool_state_at_time(stamps, timeline.timeCurrent))
-
 		GL_ChannelData.TYPE_FLOAT:
 			var entries: Array = GL_ChannelData.decode_entries(type, data)
 			if entries.is_empty():
 				return 0.0
 			var t_int = int(timeline.timeCurrent / _TIME_UNITS)
 			return GL_ChannelData.get_float_at_time(entries, t_int)
-
 		GL_ChannelData.TYPE_COLOR:
-			# Send color as a packed float — callers that want Color can unpack it.
-			# For now returns 1.0 when any color is set, 0.0 when empty.
 			var entries: Array = GL_ChannelData.decode_entries(type, data)
-			return 1.0 if not entries.is_empty() else 0.0
-
+			if entries.is_empty():
+				return Color.BLACK
+			var t_int = int(timeline.timeCurrent / _TIME_UNITS)
+			var result_color: Color = entries[0]["color"]
+			for e in entries:
+				if e["time"] <= t_int:
+					result_color = e["color"]
+				else:
+					break
+			return result_color
 		_:
 			return 0.0
 
-func clean_sweep() -> void:
-	if master.currentlyLoadedPath == "":
-		return
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		_send_null_video_signals()
 
+func _send_null_video_signals() -> void:
+	if not master or master.currentlyLoadedPath == "":
+		return
+	# Use Engine.get_main_loop() to reach the scene tree safely even during
+	# node deletion, when get_tree() may already be null.
+	var scene_tree = Engine.get_main_loop() as SceneTree
+	if not scene_tree:
+		return
 	for key in master.currentlyLoadedFile["channels"]:
 		var ch = master.currentlyLoadedFile["channels"][key]
-		var data = ch["data"]
-		var type = GL_ChannelData.get_type(ch)
-
-		# Only sweep channels with no data
-		var is_empty = (data is Array and data.is_empty()) or (data is String and data == "")
-		if not is_empty:
+		if GL_ChannelData.get_type(ch) != GL_ChannelData.TYPE_VIDEO:
 			continue
-
 		var pipe = key.find("|")
 		if pipe == -1:
 			continue
 		var group = key.left(pipe)
 		var signal_key = key.substr(pipe + 1)
+		for node in scene_tree.get_nodes_in_group(group):
+			node._sent_signals(signal_key, null)
 
+func clean_sweep() -> void:
+	if master.currentlyLoadedPath == "":
+		return
+	for key in master.currentlyLoadedFile["channels"]:
+		var ch = master.currentlyLoadedFile["channels"][key]
+		var data = ch["data"]
+		var type = GL_ChannelData.get_type(ch)
+		var is_empty = (data is Array and data.is_empty()) or (data is String and data == "")
+		if not is_empty:
+			continue
+		var pipe = key.find("|")
+		if pipe == -1:
+			continue
+		var group = key.left(pipe)
+		var signal_key = key.substr(pipe + 1)
 		for node in get_tree().get_nodes_in_group(group):
 			node._sent_signals(signal_key, 0.0)
+
+# ── Default media seeding ─────────────────────────────────────────────────────
+
+func _seed_default_media() -> void:
+	if master.currentlyLoadedPath == "":
+		return
+	var default_audio = _find_default_file(AUDIO_EXTENSIONS)
+	var default_video = _find_default_file(VIDEO_EXTENSIONS)
+	for key in master.currentlyLoadedFile["channels"]:
+		var ch = master.currentlyLoadedFile["channels"][key]
+		var type = GL_ChannelData.get_type(ch)
+		if type != GL_ChannelData.TYPE_AUDIO and type != GL_ChannelData.TYPE_VIDEO:
+			continue
+		var data = ch.get("data", "")
+		var is_empty = (data is String and data == "") or (data is Array and data.is_empty()) or data == null
+		if not is_empty:
+			continue
+		var default_file: String = ""
+		if type == GL_ChannelData.TYPE_AUDIO and default_audio != "":
+			default_file = default_audio
+		elif type == GL_ChannelData.TYPE_VIDEO and default_video != "":
+			default_file = default_video
+		if default_file == "":
+			continue
+		var entry = { "time": 0, "file": default_file, "offset": 0.0 }
+		ch["data"] = GL_ChannelData.encode_entries(type, [entry])
+
+func _find_default_file(extensions: Array) -> String:
+	var folder = master.currentlyLoadedPath
+	# Try globalized path first, fall back to raw path
+	var dir = DirAccess.open(ProjectSettings.globalize_path(folder))
+	if not dir:
+		dir = DirAccess.open(folder)
+	if not dir:
+		return ""
+	dir.list_dir_begin()
+	var f = dir.get_next()
+	while f != "":
+		if not dir.current_is_dir():
+			if f.get_extension().to_lower() in extensions:
+				return f
+		f = dir.get_next()
+	return ""
+
+# ── Audio playback ────────────────────────────────────────────────────────────
+
+func reload_audio() -> void:
+	audioPlayer.stop()
+	audioPlayer.stream = null
+	if master.currentlyLoadedPath == "":
+		return
+	var default_audio = _find_default_file(AUDIO_EXTENSIONS)
+	if default_audio != "":
+		var full_path = master.currentlyLoadedPath.path_join(default_audio)
+		var stream = _load_audio_stream(full_path, default_audio.get_extension().to_lower())
+		if stream:
+			audioPlayer.stream = stream
+			print("Audio loaded: ", default_audio)
+	_seed_default_media()
 
 func _process_audio(delta: float) -> void:
 	if not audioPlayer.stream:
 		return
-
 	var current = timeline.timeCurrent
 	var playing = timeline.playing
-
 	if playing:
 		_isScrubbing = false
 		_scrubTimer = 0.0
@@ -98,45 +213,16 @@ func _process_audio(delta: float) -> void:
 	else:
 		if audioPlayer.playing and not _isScrubbing:
 			audioPlayer.stop()
-
 		if abs(current - _lastTime) > 0.001:
 			_isScrubbing = true
 			_scrubTimer = 0.1
 			audioPlayer.play(current)
-
 		if _isScrubbing:
 			_scrubTimer -= delta
 			if _scrubTimer <= 0.0:
 				_isScrubbing = false
 				audioPlayer.stop()
-
 	_lastTime = current
-
-func reload_audio() -> void:
-	audioPlayer.stop()
-	audioPlayer.stream = null
-
-	if master.currentlyLoadedPath == "":
-		return
-
-	var folder = master.currentlyLoadedPath
-	var dir = DirAccess.open(folder)
-	if not dir:
-		return
-
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if not dir.current_is_dir():
-			var ext = file_name.get_extension().to_lower()
-			if ext in AUDIO_EXTENSIONS:
-				var full_path = folder.path_join(file_name)
-				var stream = _load_audio_stream(full_path, ext)
-				if stream:
-					audioPlayer.stream = stream
-					print("Audio loaded: ", file_name)
-					return
-		file_name = dir.get_next()
 
 func _load_audio_stream(path: String, ext: String) -> AudioStream:
 	var absolute_path = ProjectSettings.globalize_path(path)
@@ -174,35 +260,29 @@ func _merge_active_edit(base: Array, channel_id: String) -> Array:
 		range_end = range_start + (1.0 / 120.0)
 	var start_int = timeline.time_to_int(range_start)
 	var end_int = timeline.time_to_int(range_end)
-
 	var insert_idx = stamps.size()
 	for i in range(stamps.size()):
 		if stamps[i] >= start_int:
 			insert_idx = i
 			break
 	var state_before: bool = insert_idx % 2 == 0
-
 	var end_idx = stamps.size()
 	for i in range(stamps.size()):
 		if stamps[i] > end_int:
 			end_idx = i
 			break
 	var state_after: bool = end_idx % 2 == 0
-
 	for i in range(stamps.size() - 1, -1, -1):
 		if stamps[i] >= start_int and stamps[i] <= end_int:
 			stamps.remove_at(i)
-
 	var ins = stamps.size()
 	for i in range(stamps.size()):
 		if stamps[i] >= start_int:
 			ins = i
 			break
-
 	if state_before:
 		stamps.insert(ins, start_int)
 		ins += 1
 	if not state_after:
 		stamps.insert(ins, end_int)
-
 	return stamps

@@ -196,16 +196,22 @@ func _decompress_channels(data: Dictionary) -> void:
 		var channel = data["channels"][id]
 		if not channel.has("data"):
 			continue
-		channel["data"] = _stamps_from_b64(channel["data"])
+		# Only bool channels store stamps as a packed int array needing conversion.
+		# All other types store their data as a raw base64 string already.
+		var type = channel.get("type", GL_ChannelData.TYPE_BOOL)
+		if type == GL_ChannelData.TYPE_BOOL:
+			channel["data"] = _stamps_from_b64(channel["data"])
 
 func _compress_channels(data: Dictionary) -> void:
 	if not data.has("channels"):
 		return
 	for id in data["channels"]:
 		var channel = data["channels"][id]
-		if not channel.has("data") or not channel["data"] is Array:
+		if not channel.has("data"):
 			continue
-		channel["data"] = _stamps_to_b64(channel["data"])
+		var type = channel.get("type", GL_ChannelData.TYPE_BOOL)
+		if type == GL_ChannelData.TYPE_BOOL and channel["data"] is Array:
+			channel["data"] = _stamps_to_b64(channel["data"])
 
 func _stamps_to_b64(stamps: Array) -> String:
 	if stamps.is_empty():
