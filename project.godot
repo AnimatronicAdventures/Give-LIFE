@@ -42,6 +42,12 @@ import/blender/enabled=false
 
 Player=""
 
+[importer_defaults]
+
+scene={
+&"gltf/embedded_image_handling": 0
+}
+
 [input]
 
 ui_focus_next={

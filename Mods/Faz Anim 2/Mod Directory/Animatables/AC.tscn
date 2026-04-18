@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://de60rgyde78at"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_6xdrl"]
+[ext_resource type="PackedScene" uid="uid://bhx8gap67ov1r" path="res://Mods/Faz Anim 2/Custom Assets/Models/Animatronics/Vennard/AC.glb" id="2_6xdrl"]
+
+[node name="AC" type="Node3D" unique_id=2099849415 groups=["AA_AC"]]
+script = ExtResource("1_6xdrl")
+animParametersFileName = "AC"
+
+[node name="AC2" parent="." unique_id=1061858407 instance=ExtResource("2_6xdrl")]

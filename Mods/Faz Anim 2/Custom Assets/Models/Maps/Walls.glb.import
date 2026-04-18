@@ -1,0 +1,95 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://c6c6ksikseigh"
+path="res://.godot/imported/Walls.glb-8da1dd63afa00ef7fca202564aebdd19.scn"
+
+[deps]
+
+source_file="res://Mods/Faz Anim 2/Custom Assets/Models/Maps/Walls.glb"
+dest_files=["res://.godot/imported/Walls.glb-8da1dd63afa00ef7fca202564aebdd19.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=2
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Black Shiny": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Shiny Black.tres",
+"use_external/path": "uid://d0i7i6ix51nlw"
+},
+"Carpet Red": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Carpet Red.tres",
+"use_external/path": "uid://bih5rftylul4y"
+},
+"Fake Grass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Grass.tres",
+"use_external/path": "uid://d3330uwlgm4d2"
+},
+"Glass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Glass Real.tres",
+"use_external/path": "uid://nolg26kxrges"
+},
+"Plaster": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Plaster.tres",
+"use_external/path": "uid://xqugp8oihvr8"
+},
+"Plaster Black": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Plaster Black.tres",
+"use_external/path": "uid://bb215h5xd0t5"
+},
+"Tan Bricks": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Bricks.tres",
+"use_external/path": "uid://tyjx0mlx3f2h"
+},
+"Wood A": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Wood A.tres",
+"use_external/path": "uid://cmlg4aw2f86wl"
+},
+"Wood B": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Wood B.tres",
+"use_external/path": "uid://d1c22fl7hw3cp"
+}
+},
+"nodes": {
+"PATH:Walls": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=0

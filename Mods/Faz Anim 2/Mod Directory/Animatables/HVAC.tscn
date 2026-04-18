@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cwak8nt3ou0fw"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_on63g"]
+[ext_resource type="PackedScene" uid="uid://dhkpc6spppxxn" path="res://Mods/Faz Anim 2/Custom Assets/Models/Animatronics/Vennard/HVAC.glb" id="2_on63g"]
+
+[node name="HVAC" type="Node3D" unique_id=2099849415 groups=["AA_HVAC"]]
+script = ExtResource("1_on63g")
+animParametersFileName = "HVAC"
+
+[node name="HVAC2" parent="." unique_id=1801061979 instance=ExtResource("2_on63g")]

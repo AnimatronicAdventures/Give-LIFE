@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dsnklljdqd4d"]
+
+[ext_resource type="Texture2D" uid="uid://cvnuf3sg6auds" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Vennard_diffuse.webp" id="1_42qwj"]
+[ext_resource type="Texture2D" uid="uid://c6xcplpr1o57" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Vennard_metallic.webp" id="2_va7wl"]
+[ext_resource type="Texture2D" uid="uid://b3jqfpmy681h2" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Venard_normal.webp" id="3_peln2"]
+[ext_resource type="Texture2D" uid="uid://bu486y0canqgx" path="res://Mods/Faz Anim 2/Custom Assets/Textures/Vennard_rough.webp" id="4_ry7ha"]
+
+[resource]
+albedo_texture = ExtResource("1_42qwj")
+metallic = 1.0
+metallic_texture = ExtResource("2_va7wl")
+roughness_texture = ExtResource("4_ry7ha")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("3_peln2")
+texture_filter = 5

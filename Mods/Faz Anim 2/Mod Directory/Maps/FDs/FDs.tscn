@@ -3,9 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://c5dh0vxqdur1v" path="res://Scenes/player.tscn" id="1_keexa"]
 [ext_resource type="Texture2D" uid="uid://ktqnj6yjrsbn" path="res://UI/Flashlight.png" id="4_c2ebw"]
 [ext_resource type="LightmapGIData" uid="uid://cychv2gp86o0" path="res://Mods/Faz Anim 2/Mod Directory/Maps/FDs/FDs.lmbake" id="4_nu5ek"]
+[ext_resource type="PackedScene" uid="uid://d3avgvt0tojqc" path="res://Mods/Faz Anim 2/Mod Directory/Animatables/Vennard.tscn" id="6_1ynf4"]
 [ext_resource type="Texture2D" uid="uid://dowy3y05fvof4" path="res://Mods/Faz Anim 2/Custom Assets/Textures/pretoria_gardens_2k.exr" id="7_s4vlx"]
+[ext_resource type="PackedScene" uid="uid://cwak8nt3ou0fw" path="res://Mods/Faz Anim 2/Mod Directory/Animatables/HVAC.tscn" id="7_twqsy"]
 [ext_resource type="PackedScene" uid="uid://cry2msqosqx0u" path="res://Mods/Faz Anim 2/Mod Directory/Animatables/CCa.tscn" id="8_ey3tq"]
 [ext_resource type="ArrayOccluder3D" uid="uid://p6edmgi2v4kd" path="res://Mods/Faz Anim 2/Mod Directory/Maps/FDs/FDs.occ" id="8_mfnkb"]
+[ext_resource type="PackedScene" uid="uid://de60rgyde78at" path="res://Mods/Faz Anim 2/Mod Directory/Animatables/AC.tscn" id="8_wr3ah"]
 [ext_resource type="Script" uid="uid://c5uawj66escut" path="res://Scripts/Animatables/GL_Spotlight.gd" id="9_qjcwm"]
 [ext_resource type="PackedScene" uid="uid://53p73rn2nase" path="res://Mods/Faz Anim 2/Custom Assets/Night/Map.tscn" id="11_ytmy7"]
 [ext_resource type="Script" uid="uid://cyoki6p7gu41e" path="res://Scripts/Animatables/GL_Light_Projector.gd" id="20_0fewr"]
@@ -2138,6 +2141,15 @@ enable_shadows = true
 [node name="Chica" parent="Map/Animatables" unique_id=2121303090 instance=ExtResource("8_ey3tq")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 2.9581, 1.74247, -3.28439)
 
+[node name="Vennard" parent="Map/Animatables" unique_id=2099849415 instance=ExtResource("6_1ynf4")]
+transform = Transform3D(-0.15, 5.953367e-09, 1.168414e-08, 0, 0.13365099, -0.06809858, -1.3113417e-08, -0.06809858, -0.13365099, -8.304195, 5.0373955, -13.131941)
+
+[node name="AC" parent="Map/Animatables" unique_id=1602886423 instance=ExtResource("8_wr3ah")]
+transform = Transform3D(-0.15, -5.953367e-09, -1.168414e-08, 0, 0.13365099, -0.06809858, 1.3113417e-08, -0.06809858, -0.13365099, -9.63371, 5.0835156, -13.351537)
+
+[node name="HVAC" parent="Map/Animatables" unique_id=1334172021 instance=ExtResource("7_twqsy")]
+transform = Transform3D(-0.15, -5.953367e-09, -1.168414e-08, 0, 0.13365099, -0.06809858, 1.3113417e-08, -0.06809858, -0.13365099, -10.644432, 4.9602556, -13.270801)
+
 [node name="FD" parent="Map/Animatables" unique_id=137685558 instance=ExtResource("26_sceim")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.107827, 1.74247, -1.81819)
 
@@ -2165,6 +2177,57 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 volume_db = -80.0
+
+[node name="Vennard Spot" type="SpotLight3D" parent="Map/Animatables" unique_id=935948455]
+transform = Transform3D(-0.9993226, -0.036649883, -0.0033498323, -0.036799233, 0.9938409, 0.10452848, -0.0005017563, 0.10458093, -0.9945163, -8.325927, 5.4309382, -16.792427)
+light_color = Color(0.944285, 0.839984, 0.7003, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 11.66
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Vennard Spot" unique_id=519014137 groups=["L_SPOT_VENNARD"]]
+script = ExtResource("9_qjcwm")
+canChangeColor = true
+energyMultiplier = 50.0
+lerp_speed = 15.0
+
+[node name="AC Spot" type="SpotLight3D" parent="Map/Animatables" unique_id=1680550387]
+transform = Transform3D(-0.9993379, -0.03621837, -0.0034645735, -0.036370568, 0.9918795, 0.12186935, -0.0009774698, 0.12191467, -0.9925401, -9.661119, 5.4309382, -16.792427)
+light_color = Color(0.944285, 0.839984, 0.7003, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 8.14
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/AC Spot" unique_id=1984547739 groups=["L_SPOT_AC"]]
+script = ExtResource("9_qjcwm")
+canChangeColor = true
+energyMultiplier = 50.0
+lerp_speed = 15.0
+
+[node name="HVAC Spot" type="SpotLight3D" parent="Map/Animatables" unique_id=1300895029]
+transform = Transform3D(-0.9993379, -0.036218375, -0.0034645735, -0.036370568, 0.9918796, 0.121869355, -0.0009774698, 0.12191468, -0.9925401, -10.689208, 5.4309382, -16.792427)
+light_color = Color(0.944285, 0.839984, 0.7003, 1)
+light_energy = 0.0
+light_size = 0.124
+shadow_enabled = true
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 6.39
+spot_angle_attenuation = 0.329877
+
+[node name="Node" type="Node3D" parent="Map/Animatables/HVAC Spot" unique_id=936595161 groups=["L_SPOT_HVAC"]]
+script = ExtResource("9_qjcwm")
+canChangeColor = true
+energyMultiplier = 50.0
+lerp_speed = 15.0
 
 [node name="Chica Spot" type="SpotLight3D" parent="Map/Animatables" unique_id=1199173444]
 transform = Transform3D(0.976123, 0.0551108, -0.210114, -0.0368523, 0.995274, 0.0898469, 0.214072, -0.0799584, 0.97354, 1.01632, 5.91597, 5.13714)

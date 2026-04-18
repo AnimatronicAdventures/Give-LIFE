@@ -1,0 +1,8 @@
+{
+  "AA_VENNARD|Jaw": {
+	"animation": "JawVennard",
+	"in_speed": 3.25,
+	"out_speed": 2.0,
+	"type": "standard"
+}
+}
