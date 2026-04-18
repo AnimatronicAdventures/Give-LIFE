@@ -3,6 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://d0mxte7fpaomy" path="res://Mods/SongCode/Mod Icon.png" id="1_33217"]
 [ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_hhvpp"]
 [ext_resource type="StyleBox" uid="uid://du2sbxdiw6nw8" path="res://UI/Themes/Showtape.tres" id="2_7qf0n"]
+[ext_resource type="StyleBox" uid="uid://l4d1rgdp5byr" path="res://UI/Themes/Showtape Hover.tres" id="3_dhhlq"]
+[ext_resource type="Script" uid="uid://b4aa4vacbh1ln" path="res://Scripts/Sound UI/SoundUI.gd" id="3_vau8b"]
+[ext_resource type="AudioStream" uid="uid://dajwfjwf772x" path="res://Sounds/Donk.wav" id="5_sfhxo"]
+[ext_resource type="AudioStream" uid="uid://b7bd0hyn1es4e" path="res://Sounds/startup.mp3" id="5_vau8b"]
 
 [node name="LoadedShow" type="Button" unique_id=402885482]
 custom_minimum_size = Vector2(225, 250)
@@ -14,9 +18,13 @@ grow_vertical = 2
 theme = ExtResource("1_hhvpp")
 theme_override_styles/normal = ExtResource("2_7qf0n")
 theme_override_styles/pressed = ExtResource("2_7qf0n")
-theme_override_styles/hover = ExtResource("2_7qf0n")
-theme_override_styles/hover_pressed = ExtResource("2_7qf0n")
+theme_override_styles/hover = ExtResource("3_dhhlq")
+theme_override_styles/hover_pressed = ExtResource("3_dhhlq")
 theme_override_styles/disabled = ExtResource("2_7qf0n")
+script = ExtResource("3_vau8b")
+hover_sound = ExtResource("5_sfhxo")
+press_sound = ExtResource("5_vau8b")
+press_pitch_randomize_enabled = false
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=995112810]
 layout_mode = 1

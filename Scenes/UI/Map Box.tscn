@@ -59,7 +59,3 @@ hover_pitch_randomize_enabled = false
 press_sound = ExtResource("6_e6w2d")
 press_pitch_multiplier_on = 2.0
 press_pitch_multiplier_off = 2.0
-audio_player_path = NodePath("../../AudioStreamPlayer2D")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=612133060]
-volume_db = 4.0

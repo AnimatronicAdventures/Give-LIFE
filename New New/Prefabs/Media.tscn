@@ -1,13 +1,19 @@
 [gd_scene format=3 uid="uid://bwjdxhvus3nnu"]
 
 [ext_resource type="Texture2D" uid="uid://d0mxte7fpaomy" path="res://Mods/SongCode/Mod Icon.png" id="1_3n4im"]
+[ext_resource type="Script" uid="uid://b4aa4vacbh1ln" path="res://Scripts/Sound UI/SoundUI.gd" id="1_qbqtu"]
 [ext_resource type="Texture2D" uid="uid://dyiswdb1owyty" path="res://UI/Icons/trash-can-solid-full.svg" id="2_0ksyx"]
+[ext_resource type="AudioStream" uid="uid://dajwfjwf772x" path="res://Sounds/Donk.wav" id="2_ere0i"]
+[ext_resource type="AudioStream" uid="uid://cron3phbvrasi" path="res://Sounds/Tick2.wav" id="5_fgiqf"]
+[ext_resource type="AudioStream" uid="uid://d32r2h55ktsse" path="res://Mods/Faz Anim 2/Custom Assets/Sounds/Trashed.wav" id="6_fhlh8"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=1584577794]
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
+script = ExtResource("1_qbqtu")
+hover_sound = ExtResource("2_ere0i")
 
 [node name="Control" type="VBoxContainer" parent="." unique_id=101360311]
 custom_minimum_size = Vector2(100, 120)
@@ -37,3 +43,6 @@ layout_mode = 2
 texture_normal = ExtResource("2_0ksyx")
 ignore_texture_size = true
 stretch_mode = 6
+script = ExtResource("1_qbqtu")
+hover_sound = ExtResource("5_fgiqf")
+press_sound = ExtResource("6_fhlh8")

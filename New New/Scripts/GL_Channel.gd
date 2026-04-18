@@ -16,7 +16,6 @@ var _bit_panels: Array = []
 
 const timeUnits = 1.0 / 120.0
 
-# ── Preview particle state ───────────────────────────────────────────────────
 var preview_particles_template: PackedScene = preload("res://New New/Prefabs/cpu_particles_2d.tscn")
 var _preview_particles: CPUParticles2D = null
 enum PreviewEdge { NONE, LEFT, RIGHT }
@@ -152,11 +151,9 @@ func renderBits() -> void:
 		preview_panel.size = Vector2(max(((ce - cs) / t_range) * width, 1.0), bitHolder.size.y)
 		preview_panel.visible = true
 		
-		# Ensure particles node exists as child of the preview panel
 		_ensure_preview_particles(preview_panel)
 	else:
 		preview_panel.visible = false
-		# Hide particles when no active edit
 		if _preview_particles != null and is_instance_valid(_preview_particles):
 			_preview_particles.emitting = false
 
@@ -193,8 +190,6 @@ func binder_entered() -> void:
 func binder_exited() -> void:
 	changingBind = false
 
-# ── Particle helpers ─────────────────────────────────────────────────────────
-
 func _ensure_preview_particles(preview_panel: Panel) -> void:
 	if _preview_particles != null and is_instance_valid(_preview_particles):
 		return
@@ -222,16 +217,13 @@ func _update_preview_particles() -> void:
 	var pw = preview_panel.size.x
 	var ph = preview_panel.size.y
 
-	# The live edge is whichever side timeCurrent is on relative to the edit start
 	var edit_start = timeline.activeEdit[id]["start"]
 	var edge: PreviewEdge = PreviewEdge.RIGHT if timeline.timeCurrent >= edit_start else PreviewEdge.LEFT
 
-	# Reconfigure direction/extents only when edge changes
 	if edge != _last_preview_edge:
 		_last_preview_edge = edge
 		_configure_particles_for_edge(edge, ph)
 
-	# Always update position every frame so right edge tracks the growing rect
 	match edge:
 		PreviewEdge.LEFT:
 			_preview_particles.position = Vector2(0, ph * 0.5)

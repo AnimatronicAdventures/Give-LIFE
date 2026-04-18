@@ -1,4 +1,5 @@
 extends Node
+class_name SoundUI
 
 @export var hover_sound: AudioStream
 @export var hover_pitch_randomize_enabled: bool = true
@@ -11,39 +12,32 @@ extends Node
 
 var pitch_variations: Array = [1.1,0.9,1.0,1.0,1.0,0.9,1.0]          # shared pitch multiplier array for hover & press
 
-@export var audio_player_path: NodePath
-
 var player_ref: AudioStreamPlayer2D
 
 var pitch_index := 0
 
 func _ready():
-	if audio_player_path != NodePath():
-		player_ref = get_node(audio_player_path)
-	else:
-		push_error("No audio player assigned for UISoundHelper.")
-		
+	player_ref = get_tree().get_first_node_in_group("UI Sounds")
+
 	if has_signal("tab_hovered"):
 		connect("tab_hovered", on_tab_hover)
-	elif has_signal("mouse_entered"):
+	if has_signal("mouse_entered"):
 		connect("mouse_entered", _on_hover)
-		
 	if has_signal("focus_entered"):
 		connect("focus_entered", _on_hover)
-	elif has_signal("item_focused"):
+	if has_signal("item_focused"):
 		connect("item_focused", _on_hover)
-	
 	if has_signal("toggled"):
 		connect("toggled", _on_press)
-	elif has_signal("pressed"):
+	if has_signal("pressed"):
 		connect("pressed", _on_pressed_button)
-	elif has_signal("value_changed"):
+	if has_signal("value_changed"):
 		connect("value_changed", _on_press)
-	elif has_signal("item_selected"):
+	if has_signal("item_selected"):
 		connect("item_selected", _on_press)
-	elif has_signal("text_changed"):
+	if has_signal("text_changed"):
 		connect("text_changed", _on_changed_text)
-	elif has_signal("tab_clicked"):
+	if has_signal("tab_clicked"):
 		connect("tab_clicked", on_tab_click)
 
 func _on_hover():

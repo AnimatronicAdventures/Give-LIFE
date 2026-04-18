@@ -12,8 +12,17 @@
 [ext_resource type="Script" uid="uid://bcv5vgupc8mjt" path="res://New New/Scripts/GL_LastSaved.gd" id="4_jpu5j"]
 [ext_resource type="Script" uid="uid://ckgpu8qo8u8vw" path="res://New New/Scripts/GL_Playback.gd" id="5_4tobp"]
 [ext_resource type="Script" uid="uid://2esvktatiq0x" path="res://New New/Scripts/GL_Media.gd" id="5_mtjvt"]
+[ext_resource type="AudioStream" uid="uid://bq5a3xyfofaaa" path="res://Sounds/Tip.wav" id="6_0yayq"]
 [ext_resource type="Script" uid="uid://da4kwr34io6fy" path="res://New New/Scripts/GL_EditorCam.gd" id="6_rjqd4"]
 [ext_resource type="Script" uid="uid://ckgshfwm3gia5" path="res://New New/Scripts/GL_HoldButton.gd" id="7_037lw"]
+[ext_resource type="AudioStream" uid="uid://bbnbaxncick0a" path="res://Sounds/Tck.wav" id="7_isteg"]
+[ext_resource type="AudioStream" uid="uid://bevbh0ckbw0o4" path="res://Sounds/Tick.wav" id="8_qw38e"]
+[ext_resource type="AudioStream" uid="uid://dajwfjwf772x" path="res://Sounds/Donk.wav" id="9_e12if"]
+[ext_resource type="AudioStream" uid="uid://dt1hdqwuf4r8" path="res://Sounds/Thock.wav" id="10_d1frn"]
+[ext_resource type="Script" uid="uid://b4aa4vacbh1ln" path="res://Scripts/Sound UI/SoundUI.gd" id="11_muhm5"]
+[ext_resource type="AudioStream" uid="uid://cron3phbvrasi" path="res://Sounds/Tick2.wav" id="12_ca78b"]
+[ext_resource type="AudioStream" uid="uid://cnu056nqhchk1" path="res://Sounds/Thack.wav" id="13_ufq68"]
+[ext_resource type="AudioStream" uid="uid://d32r2h55ktsse" path="res://Mods/Faz Anim 2/Custom Assets/Sounds/Trashed.wav" id="14_e12if"]
 
 [node name="GlEditor" type="Control" unique_id=270496900]
 texture_filter = 1
@@ -64,6 +73,9 @@ script = ExtResource("1_mtjvt")
 [node name="Button" type="Button" parent="File Loader/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1694301157]
 layout_mode = 2
 text = "Import Showtape"
+script = ExtResource("11_muhm5")
+hover_sound = ExtResource("6_0yayq")
+press_sound = ExtResource("7_isteg")
 
 [node name="PanelContainer2" type="PanelContainer" parent="File Loader/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1972246689]
 layout_mode = 2
@@ -102,6 +114,11 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 current_tab = 0
+script = ExtResource("11_muhm5")
+hover_sound = ExtResource("8_qw38e")
+press_sound = ExtResource("9_e12if")
+press_pitch_multiplier_on = 2.0
+press_pitch_multiplier_off = 2.0
 
 [node name="Settings" type="MarginContainer" parent="Full Editor/Editor/Modifiers" unique_id=2042416531]
 self_modulate = Color(1, 1, 1, 0.5019608)
@@ -153,10 +170,22 @@ size_flags_horizontal = 3
 [node name="LineEdit" type="LineEdit" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=324076004]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("11_muhm5")
+hover_sound = ExtResource("10_d1frn")
+hover_pitch_multiplier = 1.5
+press_sound = ExtResource("10_d1frn")
+press_pitch_multiplier_on = 2.5
+press_pitch_multiplier_off = 2.5
 
 [node name="LineEdit2" type="LineEdit" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=570988486]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("11_muhm5")
+hover_sound = ExtResource("10_d1frn")
+hover_pitch_multiplier = 2.5
+press_sound = ExtResource("10_d1frn")
+press_pitch_multiplier_on = 1.5
+press_pitch_multiplier_off = 1.5
 
 [node name="Label2" type="Label" parent="Full Editor/Editor/Modifiers/Settings/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1403401638]
 custom_minimum_size = Vector2(0, 30)
@@ -183,19 +212,38 @@ script = ExtResource("4_jpu5j")
 [node name="Button" type="Button" parent="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer" unique_id=2094382263]
 layout_mode = 2
 text = "Save"
+script = ExtResource("11_muhm5")
+hover_sound = ExtResource("12_ca78b")
+hover_pitch_randomize_enabled = false
+press_sound = ExtResource("13_ufq68")
+press_pitch_randomize_enabled = false
 
 [node name="Button2" type="Button" parent="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer" unique_id=421195070]
 layout_mode = 2
 text = "Save & Quit"
+script = ExtResource("11_muhm5")
+hover_sound = ExtResource("12_ca78b")
+hover_pitch_randomize_enabled = false
+press_sound = ExtResource("13_ufq68")
+press_pitch_randomize_enabled = false
 
 [node name="Button3" type="Button" parent="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer" unique_id=143106228]
 layout_mode = 2
 text = "Export File to Share"
+script = ExtResource("11_muhm5")
+hover_sound = ExtResource("12_ca78b")
+hover_pitch_randomize_enabled = false
+press_sound = ExtResource("13_ufq68")
+press_pitch_randomize_enabled = false
 
 [node name="Button4" type="Button" parent="Full Editor/Editor/Modifiers/Save & Quit/VBoxContainer" unique_id=1730162617]
 layout_mode = 2
 text = "Delete ( Hold )"
 script = ExtResource("7_037lw")
+hover_sound = ExtResource("12_ca78b")
+hover_pitch_randomize_enabled = false
+press_sound = ExtResource("14_e12if")
+press_pitch_randomize_enabled = false
 
 [node name="Media" type="MarginContainer" parent="Full Editor/Editor/Modifiers" unique_id=634770456]
 visible = false
@@ -209,6 +257,9 @@ layout_mode = 2
 [node name="Button" type="Button" parent="Full Editor/Editor/Modifiers/Media/VBoxContainer" unique_id=1558043606]
 layout_mode = 2
 text = "Add Media"
+script = ExtResource("11_muhm5")
+hover_sound = ExtResource("12_ca78b")
+press_sound = ExtResource("13_ufq68")
 
 [node name="MediaContainer" type="HFlowContainer" parent="Full Editor/Editor/Modifiers/Media/VBoxContainer" unique_id=351307767]
 layout_mode = 2
@@ -259,6 +310,11 @@ alignment = 1
 layout_mode = 2
 tooltip_text = "Play / Pause Button"
 text = " ▶ "
+script = ExtResource("11_muhm5")
+hover_sound = ExtResource("12_ca78b")
+hover_pitch_randomize_enabled = false
+press_sound = ExtResource("13_ufq68")
+press_pitch_randomize_enabled = false
 
 [node name="Data Timeline" type="PanelContainer" parent="Full Editor" unique_id=149432049]
 self_modulate = Color(1, 1, 1, 0.06666667)
@@ -292,6 +348,11 @@ popup/item_2/text = "0.0 -> 0.1"
 popup/item_2/id = 2
 popup/item_3/text = "Color"
 popup/item_3/id = 3
+script = ExtResource("11_muhm5")
+hover_sound = ExtResource("12_ca78b")
+hover_pitch_randomize_enabled = false
+press_sound = ExtResource("13_ufq68")
+press_pitch_randomize_enabled = false
 
 [node name="TimelineBar" type="ColorRect" parent="Full Editor/Data Timeline" unique_id=64446410]
 custom_minimum_size = Vector2(1, 0)

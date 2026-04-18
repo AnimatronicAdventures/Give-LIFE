@@ -1,4 +1,4 @@
-extends Button
+extends SoundUI
 signal button_held
 
 var _hold_timer: Timer
