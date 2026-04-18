@@ -37,12 +37,6 @@ func endEdit(channel_id: String) -> void:
 
 func getDataForChannel(channel_id: String) -> Array:
 	var base: Array = master.currentlyLoadedFile["channels"][channel_id]["data"].duplicate()
-	if activeEdit.get("id", "") == channel_id:
-		# Inject a preview stamp for the active edit
-		var start_int = time_to_int(activeEdit["start"])
-		var end_int = time_to_int(timeCurrent)
-		# Just return the base data with the active range visible
-		# Channel's renderBits will handle the preview panel separately
 	return base
 
 func time_to_int(t: float) -> int:
@@ -100,15 +94,38 @@ func _input(event: InputEvent) -> void:
 		togglePlayback()
 
 	if event is InputEventKey:
-		for key in master.currentlyLoadedFile["channels"]:
-			var bind = channelBinds.get(key, null)
+		for channel_id in master.currentlyLoadedFile["channels"]:
+			var bind = channelBinds.get(channel_id, null)
 			if bind == null:
 				continue
-			if event.keycode == bind:
-				if event.pressed and not event.echo:
-					startEdit(key, timeCurrent, true)
-				elif not event.pressed:
-					_commit_edit(key)
+			if event.keycode != bind:
+				continue
+
+			var ch_data = master.currentlyLoadedFile["channels"][channel_id]
+			var type = GL_ChannelData.get_type(ch_data)
+
+			if event.pressed and not event.echo:
+				match type:
+					GL_ChannelData.TYPE_BOOL:
+						startEdit(channel_id, timeCurrent, true)
+
+					GL_ChannelData.TYPE_FLOAT:
+						# On key-down: record start so we know the value to invert on release
+						startEdit(channel_id, timeCurrent, true)
+
+					GL_ChannelData.TYPE_COLOR, GL_ChannelData.TYPE_AUDIO, GL_ChannelData.TYPE_VIDEO, \
+					GL_ChannelData.TYPE_IMAGE, GL_ChannelData.TYPE_STRING:
+						# Single-point event: commit immediately on key-down, no preview window
+						_commit_event(channel_id, type)
+
+			elif not event.pressed:
+				match type:
+					GL_ChannelData.TYPE_BOOL:
+						_commit_edit(channel_id)
+					GL_ChannelData.TYPE_FLOAT:
+						_commit_float(channel_id)
+
+# ── Bool commit (unchanged logic) ────────────────────────────────────────────
 
 func _commit_edit(channel_id: String) -> void:
 	if not activeEdit.has(channel_id):
@@ -156,6 +173,57 @@ func _commit_edit(channel_id: String) -> void:
 	call_deferred("endEdit", channel_id)
 	repaintTimeline()
 
+# ── Float commit ──────────────────────────────────────────────────────────────
+
+func _commit_float(channel_id: String) -> void:
+	if not activeEdit.has(channel_id):
+		return
+
+	var edit_start = activeEdit[channel_id]["start"]
+	var ch_data = master.currentlyLoadedFile["channels"][channel_id]
+	var entries: Array = GL_ChannelData.decode_entries(GL_ChannelData.TYPE_FLOAT, ch_data.get("data", ""))
+
+	# Find the last value before the edit start — default 0.0
+	var start_int = time_to_int(edit_start)
+	var last_value = GL_ChannelData.get_float_at_time(entries, start_int - 1)
+	var release_value = clamp(1.0 - last_value, 0.0, 1.0)
+
+	# Place down-point at press time, up-point at release time
+	var release_int = time_to_int(timeCurrent)
+	if release_int <= start_int:
+		release_int = start_int + 1
+
+	entries = GL_ChannelData.insert_entry(entries, { "time": start_int, "value": last_value })
+	entries = GL_ChannelData.insert_entry(entries, { "time": release_int, "value": release_value })
+
+	master.currentlyLoadedFile["channels"][channel_id]["data"] = GL_ChannelData.encode_entries(GL_ChannelData.TYPE_FLOAT, entries)
+	call_deferred("endEdit", channel_id)
+	repaintTimeline()
+
+# ── Event commit (single-point types) ────────────────────────────────────────
+
+func _commit_event(channel_id: String, type: String) -> void:
+	var ch_data = master.currentlyLoadedFile["channels"][channel_id]
+	var entries: Array = GL_ChannelData.decode_entries(type, ch_data.get("data", ""))
+	var t_int = time_to_int(timeCurrent)
+
+	var entry: Dictionary
+	match type:
+		GL_ChannelData.TYPE_COLOR:
+			entry = { "time": t_int, "color": Color.WHITE }
+		GL_ChannelData.TYPE_AUDIO, GL_ChannelData.TYPE_VIDEO:
+			entry = { "time": t_int, "file": "null", "offset": 0.0 }
+		GL_ChannelData.TYPE_IMAGE:
+			entry = { "time": t_int, "file": "null" }
+		GL_ChannelData.TYPE_STRING:
+			entry = { "time": t_int, "value": "null" }
+
+	entries = GL_ChannelData.insert_entry(entries, entry)
+	master.currentlyLoadedFile["channels"][channel_id]["data"] = GL_ChannelData.encode_entries(type, entries)
+	repaintTimeline()
+
+# ── Timeline layout / scroll / zoom ──────────────────────────────────────────
+
 func updateTimelineBarX() -> void:
 	if playing:
 		var t = (timeCurrent - timeStart) / (timeEnd - timeStart)
@@ -197,28 +265,18 @@ func scroll(down: bool):
 			scrolledIndex -= 1
 	_reassign_channel_slots()
 
-# Gets the sorted channel keys from master, same order as before
 func _get_sorted_keys() -> Array:
 	var channels = master.currentlyLoadedFile["channels"]
 	var sorted_keys = channels.keys()
 	sorted_keys.sort_custom(func(a, b): return channels[a]["index"] < channels[b]["index"])
 	return sorted_keys
 
-# Returns only the currently visible channel nodes (excludes CreateChannel)
 func _get_channel_slots() -> Array:
 	var slots = []
 	for child in timelineBox.get_children():
 		if child.name != "CreateChannel":
 			slots.append(child)
 	return slots
-
-# Show createChannel only when scrolled to the end with a free slot visible
-func _update_create_channel_visibility() -> void:
-	if master.currentlyLoadedPath == "":
-		createChannel.visible = false
-		return
-	var total = master.currentlyLoadedFile["channels"].size()
-	createChannel.visible = total < MAX_VISIBLE_CHANNELS or scrolledIndex + MAX_VISIBLE_CHANNELS >= total
 
 func _reassign_channel_slots() -> void:
 	if master.currentlyLoadedPath == "":
@@ -251,8 +309,6 @@ func _reassign_channel_slots() -> void:
 		else:
 			slot.visible = false
 
-	_update_create_channel_visibility()
-
 func repaintTimeline() -> void:
 	for child in timelineBox.get_children():
 		if child.name != "CreateChannel" and child.visible:
@@ -275,6 +331,18 @@ func create_channel(type: int) -> void:
 		3:
 			finished = master.create_channel("color")
 			print("Creating Color Channel")
+		4:
+			finished = master.create_channel("audio")
+			print("Creating Audio Channel")
+		5:
+			finished = master.create_channel("video")
+			print("Creating Video Channel")
+		6:
+			finished = master.create_channel("image")
+			print("Creating Image Channel")
+		7:
+			finished = master.create_channel("string")
+			print("Creating Text Channel")
 	if finished:
 		reload_timeline()
 		createChannel.selected = 0
@@ -282,13 +350,16 @@ func create_channel(type: int) -> void:
 		print("Creating Channel Failed")
 
 func reload_timeline() -> void:
-	# Free all existing channel slots
+	if master.currentlyLoadedPath == "":
+		createChannel.visible = false
+	else:
+		createChannel.visible = true
+
 	for child in timelineBox.get_children():
 		if child.name != "CreateChannel":
 			child.queue_free()
 
 	if master.currentlyLoadedPath == "":
-		createChannel.visible = false
 		return
 
 	var total = master.currentlyLoadedFile["channels"].size()
@@ -303,5 +374,4 @@ func reload_timeline() -> void:
 	
 	timelineBox.move_child(timelineBox.get_node("CreateChannel"), timelineBox.get_child_count() - 1)
 
-	_update_create_channel_visibility()
 	call_deferred("_reassign_channel_slots")

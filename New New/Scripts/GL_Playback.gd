@@ -14,38 +14,66 @@ var _isScrubbing : bool = false
 func _process(_delta):
 	if master.currentlyLoadedPath != "":
 		for key in master.currentlyLoadedFile["channels"]:
-			var data = master.currentlyLoadedFile["channels"][key]["data"]
-			if not data is Array:
-				continue
+			var ch = master.currentlyLoadedFile["channels"][key]
+			var data = ch["data"]
+			var type = GL_ChannelData.get_type(ch)
+
 			var pipe = key.find("|")
 			if pipe == -1:
 				continue
 			var group = key.left(pipe)
 			var signal_key = key.substr(pipe + 1)
-			var effective_data = data
-			if timeline.activeEdit.has(key):
-				effective_data = _merge_active_edit(data, key)
-			if effective_data.is_empty():
-				continue
 
-			var state = float(get_bool_state_at_time(effective_data, timeline.timeCurrent))
+			var state: float = _get_state_for_type(type, data, key)
+
 			for node in get_tree().get_nodes_in_group(group):
 				node._sent_signals(signal_key, state)
 
 		_process_audio(_delta)
+
+func _get_state_for_type(type: String, data, channel_id: String) -> float:
+	match type:
+		GL_ChannelData.TYPE_BOOL:
+			var stamps: Array = data if data is Array else []
+			if timeline.activeEdit.has(channel_id):
+				stamps = _merge_active_edit(stamps, channel_id)
+			if stamps.is_empty():
+				return 0.0
+			return float(get_bool_state_at_time(stamps, timeline.timeCurrent))
+
+		GL_ChannelData.TYPE_FLOAT:
+			var entries: Array = GL_ChannelData.decode_entries(type, data)
+			if entries.is_empty():
+				return 0.0
+			var t_int = int(timeline.timeCurrent / _TIME_UNITS)
+			return GL_ChannelData.get_float_at_time(entries, t_int)
+
+		GL_ChannelData.TYPE_COLOR:
+			# Send color as a packed float — callers that want Color can unpack it.
+			# For now returns 1.0 when any color is set, 0.0 when empty.
+			var entries: Array = GL_ChannelData.decode_entries(type, data)
+			return 1.0 if not entries.is_empty() else 0.0
+
+		_:
+			return 0.0
 
 func clean_sweep() -> void:
 	if master.currentlyLoadedPath == "":
 		return
 
 	for key in master.currentlyLoadedFile["channels"]:
-		var data = master.currentlyLoadedFile["channels"][key]["data"]
-		if not data is Array or not data.is_empty():
+		var ch = master.currentlyLoadedFile["channels"][key]
+		var data = ch["data"]
+		var type = GL_ChannelData.get_type(ch)
+
+		# Only sweep channels with no data
+		var is_empty = (data is Array and data.is_empty()) or (data is String and data == "")
+		if not is_empty:
 			continue
+
 		var pipe = key.find("|")
 		if pipe == -1:
 			continue
-
 		var group = key.left(pipe)
 		var signal_key = key.substr(pipe + 1)
 
@@ -65,14 +93,12 @@ func _process_audio(delta: float) -> void:
 		if not audioPlayer.playing:
 			audioPlayer.play(current)
 		else:
-			# Keep audio in sync if it drifts
 			if abs(audioPlayer.get_playback_position() - current) > 0.2:
 				audioPlayer.seek(current)
 	else:
 		if audioPlayer.playing and not _isScrubbing:
 			audioPlayer.stop()
 
-		# Detect scrub — time changed while paused
 		if abs(current - _lastTime) > 0.001:
 			_isScrubbing = true
 			_scrubTimer = 0.1
@@ -173,10 +199,10 @@ func _merge_active_edit(base: Array, channel_id: String) -> Array:
 			ins = i
 			break
 
-	if state_before:   
+	if state_before:
 		stamps.insert(ins, start_int)
 		ins += 1
-	if not state_after:   
+	if not state_after:
 		stamps.insert(ins, end_int)
 
 	return stamps

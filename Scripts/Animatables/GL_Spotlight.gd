@@ -37,7 +37,7 @@ func _sent_signals(signal_ID:String,the_signal):
 				the_signal = the_signal * 1.0
 			target_energy = max(the_signal, 0.0) * energyMultiplier
 		"color":
-			if canChangeColor:
+			if canChangeColor && typeof(the_signal) == TYPE_COLOR:
 				if spotLight != null:
 					spotLight.light_color = the_signal
 				elif omniLight != null:
