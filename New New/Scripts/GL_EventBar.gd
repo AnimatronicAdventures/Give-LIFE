@@ -160,13 +160,19 @@ func _update_entry_field(field: String, value) -> void:
 
 func _get_files_of_types(extensions: Array) -> Array:
 	var results = []
-	var folder = ProjectSettings.globalize_path(channel.master.currentlyLoadedPath)
-	var dir = DirAccess.open(folder)
+	var raw_path: String = channel.master.currentlyLoadedPath
+	# Try both the raw path and the globalized path — user:// paths require
+	# globalization on some platforms; absolute paths do not need it.
+	var candidates = [raw_path, ProjectSettings.globalize_path(raw_path)]
+	var dir: DirAccess = null
+	for candidate in candidates:
+		if candidate != "":
+			dir = DirAccess.open(candidate)
+			if dir:
+				break
 	if not dir:
-		# Fallback: try the path as-is
-		dir = DirAccess.open(channel.master.currentlyLoadedPath)
-		if not dir:
-			return results
+		push_warning("GL_EventBar: could not open media folder: " + raw_path)
+		return results
 	dir.list_dir_begin()
 	var f = dir.get_next()
 	while f != "":
@@ -174,4 +180,5 @@ func _get_files_of_types(extensions: Array) -> Array:
 			if f.get_extension().to_lower() in extensions:
 				results.append(f)
 		f = dir.get_next()
+	dir.list_dir_end()
 	return results

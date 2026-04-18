@@ -4,7 +4,7 @@ class_name GL_Media
 @onready var master = $"../../../../../../Master"
 @onready var playback = $"../../../../../../Master/Playback"
 
-const SUPPORTED_EXTENSIONS = ["mp3", "wav", "ogg", "mp4", "ogv", "webm", "png", "jpg", "jpeg"]
+const SUPPORTED_EXTENSIONS = ["mp3", "wav", "ogg", "ogv", "png", "jpg", "jpeg"]
 const COVER_EXTENSIONS = ["png", "jpg", "jpeg"]
 var itemPrefab = preload("res://New New/Prefabs/Media.tscn")
 
@@ -16,7 +16,7 @@ func import_file() -> void:
 	dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	dialog.access = FileDialog.ACCESS_FILESYSTEM
 	dialog.filters = PackedStringArray([
-		"*.mp3,*.wav,*.ogg,*.mp4,*.ogv,*.webm,*.png,*.jpg,*.jpeg ; Supported Media"
+		"*.mp3,*.wav,*.ogg,*.ogv,*.png,*.jpg,*.jpeg ; Supported Media"
 	])
 	add_child(dialog)
 	dialog.popup_centered(Vector2(900, 600))
@@ -62,7 +62,7 @@ func _on_file_selected(source_path: String) -> void:
 
 	if not cover_exists:
 		var image: Image = null
-		if ext in ["mp4", "ogv", "webm"]:
+		if ext == "ogv":
 			image = _extract_video_thumbnail(dest_path)
 		elif ext in ["mp3", "wav", "ogg"]:
 			image = _extract_audio_cover(dest_path)
@@ -106,7 +106,7 @@ func _get_cover_for_display(file_path: String) -> ImageTexture:
 		return null
 
 	var image: Image = null
-	if ext in ["mp4", "ogv", "webm"]:
+	if ext == "ogv":
 		image = _extract_video_thumbnail(file_path)
 	elif ext in ["mp3", "wav", "ogg"]:
 		image = _extract_audio_cover(file_path)
@@ -122,7 +122,7 @@ func _save_cover_if_missing(folder: String, file_path: String) -> void:
 		if FileAccess.file_exists(folder.path_join("cover." + cover_ext)):
 			return
 	var image: Image = null
-	if ext in ["mp4", "ogv", "webm"]:
+	if ext == "ogv":
 		image = _extract_video_thumbnail(file_path)
 	elif ext in ["mp3", "wav", "ogg"]:
 		image = _extract_audio_cover(file_path)
