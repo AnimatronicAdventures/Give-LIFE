@@ -11,7 +11,6 @@ var master : GL_Master
 var timeline : GL_Timeline
 var changingBind = false
 var currentBind = null
-var insideTimeline = false
 
 # Type-specific panel pools
 var _bit_panels: Array = []       # bool GL_BitPanel nodes
@@ -54,14 +53,12 @@ func _process(_delta: float) -> void:
 
 	if not timeline.playing:
 		if not timeline._scrub_handled_this_frame:
-			var timeline_rect = Rect2(Vector2.ZERO, channelTimeline.size)
 			var mouse_pos = channelTimeline.get_local_mouse_position()
+			# Rect2(0,0, size.x, size.y) is the local bounds of the timeline area
+			var timeline_rect = Rect2(Vector2.ZERO, channelTimeline.size)
+			
 			if timeline_rect.has_point(mouse_pos):
-				timeline.setTimeFromTimeline(
-					mouse_pos.x,
-					channelTimeline.position.x,
-					channelTimeline.size.x
-				)
+				timeline.setTimeFromTimeline(mouse_pos.x, channelTimeline.size.x)
 
 func _input(event: InputEvent) -> void:
 	if changingBind:

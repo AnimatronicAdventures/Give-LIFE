@@ -61,21 +61,43 @@ func format_time(seconds: float) -> String:
 	var s = int(seconds) % 60
 	return "%02d:%02d:%02d" % [h, m, s]
 
+func setTimeFromTimeline(local_mouse_x: float, width: float) -> void:
+	var t_ratio = clamp(local_mouse_x / width, 0.0, 1.0)
+	
+	timeCurrent = timeStart + t_ratio * (timeEnd - timeStart)
+	
+	currentTimeText.text = format_time(timeCurrent)
+	_scrub_handled_this_frame = true
+
 func _process(delta: float) -> void:
 	_scrub_handled_this_frame = false
 	if playing:
 		setCurrentTime(delta)
-	
-	var timeline_width = channelWidths
-	var t_range = timeEnd - timeStart
-	var x_pos = ((timeCurrent - timeStart) / t_range) * timeline_width
-	timelinePositionBar.position.x = x_pos
-	
-	if activeEdit.size() > 0:
-		for child in timelineBox.get_children():
-			if child is GL_Channel and activeEdit.has(child.id):
-				child.sync_preview_to_scrubber(x_pos)
 
+	var t_range = timeEnd - timeStart
+	if t_range > 0:
+		var t_ratio = (timeCurrent - timeStart) / t_range
+		
+		var first_chan = _get_first_visible_channel()
+		if first_chan:
+			var data_area = first_chan.channelTimeline
+			
+			var start_gx = data_area.global_position.x
+			var width_gx = data_area.size.x * data_area.get_global_transform().get_scale().x
+			
+			timelinePositionBar.global_position.x = start_gx + (t_ratio * width_gx)
+			
+			if activeEdit.size() > 0:
+				for child in timelineBox.get_children():
+					if child is GL_Channel and activeEdit.has(child.id):
+						child.sync_preview_to_scrubber(t_ratio * data_area.size.x)
+
+func _get_first_visible_channel() -> GL_Channel:
+	for child in timelineBox.get_children():
+		if child is GL_Channel and child.visible:
+			return child
+	return null
+					
 func _physics_process(delta: float) -> void:
 	var s_text = format_time(timeStart)
 	if s_text != _last_start_text:
@@ -90,20 +112,9 @@ func _physics_process(delta: float) -> void:
 	if _timeline_dirty:
 		_timeline_dirty = false
 		repaintTimeline()
-
 func setCurrentTime(delta: float) -> void:
 	timeCurrent += delta
-	currentTimeText.text = format_time(timeCurrent)
-	updateTimelineBarX()
-
-func setTimeFromTimeline(mouse: float, pos: float, width: float) -> void:
-	channelXs = pos
-	channelWidths = width
-	timeCurrent = timeStart + clamp(mouse / width, 0.0, 1.0) * (timeEnd - timeStart)
-	currentTimeText.text = format_time(timeCurrent)
-	updateTimelineBarX()
-	_scrub_handled_this_frame = true
-
+	
 func togglePlayback():
 	playing = !playing
 	if playing:
