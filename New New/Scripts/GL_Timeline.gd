@@ -27,13 +27,26 @@ const zoomMax = 60
 const panAmount = 0.1
 const MAX_VISIBLE_CHANNELS = 10
 
+# ── Dirty flag ────────────────────────────────────────────────────────────────
+var _timeline_dirty: bool = false
+
+# ── Label update guards ───────────────────────────────────────────────────────
+# Cache the last string written to each label so we skip setText when unchanged.
+var _last_start_text: String = ""
+var _last_end_text: String = ""
+
+var _scrub_handled_this_frame: bool = false
+
+func _mark_dirty() -> void:
+	_timeline_dirty = true
+
 func startEdit(channel_id: String, start_time: float, value: bool) -> void:
 	activeEdit[channel_id] = {"start": start_time, "value": value}
-	repaintTimeline()
+	_mark_dirty()
 
 func endEdit(channel_id: String) -> void:
 	activeEdit.erase(channel_id)
-	repaintTimeline()
+	_mark_dirty()
 
 func getDataForChannel(channel_id: String) -> Array:
 	var base: Array = master.currentlyLoadedFile["channels"][channel_id]["data"].duplicate()
@@ -49,27 +62,57 @@ func format_time(seconds: float) -> String:
 	return "%02d:%02d:%02d" % [h, m, s]
 
 func _process(delta: float) -> void:
-	timeStartText.text = format_time(timeStart)
-	timeEndText.text = format_time(timeEnd)
+	_scrub_handled_this_frame = false
 	if playing:
 		setCurrentTime(delta)
+	
+	var timeline_width = channelWidths
+	var t_range = timeEnd - timeStart
+	var x_pos = ((timeCurrent - timeStart) / t_range) * timeline_width
+	timelinePositionBar.position.x = x_pos
+	
 	if activeEdit.size() > 0:
+		for child in timelineBox.get_children():
+			if child is GL_Channel and activeEdit.has(child.id):
+				child.sync_preview_to_scrubber(x_pos)
+
+func _physics_process(delta: float) -> void:
+	var s_text = format_time(timeStart)
+	if s_text != _last_start_text:
+		_last_start_text = s_text
+		timeStartText.text = s_text
+
+	var e_text = format_time(timeEnd)
+	if e_text != _last_end_text:
+		_last_end_text = e_text
+		timeEndText.text = e_text
+
+	if _timeline_dirty:
+		_timeline_dirty = false
 		repaintTimeline()
 
 func setCurrentTime(delta: float) -> void:
 	timeCurrent += delta
 	currentTimeText.text = format_time(timeCurrent)
 	updateTimelineBarX()
-	
-func setTimeFromTimeline(mouse: float,pos: float, width: float) -> void:
+
+func setTimeFromTimeline(mouse: float, pos: float, width: float) -> void:
 	channelXs = pos
 	channelWidths = width
 	timeCurrent = timeStart + clamp(mouse / width, 0.0, 1.0) * (timeEnd - timeStart)
 	currentTimeText.text = format_time(timeCurrent)
 	updateTimelineBarX()
+	_scrub_handled_this_frame = true
 
 func togglePlayback():
 	playing = !playing
+	if playing:
+		var playback = _get_playback()
+		if playback:
+			playback.prime_group_cache()
+
+func _get_playback() -> GL_Playback:
+	return master.get_node_or_null("GL_Playback")
 
 func _input(event: InputEvent) -> void:
 	if master.currentlyLoadedPath == "":
@@ -108,14 +151,10 @@ func _input(event: InputEvent) -> void:
 				match type:
 					GL_ChannelData.TYPE_BOOL:
 						startEdit(channel_id, timeCurrent, true)
-
 					GL_ChannelData.TYPE_FLOAT:
-						# On key-down: record start so we know the value to invert on release
 						startEdit(channel_id, timeCurrent, true)
-
 					GL_ChannelData.TYPE_COLOR, GL_ChannelData.TYPE_AUDIO, GL_ChannelData.TYPE_VIDEO, \
 					GL_ChannelData.TYPE_IMAGE, GL_ChannelData.TYPE_STRING:
-						# Single-point event: commit immediately on key-down, no preview window
 						_commit_event(channel_id, type)
 
 			elif not event.pressed:
@@ -125,7 +164,7 @@ func _input(event: InputEvent) -> void:
 					GL_ChannelData.TYPE_FLOAT:
 						_commit_float(channel_id)
 
-# ── Bool commit (unchanged logic) ────────────────────────────────────────────
+# ── Bool commit ───────────────────────────────────────────────────────────────
 
 func _commit_edit(channel_id: String) -> void:
 	if not activeEdit.has(channel_id):
@@ -135,7 +174,7 @@ func _commit_edit(channel_id: String) -> void:
 	var range_end = max(edit_start, timeCurrent)
 	if range_end - range_start < (1.0 / 120.0):
 		range_end = range_start + (1.0 / 120.0)
-	
+
 	var raw = master.currentlyLoadedFile["channels"][channel_id]["data"]
 	var stamps: Array = raw if raw is Array else []
 	var start_int = time_to_int(range_start)
@@ -171,7 +210,7 @@ func _commit_edit(channel_id: String) -> void:
 
 	master.currentlyLoadedFile["channels"][channel_id]["data"] = stamps
 	call_deferred("endEdit", channel_id)
-	repaintTimeline()
+	_mark_dirty()
 
 # ── Float commit ──────────────────────────────────────────────────────────────
 
@@ -181,14 +220,14 @@ func _commit_float(channel_id: String) -> void:
 
 	var edit_start = activeEdit[channel_id]["start"]
 	var ch_data = master.currentlyLoadedFile["channels"][channel_id]
-	var entries: Array = GL_ChannelData.decode_entries(GL_ChannelData.TYPE_FLOAT, ch_data.get("data", ""))
+	
+	# FIX: Get the live array directly, no decoding!
+	var entries: Array = ch_data.get("data", [])
 
-	# Find the last value before the edit start — default 0.0
 	var start_int = time_to_int(edit_start)
 	var last_value = GL_ChannelData.get_float_at_time(entries, start_int - 1)
 	var release_value = clamp(1.0 - last_value, 0.0, 1.0)
 
-	# Place down-point at press time, up-point at release time
 	var release_int = time_to_int(timeCurrent)
 	if release_int <= start_int:
 		release_int = start_int + 1
@@ -196,15 +235,19 @@ func _commit_float(channel_id: String) -> void:
 	entries = GL_ChannelData.insert_entry(entries, { "time": start_int, "value": last_value })
 	entries = GL_ChannelData.insert_entry(entries, { "time": release_int, "value": release_value })
 
-	master.currentlyLoadedFile["channels"][channel_id]["data"] = GL_ChannelData.encode_entries(GL_ChannelData.TYPE_FLOAT, entries)
+	# FIX: Save the array directly, no encoding!
+	master.currentlyLoadedFile["channels"][channel_id]["data"] = entries
+	_invalidate_playback_cache(channel_id)
 	call_deferred("endEdit", channel_id)
-	repaintTimeline()
+	_mark_dirty()
 
-# ── Event commit (single-point types) ────────────────────────────────────────
+# ── Event commit ──────────────────────────────────────────────────────────────
 
 func _commit_event(channel_id: String, type: String) -> void:
 	var ch_data = master.currentlyLoadedFile["channels"][channel_id]
-	var entries: Array = GL_ChannelData.decode_entries(type, ch_data.get("data", ""))
+	
+	# FIX: Get the live array directly, no decoding!
+	var entries: Array = ch_data.get("data", [])
 	var t_int = time_to_int(timeCurrent)
 
 	var entry: Dictionary
@@ -219,10 +262,16 @@ func _commit_event(channel_id: String, type: String) -> void:
 			entry = { "time": t_int, "value": "null" }
 
 	entries = GL_ChannelData.insert_entry(entries, entry)
-	master.currentlyLoadedFile["channels"][channel_id]["data"] = GL_ChannelData.encode_entries(type, entries)
-	repaintTimeline()
-
-# ── Timeline layout / scroll / zoom ──────────────────────────────────────────
+	
+	# FIX: Save the array directly, no encoding!
+	master.currentlyLoadedFile["channels"][channel_id]["data"] = entries
+	_invalidate_playback_cache(channel_id)
+	_mark_dirty()
+	
+func _invalidate_playback_cache(channel_id: String) -> void:
+	var playback = _get_playback()
+	if playback:
+		playback.invalidate_channel_cache(channel_id)
 
 func updateTimelineBarX() -> void:
 	if playing:
@@ -241,7 +290,9 @@ func zoom(out: bool):
 	if timeStart < 0.0:
 		timeEnd += -timeStart
 		timeStart = 0.0
-	repaintTimeline()
+	_last_start_text = ""   # force label refresh after range change
+	_last_end_text = ""
+	_mark_dirty()
 
 func pan(left: bool):
 	var dist = timeEnd - timeStart
@@ -251,7 +302,9 @@ func pan(left: bool):
 	if timeStart < 0.0:
 		timeEnd += -timeStart
 		timeStart = 0.0
-	repaintTimeline()
+	_last_start_text = ""
+	_last_end_text = ""
+	_mark_dirty()
 
 func scroll(down: bool):
 	if master.currentlyLoadedPath == "":
@@ -281,16 +334,16 @@ func _get_channel_slots() -> Array:
 func _reassign_channel_slots() -> void:
 	if master.currentlyLoadedPath == "":
 		return
-		
+
 	await get_tree().process_frame
-	
+
 	var sorted_keys = _get_sorted_keys()
 	var slots = _get_channel_slots()
-	
+
 	for i in range(slots.size()):
 		var data_index = scrolledIndex + i
-		if i >= slots.size(): break 
-		
+		if i >= slots.size(): break
+
 		var slot : GL_Channel = slots[i]
 		if data_index < sorted_keys.size():
 			var key = sorted_keys[data_index]
@@ -305,7 +358,7 @@ func _reassign_channel_slots() -> void:
 			slot.timeline = self
 			slot.visible = true
 			slot.start()
-			slot.renderBits() 
+			slot.renderBits()
 		else:
 			slot.visible = false
 
@@ -371,7 +424,15 @@ func reload_timeline() -> void:
 	for i in range(slots_needed):
 		var channelBox : GL_Channel = channelPrefab.instantiate()
 		timelineBox.add_child(channelBox)
-	
+
 	timelineBox.move_child(timelineBox.get_node("CreateChannel"), timelineBox.get_child_count() - 1)
 
+	# Prime the dispatch table now so first play-start has zero setup cost.
+	# Deferred so group memberships are stable after the scene settles.
+	call_deferred("_prime_playback_deferred")
 	call_deferred("_reassign_channel_slots")
+
+func _prime_playback_deferred() -> void:
+	var playback = _get_playback()
+	if playback:
+		playback.prime_group_cache()

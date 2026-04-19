@@ -11,54 +11,129 @@ const VIDEO_EXTENSIONS = ["mp4", "webm", "ogv"]
 const _VIDEO_TIMESTAMP_INTERVAL = 0.1
 
 var _lastTime : float = -1.0
-var _scrubTimer : float = 0.0
+var _lastTime_int : int = -1
 var _isScrubbing : bool = false
+var _scrubTimer : float = 0.0
 var _media_state: Dictionary = {}
 var _media_timers: Dictionary = {}
 
-func _process(delta: float):
-	if master.currentlyLoadedPath != "":
-		for key in master.currentlyLoadedFile["channels"]:
-			var ch = master.currentlyLoadedFile["channels"][key]
-			var data = ch["data"]
-			var type = GL_ChannelData.get_type(ch)
-			var pipe = key.find("|")
-			if pipe == -1:
-				continue
-			var group = key.left(pipe)
-			var signal_key = key.substr(pipe + 1)
-			
-			# Handle both Video and Audio event channels with the same logic
-			if type == GL_ChannelData.TYPE_VIDEO or type == GL_ChannelData.TYPE_AUDIO:
-				_process_media_channel(key, type, data, group, signal_key, delta)
-			else:
-				var state = _get_state_for_type(type, data, key)
-				for node in get_tree().get_nodes_in_group(group):
-					node._sent_signals(signal_key, state)
-		_process_audio(delta)
+# ── Decoded-entry cache ───────────────────────────────────────────────────────
+var _entry_cache: Dictionary = {}
 
-func _process_media_channel(channel_id: String, type: String, data, group: String, signal_key: String, delta: float) -> void:
-	var entries: Array = GL_ChannelData.decode_entries(type, data)
+# ── Audio scrub throttle ──────────────────────────────────────────────────────
+const _SCRUB_SEEK_INTERVAL = 0.08
+var _scrub_seek_timer: float = 0.0
+var _scrub_pending_time: float = -1.0
+
+# ── Dispatch table ────────────────────────────────────────────────────────────
+# Built once on load/prime. Pre-parses keys so _process never touches strings.
+var _dispatch: Array = []
+var _dispatch_valid: bool = false
+
+# ── Public API ────────────────────────────────────────────────────────────────
+
+func invalidate_channel_cache(channel_id: String) -> void:
+	_entry_cache.erase(channel_id)
+	_lastTime_int = -1
+
+func invalidate_all_cache() -> void:
+	_entry_cache.clear()
+	_dispatch_valid = false
+	_lastTime_int = -1
+
+func prime_group_cache() -> void:
+	_build_dispatch_table()
+
+func _build_dispatch_table() -> void:
+	_dispatch.clear()
+	_dispatch_valid = false
+
+	if master.currentlyLoadedPath == "":
+		return
+
+	var channels = master.currentlyLoadedFile["channels"]
+	for key in channels:
+		var pipe = key.find("|")
+		if pipe == -1:
+			continue
+		var ch = channels[key]
+		var type = GL_ChannelData.get_type(ch)
+		var group = key.left(pipe)
+		var signal_key = key.substr(pipe + 1)
+		_dispatch.append({
+			"id": key,
+			"type": type,
+			"group": group,
+			"signal_key": signal_key
+		})
+
+	_dispatch_valid = true
+
+func _physics_process(delta: float) -> void:
+	if master.currentlyLoadedPath == "":
+		return
+
+	# Build dispatch table on first frame if not yet done
+	if not _dispatch_valid:
+		_build_dispatch_table()
+
+	var t_int = int(timeline.timeCurrent / _TIME_UNITS)
+	var time_changed = (t_int != _lastTime_int)
+
+	if time_changed:
+		_lastTime_int = t_int
+		var channels = master.currentlyLoadedFile["channels"]
+
+		for rec in _dispatch:
+			var id: String      = rec["id"]
+			var type: String    = rec["type"]
+			var group: String   = rec["group"]
+
+			# Dynamically fetch nodes to avoid stale empty caches if models load late
+			var nodes: Array = get_tree().get_nodes_in_group(group)
+			if nodes.is_empty():
+				continue
+
+			var ch = channels[id]
+			var data = ch["data"]
+
+			if type == GL_ChannelData.TYPE_VIDEO or type == GL_ChannelData.TYPE_AUDIO:
+				_process_media_channel(rec, data, delta, t_int)
+			else:
+				var state = _get_state_for_type(type, data, id, t_int)
+				var signal_key: String = rec["signal_key"]
+				
+				# Fire signal continuously per-tick (removes broken last_value deduplication)
+				for node in nodes:
+					node._sent_signals(signal_key, state)
+
+	_process_audio(delta, time_changed)
+
+func _process_media_channel(rec: Dictionary, data, delta: float, t_int: int) -> void:
+	var entries: Array = data
 	if entries.is_empty():
 		return
-		
-	var t_int = int(timeline.timeCurrent / _TIME_UNITS)
+
+	var channel_id: String = rec["id"]
+
+	# Binary search for active entry
 	var active_entry: Dictionary = {}
-	
-	# Find the last marker that started before or at the current time
-	for e in entries:
-		if e["time"] <= t_int:
-			active_entry = e
+	var lo = 0
+	var hi = entries.size() - 1
+	while lo <= hi:
+		var mid = (lo + hi) / 2
+		if entries[mid]["time"] <= t_int:
+			active_entry = entries[mid]
+			lo = mid + 1
 		else:
-			break
-			
+			hi = mid - 1
+
 	if active_entry.is_empty():
 		return
 
 	var prev = _media_state.get(channel_id, {})
 	var entry_changed = prev.get("entry_time", -1) != active_entry["time"]
-	
-	# Update state if we've moved onto a new marker
+
 	if entry_changed:
 		_media_state[channel_id] = {
 			"file": active_entry.get("file", "null"),
@@ -66,63 +141,61 @@ func _process_media_channel(channel_id: String, type: String, data, group: Strin
 			"stamp_time": GL_ChannelData.int_to_time(active_entry["time"]),
 			"entry_time": active_entry["time"]
 		}
-		# Force an immediate signal update by maxing out the timer
 		_media_timers[channel_id] = _VIDEO_TIMESTAMP_INTERVAL
-		
+
 	_media_timers[channel_id] = _media_timers.get(channel_id, 0.0) + delta
-	
-	# Send signals on interval (and immediately upon marker change)
+
 	if _media_timers[channel_id] >= _VIDEO_TIMESTAMP_INTERVAL:
 		_media_timers[channel_id] = 0.0
-		
+
 		var state = _media_state[channel_id]
 		var file = state["file"]
 		var offset = state["offset"]
 		var stamp_time = state["stamp_time"]
-		
+
 		var path_to_send = null
 		var time_to_send = 0.0
-		
+
 		if file != "null":
 			path_to_send = master.currentlyLoadedPath.path_join(file)
-			# Calculate timestamp: offset + (current timeline time - marker trigger time)
 			time_to_send = max(offset + (timeline.timeCurrent - stamp_time), 0.0)
-		
-		# Always force both path and timestamp updates on this interval
-		for node in get_tree().get_nodes_in_group(group):
+
+		var signal_key: String = rec["signal_key"]
+		var nodes: Array = get_tree().get_nodes_in_group(rec["group"])
+		for node in nodes:
 			node._sent_signals(signal_key, path_to_send)
 			node._sent_signals("Current Time", time_to_send)
-
-func _get_state_for_type(type: String, data, channel_id: String):
+func _get_state_for_type(type: String, data, channel_id: String, t_int: int):
 	match type:
 		GL_ChannelData.TYPE_BOOL:
-			var stamps: Array = data if data is Array else []
+			var stamps: Array = data
 			if timeline.activeEdit.has(channel_id):
 				stamps = _merge_active_edit(stamps, channel_id)
 			if stamps.is_empty():
-				return 0.0
-			return float(get_bool_state_at_time(stamps, timeline.timeCurrent))
+				return false
+			return get_bool_state_at_time(stamps, t_int)
+			
 		GL_ChannelData.TYPE_FLOAT:
-			var entries: Array = GL_ChannelData.decode_entries(type, data)
-			if entries.is_empty():
-				return 0.0
-			var t_int = int(timeline.timeCurrent / _TIME_UNITS)
-			return GL_ChannelData.get_float_at_time(entries, t_int)
+			return GL_ChannelData.get_float_at_time(data, t_int)
+			
 		GL_ChannelData.TYPE_COLOR:
-			var entries: Array = GL_ChannelData.decode_entries(type, data)
-			if entries.is_empty():
+			if data.is_empty():
 				return Color.BLACK
-			var t_int = int(timeline.timeCurrent / _TIME_UNITS)
-			var result_color: Color = entries[0]["color"]
-			for e in entries:
-				if e["time"] <= t_int:
-					result_color = e["color"]
+				
+			var result_color: Color = data[0]["color"]
+			var lo = 0
+			var hi = data.size() - 1
+			while lo <= hi:
+				var mid = (lo + hi) / 2
+				if data[mid]["time"] <= t_int:
+					result_color = data[mid]["color"]
+					lo = mid + 1
 				else:
-					break
+					hi = mid - 1
 			return result_color
+			
 		_:
 			return 0.0
-
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
 		_send_null_media_signals()
@@ -133,37 +206,27 @@ func _send_null_media_signals() -> void:
 	var scene_tree = Engine.get_main_loop() as SceneTree
 	if not scene_tree:
 		return
-	for key in master.currentlyLoadedFile["channels"]:
-		var ch = master.currentlyLoadedFile["channels"][key]
-		var type = GL_ChannelData.get_type(ch)
-		if type != GL_ChannelData.TYPE_VIDEO and type != GL_ChannelData.TYPE_AUDIO:
+	for rec in _dispatch:
+		if rec["type"] != GL_ChannelData.TYPE_VIDEO and rec["type"] != GL_ChannelData.TYPE_AUDIO:
 			continue
-		var pipe = key.find("|")
-		if pipe == -1:
-			continue
-		var group = key.left(pipe)
-		var signal_key = key.substr(pipe + 1)
-		for node in scene_tree.get_nodes_in_group(group):
-			node._sent_signals(signal_key, null)
+		var nodes = scene_tree.get_nodes_in_group(rec["group"])
+		for node in nodes:
+			node._sent_signals(rec["signal_key"], null)
 			node._sent_signals("Current Time", 0.0)
 
 func clean_sweep() -> void:
 	if master.currentlyLoadedPath == "":
 		return
-	for key in master.currentlyLoadedFile["channels"]:
-		var ch = master.currentlyLoadedFile["channels"][key]
-		var data = ch["data"]
-		var type = GL_ChannelData.get_type(ch)
+	var channels = master.currentlyLoadedFile["channels"]
+	for rec in _dispatch:
+		var id: String = rec["id"]
+		var data = channels[id]["data"]
 		var is_empty = (data is Array and data.is_empty()) or (data is String and data == "")
 		if not is_empty:
 			continue
-		var pipe = key.find("|")
-		if pipe == -1:
-			continue
-		var group = key.left(pipe)
-		var signal_key = key.substr(pipe + 1)
-		for node in get_tree().get_nodes_in_group(group):
-			node._sent_signals(signal_key, 0.0)
+		var nodes = get_tree().get_nodes_in_group(rec["group"])
+		for node in nodes:
+			node._sent_signals(rec["signal_key"], 0.0)
 
 # ── Default media seeding ─────────────────────────────────────────────────────
 
@@ -190,6 +253,7 @@ func _seed_default_media() -> void:
 			continue
 		var entry = { "time": 0, "file": default_file, "offset": 0.0 }
 		ch["data"] = GL_ChannelData.encode_entries(type, [entry])
+		invalidate_channel_cache(key)
 
 func _find_default_file(extensions: Array) -> String:
 	var folder = master.currentlyLoadedPath
@@ -203,11 +267,13 @@ func _find_default_file(extensions: Array) -> String:
 	while f != "":
 		if not dir.current_is_dir():
 			if f.get_extension().to_lower() in extensions:
+				dir.list_dir_end()
 				return f
 		f = dir.get_next()
+	dir.list_dir_end()
 	return ""
 
-# ── Audio playback (Global Background) ────────────────────────────────────────
+# ── Audio playback ────────────────────────────────────────────────────────────
 
 func reload_audio() -> void:
 	audioPlayer.stop()
@@ -223,14 +289,17 @@ func reload_audio() -> void:
 			print("Audio loaded: ", default_audio)
 	_seed_default_media()
 
-func _process_audio(delta: float) -> void:
+func _process_audio(delta: float, time_changed: bool) -> void:
 	if not audioPlayer.stream:
 		return
 	var current = timeline.timeCurrent
 	var playing = timeline.playing
+
 	if playing:
 		_isScrubbing = false
 		_scrubTimer = 0.0
+		_scrub_seek_timer = 0.0
+		_scrub_pending_time = -1.0
 		if not audioPlayer.playing:
 			audioPlayer.play(current)
 		else:
@@ -239,15 +308,31 @@ func _process_audio(delta: float) -> void:
 	else:
 		if audioPlayer.playing and not _isScrubbing:
 			audioPlayer.stop()
-		if abs(current - _lastTime) > 0.001:
+
+		if time_changed:
 			_isScrubbing = true
-			_scrubTimer = 0.1
-			audioPlayer.play(current)
+			_scrubTimer = 0.15
+			_scrub_pending_time = current
+			_scrub_seek_timer += delta
+
+			if _scrub_seek_timer >= _SCRUB_SEEK_INTERVAL:
+				_scrub_seek_timer = 0.0
+				if not audioPlayer.playing:
+					audioPlayer.play(_scrub_pending_time)
+				else:
+					audioPlayer.seek(_scrub_pending_time)
+				_scrub_pending_time = -1.0
+		else:
+			_scrub_seek_timer += delta
+
 		if _isScrubbing:
 			_scrubTimer -= delta
 			if _scrubTimer <= 0.0:
 				_isScrubbing = false
+				_scrub_seek_timer = 0.0
+				_scrub_pending_time = -1.0
 				audioPlayer.stop()
+
 	_lastTime = current
 
 func _load_audio_stream(path: String, ext: String) -> AudioStream:
@@ -261,8 +346,14 @@ func _load_audio_stream(path: String, ext: String) -> AudioStream:
 			return AudioStreamOggVorbis.load_from_file(absolute_path)
 	return null
 
-func get_bool_state_at_time(stamps: Array, current_time: float) -> bool:
-	var current_time_int: int = int(current_time / _TIME_UNITS)
+# ── Bool helpers ──────────────────────────────────────────────────────────────
+
+func get_bool_state_at_time(stamps: Array, t_int_or_time) -> bool:
+	var current_time_int: int
+	if t_int_or_time is float:
+		current_time_int = int(t_int_or_time / _TIME_UNITS)
+	else:
+		current_time_int = t_int_or_time
 	var lo: int = 0
 	var hi: int = stamps.size() - 1
 	var result_idx: int = -1

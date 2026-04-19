@@ -13,7 +13,6 @@ const TYPE_STRING = "string"
 const TIME_UNITS = 1.0 / 120.0
 const NULL_TERMINATOR = 0x00
 
-# ── Type detection ────────────────────────────────────────────────────────────
 
 static func get_type(channel_data: Dictionary) -> String:
 	return channel_data.get("type", TYPE_BOOL)
@@ -28,7 +27,6 @@ static func is_event_type(type: String) -> bool:
 static func uses_byte_data(type: String) -> bool:
 	return type != TYPE_BOOL
 
-# ── Time encoding ─────────────────────────────────────────────────────────────
 
 static func time_to_int(t: float) -> int:
 	return int(t / TIME_UNITS)
@@ -36,7 +34,6 @@ static func time_to_int(t: float) -> int:
 static func int_to_time(i: int) -> float:
 	return i * TIME_UNITS
 
-# Encode a time int as 4 bytes big-endian into a PackedByteArray
 static func encode_time(t_int: int) -> PackedByteArray:
 	var b = PackedByteArray()
 	b.resize(4)
@@ -49,8 +46,6 @@ static func encode_time(t_int: int) -> PackedByteArray:
 static func decode_time(b: PackedByteArray, offset: int) -> int:
 	return (b[offset] << 24) | (b[offset+1] << 16) | (b[offset+2] << 8) | b[offset+3]
 
-# ── Float encoding ────────────────────────────────────────────────────────────
-
 static func encode_float(v: float) -> PackedByteArray:
 	var tmp = PackedFloat32Array([v])
 	return tmp.to_byte_array()
@@ -58,8 +53,6 @@ static func encode_float(v: float) -> PackedByteArray:
 static func decode_float(b: PackedByteArray, offset: int) -> float:
 	var tmp = b.slice(offset, offset + 4)
 	return tmp.to_float32_array()[0]
-
-# ── Color encoding (RGBA, 1 byte each) ───────────────────────────────────────
 
 static func encode_color(c: Color) -> PackedByteArray:
 	var b = PackedByteArray()
@@ -73,23 +66,17 @@ static func encode_color(c: Color) -> PackedByteArray:
 static func decode_color(b: PackedByteArray, offset: int) -> Color:
 	return Color(b[offset]/255.0, b[offset+1]/255.0, b[offset+2]/255.0, b[offset+3]/255.0)
 
-# ── Null-terminated string encoding ──────────────────────────────────────────
-
 static func encode_string(s: String) -> PackedByteArray:
 	var encoded = s.to_utf8_buffer()
 	encoded.append(NULL_TERMINATOR)
 	return encoded
 
-# Returns [string_value, bytes_consumed]
 static func decode_string(b: PackedByteArray, offset: int) -> Array:
 	var end = offset
 	while end < b.size() and b[end] != NULL_TERMINATOR:
 		end += 1
 	var s = b.slice(offset, end).get_string_from_utf8()
 	return [s, (end - offset) + 1]  # +1 to consume the terminator
-
-# ── Entry encoding per type ───────────────────────────────────────────────────
-# Each returns a PackedByteArray: [4 bytes time] + [value bytes]
 
 static func encode_float_entry(t_int: int, value: float) -> PackedByteArray:
 	var b = encode_time(t_int)
@@ -120,16 +107,6 @@ static func encode_string_entry(t_int: int, value: String) -> PackedByteArray:
 	b.append_array(encode_string(value))
 	return b
 
-# ── Full data encoding (Array of entry dicts → PackedByteArray → base64) ─────
-
-# entry dict format per type:
-#   float:  { "time": int, "value": float }
-#   color:  { "time": int, "color": Color }
-#   audio:  { "time": int, "file": String, "offset": float }
-#   video:  { "time": int, "file": String, "offset": float }
-#   image:  { "time": int, "file": String }
-#   string: { "time": int, "value": String }
-
 static func encode_entries(type: String, entries: Array) -> String:
 	var b = PackedByteArray()
 	for entry in entries:
@@ -146,11 +123,9 @@ static func encode_entries(type: String, entries: Array) -> String:
 				b.append_array(encode_string_entry(entry["time"], entry.get("value", "null")))
 	return Marshalls.raw_to_base64(b)
 
-# ── Full data decoding (base64 → PackedByteArray → Array of entry dicts) ─────
 
 static func decode_entries(type: String, raw_data) -> Array:
 	var entries = []
-	# Safely coerce data — could be "", Array (old bool data), or null
 	if raw_data == null or not raw_data is String or raw_data == "":
 		return entries
 	var base64_data: String = raw_data
@@ -188,8 +163,6 @@ static func decode_entries(type: String, raw_data) -> Array:
 				entries.append({ "time": t_int, "value": res[0] })
 	return entries
 
-# ── Convenience: get the last float value at or before a given time ───────────
-
 static func get_float_at_time(entries: Array, t_int: int) -> float:
 	if entries.is_empty():
 		return 0.0
@@ -208,12 +181,8 @@ static func get_float_at_time(entries: Array, t_int: int) -> float:
 			return lerp(a["value"], b["value"], t)
 	return 0.0
 
-# ── Insert / remove entry helpers ─────────────────────────────────────────────
-
-# Returns a new sorted entries array with the entry inserted (replacing any at same timestamp)
 static func insert_entry(entries: Array, entry: Dictionary) -> Array:
 	var result = entries.duplicate()
-	# Remove any existing entry at the exact same timestamp
 	for i in range(result.size() - 1, -1, -1):
 		if result[i]["time"] == entry["time"]:
 			result.remove_at(i)

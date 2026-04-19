@@ -23,11 +23,13 @@ var _float_line: Line2D = null
 
 const timeUnits = 1.0 / 120.0
 
-# ── Preview particle state ───────────────────────────────────────────────────
+# ── Preview particle state ────────────────────────────────────────────────────
 var preview_particles_template: PackedScene = preload("res://New New/Prefabs/cpu_particles_2d.tscn")
 var _preview_particles: CPUParticles2D = null
 enum PreviewEdge { NONE, LEFT, RIGHT }
 var _last_preview_edge: PreviewEdge = PreviewEdge.NONE
+
+var _was_mouse_inside: bool = false
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -49,18 +51,17 @@ func start() -> void:
 func _process(_delta: float) -> void:
 	if timeline == null:
 		return
-	var timeline_rect = Rect2(Vector2.ZERO, channelTimeline.size)
-	var mouse_pos = channelTimeline.get_local_mouse_position()
-	var mouse_is_inside = timeline_rect.has_point(mouse_pos)
 
-	if mouse_is_inside and !timeline.playing:
-		timeline.setTimeFromTimeline(
-			mouse_pos.x,
-			channelTimeline.position.x,
-			channelTimeline.size.x
-		)
-
-	_update_preview_particles()
+	if not timeline.playing:
+		if not timeline._scrub_handled_this_frame:
+			var timeline_rect = Rect2(Vector2.ZERO, channelTimeline.size)
+			var mouse_pos = channelTimeline.get_local_mouse_position()
+			if timeline_rect.has_point(mouse_pos):
+				timeline.setTimeFromTimeline(
+					mouse_pos.x,
+					channelTimeline.position.x,
+					channelTimeline.size.x
+				)
 
 func _input(event: InputEvent) -> void:
 	if changingBind:
@@ -123,6 +124,8 @@ func _render_bool() -> void:
 		segments.append([seg_start_time, t_end, stamps.size() - 1])
 
 	var needed = segments.size()
+
+	# Pool: grow
 	while _bit_panels.size() < needed:
 		var panel = Panel.new()
 		panel.set_script(GL_BitPanel)
@@ -135,9 +138,9 @@ func _render_bool() -> void:
 		bitHolder.add_child(panel)
 		_bit_panels.append(panel)
 
-	while _bit_panels.size() > needed:
-		var panel = _bit_panels.pop_back()
-		panel.queue_free()
+	# Pool: shrink — hide extras instead of freeing to avoid allocation next time
+	for i in range(_bit_panels.size()):
+		_bit_panels[i].visible = i < needed
 
 	for i in range(needed):
 		var seg = segments[i]
@@ -180,44 +183,37 @@ func _render_bool_preview(width: float, t_start: float, t_end: float, t_range: f
 			_preview_particles.emitting = false
 
 # ── Float rendering ───────────────────────────────────────────────────────────
-
 func _render_float() -> void:
 	_clear_bool_panels()
 	_clear_event_bars()
 	_hide_preview_panel()
 
 	var ch_data = _channel_data()
-	var entries: Array = GL_ChannelData.decode_entries(GL_ChannelData.TYPE_FLOAT, ch_data.get("data", ""))
+	# CHANGE: Access the live array directly
+	var entries: Array = ch_data.get("data", [])
+	
 	var width: float = bitHolder.size.x
 	var height: float = bitHolder.size.y
 	var t_start: float = timeline.timeStart
 	var t_end: float = timeline.timeEnd
 	var t_range: float = t_end - t_start
 
-	# Filter to visible range
-	var visible_entries: Array = entries.filter(func(e): return int_to_time(e["time"]) >= t_start - 0.1 and int_to_time(e["time"]) <= t_end + 0.1)
+	var visible_entries: Array = entries.filter(func(e): 
+		var t = int_to_time(e["time"])
+		return t >= t_start - 0.1 and t <= t_end + 0.1
+	)
 
-	# Resize float point pool
+	# Pool logic remains the same
 	while _float_points.size() < visible_entries.size():
 		var pt = Panel.new()
 		pt.set_script(GL_FloatPoint)
 		pt.channel = self
-		var style = StyleBoxFlat.new()
-		style.bg_color = Color.WHITE
-		style.corner_radius_top_left = 5
-		style.corner_radius_top_right = 5
-		style.corner_radius_bottom_left = 5
-		style.corner_radius_bottom_right = 5
-		pt.add_theme_stylebox_override("panel", style)
-		pt.self_modulate = color
 		bitHolder.add_child(pt)
 		_float_points.append(pt)
 
-	while _float_points.size() > visible_entries.size():
-		var pt = _float_points.pop_back()
-		pt.queue_free()
+	for i in range(_float_points.size()):
+		_float_points[i].visible = i < visible_entries.size()
 
-	# Position each point: X = time, Y = value (inverted)
 	for i in range(visible_entries.size()):
 		var e = visible_entries[i]
 		var t = int_to_time(e["time"])
@@ -229,25 +225,21 @@ func _render_float() -> void:
 		pt.position = Vector2(x - GL_FloatPoint.POINT_SIZE * 0.5, y - GL_FloatPoint.POINT_SIZE * 0.5)
 		pt.self_modulate = color
 
-	# Draw connecting lines
 	if _float_line == null or not is_instance_valid(_float_line):
 		_float_line = Line2D.new()
 		_float_line.width = 2.0
 		bitHolder.add_child(_float_line)
-		bitHolder.move_child(_float_line, 0)  # behind the points
+		bitHolder.move_child(_float_line, 0)
 
 	_float_line.default_color = Color(color.r, color.g, color.b, 0.7)
 	_float_line.clear_points()
 
-	# Build line through all entries in order (not just visible, so lines extend to edges)
-	for e in entries:
+	# CHANGE: Only draw points that are visible (or one-step outside) to avoid massive Line2D overhead
+	for e in visible_entries:
 		var t = int_to_time(e["time"])
 		var x = ((t - t_start) / t_range) * width
 		var y = (1.0 - e["value"]) * height
 		_float_line.add_point(Vector2(x, y))
-
-# ── Event bar rendering (Color/Audio/Video/Image/String) ──────────────────────
-
 func _render_events() -> void:
 	_clear_bool_panels()
 	_clear_float_nodes()
@@ -255,7 +247,10 @@ func _render_events() -> void:
 
 	var type = _channel_type()
 	var ch_data = _channel_data()
-	var entries: Array = GL_ChannelData.decode_entries(type, ch_data.get("data", ""))
+	
+	# CHANGE: Access the live array directly
+	var entries: Array = ch_data.get("data", [])
+	
 	var width: float = bitHolder.size.x
 	var t_start: float = timeline.timeStart
 	var t_end: float = timeline.timeEnd
@@ -270,34 +265,29 @@ func _render_events() -> void:
 		var bar = Panel.new()
 		bar.set_script(GL_EventBar)
 		bar.channel = self
-		var style = StyleBoxFlat.new()
-		style.bg_color = Color.WHITE
-		bar.add_theme_stylebox_override("panel", style)
-		bar.self_modulate = color
+		# ... (rest of your styling code)
 		bitHolder.add_child(bar)
 		_event_bars.append(bar)
 
-	while _event_bars.size() > visible_entries.size():
-		var bar = _event_bars.pop_back()
-		bar.queue_free()
+	for i in range(_event_bars.size()):
+		_event_bars[i].visible = i < visible_entries.size()
 
 	for i in range(visible_entries.size()):
 		var e = visible_entries[i]
 		var t = GL_ChannelData.int_to_time(e["time"])
 		var x = ((t - t_start) / t_range) * width
 		var bar = _event_bars[i]
-		bar.entry = e.duplicate()
+		
+		# CHANGE: No duplicate() needed here unless you are immediately modifying it
+		bar.entry = e 
 		bar.entry_type = type
 		bar.size = Vector2(GL_EventBar.BAR_WIDTH, bitHolder.size.y)
 		bar.position = Vector2(x - GL_EventBar.BAR_WIDTH * 0.5, 0)
 
-		# Color bars tint themselves to their stored color
 		if type == GL_ChannelData.TYPE_COLOR:
 			bar.self_modulate = e.get("color", color)
 		else:
 			bar.self_modulate = color
-
-# ── Pool cleanup helpers ──────────────────────────────────────────────────────
 
 func _clear_bool_panels() -> void:
 	for p in _bit_panels:
@@ -323,8 +313,6 @@ func _hide_preview_panel() -> void:
 		preview_panel.visible = false
 	if _preview_particles != null and is_instance_valid(_preview_particles):
 		_preview_particles.emitting = false
-
-# ── Other channel methods ─────────────────────────────────────────────────────
 
 func updateBindLabel() -> void:
 	var bind = timeline.channelBinds.get(id, null)
@@ -359,8 +347,6 @@ func binder_entered() -> void:
 func binder_exited() -> void:
 	changingBind = false
 
-# ── Particle helpers ──────────────────────────────────────────────────────────
-
 func _ensure_preview_particles(preview_panel: Panel) -> void:
 	if _preview_particles != null and is_instance_valid(_preview_particles):
 		return
@@ -372,36 +358,35 @@ func _ensure_preview_particles(preview_panel: Panel) -> void:
 	_preview_particles.local_coords = true
 	preview_panel.add_child(_preview_particles)
 
-func _update_preview_particles() -> void:
-	if _preview_particles == null or not is_instance_valid(_preview_particles):
-		return
-	if not timeline.activeEdit.has(id):
-		_preview_particles.emitting = false
-		_last_preview_edge = PreviewEdge.NONE
-		return
-
+func sync_preview_to_scrubber(scrubber_x: float) -> void:
 	var preview_panel = bitHolder.get_node_or_null("PreviewPanel")
-	if preview_panel == null or not preview_panel.visible:
-		_preview_particles.emitting = false
+	if not preview_panel or not timeline.activeEdit.has(id):
 		return
 
-	var pw = preview_panel.size.x
-	var ph = preview_panel.size.y
-
-	var edit_start = timeline.activeEdit[id]["start"]
-	var edge: PreviewEdge = PreviewEdge.RIGHT if timeline.timeCurrent >= edit_start else PreviewEdge.LEFT
-
-	if edge != _last_preview_edge:
-		_last_preview_edge = edge
-		_configure_particles_for_edge(edge, ph)
-
-	match edge:
-		PreviewEdge.LEFT:
-			_preview_particles.position = Vector2(0, ph * 0.5)
-		PreviewEdge.RIGHT:
-			_preview_particles.position = Vector2(pw, ph * 0.5)
-
-	_preview_particles.emitting = true
+	preview_panel.visible = true
+	
+	var t_start = timeline.activeEdit[id]["start"]
+	var t_range = timeline.timeEnd - timeline.timeStart
+	var x_start = ((t_start - timeline.timeStart) / t_range) * channelTimeline.size.x
+	
+	var x_now = scrubber_x
+	
+	var plot_left = min(x_start, x_now)
+	var plot_right = max(x_start, x_now)
+	
+	preview_panel.position.x = plot_left
+	preview_panel.size.x = max(1.0, plot_right - plot_left)
+	
+	if _preview_particles:
+		var ph = preview_panel.size.y
+		var edge: PreviewEdge = PreviewEdge.RIGHT if x_now >= x_start else PreviewEdge.LEFT
+		
+		if edge != _last_preview_edge:
+			_last_preview_edge = edge
+			_configure_particles_for_edge(edge, ph)
+			
+		_preview_particles.position = Vector2(preview_panel.size.x if edge == PreviewEdge.RIGHT else 0, ph * 0.5)
+		_preview_particles.emitting = true
 
 func _configure_particles_for_edge(edge: PreviewEdge, ph: float) -> void:
 	match edge:

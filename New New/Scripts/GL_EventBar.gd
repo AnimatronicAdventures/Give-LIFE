@@ -10,6 +10,9 @@ const TIME_UNITS = 1.0 / 120.0
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	var flat_style = StyleBoxFlat.new()
+	flat_style.set_border_width_all(0)
+	add_theme_stylebox_override("panel", flat_style)
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -19,10 +22,13 @@ func _gui_input(event: InputEvent) -> void:
 			_open_edit_popup()
 
 func _delete_bar() -> void:
-	var entries: Array = GL_ChannelData.decode_entries(entry_type, channel.master.currentlyLoadedFile["channels"][channel.id]["data"])
+	var channel_dict = channel.master.currentlyLoadedFile["channels"][channel.id]
+	var entries: Array = channel_dict.get("data", [])
 	entries = GL_ChannelData.remove_entry_at_time(entries, entry["time"])
-	channel.master.currentlyLoadedFile["channels"][channel.id]["data"] = GL_ChannelData.encode_entries(entry_type, entries)
+	channel_dict["data"] = entries
 	channel.renderBits()
+
+
 
 func _open_edit_popup() -> void:
 	if entry_type == GL_ChannelData.TYPE_COLOR:
@@ -124,13 +130,14 @@ func _open_color_picker() -> void:
 	popup.popup_hide.connect(func():
 		popup.queue_free()
 	)
-
 func _update_entry_field(field: String, value) -> void:
-	var entries: Array = GL_ChannelData.decode_entries(entry_type, channel.master.currentlyLoadedFile["channels"][channel.id]["data"])
+	var channel_dict = channel.master.currentlyLoadedFile["channels"][channel.id]
+	var entries: Array = channel_dict.get("data", [])
+	
 	entries = GL_ChannelData.remove_entry_at_time(entries, entry["time"])
 	entry[field] = value
 	entries = GL_ChannelData.insert_entry(entries, entry.duplicate())
-	channel.master.currentlyLoadedFile["channels"][channel.id]["data"] = GL_ChannelData.encode_entries(entry_type, entries)
+	channel_dict["data"] = entries
 	channel.renderBits()
 
 func _get_files_of_types(extensions: Array) -> Array:

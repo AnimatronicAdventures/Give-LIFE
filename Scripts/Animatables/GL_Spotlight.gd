@@ -34,7 +34,7 @@ func _sent_signals(signal_ID:String,the_signal):
 	match(signal_ID):
 		"intensity":
 			if typeof(the_signal) == TYPE_BOOL:
-				the_signal = the_signal * 1.0
+				the_signal = float(the_signal)
 			target_energy = max(the_signal, 0.0) * energyMultiplier
 		"color":
 			if canChangeColor && typeof(the_signal) == TYPE_COLOR:
