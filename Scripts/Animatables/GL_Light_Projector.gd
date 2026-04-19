@@ -32,19 +32,16 @@ func _sent_signals(anim_name: String, value):
 		return
 	match anim_name:
 		"Video":
-			# null means playback ended/destroyed — reset
-			if value == null:
+			if value == null or str(value).contains("null"):
 				video_player.stop()
 				video_player.stream = null
 				spot_light.light_projector = null
 				oldPath = ""
 				return
 			var path: String = str(value)
-			if path == "null" or path == "":
+			if path == "":
 				return
 			if path != oldPath:
-				# Godot 4's load() does not work on arbitrary absolute paths for
-				# VideoStream. We must create the stream object manually.
 				var stream: VideoStream = null
 				var ext = path.get_extension().to_lower()
 				match ext:
@@ -52,8 +49,6 @@ func _sent_signals(anim_name: String, value):
 						stream = VideoStreamTheora.new()
 						stream.file = path
 					_:
-						# For mp4/webm Godot 4 uses GDNative/platform players;
-						# attempt a generic load as fallback.
 						var loaded = ResourceLoader.load(path, "VideoStream")
 						if loaded and loaded is VideoStream:
 							stream = loaded
@@ -65,20 +60,18 @@ func _sent_signals(anim_name: String, value):
 					printerr("GL_Light_Projector: could not create VideoStream for: ", path)
 
 		"Current Time":
-			# VideoStreamPlayer in Godot 4 has no seek(); the best we can do is
-			# restart playback from the beginning if drift is large. For small
-			# drift we leave it alone to avoid stuttering.
 			if video_player.stream and typeof(value) == TYPE_FLOAT:
 				var pos = video_player.get_stream_position()
 				var diff = value - pos
-				# Only resync if noticeably behind/ahead and not just starting up
+				
 				if abs(diff) > 0.5 and value > 0.05:
-					video_player.stop()
-					video_player.play()
-					# Godot 4.x VideoStreamPlayer: stream_position is read-only.
-					# We can't seek, so we note this is a known limitation.
+					video_player.stream_position = value
+					if not video_player.is_playing():
+						video_player.play()
+						
 				elif not video_player.is_playing() and value > 0.0:
 					video_player.play()
+					video_player.stream_position = value
 
 		"intensity":
 			if typeof(value) == TYPE_BOOL:

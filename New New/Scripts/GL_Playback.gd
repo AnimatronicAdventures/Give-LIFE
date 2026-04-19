@@ -1,5 +1,6 @@
 extends Node
 class_name GL_Playback
+
 @onready var master : GL_Master = $".."
 @onready var timeline : GL_Timeline = $"../../Full Editor/Data Timeline"
 @onready var audioPlayer : AudioStreamPlayer2D = $"../AudioStreamPlayer2D"
@@ -12,8 +13,8 @@ const _VIDEO_TIMESTAMP_INTERVAL = 0.1
 var _lastTime : float = -1.0
 var _scrubTimer : float = 0.0
 var _isScrubbing : bool = false
-var _video_state: Dictionary = {}
-var _video_timers: Dictionary = {}
+var _media_state: Dictionary = {}
+var _media_timers: Dictionary = {}
 
 func _process(delta: float):
 	if master.currentlyLoadedPath != "":
@@ -26,45 +27,71 @@ func _process(delta: float):
 				continue
 			var group = key.left(pipe)
 			var signal_key = key.substr(pipe + 1)
-			if type == GL_ChannelData.TYPE_VIDEO:
-				_process_video_channel(key, data, group, signal_key, delta)
+			
+			# Handle both Video and Audio event channels with the same logic
+			if type == GL_ChannelData.TYPE_VIDEO or type == GL_ChannelData.TYPE_AUDIO:
+				_process_media_channel(key, type, data, group, signal_key, delta)
 			else:
 				var state = _get_state_for_type(type, data, key)
 				for node in get_tree().get_nodes_in_group(group):
 					node._sent_signals(signal_key, state)
 		_process_audio(delta)
 
-func _process_video_channel(channel_id: String, data, group: String, signal_key: String, delta: float) -> void:
-	var entries: Array = GL_ChannelData.decode_entries(GL_ChannelData.TYPE_VIDEO, data)
+func _process_media_channel(channel_id: String, type: String, data, group: String, signal_key: String, delta: float) -> void:
+	var entries: Array = GL_ChannelData.decode_entries(type, data)
 	if entries.is_empty():
 		return
+		
 	var t_int = int(timeline.timeCurrent / _TIME_UNITS)
 	var active_entry: Dictionary = {}
+	
+	# Find the last marker that started before or at the current time
 	for e in entries:
 		if e["time"] <= t_int:
 			active_entry = e
 		else:
 			break
+			
 	if active_entry.is_empty():
 		return
-	var file: String = active_entry.get("file", "null")
-	var offset: float = active_entry.get("offset", 0.0)
-	var stamp_time: float = GL_ChannelData.int_to_time(active_entry["time"])
-	var prev = _video_state.get(channel_id, {})
-	if prev.get("file", "") != file:
-		_video_state[channel_id] = { "file": file, "offset": offset, "stamp_time": stamp_time }
-		_video_timers[channel_id] = 0.0
-		# Send full path so projector can load it directly
-		var full_path = master.currentlyLoadedPath.path_join(file)
+
+	var prev = _media_state.get(channel_id, {})
+	var entry_changed = prev.get("entry_time", -1) != active_entry["time"]
+	
+	# Update state if we've moved onto a new marker
+	if entry_changed:
+		_media_state[channel_id] = {
+			"file": active_entry.get("file", "null"),
+			"offset": active_entry.get("offset", 0.0),
+			"stamp_time": GL_ChannelData.int_to_time(active_entry["time"]),
+			"entry_time": active_entry["time"]
+		}
+		# Force an immediate signal update by maxing out the timer
+		_media_timers[channel_id] = _VIDEO_TIMESTAMP_INTERVAL
+		
+	_media_timers[channel_id] = _media_timers.get(channel_id, 0.0) + delta
+	
+	# Send signals on interval (and immediately upon marker change)
+	if _media_timers[channel_id] >= _VIDEO_TIMESTAMP_INTERVAL:
+		_media_timers[channel_id] = 0.0
+		
+		var state = _media_state[channel_id]
+		var file = state["file"]
+		var offset = state["offset"]
+		var stamp_time = state["stamp_time"]
+		
+		var path_to_send = null
+		var time_to_send = 0.0
+		
+		if file != "null":
+			path_to_send = master.currentlyLoadedPath.path_join(file)
+			# Calculate timestamp: offset + (current timeline time - marker trigger time)
+			time_to_send = max(offset + (timeline.timeCurrent - stamp_time), 0.0)
+		
+		# Always force both path and timestamp updates on this interval
 		for node in get_tree().get_nodes_in_group(group):
-			node._sent_signals(signal_key, full_path)
-	_video_timers[channel_id] = _video_timers.get(channel_id, 0.0) + delta
-	if _video_timers[channel_id] >= _VIDEO_TIMESTAMP_INTERVAL:
-		_video_timers[channel_id] = 0.0
-		var live_timestamp: float = offset + (timeline.timeCurrent - stamp_time)
-		live_timestamp = max(live_timestamp, 0.0)
-		for node in get_tree().get_nodes_in_group(group):
-			node._sent_signals("Current Time", live_timestamp)
+			node._sent_signals(signal_key, path_to_send)
+			node._sent_signals("Current Time", time_to_send)
 
 func _get_state_for_type(type: String, data, channel_id: String):
 	match type:
@@ -98,19 +125,18 @@ func _get_state_for_type(type: String, data, channel_id: String):
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
-		_send_null_video_signals()
+		_send_null_media_signals()
 
-func _send_null_video_signals() -> void:
+func _send_null_media_signals() -> void:
 	if not master or master.currentlyLoadedPath == "":
 		return
-	# Use Engine.get_main_loop() to reach the scene tree safely even during
-	# node deletion, when get_tree() may already be null.
 	var scene_tree = Engine.get_main_loop() as SceneTree
 	if not scene_tree:
 		return
 	for key in master.currentlyLoadedFile["channels"]:
 		var ch = master.currentlyLoadedFile["channels"][key]
-		if GL_ChannelData.get_type(ch) != GL_ChannelData.TYPE_VIDEO:
+		var type = GL_ChannelData.get_type(ch)
+		if type != GL_ChannelData.TYPE_VIDEO and type != GL_ChannelData.TYPE_AUDIO:
 			continue
 		var pipe = key.find("|")
 		if pipe == -1:
@@ -119,6 +145,7 @@ func _send_null_video_signals() -> void:
 		var signal_key = key.substr(pipe + 1)
 		for node in scene_tree.get_nodes_in_group(group):
 			node._sent_signals(signal_key, null)
+			node._sent_signals("Current Time", 0.0)
 
 func clean_sweep() -> void:
 	if master.currentlyLoadedPath == "":
@@ -166,7 +193,6 @@ func _seed_default_media() -> void:
 
 func _find_default_file(extensions: Array) -> String:
 	var folder = master.currentlyLoadedPath
-	# Try globalized path first, fall back to raw path
 	var dir = DirAccess.open(ProjectSettings.globalize_path(folder))
 	if not dir:
 		dir = DirAccess.open(folder)
@@ -181,7 +207,7 @@ func _find_default_file(extensions: Array) -> String:
 		f = dir.get_next()
 	return ""
 
-# ── Audio playback ────────────────────────────────────────────────────────────
+# ── Audio playback (Global Background) ────────────────────────────────────────
 
 func reload_audio() -> void:
 	audioPlayer.stop()

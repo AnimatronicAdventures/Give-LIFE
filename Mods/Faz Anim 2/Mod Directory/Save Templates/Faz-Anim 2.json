@@ -105,5 +105,6 @@
 		"L_SPOT_HVAC|intensity": { "data": "", "index": 104, "type": "bool", "color": "D4B483" },
 		"L_SPOT_HVAC|color": { "data": "", "index": 105, "type": "color", "color": "D4B483" },
 		"TV_PROJECTOR|Video": { "data": "", "index": 106, "type": "video", "color": "9E9E9E" },
+		"TV_PROJECTOR|intensity": { "data": "", "index": 107, "type": "bool", "color": "9E9E9E" },
 	}
 }
