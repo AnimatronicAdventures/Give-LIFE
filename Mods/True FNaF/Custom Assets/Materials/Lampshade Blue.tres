@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c5qe80kd6heqx"]
+
+[ext_resource type="Texture2D" uid="uid://pdm5cvw7pryl" path="res://Mods/True FNaF/Custom Assets/Textures/LampshadeBlue.webp" id="1_qvxwt"]
+
+[resource]
+albedo_texture = ExtResource("1_qvxwt")
+texture_filter = 5

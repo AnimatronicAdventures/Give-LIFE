@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cv3uj4ahusd7n"]
+
+[ext_resource type="Texture2D" uid="uid://bdcpoqfe3f6th" path="res://Mods/True FNaF/Custom Assets/Textures/WhiteWallpaperUpscale.webp" id="1_suroe"]
+
+[resource]
+albedo_color = Color(0.50980395, 0.5254902, 0.54901963, 1)
+albedo_texture = ExtResource("1_suroe")
+texture_filter = 5

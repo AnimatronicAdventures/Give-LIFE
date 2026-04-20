@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://5am4b48his3"]
+
+[ext_resource type="Texture2D" uid="uid://boslxwfd28sfi" path="res://Mods/True FNaF/Custom Assets/Textures/BrownWallpaperUpscale.webp" id="1_8dj36"]
+
+[resource]
+albedo_texture = ExtResource("1_8dj36")
+texture_filter = 5

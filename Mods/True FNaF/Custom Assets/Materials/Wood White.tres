@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c5wlbkbuejwb5"]
+
+[ext_resource type="Texture2D" uid="uid://d12byde6wyjrf" path="res://Mods/True FNaF/Custom Assets/Textures/Wood.webp" id="1_oamcx"]
+
+[resource]
+normal_enabled = true
+normal_scale = 0.3
+normal_texture = ExtResource("1_oamcx")
+texture_filter = 5

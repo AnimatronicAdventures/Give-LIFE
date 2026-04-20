@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d01114k5qk0lf"]
+
+[ext_resource type="Texture2D" uid="uid://tws1ixkgchhi" path="res://Mods/True FNaF/Custom Assets/Textures/ToyEyes.webp" id="1_qcbh1"]
+
+[resource]
+albedo_texture = ExtResource("1_qcbh1")
+texture_filter = 5

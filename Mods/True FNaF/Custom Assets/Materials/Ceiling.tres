@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dvru7c7r0rx14"]
+
+[ext_resource type="Texture2D" uid="uid://b0s2ak4c5ix42" path="res://Mods/True FNaF/Custom Assets/Textures/CarpetWhite.webp" id="1_ilos4"]
+
+[resource]
+albedo_texture = ExtResource("1_ilos4")
+texture_filter = 5

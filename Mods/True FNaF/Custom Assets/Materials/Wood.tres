@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dnrwi256aeqkf"]
+
+[ext_resource type="Texture2D" uid="uid://bd4lijxbip20w" path="res://Mods/True FNaF/Custom Assets/Textures/WoodBrown.webp" id="1_t76xi"]
+
+[resource]
+albedo_texture = ExtResource("1_t76xi")
+roughness = 0.24
+texture_filter = 5

@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c0kvbmgvu3875"]
+
+[ext_resource type="Texture2D" uid="uid://d0iy7awrj6qvp" path="res://Mods/True FNaF/Custom Assets/Textures/FNaF4PhotosUpscale.webp" id="1_x2gcx"]
+
+[resource]
+albedo_texture = ExtResource("1_x2gcx")
