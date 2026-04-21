@@ -45,7 +45,7 @@
 	"animation": "CCa|Cupcake Candle",
 	"in_speed": 1.0,
 	"out_speed": 1.0,
-	"type": "standard"
+	"type": "loop"
   },
   "AA_CCA|Cupcake Mouth": {
 	"animation": "CCa|Cupcake Mouth",

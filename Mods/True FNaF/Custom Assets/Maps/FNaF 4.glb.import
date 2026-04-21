@@ -96,8 +96,8 @@ _subresources={
 },
 "New Wood": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/Dresser.tres",
-"use_external/path": "uid://ccvjmncj3jcya"
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/New Wood.tres",
+"use_external/path": "uid://b4acnm25cunye"
 },
 "Photos": {
 "use_external/enabled": true,
@@ -113,11 +113,6 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/Sky.tres",
 "use_external/path": "uid://vh1yxdbhk2cx"
-},
-"Toy Eyes": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/ToyEyes.tres",
-"use_external/path": "uid://d01114k5qk0lf"
 },
 "Wallpaper Brown": {
 "use_external/enabled": true,
@@ -148,6 +143,17 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/Wood White.tres",
 "use_external/path": "uid://c5wlbkbuejwb5"
+}
+},
+"meshes": {
+"FNaF 4_Cube_021": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
 }
 },
 "nodes": {

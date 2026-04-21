@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://ccvjmncj3jcya"]
-
-[ext_resource type="Texture2D" uid="uid://do7egt525371p" path="res://Mods/True FNaF/Custom Assets/Textures/Specular.webp" id="1_7dq1h"]
-
-[resource]
-albedo_color = Color(0.42352942, 0.33333334, 0.25490198, 1)
-albedo_texture = ExtResource("1_7dq1h")
-texture_filter = 5

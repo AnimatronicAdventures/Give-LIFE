@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dxgjifdd0grx6"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_lmi3k"]
+[ext_resource type="PackedScene" uid="uid://drthnyyximumn" path="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Toy Fan.glb" id="3_1h754"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_um21q"]
+size = Vector3(0.72943115, 0.86157227, 0.36743164)
+
+[node name="Toy Fan" type="Node3D" unique_id=233530727 groups=["FNAF4_FAN"]]
+script = ExtResource("1_lmi3k")
+animParametersFileName = "Toy Fan"
+
+[node name="Toy Fan" parent="." unique_id=190730935 instance=ExtResource("3_1h754")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=723801955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1095323835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0023498535, 0.4300537, -0.048217773)
+shape = SubResource("BoxShape3D_um21q")

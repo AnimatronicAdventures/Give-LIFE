@@ -1,0 +1,8 @@
+{
+  "FNAF4_FAN|Spin": {
+	"animation": "Fan Spin",
+	"in_speed": 0,
+	"out_speed": 2 ,
+	"type": "loop"
+  },
+}

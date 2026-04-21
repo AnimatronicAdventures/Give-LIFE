@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cyv0l6ob3f1o5"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_5vy8f"]
+[ext_resource type="PackedScene" uid="uid://bm7wuihvyglja" path="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Toy Robot.glb" id="2_5vy8f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_um21q"]
+size = Vector3(0.50082016, 1.0684662, 0.258667)
+
+[node name="Toy Robot" type="Node3D" unique_id=233530727 groups=["FNAF4_ROBOT"]]
+script = ExtResource("1_5vy8f")
+animParametersFileName = "Toy Robot"
+
+[node name="Toy Robot" parent="." unique_id=1029607388 instance=ExtResource("2_5vy8f")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=723801955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1095323835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0011386871, 0.5335007, -0.018981934)
+shape = SubResource("BoxShape3D_um21q")

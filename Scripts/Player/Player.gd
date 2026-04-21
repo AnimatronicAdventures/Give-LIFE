@@ -80,12 +80,17 @@ var is_airborne: bool = false
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
+
 	if collision_shape.shape is CapsuleShape3D:
 		collision_shape.shape.height = STAND_HEIGHT
 		collision_shape.position.y = 0.0
+
 	var t = (collision_shape.shape.height - CROUCH_HEIGHT) / (STAND_HEIGHT - CROUCH_HEIGHT)
 	var target_cam_y = lerp(CROUCH_EYE_HEIGHT, STAND_EYE_HEIGHT, t)
-	var cam_pos = camera.position
+	camera.position.y = target_cam_y
+
+	rotation_x = camera.rotation.x
+	rotation_y = camera.rotation.y
 
 func _input(event):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

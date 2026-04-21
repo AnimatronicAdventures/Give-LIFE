@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bwjdxhvus3nnu"]
 
-[ext_resource type="Texture2D" uid="uid://d0mxte7fpaomy" path="res://Mods/SongCode/Mod Icon.png" id="1_3n4im"]
 [ext_resource type="Script" uid="uid://b4aa4vacbh1ln" path="res://Scripts/Sound UI/SoundUI.gd" id="1_qbqtu"]
 [ext_resource type="Texture2D" uid="uid://dyiswdb1owyty" path="res://UI/Icons/trash-can-solid-full.svg" id="2_0ksyx"]
 [ext_resource type="AudioStream" uid="uid://dajwfjwf772x" path="res://Sounds/Donk.wav" id="2_ere0i"]
+[ext_resource type="Texture2D" uid="uid://duxs12jjlvpql" path="res://UI/Mod Icon.png" id="3_fgiqf"]
 [ext_resource type="AudioStream" uid="uid://cron3phbvrasi" path="res://Sounds/Tick2.wav" id="5_fgiqf"]
 [ext_resource type="AudioStream" uid="uid://d32r2h55ktsse" path="res://Mods/Faz Anim 2/Custom Assets/Sounds/Trashed.wav" id="6_fhlh8"]
 
@@ -24,7 +24,7 @@ size_flags_vertical = 0
 [node name="cover" type="TextureRect" parent="Control" unique_id=774288883]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("1_3n4im")
+texture = ExtResource("3_fgiqf")
 expand_mode = 3
 stretch_mode = 6
 

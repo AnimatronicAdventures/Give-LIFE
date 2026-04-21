@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b4acnm25cunye"]
+
+[ext_resource type="Shader" uid="uid://ckoei3xklifg" path="res://Mods/True FNaF/Custom Assets/Materials/TrueFNaFSpec.gdshader" id="1_j4ki8"]
+[ext_resource type="Texture2D" uid="uid://b77r28khs3m4g" path="res://Mods/True FNaF/Custom Assets/Textures/Specular2.webp" id="2_dy2j3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_j4ki8")
+shader_parameter/albedo = Color(0.3019608, 0.22745098, 0.16078432, 1)
+shader_parameter/normal_strength = 1.0
+shader_parameter/roughness_min = 0.33999999240032
+shader_parameter/roughness_max = 0.00999999977648
+shader_parameter/metallic = 0.0
+shader_parameter/metallic_uv2_scale = Vector2(1, 1)
+shader_parameter/specular_strength = 0.02999999932944
+shader_parameter/texture_specular = ExtResource("2_dy2j3")
+shader_parameter/specular_uv2_scale = Vector2(30, 30)
+shader_parameter/specular_tint_color = Color(1, 0.6901961, 0.41960785, 1)
+shader_parameter/emission_strength = 0.0

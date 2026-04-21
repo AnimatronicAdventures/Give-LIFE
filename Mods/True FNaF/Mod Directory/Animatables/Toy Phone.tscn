@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b8eq4v5tgat4r"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_hfxbb"]
+[ext_resource type="PackedScene" uid="uid://dg5kfvlqo0gym" path="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Toy Phone.glb" id="2_hfxbb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_um21q"]
+size = Vector3(0.6675873, 0.27947998, 0.5793457)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfxbb"]
+size = Vector3(0.7965355, 0.2172699, 0.18804932)
+
+[node name="Toy Phone" type="Node3D" unique_id=233530727 groups=["FNAF4_PHONE"]]
+script = ExtResource("1_hfxbb")
+animParametersFileName = "Toy Phone"
+
+[node name="Toy Phone" parent="." unique_id=1957082576 instance=ExtResource("2_hfxbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=723801955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1095323835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007118225, 0.13900757, 0.057739258)
+shape = SubResource("BoxShape3D_um21q")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=708201240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0077762604, 0.35666656, -0.19833374)
+shape = SubResource("BoxShape3D_hfxbb")

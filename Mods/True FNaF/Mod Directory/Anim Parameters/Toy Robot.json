@@ -1,0 +1,110 @@
+{
+  "FNAF4_ROBOT|Arm L": {
+	"animation": "Robot Arm L",
+	"in_speed": 3,
+	"out_speed": 2,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Arm R": {
+	"animation": "Robot Arm R",
+	"in_speed": 3,
+	"out_speed": 2,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Body Down": {
+	"animation": "Robot Body Down",
+	"in_speed": 2,
+	"out_speed": 3,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Claw L": {
+	"animation": "Robot Claw L",
+	"in_speed": 4,
+	"out_speed": 4,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Claw R": {
+	"animation": "Robot Claw R",
+	"in_speed": 4,
+	"out_speed": 4,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Collar Back L": {
+	"animation": "Robot Collar Back L",
+	"in_speed": 3,
+	"out_speed": 3,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Collar Back R": {
+	"animation": "Robot Collar Back R",
+	"in_speed": 3,
+	"out_speed": 3,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Collar L": {
+	"animation": "Robot Collar L",
+	"in_speed": 3,
+	"out_speed": 3,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Collar R": {
+	"animation": "Robot Collar R",
+	"in_speed": 3,
+	"out_speed": 3,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Eyes": {
+	"animation": "Robot Eyes",
+	"in_speed": 4,
+	"out_speed": 4,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Forearm L": {
+	"animation": "Robot Forearm L",
+	"in_speed": 3,
+	"out_speed": 2,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Forearm R": {
+	"animation": "Robot Forearm R",
+	"in_speed": 3,
+	"out_speed": 2,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Head Left": {
+	"animation": "Robot Head Left",
+	"in_speed": 1.5,
+	"out_speed": 2,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Head Right": {
+	"animation": "Robot Head Right",
+	"in_speed": 1.5,
+	"out_speed": 2,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Head Up": {
+	"animation": "Robot Head Up",
+	"in_speed": 3,
+	"out_speed": 2,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Knobs": {
+	"animation": "Robot Knobs",
+	"in_speed": 3,
+	"out_speed": 4,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Tilt L": {
+	"animation": "Robot Tilt L",
+	"in_speed": 2,
+	"out_speed": 3,
+	"type": "standard"
+  },
+  "FNAF4_ROBOT|Tilt R": {
+	"animation": "Robot Tilt R",
+	"in_speed": 2,
+	"out_speed": 3,
+	"type": "standard"
+  }
+}

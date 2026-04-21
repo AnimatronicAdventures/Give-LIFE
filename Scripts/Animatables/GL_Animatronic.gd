@@ -161,9 +161,17 @@ func _process(delta):
 					params["value"] = clamp(float(params["value"]) - (delta * params["in_speed"] * (1.0 - signal_val)), 0, 1)
 			"move_to":
 				params["value"] = lerp(float(params["value"]), float(params["signal_value"]), delta * params["out_speed"])
-
+			"loop":
+				var speed = float(params["signal_value"])
+				if speed > 0.0:
+					params["value"] = fmod(float(params["value"]) + (delta * params["out_speed"] * speed), 1.0)
 		var anim_length = anim_player.get_animation(raw_anim).length
-		var time_value = clamp(float(params.get("value", 0)), 0.0, 1.0) * anim_length
+		var raw_value = float(params.get("value", 0))
+		var time_value: float
+		if params["type"] == "loop":
+			time_value = fmod(raw_value, 1.0) * anim_length
+		else:
+			time_value = clamp(raw_value, 0.0, 1.0) * anim_length
 		anim_tree.set(anim_path, time_value)
 
 func _sent_signals(anim_name: String, value):
