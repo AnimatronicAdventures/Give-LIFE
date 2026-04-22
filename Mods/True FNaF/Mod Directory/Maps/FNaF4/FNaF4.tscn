@@ -77,7 +77,7 @@ transform = Transform3D(0.99876577, 0, -0.049668968, 0, 1, 0, 0.049668968, 0, 0.
 [node name="Toy Phone" parent="Map/Animatables" unique_id=233530727 instance=ExtResource("5_4jki3")]
 transform = Transform3D(0.7489557, 0, 0.66262007, 0, 1, 0, -0.66262007, 0, 0.7489557, -1.0786167, -0.040825468, -1.5017343)
 
-[node name="Toy Robot" parent="Map/Animatables" unique_id=782473152 instance=ExtResource("6_qdiuh")]
+[node name="Toy Robot" parent="Map/Animatables" unique_id=752507440 instance=ExtResource("6_qdiuh")]
 transform = Transform3D(0.5591929, 0, -0.82903755, 0, 1, 0, 0.82903755, 0, 0.5591929, 2.2464716, -0.033129025, -2.5399818)
 
 [node name="Toy Fan" parent="Map/Animatables" unique_id=785288354 instance=ExtResource("3_g1oww")]
@@ -87,14 +87,14 @@ transform = Transform3D(0.85172695, 0, 0.5239859, 0, 1, 0, -0.5239859, 0, 0.8517
 transform = Transform3D(0.98162705, 0, -0.19080897, 0, 1, 0, 0.19080897, 0, 0.98162705, -2.505495, -0.043172467, -1.8619606)
 
 [node name="Lamp Bedroom" type="SpotLight3D" parent="Map/Animatables" unique_id=1936951527]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.1600237, 3.1356199, -2.402554)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.1600237, 3.642777, -2.402554)
 light_color = Color(0.9868669, 0.8286037, 0.61669636, 1)
 light_energy = 0.0
 shadow_enabled = true
 shadow_blur = 0.0
 spot_range = 10.0
 spot_attenuation = 2.0
-spot_angle = 48.01
+spot_angle = 29.41
 spot_angle_attenuation = 0.329877
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Lamp Bedroom" unique_id=972979048 groups=["L_LAMP_DOOR"]]
@@ -120,14 +120,14 @@ energyMultiplier = 3.0
 lerp_speed = 20.0
 
 [node name="Lamp Bedroom3" type="SpotLight3D" parent="Map/Animatables" unique_id=1604483092]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.588233, 2.1126137, 11.250679)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.588233, 2.6872513, 11.250679)
 light_color = Color(0.9868669, 0.8286037, 0.61669636, 1)
 light_energy = 0.0
 shadow_enabled = true
 shadow_blur = 0.0
 spot_range = 10.0
 spot_attenuation = 2.0
-spot_angle = 48.01
+spot_angle = 28.27
 spot_angle_attenuation = 0.329877
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Lamp Bedroom3" unique_id=1889173524 groups=["L_LAMP_BED"]]
@@ -153,14 +153,14 @@ energyMultiplier = 3.0
 lerp_speed = 20.0
 
 [node name="Lamp Bedroom5" type="SpotLight3D" parent="Map/Animatables" unique_id=344975507]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -7.970268, 2.362779, -5.7399597)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -7.970268, 2.673155, -5.7399597)
 light_color = Color(0.9868669, 0.8286037, 0.61669636, 1)
 light_energy = 0.0
 shadow_enabled = true
 shadow_blur = 0.0
 spot_range = 10.0
 spot_attenuation = 2.0
-spot_angle = 48.01
+spot_angle = 34.63
 spot_angle_attenuation = 0.329877
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Lamp Bedroom5" unique_id=293885754 groups=["L_LAMP_HALL_L"]]
@@ -186,14 +186,14 @@ energyMultiplier = 3.0
 lerp_speed = 20.0
 
 [node name="Lamp Bedroom7" type="SpotLight3D" parent="Map/Animatables" unique_id=1180257400]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 7.5380664, 2.3627784, -13.916176)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 7.5380664, 2.8199255, -13.916176)
 light_color = Color(0.9868669, 0.8286037, 0.61669636, 1)
 light_energy = 0.0
 shadow_enabled = true
 shadow_blur = 0.0
 spot_range = 10.0
 spot_attenuation = 2.0
-spot_angle = 48.01
+spot_angle = 32.91
 spot_angle_attenuation = 0.329877
 
 [node name="Node" type="Node3D" parent="Map/Animatables/Lamp Bedroom7" unique_id=1483314424 groups=["L_LAMP_HALL_R"]]
