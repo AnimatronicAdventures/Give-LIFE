@@ -1,10 +1,21 @@
 extends SpotLight3D
+class_name Flashlight
 
 var size: float = 45
 var targetSize: float = 45
 var flashlight_held_time := 0.0
 var is_adjusting := false
 var was_flashlight_pressed := false
+var currentType : flashlightTypes = flashlightTypes.default
+
+var flashTextures : Dictionary = {
+	flashlightTypes.default : {
+		"texture" : "res://UI/Flashlight.png",
+	},
+	flashlightTypes.FNaF4 : {
+		"texture" : "res://UI/FlashlightFNaF4.png",
+	},
+}
 
 @onready var player : Player = $"../.."
 
@@ -13,6 +24,19 @@ const minSize = 5
 const minLight = 3
 const maxLight = 80
 const HOLD_THRESHOLD := 0.2
+
+enum flashlightTypes
+{
+	default,
+	FNaF4,
+}
+
+func _ready() -> void:
+	visible = false
+
+func setFlashlightType(type : flashlightTypes) -> void:
+	currentType = type
+	light_projector = load(flashTextures[currentType]["texture"])
 
 func _process(delta):
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED || player.night_mode:

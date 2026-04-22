@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bm4wgtmgyci17"]
 
 [ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_ory21"]
-[ext_resource type="Script" uid="uid://d0xp5idbh7y7v" path="res://Scripts/Pause_Menu.gd" id="2_q5xte"]
+[ext_resource type="Script" uid="uid://d0xp5idbh7y7v" path="res://Scripts/Editor/Pause_Menu.gd" id="2_q5xte"]
 [ext_resource type="Texture2D" uid="uid://cggqhltds7t7" path="res://Mods/Faz Anim 2/Custom Assets/UI/NewLogo 1k.png" id="3_mq5vs"]
 [ext_resource type="Material" uid="uid://csvd0ihwnb3ov" path="res://UI/Themes/Static Material.tres" id="3_xrto2"]
 [ext_resource type="Material" uid="uid://c73bvh8cgx0tn" path="res://UI/Themes/Static Image Material.tres" id="4_l5do0"]
-[ext_resource type="Script" uid="uid://47ngh2got7do" path="res://New New/Scripts/GL_Random_Static_Image.gd" id="5_6gw5s"]
+[ext_resource type="Script" uid="uid://47ngh2got7do" path="res://Scripts/Editor/GL_Random_Static_Image.gd" id="5_6gw5s"]
 [ext_resource type="Script" uid="uid://b4aa4vacbh1ln" path="res://Scripts/Sound UI/SoundUI.gd" id="5_8r7np"]
 [ext_resource type="AudioStream" uid="uid://cron3phbvrasi" path="res://Sounds/Tick2.wav" id="6_571ku"]
 [ext_resource type="Texture2D" uid="uid://bmjq7l2qx5jnw" path="res://UI/Backgrounds/BNIE.png" id="6_obwv7"]
@@ -35,7 +35,7 @@
 [ext_resource type="FontFile" uid="uid://5wbjikluy4eo" path="res://UI/Fonts/3270-Regular.otf" id="17_l5do0"]
 [ext_resource type="StyleBox" uid="uid://dc8kkag77ptu2" path="res://UI/Themes/Sub.tres" id="28_lijsr"]
 [ext_resource type="AudioStream" uid="uid://d32r2h55ktsse" path="res://Mods/Faz Anim 2/Custom Assets/Sounds/Trashed.wav" id="32_2uws7"]
-[ext_resource type="Script" uid="uid://t56kwrd7w4b7" path="res://New New/Scripts/GL_Wiki.gd" id="32_8dgrc"]
+[ext_resource type="Script" uid="uid://t56kwrd7w4b7" path="res://Scripts/Editor/GL_Wiki.gd" id="32_8dgrc"]
 [ext_resource type="FontFile" uid="uid://k0v7y7qxnu2g" path="res://UI/Fonts/Amarna-Medium.ttf" id="33_lrdyb"]
 
 [sub_resource type="Theme" id="Theme_6gw5s"]

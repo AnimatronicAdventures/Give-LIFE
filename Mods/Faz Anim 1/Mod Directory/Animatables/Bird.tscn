@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_h3jdu"]
 [ext_resource type="PackedScene" uid="uid://b6peetgboxt87" path="res://Mods/Faz Anim 1/Custom Assets/Models/Animatronics/FoxyParrot.fbx" id="2_h3jdu"]
-[ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Physics_Bones.gd" id="3_6cgbm"]
+[ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Animatables/Physics_Bones.gd" id="3_6cgbm"]
 [ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="4_bqrdj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h3jdu"]

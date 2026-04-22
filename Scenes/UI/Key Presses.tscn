@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bfkosl2hj487f"]
 
 [ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_qbrh3"]
-[ext_resource type="Script" uid="uid://cdnxalw7th2r7" path="res://Scripts/Key_Presses.gd" id="1_qh4h2"]
-[ext_resource type="Script" uid="uid://ty86wd6bos8y" path="res://Scripts/fps_counter.gd" id="3_8gxyj"]
+[ext_resource type="Script" uid="uid://cdnxalw7th2r7" path="res://Scripts/Editor/Key_Presses.gd" id="1_qh4h2"]
+[ext_resource type="Script" uid="uid://ty86wd6bos8y" path="res://Scripts/Editor/fps_counter.gd" id="3_8gxyj"]
 
 [node name="KeyPresses" type="Control" unique_id=1765090890]
 layout_mode = 3

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c5dh0vxqdur1v"]
 
 [ext_resource type="Script" uid="uid://0g3ls7hffy0" path="res://Scripts/Player/Player.gd" id="1_fkybt"]
+[ext_resource type="Script" uid="uid://t06bdodlkcmp" path="res://Scripts/Player/PlayerSettings.gd" id="1_x3wgy"]
 [ext_resource type="Material" uid="uid://o4fe7jj6qk7v" path="res://addons/Godot-4-Color-Correction-and-Screen-Effects-main/Materials and Shaders/Shade.tres" id="2_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://ktqnj6yjrsbn" path="res://UI/Flashlight.png" id="4_8erm5"]
 [ext_resource type="Script" uid="uid://r3akx4cd0pjd" path="res://Scripts/Player/Flashlight.gd" id="5_f1ek2"]
@@ -11,6 +12,7 @@ radius = 0.25
 height = 3.0
 
 [node name="Player" type="Node3D" unique_id=318127762]
+script = ExtResource("1_x3wgy")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=964867140 groups=["Player", "SettingsReceivers"]]
 collision_layer = 2
@@ -32,7 +34,6 @@ mouse_filter = 2
 
 [node name="Flashlight" type="SpotLight3D" parent="CharacterBody3D/Camera3D" unique_id=225736622]
 transform = Transform3D(0.99773103, -0.0011301286, 0.06731656, 0.0038151662, 0.9992016, -0.039771546, -0.067217834, 0.03993813, 0.99693865, 0.18008, -0.22294998, -0.000120073935)
-visible = false
 light_energy = 16.0
 light_projector = ExtResource("4_8erm5")
 light_size = 0.1
