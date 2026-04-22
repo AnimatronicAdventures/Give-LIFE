@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dta3hmjxbgujk"]
+
+[ext_resource type="PackedScene" uid="uid://ddbfkhm0uy7in" path="res://Mods/True FNaF/Custom Assets/Models/Props/Lamp OrangeTan.glb" id="1_ilm22"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5akl2"]
+height = 0.7640381
+radius = 0.36523438
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_414gy"]
+height = 0.77182007
+radius = 0.4609375
+
+[node name="LampOrangeTan" type="Node3D" unique_id=1311252977]
+
+[node name="Lamp OrangeTan" parent="." unique_id=71027906 instance=ExtResource("1_ilm22")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1617215409]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=525352401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38226318, 0)
+shape = SubResource("CylinderShape3D_5akl2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=395176182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0837555, 0)
+shape = SubResource("CylinderShape3D_414gy")

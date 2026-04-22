@@ -2,12 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://c5dh0vxqdur1v" path="res://Scenes/player.tscn" id="1_w1hhd"]
 [ext_resource type="ArrayOccluder3D" uid="uid://4hq3d0uduvha" path="res://Mods/True FNaF/Mod Directory/Maps/FNaF4/FNaF4.occ" id="2_w1hhd"]
-[ext_resource type="PackedScene" uid="uid://bmu3qsgm8a4c5" path="res://Mods/True FNaF/Custom Assets/Maps/FNaF 4.glb" id="3_4jki3"]
+[ext_resource type="PackedScene" uid="uid://bmu3qsgm8a4c5" path="res://Mods/True FNaF/Custom Assets/Models/Maps/FNaF 4.glb" id="3_4jki3"]
 [ext_resource type="PackedScene" uid="uid://dxgjifdd0grx6" path="res://Mods/True FNaF/Mod Directory/Animatables/Toy Fan.tscn" id="3_g1oww"]
 [ext_resource type="PackedScene" uid="uid://b8eq4v5tgat4r" path="res://Mods/True FNaF/Mod Directory/Animatables/Toy Phone.tscn" id="5_4jki3"]
+[ext_resource type="PackedScene" uid="uid://dta3hmjxbgujk" path="res://Mods/True FNaF/Custom Assets/Props/Lamp Orange-Tan.tscn" id="5_irpk6"]
 [ext_resource type="PackedScene" uid="uid://cyv0l6ob3f1o5" path="res://Mods/True FNaF/Mod Directory/Animatables/Toy Robot.tscn" id="6_qdiuh"]
 [ext_resource type="PackedScene" uid="uid://c656we5o62ly4" path="res://Mods/True FNaF/Mod Directory/Animatables/Toy Bug.tscn" id="7_4qql3"]
 [ext_resource type="Script" uid="uid://c5uawj66escut" path="res://Scripts/Animatables/GL_Spotlight.gd" id="8_xo3k6"]
+[ext_resource type="PackedScene" uid="uid://dlcecdi1enfo" path="res://Mods/True FNaF/Custom Assets/Props/Lamp Blue-Yellow.tscn" id="9_ttsyn"]
 
 [sub_resource type="Environment" id="Environment_dsuk6"]
 background_mode = 1
@@ -53,10 +55,22 @@ shape = SubResource("WorldBoundaryShape3D_stiks")
 
 [node name="Map Mesh & Collision" type="Node" parent="Map" unique_id=807558692]
 
-[node name="FNaF 4" parent="Map/Map Mesh & Collision" unique_id=1983992483 instance=ExtResource("3_4jki3")]
+[node name="FNaF 4" parent="Map/Map Mesh & Collision" unique_id=1169114074 instance=ExtResource("3_4jki3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.297226, -0.03827715, -5.317042)
 
 [node name="Map Props" type="Node" parent="Map" unique_id=890356910]
+
+[node name="LampBlueYellow" parent="Map/Map Props" unique_id=1311252977 instance=ExtResource("9_ttsyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1594062, 2.0073583, -2.4146836)
+
+[node name="LampBlueYellow2" parent="Map/Map Props" unique_id=1505868887 instance=ExtResource("9_ttsyn")]
+transform = Transform3D(-0.1859239, 0, -0.9825643, 0, 1, 0, 0.9825643, 0, -0.1859239, 1.5878377, 1.0849118, 11.262152)
+
+[node name="LampOrangeTan" parent="Map/Map Props" unique_id=623583200 instance=ExtResource("5_irpk6")]
+transform = Transform3D(-0.8046452, 0, -0.593756, 0, 1, 0, 0.593756, 0, -0.8046452, 7.539531, 1.3508667, -13.912464)
+
+[node name="LampOrangeTan2" parent="Map/Map Props" unique_id=153623830 instance=ExtResource("5_irpk6")]
+transform = Transform3D(0.99876577, 0, -0.049668968, 0, 1, 0, 0.049668968, 0, 0.99876577, -7.9684844, 1.2599595, -5.7530465)
 
 [node name="Animatables" type="Node" parent="Map" unique_id=1193136051]
 

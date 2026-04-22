@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://c21rf2mhvob3"]
-
-[ext_resource type="Texture2D" uid="uid://cl4kv6yw04fbs" path="res://Mods/True FNaF/Custom Assets/Textures/Brown Lamp.webp" id="1_bpin2"]
-
-[resource]
-albedo_texture = ExtResource("1_bpin2")
-roughness = 0.4
-texture_filter = 5
