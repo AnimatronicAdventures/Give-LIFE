@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bc4pbdj25tv4g"]
+
+[ext_resource type="Texture2D" uid="uid://dipai1lltr4ao" path="res://Mods/True FNaF/Custom Assets/Textures/Scott Grime.webp" id="1_qvcrw"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(1, 1, 1, 0.2)
+albedo_texture = ExtResource("1_qvcrw")

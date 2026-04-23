@@ -1,0 +1,101 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://ddu57vroqecy8"
+path="res://.godot/imported/FNaF 3.glb-248b119661961f68dcbbe34f94745802.scn"
+
+[deps]
+
+source_file="res://Mods/True FNaF/Custom Assets/Models/Maps/FNaF 3.glb"
+dest_files=["res://.godot/imported/FNaF 3.glb-248b119661961f68dcbbe34f94745802.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=2
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Black": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/PitchBlack.tres",
+"use_external/path": "uid://dgjyqclarukel"
+},
+"DRAPPY STUFF": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/Scott Grime.tres",
+"use_external/path": "uid://ci1lr1wh71ro3"
+},
+"Dirt Grime 2": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/Scott Grime Faded.tres",
+"use_external/path": "uid://bc4pbdj25tv4g"
+},
+"Drawings 2": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3Drawings.tres",
+"use_external/path": "uid://bkgmt4bd7ueis"
+},
+"Messy Grime": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/Scott Grime Blur.tres",
+"use_external/path": "uid://ce5fkgangu87m"
+},
+"Messy Grime 2": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/Scott Grime Blur.tres",
+"use_external/path": "uid://ce5fkgangu87m"
+},
+"Tiled Floor": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3FloorTile.tres",
+"use_external/path": "uid://ckyuhnn5u2bsc"
+},
+"Tiles": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3Tile.tres",
+"use_external/path": "uid://buggc2kyi236t"
+}
+},
+"meshes": {
+"FNaF 3_Part 1": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "",
+"save_to_file/path": ""
+}
+},
+"nodes": {
+"PATH:Part 1_001": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=0
