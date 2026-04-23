@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b33isy3xbh3o1"]
+
+[ext_resource type="Texture2D" uid="uid://b8va3u57s1q0k" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_ForestTreeVignette_D.webp" id="1_mc3ii"]
+[ext_resource type="Texture2D" uid="uid://mb7kiak4t3dd" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_ForestTreeVignette_ORM.webp" id="2_g2hjj"]
+[ext_resource type="Texture2D" uid="uid://dmj1q2m74col7" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_ForestTreeVignette_N.webp" id="3_bafqj"]
+
+[resource]
+albedo_texture = ExtResource("1_mc3ii")
+metallic = 1.0
+metallic_texture = ExtResource("2_g2hjj")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_g2hjj")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_bafqj")

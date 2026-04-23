@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cexr8lgcc5g6k"]
+
+[ext_resource type="Texture2D" uid="uid://cbs6c4xjgcujs" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Flower_Wagon_Cutouts_BaseColor_sRGB.webp" id="1_bovgc"]
+[ext_resource type="Texture2D" uid="uid://d10f2o5u3y430" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Flower_Wagon_Cutouts_OcclusionRoughnessMetallic_Raw.webp" id="2_6ddks"]
+[ext_resource type="Texture2D" uid="uid://dqimgqmgnb5h0" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Flower_Wagon_Cutouts_Normal_Raw.webp" id="3_edda2"]
+
+[resource]
+albedo_texture = ExtResource("1_bovgc")
+metallic = 1.0
+metallic_texture = ExtResource("2_6ddks")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_6ddks")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_edda2")

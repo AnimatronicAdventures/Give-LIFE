@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dvbflbcxgbtq3"]
+
+[ext_resource type="Texture2D" uid="uid://b67vwcfg157xn" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_SunMoon_Cutout_D.webp" id="1_tcn0i"]
+[ext_resource type="Texture2D" uid="uid://ctjoquwmrmm0t" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_SunMoon_Cutout_ORM.webp" id="2_wecsk"]
+[ext_resource type="Texture2D" uid="uid://dm2mm1vvsjdpp" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_SunMoon_Cutout_N.webp" id="3_wecsk"]
+
+[resource]
+albedo_texture = ExtResource("1_tcn0i")
+metallic = 1.0
+metallic_texture = ExtResource("2_wecsk")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_wecsk")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_wecsk")

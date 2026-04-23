@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://2r5sib08kcrd"]
+
+[ext_resource type="Texture2D" uid="uid://jgumlulglh0p" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirthdayCake_D.webp" id="1_poofs"]
+[ext_resource type="Texture2D" uid="uid://byvhxwwmaptu2" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirthdayCake_E.webp" id="2_f3vvd"]
+[ext_resource type="Texture2D" uid="uid://ba3uv7vqu2c7r" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirthdayCake_ORM.webp" id="3_qf0db"]
+[ext_resource type="Texture2D" uid="uid://d3bk0tr7qgi27" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirthdayCake_N.webp" id="4_gdc14"]
+
+[resource]
+albedo_texture = ExtResource("1_poofs")
+metallic = 1.0
+metallic_texture = ExtResource("3_qf0db")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_qf0db")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_f3vvd")
+normal_enabled = true
+normal_texture = ExtResource("4_gdc14")

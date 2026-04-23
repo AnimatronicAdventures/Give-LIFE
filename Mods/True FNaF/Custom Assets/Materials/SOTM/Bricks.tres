@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d344ggtjcedvb"]
+
+[ext_resource type="Texture2D" uid="uid://yy0yvjm3wulv" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Bricks_B.webp" id="1_owu8i"]
+[ext_resource type="Texture2D" uid="uid://b8vg7cieob72g" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Bricks_ORM.webp" id="2_mkieo"]
+[ext_resource type="Texture2D" uid="uid://b08trjt8t7t5t" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BrickPainted_normal.webp" id="3_vf8ur"]
+
+[resource]
+albedo_texture = ExtResource("1_owu8i")
+metallic = 1.0
+metallic_texture = ExtResource("2_mkieo")
+metallic_texture_channel = 2
+roughness = 0.6
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_vf8ur")

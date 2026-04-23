@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bjd02swgsdsb1"]
+
+[ext_resource type="Texture2D" uid="uid://lis63kc0e2u3" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_DivingSeal_D.webp" id="1_yemht"]
+[ext_resource type="Texture2D" uid="uid://cux81q1ltooch" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_DivingSeal_ORM.webp" id="2_2v717"]
+
+[resource]
+albedo_texture = ExtResource("1_yemht")
+metallic = 1.0
+metallic_texture = ExtResource("2_2v717")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_2v717")
+roughness_texture_channel = 1
+normal_enabled = true

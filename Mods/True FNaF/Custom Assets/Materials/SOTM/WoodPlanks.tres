@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cgqnfrbumisec"]
+
+[ext_resource type="Texture2D" uid="uid://h5sc464jvjgy" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_woodplanks_BC.webp" id="1_tmmft"]
+[ext_resource type="Texture2D" uid="uid://nslpfntb4o1x" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_woodplanks_N.webp" id="2_d2ved"]
+
+[resource]
+albedo_texture = ExtResource("1_tmmft")
+metallic = 1.0
+metallic_texture_channel = 2
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_d2ved")

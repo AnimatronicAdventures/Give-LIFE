@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bpvg01exvfbk2"]
+
+[ext_resource type="Texture2D" uid="uid://dfcytnncqjujm" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_OceanVignetteCutouts_D.webp" id="1_iraj1"]
+[ext_resource type="Texture2D" uid="uid://dfv1uhxaggxu1" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_OceanVignetteCutouts_ORM.webp" id="2_2vllf"]
+[ext_resource type="Texture2D" uid="uid://dnpguhlkdsp0y" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_OceanVignetteCutouts_N.webp" id="3_xvfqq"]
+
+[resource]
+albedo_texture = ExtResource("1_iraj1")
+metallic = 1.0
+metallic_texture = ExtResource("2_2vllf")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_2vllf")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_xvfqq")

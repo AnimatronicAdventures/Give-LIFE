@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dqu2hgd533a6c"]
+
+[ext_resource type="Texture2D" uid="uid://cx40q5cug5g6v" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CircleRug_Lilypad_D.webp" id="1_xmlvb"]
+[ext_resource type="Texture2D" uid="uid://d4jj50o7orb6t" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CircleRug_N.webp" id="2_vh7i5"]
+[ext_resource type="Texture2D" uid="uid://ddy8gh3wd8dsx" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CircleRug_ORM.webp" id="3_21yof"]
+
+[resource]
+albedo_texture = ExtResource("1_xmlvb")
+metallic = 1.0
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_21yof")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_vh7i5")

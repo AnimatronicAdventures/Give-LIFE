@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://0d534ckdfb2i"]
+
+[ext_resource type="Texture2D" uid="uid://jgp0l7n8qfva" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Caravan_Cutout_BaseColor_sRGB.webp" id="1_2aa0p"]
+[ext_resource type="Texture2D" uid="uid://pygfvk5c5f5g" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Caravan_Cutout_OcclusionRoughnessMetallic_Raw.webp" id="2_nalpc"]
+[ext_resource type="Texture2D" uid="uid://l2b7pmqvqe2v" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Caravan_Cutout_Normal_Raw.webp" id="3_o7lll"]
+
+[resource]
+albedo_texture = ExtResource("1_2aa0p")
+metallic = 1.0
+metallic_texture = ExtResource("2_nalpc")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_nalpc")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_o7lll")

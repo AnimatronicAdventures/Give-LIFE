@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://hoxytd6bvnrt"]
+
+[ext_resource type="Texture2D" uid="uid://p83aw3dkhysd" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirdNest_Cutout_BaseColor_sRGB.webp" id="1_6cc5h"]
+[ext_resource type="Texture2D" uid="uid://6pdwqj2ulop2" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirdNest_Cutout_OcclusionRoughnessMetallic_Raw.webp" id="2_6jt3j"]
+[ext_resource type="Texture2D" uid="uid://dss85n75aleum" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirdNest_Cutout_Normal_Raw.webp" id="3_c8r47"]
+
+[resource]
+albedo_texture = ExtResource("1_6cc5h")
+metallic = 1.0
+metallic_texture = ExtResource("2_6jt3j")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_6jt3j")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_c8r47")

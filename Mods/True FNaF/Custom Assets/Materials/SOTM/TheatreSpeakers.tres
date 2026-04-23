@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dvdondnnjjanh"]
+
+[ext_resource type="Texture2D" uid="uid://ds1vfv558pqy5" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_TheatreSpeakers_D.webp" id="1_k4ljm"]
+[ext_resource type="Texture2D" uid="uid://brs4yg1axi0kb" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_TheatreSpeakers_ORM.webp" id="2_wgban"]
+[ext_resource type="Texture2D" uid="uid://dukxjsvpcpvpe" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_TheatreSpeakers_N.webp" id="3_5hgr2"]
+
+[resource]
+albedo_texture = ExtResource("1_k4ljm")
+metallic = 1.0
+metallic_texture = ExtResource("2_wgban")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_wgban")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_5hgr2")

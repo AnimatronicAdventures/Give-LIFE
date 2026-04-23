@@ -61,11 +61,9 @@ Right clicking any plotted signal deletes it. Left click dragging can move the s
 
 	FA1 had a ticket earning system where creating showtapes would allow prizes to be purchased. FA2 plans on this being done through completing each night/challenge.",
 	"Credits": "Made by sudo trans --pony
-Credit to Palazzol for showtape format documentation.
-Iterated from the DEAD Engine and RR Engine
+Showtape format documentation - Palazzol
+Welcome Show asset extraction - fredmilk
 
-Open-Source Code:
-github.com/The64thGamer/Give-LIFE
-
-GNU General Public License v3.0"
+Iterated from the DEAD-Engine and RR-Engine
+Fully Open Source, GNU General Public License v3.0"
 }

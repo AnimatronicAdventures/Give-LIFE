@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cqj7dx85juvd0"]
+
+[ext_resource type="Texture2D" uid="uid://cqjvwtu2es6fk" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Factory_Worn_Wood_D.webp" id="1_616f5"]
+[ext_resource type="Texture2D" uid="uid://cs8d8nym71p4w" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Factory_Worn_Wood_Roughness.webp" id="2_sni4y"]
+
+[resource]
+albedo_texture = ExtResource("1_616f5")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_sni4y")
+roughness_texture_channel = 1
+normal_enabled = true

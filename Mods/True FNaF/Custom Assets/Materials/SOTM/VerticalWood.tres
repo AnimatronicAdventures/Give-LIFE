@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c0ei0uvqqamk2"]
+
+[ext_resource type="Texture2D" uid="uid://6vvtnaapc1ji" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_StageFloor01_BC.webp" id="1_1s0qi"]
+[ext_resource type="Texture2D" uid="uid://wq5u5yv4rvoy" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_StageFloor01_ORM.webp" id="2_7g34x"]
+[ext_resource type="Texture2D" uid="uid://cjtwovwodkn0j" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_StageFloor01_N.webp" id="3_iqc6s"]
+
+[resource]
+albedo_texture = ExtResource("1_1s0qi")
+metallic = 1.0
+metallic_texture = ExtResource("2_7g34x")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_7g34x")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_iqc6s")

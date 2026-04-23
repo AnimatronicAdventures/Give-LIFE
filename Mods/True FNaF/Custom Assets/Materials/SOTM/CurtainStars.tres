@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://quuul761mmjm"]
+
+[ext_resource type="Texture2D" uid="uid://054mafobb7t1" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_StarCurtains_D.webp" id="1_d0klr"]
+[ext_resource type="Texture2D" uid="uid://dg7vtdy30mapu" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CurtainRed_ORM.webp" id="2_5g0gk"]
+[ext_resource type="Texture2D" uid="uid://0udnehqobb1" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CurtainRed_N.webp" id="3_wf7yt"]
+
+[resource]
+albedo_texture = ExtResource("1_d0klr")
+metallic = 1.0
+metallic_texture = ExtResource("2_5g0gk")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_5g0gk")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_wf7yt")
