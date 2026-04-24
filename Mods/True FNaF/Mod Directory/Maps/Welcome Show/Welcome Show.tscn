@@ -52,5 +52,18 @@ shape = SubResource("WorldBoundaryShape3D_stiks")
 
 [node name="Map Mesh & Collision" type="Node" parent="Map" unique_id=807558692]
 
-[node name="Welcome Show" parent="Map/Map Mesh & Collision" unique_id=1335028766 instance=ExtResource("3_k1maa")]
+[node name="Welcome Show" parent="Map/Map Mesh & Collision" unique_id=1841397713 instance=ExtResource("3_k1maa")]
 transform = Transform3D(-6.9938224e-08, 0, -1.6, 0, 1.6, 0, 1.6, 0, -6.9938224e-08, -93.76305, 0.24, -123.42261)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Map/Map Mesh & Collision" unique_id=658965715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.767138, -3.147664)
+light_color = Color(0.972549, 1, 0.92156863, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 40.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Map/Map Mesh & Collision" unique_id=1333379803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.094921, -14.731867)
+light_color = Color(0.972549, 1, 0.92156863, 1)
+shadow_enabled = true
+omni_range = 40.0

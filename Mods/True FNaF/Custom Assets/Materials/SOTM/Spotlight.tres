@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cfgsvbq15wfmo"]
+
+[ext_resource type="Texture2D" uid="uid://0l4lbf5ag5ec" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SpotlightsExit_BC.webp" id="1_dx4tf"]
+[ext_resource type="Texture2D" uid="uid://blydryn7ubcry" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SpotlightsExit_E.webp" id="2_8w6dv"]
+[ext_resource type="Texture2D" uid="uid://bcenru53tut1f" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SpotlightsExit_ORM.webp" id="3_hpiuw"]
+[ext_resource type="Texture2D" uid="uid://2qlbl55hx420" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SpotlightsExit_N.webp" id="4_og240"]
+
+[resource]
+albedo_texture = ExtResource("1_dx4tf")
+metallic = 1.0
+metallic_texture = ExtResource("3_hpiuw")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_hpiuw")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_8w6dv")
+normal_enabled = true
+normal_texture = ExtResource("4_og240")
+texture_filter = 0

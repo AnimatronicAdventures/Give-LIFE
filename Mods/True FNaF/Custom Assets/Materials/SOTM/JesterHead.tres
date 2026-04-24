@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dkn267qrfv2wg"]
+
+[ext_resource type="Texture2D" uid="uid://cooqdhsu3bb0a" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Jester_Damaged_Head_D.webp" id="1_dtmvb"]
+[ext_resource type="Texture2D" uid="uid://76tu78dtvo5w" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Jester_Damaged_Head_ORM.webp" id="2_fpcq4"]
+[ext_resource type="Texture2D" uid="uid://mipb752ilb6y" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Jester_Damaged_Head_N.webp" id="3_p4h7c"]
+
+[resource]
+albedo_texture = ExtResource("1_dtmvb")
+metallic = 1.0
+metallic_texture = ExtResource("2_fpcq4")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_fpcq4")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_p4h7c")

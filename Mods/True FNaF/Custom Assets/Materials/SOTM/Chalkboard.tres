@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://i6ehfjxvcsxa"]
+
+[ext_resource type="Texture2D" uid="uid://cykewl68kuvbp" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Chalkboard_BaseColor.webp" id="1_hrvkh"]
+[ext_resource type="Texture2D" uid="uid://c7u86ybuk8c75" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Chalkboard_OcclusionRoughnessMetallic.webp" id="2_1wy2o"]
+[ext_resource type="Texture2D" uid="uid://ca2os8bhue1pb" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Chalkboard_Normal.webp" id="3_kixjd"]
+
+[resource]
+albedo_texture = ExtResource("1_hrvkh")
+metallic = 1.0
+metallic_texture = ExtResource("2_1wy2o")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_1wy2o")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_kixjd")

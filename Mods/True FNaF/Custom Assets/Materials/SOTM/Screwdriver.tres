@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://gxnv5y1isa5k"]
+
+[ext_resource type="Texture2D" uid="uid://bq41hh2a6cc66" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Screwdriver_BaseColor.webp" id="1_7wi8e"]
+[ext_resource type="Texture2D" uid="uid://c32tbkfebm0kv" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Screwdriver_OcclusionRoughnessMetallic.webp" id="2_v8jts"]
+[ext_resource type="Texture2D" uid="uid://bfu4i1e22d7v6" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Screwdriver_Normal.webp" id="3_fguyx"]
+
+[resource]
+albedo_texture = ExtResource("1_7wi8e")
+metallic = 1.0
+metallic_texture = ExtResource("2_v8jts")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_v8jts")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_fguyx")

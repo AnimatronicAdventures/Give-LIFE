@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://lbky3npgice6"]
+
+[ext_resource type="Texture2D" uid="uid://buwngv47cc7fm" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/DataDiverPort_06_Normal.webp" id="1_lioho"]
+
+[resource]
+albedo_color = Color(0.36862746, 0.3254902, 0.34901962, 1)
+metallic = 1.0
+metallic_texture_channel = 2
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("1_lioho")

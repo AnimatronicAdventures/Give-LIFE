@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://5clafjl46ok3"]
+
+[ext_resource type="Texture2D" uid="uid://brdeq47x3iqwb" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_PaperScraps_BaseColor.webp" id="1_5kpc5"]
+[ext_resource type="Texture2D" uid="uid://b3vb78mxre38y" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_PaperScraps_ORM.webp" id="2_iqju8"]
+[ext_resource type="Texture2D" uid="uid://bnsm4h0awjwwm" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_PaperScraps_Normals.webp" id="3_7sh36"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_5kpc5")
+metallic = 1.0
+metallic_texture = ExtResource("2_iqju8")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_iqju8")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_7sh36")

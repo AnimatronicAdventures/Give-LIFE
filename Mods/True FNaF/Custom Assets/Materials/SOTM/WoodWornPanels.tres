@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dvkum4ylg8gce"]
+
+[ext_resource type="Texture2D" uid="uid://ct3riyqria56t" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Worn_Wood_Panels_Blackened_D.webp" id="1_85b64"]
+[ext_resource type="Texture2D" uid="uid://bvhgndpan5ny4" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Worn_Wood_Panels_Blackened_ORM.webp" id="2_f7bj2"]
+[ext_resource type="Texture2D" uid="uid://bc5u0wrh45jh4" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Worn_Wood_Panels_Blackened_NRM.webp" id="3_v6f0n"]
+
+[resource]
+albedo_texture = ExtResource("1_85b64")
+metallic = 1.0
+metallic_texture = ExtResource("2_f7bj2")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_f7bj2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_v6f0n")

@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bbu5dhxqicwxo"]
+
+[ext_resource type="Texture2D" uid="uid://dd324dqyydphs" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_power_boxes_skin1_D.webp" id="1_76hdu"]
+[ext_resource type="Texture2D" uid="uid://uj3nop6kyhmg" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_power_boxes_skin1_ORM.webp" id="2_i7rhu"]
+[ext_resource type="Texture2D" uid="uid://dbcmto5gj7bpa" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_power_boxes_skin1_N.webp" id="3_coil8"]
+
+[resource]
+albedo_texture = ExtResource("1_76hdu")
+metallic = 1.0
+metallic_texture = ExtResource("2_i7rhu")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_i7rhu")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_coil8")

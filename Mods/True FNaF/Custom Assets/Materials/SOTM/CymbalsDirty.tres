@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ckvwi0asxtskt"]
+
+[ext_resource type="Texture2D" uid="uid://pxk6a7pp0088" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WelcomeShow_Cymbals_Dirty_D.webp" id="1_hlmtd"]
+[ext_resource type="Texture2D" uid="uid://v7rckvjilvn0" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WelcomeShow_Cymbals_Dirty_ORM.webp" id="2_2730o"]
+[ext_resource type="Texture2D" uid="uid://bh2bbaiixwb6s" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WelcomeShow_Cymbals_Dirty_N.webp" id="3_o53nu"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_hlmtd")
+metallic = 1.0
+metallic_texture = ExtResource("2_2730o")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_2730o")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_o53nu")

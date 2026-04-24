@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://yv4ldf7xjh20"]
+
+[ext_resource type="Texture2D" uid="uid://buvibvqdyish7" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Pipes02_BaseColor.webp" id="1_bhj1e"]
+[ext_resource type="Texture2D" uid="uid://b4m8fg6cv8fr8" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Pipes_Normal.webp" id="2_xunq6"]
+
+[resource]
+albedo_color = Color(0.21230483, 0.21230483, 0.21230483, 1)
+albedo_texture = ExtResource("1_bhj1e")
+metallic_texture_channel = 2
+roughness = 0.73
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_xunq6")

@@ -1,14 +1,14 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://c8gpxg20fnsy7"]
 
-[ext_resource type="Texture2D" uid="uid://d4jj50o7orb6t" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CircleRug_N.webp" id="1_3waop"]
-[ext_resource type="Texture2D" uid="uid://oxe1flf25lyk" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CircleRug_Orange_D.webp" id="1_lhjkc"]
-[ext_resource type="Texture2D" uid="uid://ddy8gh3wd8dsx" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CircleRug_ORM.webp" id="2_lhjkc"]
+[ext_resource type="Texture2D" uid="uid://d4jj50o7orb6t" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CircleRug_N.webp" id="1_3a6io"]
+[ext_resource type="Texture2D" uid="uid://oxe1flf25lyk" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CircleRug_Orange_D.webp" id="1_ru0hr"]
+[ext_resource type="Texture2D" uid="uid://ddy8gh3wd8dsx" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CircleRug_ORM.webp" id="2_ru0hr"]
 
 [resource]
-albedo_texture = ExtResource("1_lhjkc")
+albedo_texture = ExtResource("1_ru0hr")
 metallic = 1.0
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_lhjkc")
+roughness_texture = ExtResource("2_ru0hr")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("1_3waop")
+normal_texture = ExtResource("1_3a6io")

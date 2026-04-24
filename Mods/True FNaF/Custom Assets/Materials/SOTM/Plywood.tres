@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c4d5uqs7v0i0b"]
+
+[ext_resource type="Texture2D" uid="uid://cmw6lyxdd6dil" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Woodprops_02_B.webp" id="1_5nto6"]
+[ext_resource type="Texture2D" uid="uid://dnmmq40eugb0d" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Woodprops_02_ORM.webp" id="2_jli6e"]
+[ext_resource type="Texture2D" uid="uid://bxv2ox1o0fk3a" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Woodprops_02_N.webp" id="3_eve8b"]
+
+[resource]
+albedo_texture = ExtResource("1_5nto6")
+metallic = 1.0
+metallic_texture = ExtResource("2_jli6e")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_jli6e")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_eve8b")

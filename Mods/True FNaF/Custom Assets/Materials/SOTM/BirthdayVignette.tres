@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ddq74d8ym44dt"]
+
+[ext_resource type="Texture2D" uid="uid://8jwqcno5e7s5" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirthdayVignette_D.webp" id="1_xvawl"]
+[ext_resource type="Texture2D" uid="uid://ccky8q4pm36oq" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirthdayVignette_ORM.webp" id="2_j5m3v"]
+[ext_resource type="Texture2D" uid="uid://b4u0irwy2jc7u" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirthdayVignette_N.webp" id="3_jxypx"]
+
+[resource]
+albedo_texture = ExtResource("1_xvawl")
+metallic = 1.0
+metallic_texture = ExtResource("2_j5m3v")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_j5m3v")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_jxypx")

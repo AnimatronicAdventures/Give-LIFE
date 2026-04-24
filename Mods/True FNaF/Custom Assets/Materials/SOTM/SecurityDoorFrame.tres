@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://btg6cfdrlv13u"]
+
+[ext_resource type="Texture2D" uid="uid://b56ceggahtmrf" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SecurityDoorFrame_D.webp" id="1_sc2qj"]
+[ext_resource type="Texture2D" uid="uid://cuvynq1jv3xo4" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SecurityDoorFrame_E.webp" id="2_a0cf8"]
+[ext_resource type="Texture2D" uid="uid://bijd6o7cqcbax" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SecurityDoorFrame_ORM.webp" id="3_f6y5l"]
+[ext_resource type="Texture2D" uid="uid://3a4rokxyb1lp" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SecurityDoorFrame_N.webp" id="4_8f3ck"]
+
+[resource]
+albedo_texture = ExtResource("1_sc2qj")
+metallic = 1.0
+metallic_texture = ExtResource("3_f6y5l")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_f6y5l")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_a0cf8")
+normal_enabled = true
+normal_texture = ExtResource("4_8f3ck")

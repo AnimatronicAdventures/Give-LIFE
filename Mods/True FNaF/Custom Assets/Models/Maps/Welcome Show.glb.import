@@ -39,15 +39,35 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
+"MI_Adjust_Power_Devices_01.mat_3e57a53b": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/AdjustPower.tres",
+"use_external/path": "uid://bu0e8618gsyv8"
+},
+"MI_BalloonMiceCutouts.mat_18cc3038": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/MiceBalloonCutout.tres",
+"use_external/path": "uid://dhjkseko2jhwc"
+},
 "MI_Bird_Nest_Cutout.mat_3a472c82": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/BirdNestCutout.tres",
 "use_external/path": "uid://hoxytd6bvnrt"
 },
+"MI_BirthdayVignette.mat_37c87f8f": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/BirthdayVignette.tres",
+"use_external/path": "uid://ddq74d8ym44dt"
+},
 "MI_BirthdayVignetteCake.mat_2c7644ed": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/CakeVignette.tres",
 "use_external/path": "uid://2r5sib08kcrd"
+},
+"MI_BoxSet.mat_7fdc7577": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/BoxSet.tres",
+"use_external/path": "uid://bbu5dhxqicwxo"
 },
 "MI_BrickPainted_Black.mat_31381646": {
 "use_external/enabled": true,
@@ -58,6 +78,16 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/CaravanCutout.tres",
 "use_external/path": "uid://0d534ckdfb2i"
+},
+"MI_Chalkboard.mat_3650e216": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Chalkboard.tres",
+"use_external/path": "uid://i6ehfjxvcsxa"
+},
+"MI_CircleRug_CirclePattern.mat_2215bb55": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/CircleRugSun.tres",
+"use_external/path": "uid://c8gpxg20fnsy7"
 },
 "MI_CircleRug_Lilypad.mat_4fdc8354": {
 "use_external/enabled": true,
@@ -79,6 +109,26 @@ _subresources={
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/ComedyStage.tres",
 "use_external/path": "uid://dcn7r6kqc8nyq"
 },
+"MI_Controle_Consoles.mat_72f9a05f": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/ControlConsole.tres",
+"use_external/path": "uid://bucopkrqdfmhx"
+},
+"MI_Crank_00.mat_5207d3ae": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Crank00.tres",
+"use_external/path": "uid://bstww3xuc1fq2"
+},
+"MI_Crank_2h.mat_5203ea8a": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Crank2h.tres",
+"use_external/path": "uid://d06goypq3fiyu"
+},
+"MI_Crate.mat_5ff9e8ef": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Crate.tres",
+"use_external/path": "uid://vwn3m4pkun4r"
+},
 "MI_CurtainBlack.mat_1c633b8c": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/CurtainBlack.tres",
@@ -94,15 +144,90 @@ _subresources={
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/CurtainTrim.tres",
 "use_external/path": "uid://cbkh5vk4e2ybf"
 },
+"MI_Curtain_08.mat_3ec21775": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Curtian08.tres",
+"use_external/path": "uid://o3ncpaxffrdk"
+},
+"MI_Curtain_OceanVignette.mat_25e9338e": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/CurtainOcean.tres",
+"use_external/path": "uid://bhyr0jidiviav"
+},
+"MI_Curtain_Rod_01-02.mat_6794df3a": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/CurtainRod.tres",
+"use_external/path": "uid://cokrurhfwo6hx"
+},
+"MI_Curtain_Rod_03.mat_61a25917": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/CurtainRod3.tres",
+"use_external/path": "uid://di15wjsjtjmhn"
+},
 "MI_Curtain_Stars.mat_4106e8e3": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/CurtainStars.tres",
 "use_external/path": "uid://quuul761mmjm"
 },
+"MI_CustomerFacingStairs.mat_576fa905": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/CustomerFacingStairs.tres",
+"use_external/path": "uid://dpmpwbtq6rq5m"
+},
+"MI_Cymbals_Dirty.mat_11022472": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/CymbalsDirty.tres",
+"use_external/path": "uid://ckvwi0asxtskt"
+},
+"MI_DataDiverReceiver_01.mat_4d39cf0a": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/DataDiverReciever1.tres",
+"use_external/path": "uid://cputpq1h6cxps"
+},
+"MI_DataDiverReceiver_02.mat_13b57a91": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/DataDiverReciever2.tres",
+"use_external/path": "uid://ctaidl41yamop"
+},
+"MI_DataDiverReceiver_Subterminal.mat_0f1a3d90": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/DDRSubterminal.tres",
+"use_external/path": "uid://lbky3npgice6"
+},
+"MI_DeskFans.mat_3df4d05c": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/DeskFan.tres",
+"use_external/path": "uid://c4mg25pspltkb"
+},
 "MI_DivingSeal.mat_01bb7023": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/DivingSeal.tres",
 "use_external/path": "uid://bjd02swgsdsb1"
+},
+"MI_Door1.mat_2aade34f": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Door1.tres",
+"use_external/path": "uid://07724vmjlb37"
+},
+"MI_Door1_HeightAdjust.mat_3890fe86": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Door1.tres",
+"use_external/path": "uid://07724vmjlb37"
+},
+"MI_Door2.mat_2fb66091": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Door2.tres",
+"use_external/path": "uid://w6d0rxlqof5n"
+},
+"MI_FactoryCords.mat_71fe662e": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/FactoryCoords.tres",
+"use_external/path": "uid://cuboq5jcp4u4u"
+},
+"MI_FactoryCords_Black.mat_2c202093": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/FactoryCoords.tres",
+"use_external/path": "uid://cuboq5jcp4u4u"
 },
 "MI_Flower_Wagon_Cutouts.mat_2869fc86": {
 "use_external/enabled": true,
@@ -119,15 +244,65 @@ _subresources={
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/ForestTreeVignette.tres",
 "use_external/path": "uid://b33isy3xbh3o1"
 },
+"MI_GenericMetal_1.mat_356438fe": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/GenericMetal.tres",
+"use_external/path": "uid://drnrgfd3d2yhl"
+},
 "MI_GreenCreatureCutouts.mat_65ce8b69": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/GreenCreatureCutouts.tres",
 "use_external/path": "uid://chri84rvbufnb"
 },
+"MI_HangingWires.mat_5479f1b9": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/HangingWires.tres",
+"use_external/path": "uid://5wv6qwi1fyyf"
+},
+"MI_Jester_Body_Dmg.mat_3984e7c7": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/JesterBody.tres",
+"use_external/path": "uid://dprrh1nwamoj4"
+},
+"MI_Jester_Head_Dmg.mat_210cb033": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/JesterHead.tres",
+"use_external/path": "uid://dkn267qrfv2wg"
+},
+"MI_JugglingWheel.mat_6da7ef27": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/JugglingWheel.tres",
+"use_external/path": "uid://b2hh5g1htuu8x"
+},
+"MI_Lever02.mat_2699d91c": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Lever2.tres",
+"use_external/path": "uid://l6dfv1n765nm"
+},
+"MI_Lift.mat_4153c366": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Lift.tres",
+"use_external/path": "uid://btlxschq7agye"
+},
+"MI_LightBulbStrip.mat_4abae349": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/LightbulbStrip.tres",
+"use_external/path": "uid://dd70p6ybl4yhk"
+},
 "MI_LionSheepCutouts.mat_47f6f536": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/LionSheepCutouts.tres",
 "use_external/path": "uid://csy3svma8prgw"
+},
+"MI_LowChain.mat_489c966c": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/LowChain.tres",
+"use_external/path": "uid://b0ncc1cv8fhfy"
+},
+"MI_LowChainWPO.mat_015a476e": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/LowChain.tres",
+"use_external/path": "uid://b0ncc1cv8fhfy"
 },
 "MI_MainStageVignette.mat_7882c3c3": {
 "use_external/enabled": true,
@@ -139,15 +314,165 @@ _subresources={
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/SunFloor.tres",
 "use_external/path": "uid://dvbflbcxgbtq3"
 },
+"MI_Metal_Beams.mat_43736194": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/MetalBeams.tres",
+"use_external/path": "uid://20g7r6eax04p"
+},
+"MI_Notebooks_01a.mat_23ed632c": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Notebook.tres",
+"use_external/path": "uid://dlrn0l2onwl2t"
+},
+"MI_OfficeProps.mat_049fbbbe": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/OfficeProps.tres",
+"use_external/path": "uid://b27eoq7ig2dvv"
+},
+"MI_OrangeEmissive_Lower.mat_216347b2": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/LightbulbStrip.tres",
+"use_external/path": "uid://dd70p6ybl4yhk"
+},
+"MI_OtherWorkers.mat_0aa645d2": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/OtherWorkers.tres",
+"use_external/path": "uid://d3h680gu3jchv"
+},
+"MI_Pallet.mat_5ff9e8ef": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Crate.tres",
+"use_external/path": "uid://vwn3m4pkun4r"
+},
+"MI_PaperNotes.mat_6d5cf010": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/PaperNotes.tres",
+"use_external/path": "uid://cqkp5tkpo5jnt"
+},
+"MI_PaperScraps.mat_2ac68b0e": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/PaperScraps.tres",
+"use_external/path": "uid://5clafjl46ok3"
+},
+"MI_PipeHolder.mat_342e1f35": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/PipeHolder.tres",
+"use_external/path": "uid://dk1jjurbutf2h"
+},
 "MI_Pipes.mat_31520712": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Pipes.tres",
 "use_external/path": "uid://dusom4htc6tex"
 },
+"MI_Pipes2.mat_5092427a": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Pipes2.tres",
+"use_external/path": "uid://yv4ldf7xjh20"
+},
+"MI_Plaster_Black_Inst.mat_03abf963": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/PlasterBlack.tres",
+"use_external/path": "uid://f2lmjvhr27ek"
+},
+"MI_Plastic_Black.mat_4379eab2": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/PlasterBlack.tres",
+"use_external/path": "uid://f2lmjvhr27ek"
+},
+"MI_Plastic_Matte_Light_Brown.mat_072ea36b": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/PlasticMatte.tres",
+"use_external/path": "uid://4mmseadji1d8"
+},
+"MI_Platform_Steel.mat_13a68330": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/PlatformSteel.tres",
+"use_external/path": "uid://bv54a7b0vvwxc"
+},
+"MI_Plywood.mat_3a0c976e": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Plywood.tres",
+"use_external/path": "uid://c4d5uqs7v0i0b"
+},
+"MI_Presents01.mat_14773ba2": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Presents1A.tres",
+"use_external/path": "uid://y6pue8c7c3ni"
+},
+"MI_Presents02.mat_2b6b10bf": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Presents2B.tres",
+"use_external/path": "uid://xtoepf1h6etc"
+},
+"MI_SafetySwingGate.mat_4ed6d8a4": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/SafetySwingGate.tres",
+"use_external/path": "uid://cgobtxg5t1kh5"
+},
+"MI_Screwdriver.mat_273f893b": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Screwdriver.tres",
+"use_external/path": "uid://gxnv5y1isa5k"
+},
+"MI_SecurityDoorFrame.mat_58c56229": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/SecurityDoorFrame.tres",
+"use_external/path": "uid://btg6cfdrlv13u"
+},
+"MI_Spotlight.mat_336e0657": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Spotlight.tres",
+"use_external/path": "uid://cfgsvbq15wfmo"
+},
+"MI_SprayCans.mat_4dada974": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Spraycans.tres",
+"use_external/path": "uid://b2uifym5g5au7"
+},
+"MI_Stage_Fence.mat_5d2c8475": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/StageFence.tres",
+"use_external/path": "uid://kkjjk6t2c4g8"
+},
+"MI_Stools.mat_2b0b98fc": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Stools.tres",
+"use_external/path": "uid://baj763juh2acb"
+},
+"MI_SubTerminal_01.mat_4ce5cc39": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/SubTerminal1.tres",
+"use_external/path": "uid://pjk2ov10ugi6"
+},
+"MI_SubTerminal_02.mat_11d71e60": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/SubTerminal2.tres",
+"use_external/path": "uid://bab2ta4f36i45"
+},
 "MI_SwampTreeVignette.mat_5e75fc12": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/SwampTreeVignette.tres",
 "use_external/path": "uid://b6y6gumeeaahp"
+},
+"MI_SwingBee.mat_0ad6348c": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Swingbee.tres",
+"use_external/path": "uid://x25wqr0r3edv"
+},
+"MI_Tarp01_1Blue.mat_06b40ee5": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/TarpBlue.tres",
+"use_external/path": "uid://cks3kglhhpupb"
+},
+"MI_Terminal.mat_379d241f": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Terminal.tres",
+"use_external/path": "uid://dhwt5o7mcxflg"
+},
+"MI_TheatreAttachments.mat_6671c3b3": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/TheatreAttatchments.tres",
+"use_external/path": "uid://dmp4pcywclvls"
 },
 "MI_TheatreSpeakers.mat_58fd6121": {
 "use_external/enabled": true,
@@ -169,10 +494,25 @@ _subresources={
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/TreeCutouts2.tres",
 "use_external/path": "uid://6khf41g7kxs8"
 },
+"MI_UtilityPipes.mat_0d917924": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/UtilityPipes.tres",
+"use_external/path": "uid://6yv11p5ofyy4"
+},
 "MI_Vertical_Wood_Panels_Small.mat_48626158": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/VerticalWood.tres",
 "use_external/path": "uid://c0ei0uvqqamk2"
+},
+"MI_WS_BirthdayCutouts.mat_37d0bda1": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/BirthdayCutouts.tres",
+"use_external/path": "uid://qwxjpebnw5ao"
+},
+"MI_WS_Camera.mat_4b77368b": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Camera.tres",
+"use_external/path": "uid://7vy44s4k5hnh"
 },
 "MI_WS_ElevatorPlatform.mat_56355bc3": {
 "use_external/enabled": true,
@@ -189,15 +529,65 @@ _subresources={
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/OceanVignette.tres",
 "use_external/path": "uid://bpvg01exvfbk2"
 },
+"MI_WS_WalkwayLift.mat_2335dfa8": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/WalkwayLift.tres",
+"use_external/path": "uid://c0oat7lb1yke5"
+},
 "MI_WoodPlank.mat_0324322f": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/WoodWorn.tres",
 "use_external/path": "uid://cqj7dx85juvd0"
 },
+"MI_Worn_Wood_Panels_Blackened.mat_14b2b524": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/WoodWornPanels.tres",
+"use_external/path": "uid://dvkum4ylg8gce"
+},
+"M_Handtools01.mat_617a0f3d": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Handtools.tres",
+"use_external/path": "uid://bb1ftej0gs5ir"
+},
+"M_HangingWires.mat_108d2af6": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/M_HangingWires.tres",
+"use_external/path": "uid://b8afn16hgkcdm"
+},
+"M_SprayCans.mat_3ae81ba0": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Spraycans.tres",
+"use_external/path": "uid://b2uifym5g5au7"
+},
+"M_Tapes.mat_002c3d76": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/Tapes.tres",
+"use_external/path": "uid://dc5mwocir6tcr"
+},
+"M_WorkDesk.mat_25c03696": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/WorkDesk.tres",
+"use_external/path": "uid://bsnrt2i8wwvcj"
+},
 "M_woodplanks_Inst.mat_544c8321": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/WoodPlanks.tres",
 "use_external/path": "uid://cgqnfrbumisec"
+},
+"WorldGridMaterial.mat_4e1bd099": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/WorldGrid.tres",
+"use_external/path": "uid://bc007ro04y315"
+},
+"power_box_set_skin1.mat_5416c2ac": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/BoxSet.tres",
+"use_external/path": "uid://bbu5dhxqicwxo"
+},
+"security_light_off.mat_7268a8bf": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/SecurityLight.tres",
+"use_external/path": "uid://di4d5cuuebc6v"
 }
 }
 }

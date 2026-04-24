@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dlrn0l2onwl2t"]
+
+[ext_resource type="Texture2D" uid="uid://dn58ica6na3rx" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Notebooks_01a_ALB.webp" id="1_kp11w"]
+[ext_resource type="Texture2D" uid="uid://rdqya3nne041" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Notebooks_01a_ARM.webp" id="2_5l0oa"]
+[ext_resource type="Texture2D" uid="uid://ds27ked2eifb4" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Notebooks_01a_NRM.webp" id="3_cs543"]
+
+[resource]
+albedo_texture = ExtResource("1_kp11w")
+metallic = 1.0
+metallic_texture = ExtResource("2_5l0oa")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_5l0oa")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_cs543")

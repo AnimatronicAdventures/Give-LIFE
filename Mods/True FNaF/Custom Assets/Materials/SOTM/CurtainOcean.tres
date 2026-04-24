@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bhyr0jidiviav"]
+
+[ext_resource type="Texture2D" uid="uid://c27g0ycxn7ntm" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_OceanCurtains_D.webp" id="1_l7ide"]
+[ext_resource type="Texture2D" uid="uid://dtd4obj6uhtqb" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_OceanCurtains_ORM.webp" id="2_1q5eh"]
+[ext_resource type="Texture2D" uid="uid://b77irhegtclt7" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_OceanCurtains_N.webp" id="3_sfft3"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_l7ide")
+metallic = 1.0
+metallic_texture = ExtResource("2_1q5eh")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_1q5eh")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_sfft3")

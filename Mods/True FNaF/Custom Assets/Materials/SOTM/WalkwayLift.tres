@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c0oat7lb1yke5"]
+
+[ext_resource type="Texture2D" uid="uid://cy6ruoo566w2s" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_WalkwayLift_D.webp" id="1_ohxoi"]
+[ext_resource type="Texture2D" uid="uid://cicjd0d3bvs4l" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_WalkwayLift_ORM.webp" id="2_khc02"]
+[ext_resource type="Texture2D" uid="uid://g2qh385ekd0" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_WalkwayLift_N.webp" id="3_i1aju"]
+
+[resource]
+albedo_texture = ExtResource("1_ohxoi")
+metallic = 1.0
+metallic_texture = ExtResource("2_khc02")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_khc02")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_i1aju")

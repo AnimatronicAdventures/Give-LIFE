@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b0ncc1cv8fhfy"]
+
+[ext_resource type="Texture2D" uid="uid://bs2uxhl4e4tg0" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SplineChainLow_BaseColor.webp" id="1_0jkik"]
+[ext_resource type="Texture2D" uid="uid://c54tig2nphrpq" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SplineChainLow_OcclusionRoughnessMetallic.webp" id="2_lsjyg"]
+[ext_resource type="Texture2D" uid="uid://cj2uk0nlvybjp" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SplineChainLow_Normal.webp" id="3_ii7fv"]
+
+[resource]
+albedo_texture = ExtResource("1_0jkik")
+metallic = 1.0
+metallic_texture = ExtResource("2_lsjyg")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_lsjyg")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_ii7fv")

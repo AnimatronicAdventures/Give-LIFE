@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dpmpwbtq6rq5m"]
+
+[ext_resource type="Texture2D" uid="uid://dhjsj8ijx1eh7" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CustomerFacingStairs_BaseColor.webp" id="1_3f1gr"]
+[ext_resource type="Texture2D" uid="uid://crh0rbmwqw8gq" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CustomerFacingStairs_OcclusionRoughnessMetallic.webp" id="2_ml3n4"]
+[ext_resource type="Texture2D" uid="uid://yjet130oscmc" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CustomerFacingStairs_Normal.webp" id="3_u71lb"]
+
+[resource]
+albedo_texture = ExtResource("1_3f1gr")
+metallic = 1.0
+metallic_texture = ExtResource("2_ml3n4")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_ml3n4")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_u71lb")

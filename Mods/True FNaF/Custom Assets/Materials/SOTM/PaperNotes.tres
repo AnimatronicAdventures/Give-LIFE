@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cqkp5tkpo5jnt"]
+
+[ext_resource type="Texture2D" uid="uid://sh02g73n57e0" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_PaperNotes_BaseColor.webp" id="1_pm3ru"]
+[ext_resource type="Texture2D" uid="uid://smsfgwfvxo54" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_PaperNotes_Normal.webp" id="2_5868p"]
+
+[resource]
+albedo_texture = ExtResource("1_pm3ru")
+metallic_texture_channel = 2
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_5868p")

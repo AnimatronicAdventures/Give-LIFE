@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://di15wjsjtjmhn"]
+
+[ext_resource type="Texture2D" uid="uid://c1lmwchy4vw30" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Curtain_Rod_N_03.webp" id="1_a42nu"]
+
+[resource]
+metallic = 1.0
+metallic_texture_channel = 2
+roughness = 0.5
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("1_a42nu")

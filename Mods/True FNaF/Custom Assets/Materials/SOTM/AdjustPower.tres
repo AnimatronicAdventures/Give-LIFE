@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bu0e8618gsyv8"]
+
+[ext_resource type="Texture2D" uid="uid://dqrihvgdmm5ga" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Adjust_Power_Device_01_D.webp" id="1_spd6s"]
+[ext_resource type="Texture2D" uid="uid://bat70nl61kajp" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Adjust_Power_Device_01_N.webp" id="2_k6s4h"]
+
+[resource]
+albedo_texture = ExtResource("1_spd6s")
+metallic_texture_channel = 2
+roughness = 0.5
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_k6s4h")

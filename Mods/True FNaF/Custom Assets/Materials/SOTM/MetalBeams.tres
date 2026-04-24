@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://20g7r6eax04p"]
+
+[ext_resource type="Texture2D" uid="uid://1ruhdabclx0n" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Metal_Beams_D.webp" id="1_bd3dj"]
+[ext_resource type="Texture2D" uid="uid://bjm0fsanvq210" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Metal_Beams_ORM.webp" id="2_vyuob"]
+[ext_resource type="Texture2D" uid="uid://cyvsurko8nt2y" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Metal_Beams_NRM.webp" id="3_na4vy"]
+
+[resource]
+albedo_texture = ExtResource("1_bd3dj")
+metallic = 1.0
+metallic_texture = ExtResource("2_vyuob")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_vyuob")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_na4vy")

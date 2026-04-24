@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://0udnehqobb1" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_CurtainRed_N.webp" id="3_s2pq8"]
 
 [resource]
+cull_mode = 2
 albedo_color = Color(0.099985994, 0.099985994, 0.099985994, 1)
 albedo_texture = ExtResource("1_7df20")
 metallic = 1.0

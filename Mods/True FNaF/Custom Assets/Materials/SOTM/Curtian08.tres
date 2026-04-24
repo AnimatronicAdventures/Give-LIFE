@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://o3ncpaxffrdk"]
+
+[ext_resource type="Texture2D" uid="uid://d1j51nr63qgmo" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Curtain_Tulle_N.webp" id="1_6bbyg"]
+
+[resource]
+cull_mode = 2
+metallic_texture_channel = 2
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("1_6bbyg")

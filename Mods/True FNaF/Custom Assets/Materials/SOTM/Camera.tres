@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://7vy44s4k5hnh"]
+
+[ext_resource type="Texture2D" uid="uid://cv1e8noha700i" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_Camera_D.webp" id="1_6h087"]
+[ext_resource type="Texture2D" uid="uid://cg15v151webjf" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_Camera_ORM.webp" id="2_axstl"]
+[ext_resource type="Texture2D" uid="uid://b72ocjk237qd6" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WS_Camera_N.webp" id="3_yondh"]
+
+[resource]
+albedo_texture = ExtResource("1_6h087")
+metallic = 1.0
+metallic_texture = ExtResource("2_axstl")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_axstl")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_yondh")

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://4mmseadji1d8"]
+
+[ext_resource type="Texture2D" uid="uid://cqfehhwh8aguc" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Dirt_2k.webp" id="1_w4be4"]
+[ext_resource type="Texture2D" uid="uid://newf4k4ucb8g" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Dirt_N.webp" id="2_cujh2"]
+
+[resource]
+albedo_texture = ExtResource("1_w4be4")
+metallic_texture_channel = 2
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_cujh2")

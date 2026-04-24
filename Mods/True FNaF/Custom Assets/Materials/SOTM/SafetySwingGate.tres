@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cgobtxg5t1kh5"]
+
+[ext_resource type="Texture2D" uid="uid://dw5hqx64bbj2i" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SafetySwingGate_D.webp" id="1_ds3py"]
+[ext_resource type="Texture2D" uid="uid://bsmesuqysu4py" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SafetySwingGate_ORM.webp" id="2_xhufv"]
+[ext_resource type="Texture2D" uid="uid://dnwx50h4l562" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_SafetySwingGate_N.webp" id="3_rr1sg"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_ds3py")
+metallic = 1.0
+metallic_texture = ExtResource("2_xhufv")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_xhufv")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_rr1sg")

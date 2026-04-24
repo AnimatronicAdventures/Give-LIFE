@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://w6d0rxlqof5n"]
+
+[ext_resource type="Texture2D" uid="uid://drl84lie0s6db" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Door2_Metal_BaseColor.webp" id="1_dxqm7"]
+[ext_resource type="Texture2D" uid="uid://bx6lepbjf1v6t" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Door2_Metal_ORM.webp" id="2_0syg8"]
+[ext_resource type="Texture2D" uid="uid://bek73uimcxa3q" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_Door2_Metal_Normal.webp" id="3_nxslv"]
+
+[resource]
+albedo_texture = ExtResource("1_dxqm7")
+metallic = 1.0
+metallic_texture = ExtResource("2_0syg8")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_0syg8")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_nxslv")

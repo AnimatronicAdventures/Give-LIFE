@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b2hh5g1htuu8x"]
+
+[ext_resource type="Texture2D" uid="uid://cyw8qk4m83q2w" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WheelPlatformStage_D.webp" id="1_5dayf"]
+[ext_resource type="Texture2D" uid="uid://bau0qtx47mwx5" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WheelPlatformStage_E.webp" id="2_ikeok"]
+[ext_resource type="Texture2D" uid="uid://bsw2jp3no322i" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WheelPlatformStage_ORM.webp" id="3_xyqdt"]
+[ext_resource type="Texture2D" uid="uid://k80ikyluelmu" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_WheelPlatformStage_N.webp" id="4_d4jpi"]
+
+[resource]
+albedo_texture = ExtResource("1_5dayf")
+metallic = 1.0
+metallic_texture = ExtResource("3_xyqdt")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_xyqdt")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_ikeok")
+normal_enabled = true
+normal_texture = ExtResource("4_d4jpi")

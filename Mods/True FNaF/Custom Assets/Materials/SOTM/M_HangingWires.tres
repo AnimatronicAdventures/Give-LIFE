@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8afn16hgkcdm"]
+
+[ext_resource type="Texture2D" uid="uid://d2naxetqln8uc" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_HangingWires_D.webp" id="1_yo5g1"]
+[ext_resource type="Texture2D" uid="uid://b2h6mkoqfeoa6" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_HangingWires_N.webp" id="2_1bh21"]
+
+[resource]
+albedo_texture = ExtResource("1_yo5g1")
+metallic_texture_channel = 2
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_1bh21")
