@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cdcyekvvr0d5h"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_e0u7d"]
+[ext_resource type="PackedScene" uid="uid://dgk3embxnhhvg" path="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Juggling Duck.glb" id="3_fgbyb"]
+[ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Animatables/Physics_Bones.gd" id="3_kypyh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_um21q"]
+size = Vector3(1.0846777, 1.7489548, 1.0778503)
+
+[node name="Juggling Duck" type="Node3D" unique_id=233530727 groups=["SOTM_DUCK"]]
+script = ExtResource("1_e0u7d")
+animParametersFileName = "Juggling Duck"
+
+[node name="Juggling Duck" parent="." unique_id=962705700 instance=ExtResource("3_fgbyb")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+script = ExtResource("3_kypyh")
+boneConfigFileName = "Juggling Duck"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=723801955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1095323835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01418066, 0.87374496, 0.01826477)
+shape = SubResource("BoxShape3D_um21q")

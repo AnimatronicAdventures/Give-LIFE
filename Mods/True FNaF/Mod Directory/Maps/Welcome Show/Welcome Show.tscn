@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c5dh0vxqdur1v" path="res://Scenes/player.tscn" id="1_84tyg"]
 [ext_resource type="ArrayOccluder3D" uid="uid://vonrt6el27bj" path="res://Mods/True FNaF/Mod Directory/Maps/Welcome Show/Welcome Show.occ" id="2_groir"]
 [ext_resource type="PackedScene" uid="uid://dnrdesa7augsy" path="res://Mods/True FNaF/Custom Assets/Models/Maps/Welcome Show.glb" id="3_k1maa"]
+[ext_resource type="PackedScene" uid="uid://cdcyekvvr0d5h" path="res://Mods/True FNaF/Mod Directory/Animatables/Juggling Duck.tscn" id="4_k1maa"]
+[ext_resource type="Script" uid="uid://c5uawj66escut" path="res://Scripts/Animatables/GL_Spotlight.gd" id="4_prrm5"]
 
 [sub_resource type="Environment" id="Environment_groir"]
 background_mode = 2
@@ -50,20 +52,104 @@ bake_simplification_distance = 0.25
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/World Boundary" unique_id=1755227430]
 shape = SubResource("WorldBoundaryShape3D_stiks")
 
+[node name="Animatables" type="Node" parent="Map" unique_id=991753060]
+
+[node name="Juggling Duck" parent="Map/Animatables" unique_id=233530727 groups=["FNAF4_ROBOT"] instance=ExtResource("4_k1maa")]
+transform = Transform3D(0.60042024, 0, -0.79968464, 0, 1, 0, 0.79968464, 0, 0.60042024, 7.350401, 3.4910758, -5.411556)
+
+[node name="Mood Light" type="OmniLight3D" parent="Map/Animatables" unique_id=2075856358]
+transform = Transform3D(0.8537498, -0.24125114, -0.4614209, 0.51820177, 0.30726722, 0.79815656, -0.050776653, -0.9205351, 0.3873461, -0.2587161, 10.123907, -1.3114839)
+light_color = Color(0.36666667, 1, 0, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 16.916
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Mood Light" unique_id=1425451671 groups=["L_MOOD"]]
+transform = Transform3D(1, 4.0978193e-08, 2.0489097e-08, 7.450581e-09, 1, 5.9604645e-08, -3.7252903e-09, 2.9802322e-08, 1, -2.870522, 0.27061033, 0.2668209)
+script = ExtResource("4_prrm5")
+canChangeColor = true
+energyMultiplier = 1.0
+lerp_speed = 20.0
+
+[node name="Light Duck" type="SpotLight3D" parent="Map/Animatables" unique_id=1578231398]
+transform = Transform3D(0.8537498, -0.24125111, -0.46142086, 0.51820177, 0.30726722, 0.79815656, -0.050776653, -0.9205351, 0.38734606, 2.106216, 12.45596, -1.3114839)
+light_color = Color(0.9019608, 0.8901961, 0.972549, 1)
+light_energy = 200.0
+shadow_enabled = true
+spot_range = 30.0
+spot_attenuation = 2.0
+spot_angle = 11.5872555
+spot_angle_attenuation = 2.2973971
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Light Duck" unique_id=1515539342 groups=["L_DUCK"]]
+script = ExtResource("4_prrm5")
+canChangeColor = true
+energyMultiplier = 3.0
+lerp_speed = 20.0
+
+[node name="Light Lion" type="SpotLight3D" parent="Map/Animatables" unique_id=1856052350]
+transform = Transform3D(0.8054557, 0.17469493, -0.5663242, 0.50279164, 0.3044615, 0.80901414, 0.3137545, -0.9363679, 0.15739512, -0.5579281, 12.45596, -1.3114839)
+light_color = Color(0.9019608, 0.8901961, 0.972549, 1)
+light_energy = 200.0
+shadow_enabled = true
+spot_range = 30.0
+spot_attenuation = 2.0
+spot_angle = 11.5872555
+spot_angle_attenuation = 2.2973971
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Light Lion" unique_id=326012535 groups=["L_LION"]]
+script = ExtResource("4_prrm5")
+canChangeColor = true
+energyMultiplier = 3.0
+lerp_speed = 20.0
+
+[node name="Light Lion2" type="SpotLight3D" parent="Map/Animatables" unique_id=1072464972]
+transform = Transform3D(0.34871724, -0.63245136, -0.69166565, 0.90087724, 0.022652242, 0.43348247, -0.25848883, -0.77426887, 0.5776603, 4.2292924, 12.45596, -1.3114839)
+light_color = Color(0.9019608, 0.8901961, 0.972549, 1)
+light_energy = 200.0
+shadow_enabled = true
+spot_range = 14.519
+spot_attenuation = 2.0
+spot_angle = 15.21
+spot_angle_attenuation = 2.2973971
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Light Lion2" unique_id=45459872 groups=["L_CART"]]
+script = ExtResource("4_prrm5")
+canChangeColor = true
+energyMultiplier = 3.0
+lerp_speed = 20.0
+
+[node name="Light Cart" type="SpotLight3D" parent="Map/Animatables" unique_id=1457343098]
+transform = Transform3D(0.662153, -0.19211505, -0.72432405, 0.7397643, 0.32183853, 0.59090525, 0.11959359, -0.9270986, 0.35522616, -0.5579281, 12.45596, 4.259493)
+light_color = Color(0.9019608, 0.8901961, 0.972549, 1)
+light_energy = 200.0
+shadow_enabled = true
+spot_range = 30.0
+spot_attenuation = 2.0
+spot_angle = 15.995925
+spot_angle_attenuation = 2.2973971
+
+[node name="Node" type="Node3D" parent="Map/Animatables/Light Cart" unique_id=706429363 groups=["L_MICE"]]
+script = ExtResource("4_prrm5")
+canChangeColor = true
+energyMultiplier = 3.0
+lerp_speed = 20.0
+
 [node name="Map Mesh & Collision" type="Node" parent="Map" unique_id=807558692]
 
-[node name="Welcome Show" parent="Map/Map Mesh & Collision" unique_id=1841397713 instance=ExtResource("3_k1maa")]
+[node name="Welcome Show" parent="Map/Map Mesh & Collision" unique_id=1964987357 instance=ExtResource("3_k1maa")]
 transform = Transform3D(-6.9938224e-08, 0, -1.6, 0, 1.6, 0, 1.6, 0, -6.9938224e-08, -93.76305, 0.24, -123.42261)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Map/Map Mesh & Collision" unique_id=658965715]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.767138, -3.147664)
 light_color = Color(0.972549, 1, 0.92156863, 1)
-light_energy = 5.0
+light_energy = 0.3
 shadow_enabled = true
 omni_range = 40.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Map/Map Mesh & Collision" unique_id=1333379803]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.094921, -14.731867)
 light_color = Color(0.972549, 1, 0.92156863, 1)
+light_energy = 0.5
 shadow_enabled = true
 omni_range = 40.0

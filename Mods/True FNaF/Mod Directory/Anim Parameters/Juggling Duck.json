@@ -1,0 +1,26 @@
+{
+  "SOTM_DUCK|Body Tilt": {
+	"animation": "BodyTilt",
+	"in_speed": 3,
+	"out_speed": 3,
+	"type": "standard"
+  },
+"SOTM_DUCK|Jaw": {
+	"animation": "Jaw",
+	"in_speed": 4.5,
+	"out_speed": 5,
+	"type": "standard"
+  },
+"SOTM_DUCK|Arm R": {
+	"animation": "Arm R",
+	"in_speed": 3,
+	"out_speed": 3,
+	"type": "standard"
+  },
+"SOTM_DUCK|Arm L": {
+	"animation": "Arm L",
+	"in_speed": 3,
+	"out_speed": 3,
+	"type": "standard"
+  },
+}

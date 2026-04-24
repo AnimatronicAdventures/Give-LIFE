@@ -1,0 +1,14 @@
+{
+  "channels": {
+	"SOTM_DUCK|Body Tilt": { "data": "", "index": 0, "type": "bool", "color": "ef730e" },
+	"SOTM_DUCK|Jaw": { "data": "", "index": 1, "type": "bool", "color": "ef730e" },
+	"SOTM_DUCK|Arm R": { "data": "", "index": 2, "type": "bool", "color": "ef730e" },
+	"SOTM_DUCK|Arm L": { "data": "", "index": 3, "type": "bool", "color": "ef730e" },
+	"L_MOOD|intensity": { "data": "", "index": 4, "type": "bool", "color": "0e30ef" },
+	"L_MOOD|color": { "data": "", "index": 5, "type": "color", "color": "0e30ef" },
+	"L_DUCK|intensity": { "data": "", "index": 6, "type": "bool", "color": "edd99e" },
+	"L_LION|intensity": { "data": "", "index": 7, "type": "bool", "color": "edd99e" },
+	"L_CART|intensity": { "data": "", "index": 8, "type": "bool", "color": "edd99e" },
+	"L_MICE|intensity": { "data": "", "index": 9, "type": "bool", "color": "edd99e" },
+  }
+}
