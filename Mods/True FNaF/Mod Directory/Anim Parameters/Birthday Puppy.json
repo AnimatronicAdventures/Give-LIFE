@@ -1,0 +1,14 @@
+{
+  "SOTM_PUPPY|Head Turn": {
+	"animation": "Head Turn",
+	"in_speed": 0.33,
+	"out_speed": 0.33,
+	"type": "loop"
+  },
+"SOTM_PUPPY|Jaw": {
+	"animation": "Jaw",
+	"in_speed": 4.5,
+	"out_speed": 5,
+	"type": "standard"
+  },
+}

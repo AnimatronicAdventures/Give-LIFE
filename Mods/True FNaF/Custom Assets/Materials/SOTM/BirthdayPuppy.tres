@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dxcpv7e8ithrr"]
+
+[ext_resource type="Texture2D" uid="uid://bbdy7f8y8sq7v" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirthdayPuppy_D.webp" id="1_xttho"]
+[ext_resource type="Texture2D" uid="uid://dledq0uwgehgf" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirthdayPuppy_ORM.webp" id="2_hxdrd"]
+[ext_resource type="Texture2D" uid="uid://bi514gqeeup2y" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_BirthdayPuppy_N.webp" id="3_hnkoc"]
+
+[resource]
+albedo_texture = ExtResource("1_xttho")
+metallic = 1.0
+metallic_texture = ExtResource("2_hxdrd")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_hxdrd")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_hnkoc")

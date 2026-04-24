@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://derp5d4vnpqqy"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_edhyg"]
+[ext_resource type="PackedScene" uid="uid://coijiun3p7t26" path="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Birthday Puppy.glb" id="2_adr0u"]
+[ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Animatables/Physics_Bones.gd" id="3_1hxw3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_um21q"]
+size = Vector3(1.4240015, 1.3153954, 1.5958786)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_edhyg"]
+size = Vector3(0.8448999, 1.6033239, 0.8975487)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qli6u"]
+size = Vector3(2.8544528, 0.8517587, 0.4216528)
+
+[node name="Birthday Puppy" type="Node3D" unique_id=233530727 groups=["SOTM_PUPPY"]]
+script = ExtResource("1_edhyg")
+animParametersFileName = "Birthday Puppy"
+
+[node name="Birthday Puppy" parent="." unique_id=1123093394 instance=ExtResource("2_adr0u")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+script = ExtResource("3_1hxw3")
+boneConfigFileName = "Birthday Puppy"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=723801955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1095323835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0279392, 0.65696526, -0.24074936)
+shape = SubResource("BoxShape3D_um21q")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=762342149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008681893, 1.6640191, 0.1084156)
+shape = SubResource("BoxShape3D_edhyg")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=361258463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0023933053, 0.41851175, 0.47376108)
+shape = SubResource("BoxShape3D_qli6u")
