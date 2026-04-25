@@ -24,13 +24,13 @@
 	"type": "standard"
   },
   "SOTM_MRHELPFUL|Arm R Twist": {
-	"animation": "Arm R Twist",
+	"animation": "Arm Twist R",
 	"in_speed": 3,
 	"out_speed": 3,
 	"type": "standard"
   },
   "SOTM_MRHELPFUL|Arm L Twist": {
-	"animation": "Arm L Twist",
+	"animation": "Arm Twist L",
 	"in_speed": 3,
 	"out_speed": 3,
 	"type": "standard"
