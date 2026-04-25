@@ -9,6 +9,7 @@ enum BonePreset {
 	ANIMATRONIC_MOVEMENT_MEDIUM,
 	ANIMATRONIC_MOVEMENT_HEAVY,
 	FLOPPY,
+	LIGHT_FLOPPY,
 }
 
 var bone_config := {}
@@ -87,6 +88,7 @@ func apply_physics_bone_to(bone_name: String, preset: BonePreset) -> void:
 
 func set_preset_parameters(pb: DMWBWiggleRotationModifier3D, preset: BonePreset) -> void:
 	pb.properties = DMWBWiggleRotationProperties3D.new()
+	pb.properties.linear_scale = 1.0 
 	match preset:
 		BonePreset.HAIR:
 			pb.properties.angular_damp = 8.0
@@ -115,6 +117,9 @@ func set_preset_parameters(pb: DMWBWiggleRotationModifier3D, preset: BonePreset)
 		BonePreset.FLOPPY:
 			pb.properties.angular_damp = 2.5
 			pb.properties.spring_freq = 1.2
+		BonePreset.LIGHT_FLOPPY:
+			pb.properties.angular_damp = 14.0
+			pb.properties.spring_freq = 2.5
 
 
 # Set of node names to hide when toggling

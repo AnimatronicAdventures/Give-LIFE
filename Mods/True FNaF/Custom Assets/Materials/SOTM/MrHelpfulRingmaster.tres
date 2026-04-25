@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bjb5ucvalicst"]
+
+[ext_resource type="Texture2D" uid="uid://7fhrhjj8glv5" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_MrHelpful_Ringmaster_D.webp" id="1_3wuho"]
+[ext_resource type="Texture2D" uid="uid://bioy8daj4hsih" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_MrHelpful_Ringmaster_ORM.webp" id="2_3wuho"]
+[ext_resource type="Texture2D" uid="uid://dwl5epgpho4sy" path="res://Mods/True FNaF/Custom Assets/Textures/SOTM/T_MrHelpful_Ringmaster_N.webp" id="3_m41dd"]
+
+[resource]
+albedo_texture = ExtResource("1_3wuho")
+metallic = 1.0
+metallic_texture = ExtResource("2_3wuho")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_3wuho")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_m41dd")
