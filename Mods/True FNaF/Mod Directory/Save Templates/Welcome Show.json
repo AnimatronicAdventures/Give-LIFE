@@ -15,7 +15,7 @@
 	"L_PUPPY_SPOT|intensity": { "data": "", "index": 12, "type": "bool", "color": "edd99e" },
 	"L_PUPPY_CLR_A|intensity": { "data": "", "index": 13, "type": "bool", "color": "0befd5" },
 	"L_PUPPY_CLR_B|intensity": { "data": "", "index": 14, "type": "bool", "color": "d80bef" },
-	"SOTM_MRHELPFUL|Platform Down": { "data": "", "index": 15, "type": "bool", "color": "9b30ef" },
+	"SOTM_MRHELPFUL|Platform Up": { "data": "", "index": 15, "type": "bool", "color": "9b30ef" },
 	"SOTM_MRHELPFUL|Jaw": { "data": "", "index": 16, "type": "bool", "color": "9b30ef" },
 	"SOTM_MRHELPFUL|Arm R Up": { "data": "", "index": 17, "type": "bool", "color": "9b30ef" },
 	"SOTM_MRHELPFUL|Arm L Up": { "data": "", "index": 18, "type": "bool", "color": "9b30ef" },
