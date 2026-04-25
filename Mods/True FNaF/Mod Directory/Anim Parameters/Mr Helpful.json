@@ -3,7 +3,7 @@
 	"animation": "Platform Down",
 	"in_speed": 3,
 	"out_speed": 3,
-	"type": "standard"
+	"type": "inverted_standard"
   },
   "SOTM_MRHELPFUL|Jaw": {
 	"animation": "Jaw",

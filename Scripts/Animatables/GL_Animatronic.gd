@@ -133,11 +133,15 @@ func _load_anim_parameters(file_name: String) -> void:
 					var result = JSON.parse_string(json_text)
 					if typeof(result) == TYPE_DICTIONARY:
 						for key in result.keys():
-							if typeof(result[key]) == TYPE_DICTIONARY:
-								var dict_data = result[key]
-								dict_data["value"] = 0
-								dict_data["signal_value"] = 0
-								animParameters[key] = dict_data
+								if typeof(result[key]) == TYPE_DICTIONARY:
+									var dict_data = result[key]
+									if dict_data.get("type", "") == "inverted_standard":
+										dict_data["value"] = 1
+										dict_data["signal_value"] = 0
+									else:
+										dict_data["value"] = 0
+										dict_data["signal_value"] = 0
+									animParameters[key] = dict_data
 				return
 		mod_name = mods_dir.get_next()
 
@@ -159,6 +163,12 @@ func _process(delta):
 					params["value"] = clamp(float(params["value"]) + (delta * params["out_speed"] * signal_val), 0, 1)
 				elif signal_val < 0.5:
 					params["value"] = clamp(float(params["value"]) - (delta * params["in_speed"] * (1.0 - signal_val)), 0, 1)
+			"inverted_standard":
+				var signal_val = float(params["signal_value"])
+				if signal_val > 0.5:
+					params["value"] = clamp(float(params["value"]) - (delta * params["out_speed"] * signal_val), 0, 1)
+				elif signal_val < 0.5:
+					params["value"] = clamp(float(params["value"]) + (delta * params["in_speed"] * (1.0 - signal_val)), 0, 1)
 			"move_to":
 				params["value"] = lerp(float(params["value"]), float(params["signal_value"]), delta * params["out_speed"])
 			"loop":
