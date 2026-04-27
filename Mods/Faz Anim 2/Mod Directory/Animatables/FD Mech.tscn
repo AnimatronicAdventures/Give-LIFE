@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_xx0q4"]
 [ext_resource type="PackedScene" uid="uid://cot70x3xor10s" path="res://Mods/Faz Anim 2/Custom Assets/Models/Animatronics/FD/FD Mech.glb" id="2_0slsm"]
-[ext_resource type="Texture2D" uid="uid://cxo5sfpuuku84" path="res://Mods/Faz Anim 2/Custom Assets/UI/FD Mech.webp" id="2_836yq"]
 [ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Animatables/Physics_Bones.gd" id="3_g3334"]
 [ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="4_le2jr"]
 
 [node name="FD" type="Node3D" unique_id=1621682742 groups=["AA_FD"]]
 script = ExtResource("1_xx0q4")
 animParametersFileName = "FD"
-skinIcon = ExtResource("2_836yq")
 skinAuthors = "sudo trans --pony"
 
 [node name="FD Mech" parent="." unique_id=1499328489 instance=ExtResource("2_0slsm")]

@@ -29,8 +29,6 @@ V = Fly
 Flying + Q = Descend
 Flying + Space = Ascend
 
-H = Toggle Cosmetics (Temporary)
-
 [font_size=26]In-Editor[/font_size]
 P = Play/Pause Show (Works In-Game Too)
 Shift + Scroll = Pan the Timeline

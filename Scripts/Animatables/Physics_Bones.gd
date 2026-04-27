@@ -121,32 +121,9 @@ func set_preset_parameters(pb: DMWBWiggleRotationModifier3D, preset: BonePreset)
 			pb.properties.angular_damp = 14.0
 			pb.properties.spring_freq = 2.5
 
-
-# Set of node names to hide when toggling
-var hidden_names = ["Cosmetic Body", "Cosmetic Hand L", "Cosmetic Hand R", "Cosmetic Head", "Cupcake", "Cutter"]
-
-# Internal toggle state
-var hide_specific := false
-
-func _input(event):
-	if event.is_action_pressed("Test Visibility"): # Make sure 'Test Visibility' is mapped to 'H'
-		hide_specific = !hide_specific
-		_toggle_visibility_recursive(self)
-
-func _toggle_visibility_recursive(node: Node):
-	for child in node.get_children():
-		if child is Node3D:
-			if hide_specific:
-				child.visible = not hidden_names.has(child.name)
-			else:
-				child.visible = true
-		# Recursively process all children
-		_toggle_visibility_recursive(child)
-		
 func on_settings_applied(settings: Dictionary):
 	if currentPhysicsToggle != settings["physics_bones"]:
 		set_physics_bones_enabled(settings["physics_bones"])
-	
 
 func set_physics_bones_enabled(enable: bool):
 	currentPhysicsToggle = enable
