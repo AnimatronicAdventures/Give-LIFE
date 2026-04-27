@@ -220,7 +220,6 @@ func _broadcast_signal(signal_id: String, value) -> void:
 		if node.has_method("_sent_signals"):
 			node._sent_signals(signal_id, value)
 
-
 func _swap_scene() -> void:
 	var data = _current_skin_data()
 	if not data:
@@ -230,21 +229,38 @@ func _swap_scene() -> void:
 		return
 	var existing = tree.get_nodes_in_group(current_group)
 	if existing.is_empty():
-		return  # No characters in scene — do nothing
+		return
+
 	var transforms: Array = []
+	var parents: Array = []
 	for node in existing:
-		if node is Node3D:
+		var parent = node.get_parent()
+		if node is Node3D and parent:
 			transforms.append(node.global_transform)
+			parents.append(parent)
+		node.remove_from_group(current_group)
 		node.queue_free()
+
+	if transforms.is_empty():
+		return
+
 	var packed = load(data["path"])
 	if not packed:
 		return
-	var parent = get_node_or_null("/root")
+
+	for node in existing:
+		if is_instance_valid(node):
+			node.free()
 	for i in transforms.size():
+		var parent = parents[i]
+		if not is_instance_valid(parent):
+			push_warning("SkinSwapper: parent for slot %d was freed, skipping." % i)
+			continue
 		var instance = packed.instantiate()
 		parent.add_child(instance)
 		if instance is Node3D:
 			instance.global_transform = transforms[i]
+
 	_reapply_custom_colors()
 
 func _reapply_custom_colors() -> void:
