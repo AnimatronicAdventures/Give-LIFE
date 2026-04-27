@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cbpasfbn3gkxo"
-path="res://.godot/imported/Helpfuls.glb-297aeb6a9deecd560c2a3a8afcf41044.scn"
+uid="uid://c86xok3gikqpm"
+path="res://.godot/imported/Ringmaster Base.glb-ef96f1a33adcb67100df3031b666a86f.scn"
 
 [deps]
 
-source_file="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Helpfuls.glb"
-dest_files=["res://.godot/imported/Helpfuls.glb-297aeb6a9deecd560c2a3a8afcf41044.scn"]
+source_file="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Ringmaster Base.glb"
+dest_files=["res://.godot/imported/Ringmaster Base.glb-ef96f1a33adcb67100df3031b666a86f.scn"]
 
 [params]
 
@@ -39,26 +39,10 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"MI_MrHelpful": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/MrHelpfulRingmaster.tres",
-"use_external/path": "uid://bjb5ucvalicst"
-},
 "MI_MrHelpful_Base": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/SOTM/MrHelpfulBase.tres",
 "use_external/path": "uid://d3psuwuj5khwx"
-}
-},
-"nodes": {
-"PATH:SK_MrHelpful_ao/Skeleton3D/Helpful Endo": {
-"import/skip_import": true
-},
-"PATH:SK_MrHelpful_ao/Skeleton3D/Mr Helpful": {
-"import/skip_import": true
-},
-"PATH:SK_MrHelpful_ao/Skeleton3D/Mrs Helpful": {
-"import/skip_import": true
 }
 }
 }
