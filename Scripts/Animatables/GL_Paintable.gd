@@ -1,10 +1,8 @@
 extends GL_Animatable
 class_name GL_Paintable
 
-@export var check_siblings: bool = false   # If true, also checks sibling nodes recursively
+@export var check_siblings: bool = false 
 
-# Cache of materials → list of ShaderMaterials
-# Example: { "green_material": [ShaderMaterial, ShaderMaterial, ...] }
 var material_cache: Dictionary = {}
 var param_names = ["paint_color_r", "paint_color_g", "paint_color_b", "paint_color_a"]
 
@@ -15,10 +13,8 @@ func _ready() -> void:
 func _build_material_cache() -> void:
 	material_cache.clear()
 
-	# Always search recursively under this node
 	_cache_materials_in_tree(self)
 
-	# If sibling checking is enabled, search them too
 	if check_siblings and get_parent():
 		for sibling in get_parent().get_children():
 			if sibling != self and sibling is Node3D:
@@ -45,13 +41,8 @@ func _cache_materials_in_tree(node: Node) -> void:
 							material_cache[mat_name] = []
 						material_cache[mat_name].append(mat)
 
-		# Always recurse into children
 		_cache_materials_in_tree(child)
 
-
-# Called externally to change a shader param color
-# Example custom shader: _sent_signals("green_material|0", Color(0.8,0.2,0.2))
-# Example standard Godot shader: _sent_signals("green_mat|A", Color(0.8,0.2,0.2))
 func _sent_signals(_signal_ID: String, _the_signal) -> void:
 	_signal_ID = _signal_ID.split("|", true, 1)[-1]
 	if typeof(_the_signal) != TYPE_COLOR:

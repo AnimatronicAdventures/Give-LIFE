@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_edhyg"]
 [ext_resource type="PackedScene" uid="uid://coijiun3p7t26" path="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Birthday Puppy.glb" id="2_adr0u"]
+[ext_resource type="Texture2D" uid="uid://ctxfedgnm4hil" path="res://Mods/True FNaF/Custom Assets/UI/BirthdayPuppy.webp" id="2_qli6u"]
 [ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Animatables/Physics_Bones.gd" id="3_1hxw3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_um21q"]
@@ -16,6 +17,8 @@ size = Vector3(2.8544528, 0.8517587, 0.4216528)
 [node name="Birthday Puppy" type="Node3D" unique_id=233530727 groups=["SOTM_PUPPY"]]
 script = ExtResource("1_edhyg")
 animParametersFileName = "Birthday Puppy"
+skinIcon = ExtResource("2_qli6u")
+skinAuthors = "Steel Wool"
 
 [node name="Birthday Puppy" parent="." unique_id=1123093394 instance=ExtResource("2_adr0u")]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)

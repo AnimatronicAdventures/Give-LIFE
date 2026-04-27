@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cdcyekvvr0d5h"]
 
 [ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_e0u7d"]
+[ext_resource type="Texture2D" uid="uid://clx2iitt5d6yt" path="res://Mods/True FNaF/Custom Assets/UI/Duck.png" id="2_kypyh"]
 [ext_resource type="PackedScene" uid="uid://dgk3embxnhhvg" path="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Juggling Duck.glb" id="3_fgbyb"]
 [ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Animatables/Physics_Bones.gd" id="3_kypyh"]
 
@@ -10,6 +11,8 @@ size = Vector3(1.0846777, 1.7489548, 1.0778503)
 [node name="Juggling Duck" type="Node3D" unique_id=233530727 groups=["SOTM_DUCK"]]
 script = ExtResource("1_e0u7d")
 animParametersFileName = "Juggling Duck"
+skinIcon = ExtResource("2_kypyh")
+skinAuthors = "Steel Wool"
 
 [node name="Juggling Duck" parent="." unique_id=962705700 instance=ExtResource("3_fgbyb")]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)

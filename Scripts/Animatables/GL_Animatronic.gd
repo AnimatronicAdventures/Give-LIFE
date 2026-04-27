@@ -3,6 +3,8 @@ var anim_tree: AnimationTree
 var blend_tree: AnimationNodeBlendTree
 var animParameters: Dictionary
 @export var animParametersFileName: String
+@export var skinIcon : Texture2D
+@export var skinAuthors : String
 
 var initialPos: Vector3
 var initialRot: Vector3
@@ -186,7 +188,6 @@ func _process(delta):
 
 func _sent_signals(anim_name: String, value):
 	anim_name = anim_name.split("|", true, 1)[-1]
-	value = float(value)
 
 	var key = displayCache.get(anim_name, anim_name)
 	if animParameters.has(key):

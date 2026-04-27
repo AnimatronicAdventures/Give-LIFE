@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://xgi6p6opg831"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_64a77"]
+[ext_resource type="PackedScene" uid="uid://d3pdvhwg8guie" path="res://Mods/Faz Anim 2/Custom Assets/Models/Animatronics/CCa/CCA Mech.glb" id="3_64a77"]
+[ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Animatables/Physics_Bones.gd" id="3_gfes3"]
+[ext_resource type="Script" uid="uid://ekdr3r12ydct" path="res://Scripts/Animatables/GL_Paintable.gd" id="4_g0exr"]
+
+[node name="CCa Mech" type="Node3D" unique_id=2099849415 groups=["AA_CCA"]]
+script = ExtResource("1_64a77")
+animParametersFileName = "CCa"
+skinAuthors = "sudo trans --pony"
+
+[node name="CCA Mech2" parent="." unique_id=250172871 instance=ExtResource("3_64a77")]
+script = ExtResource("3_gfes3")
+boneConfigFileName = "CCa"
+
+[node name="Color Check" type="Node3D" parent="." unique_id=299466512 groups=["AA_CCA"]]
+script = ExtResource("4_g0exr")
+check_siblings = true

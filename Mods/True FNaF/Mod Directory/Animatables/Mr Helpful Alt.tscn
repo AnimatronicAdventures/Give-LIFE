@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bn1b0mbbj71vn"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_yugrg"]
+[ext_resource type="PackedScene" uid="uid://cbpasfbn3gkxo" path="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Helpfuls.glb" id="2_8xckk"]
+[ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Animatables/Physics_Bones.gd" id="3_m876e"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7mxrl"]
+height = 0.60650635
+radius = 0.703125
+
+[node name="Mr Helpful Alt" type="Node3D" unique_id=233530727 groups=["SOTM_MRHELPFUL_ALT"]]
+script = ExtResource("1_yugrg")
+animParametersFileName = "Mr Helpful"
+skinAuthors = "Steel Wool"
+
+[node name="Helpfuls" parent="." unique_id=781383887 instance=ExtResource("2_8xckk")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+script = ExtResource("3_m876e")
+boneConfigFileName = "Mr Helpful"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=723801955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1095323835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0062969923, 0.2981701, 0.013578236)
+shape = SubResource("CylinderShape3D_7mxrl")

@@ -1,0 +1,95 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://eq4qg6prn4x3"
+path="res://.godot/imported/FD Full.glb-d7dc890861d231dac4da28a73fd8ba74.scn"
+
+[deps]
+
+source_file="res://Mods/Faz Anim 2/Custom Assets/Models/Animatronics/FD/FD Full.glb"
+dest_files=["res://.godot/imported/FD Full.glb-d7dc890861d231dac4da28a73fd8ba74.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Alt Cylinders": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Alt Cylinders.tres",
+"use_external/path": "uid://birk5r0s5o8d0"
+},
+"Cylinders": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Cylinders.tres",
+"use_external/path": "uid://k7jss4yy3n64"
+},
+"Endo": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/Chica Mech Body.tres",
+"use_external/path": "uid://bo4jm6kxggs8i"
+},
+"FD Cosmetics": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/FD Clothes.tres",
+"use_external/path": "uid://c4033b7jk882m"
+},
+"FD Fur": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/FD Main.tres",
+"use_external/path": "uid://bels6bfxn5l0o"
+},
+"FD Mic": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/FD Mic.tres",
+"use_external/path": "uid://71ebdw0gjw2m"
+},
+"Fur Brown": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/FD Hair A.tres",
+"use_external/path": "uid://csgqvvyw4abbh"
+},
+"Fur Orange": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/FD Hair B.tres",
+"use_external/path": "uid://mdrnn823ooux"
+},
+"The Head": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/FD Mech Head.tres",
+"use_external/path": "uid://cs1y3ja383yyr"
+},
+"Visor Plastic": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/Faz Anim 2/Custom Assets/Materials/FD Visor.tres",
+"use_external/path": "uid://bv0sw7q0klm8c"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=0

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_hfxbb"]
 [ext_resource type="PackedScene" uid="uid://dg5kfvlqo0gym" path="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Toy Phone.glb" id="2_hfxbb"]
+[ext_resource type="Texture2D" uid="uid://nj18wxp2nbch" path="res://Mods/True FNaF/Custom Assets/UI/Phone.webp" id="2_n7fck"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_um21q"]
 size = Vector3(0.6675873, 0.27947998, 0.5793457)
@@ -12,6 +13,8 @@ size = Vector3(0.7965355, 0.2172699, 0.18804932)
 [node name="Toy Phone" type="Node3D" unique_id=233530727 groups=["FNAF4_PHONE"]]
 script = ExtResource("1_hfxbb")
 animParametersFileName = "Toy Phone"
+skinIcon = ExtResource("2_n7fck")
+skinAuthors = "sudo trans --pony"
 
 [node name="Toy Phone" parent="." unique_id=1957082576 instance=ExtResource("2_hfxbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

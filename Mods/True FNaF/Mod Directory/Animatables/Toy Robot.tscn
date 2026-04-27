@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_5vy8f"]
 [ext_resource type="PackedScene" uid="uid://bm7wuihvyglja" path="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Toy Robot.glb" id="2_5vy8f"]
+[ext_resource type="Texture2D" uid="uid://bvujmr3277sdv" path="res://Mods/True FNaF/Custom Assets/UI/Robot.webp" id="2_7hgbu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_um21q"]
 size = Vector3(0.50082016, 1.0684662, 0.258667)
@@ -9,6 +10,8 @@ size = Vector3(0.50082016, 1.0684662, 0.258667)
 [node name="Toy Robot" type="Node3D" unique_id=233530727 groups=["FNAF4_ROBOT"]]
 script = ExtResource("1_5vy8f")
 animParametersFileName = "Toy Robot"
+skinIcon = ExtResource("2_7hgbu")
+skinAuthors = "sudo trans --pony"
 
 [node name="Toy Robot" parent="." unique_id=1029607388 instance=ExtResource("2_5vy8f")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
