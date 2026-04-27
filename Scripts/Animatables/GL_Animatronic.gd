@@ -191,7 +191,7 @@ func _sent_signals(anim_name: String, value):
 
 	var key = displayCache.get(anim_name, anim_name)
 	if animParameters.has(key):
-		animParameters[key]["signal_value"] = clamp(value, 0, 1)
+		animParameters[key]["signal_value"] = clamp(float(value), 0, 1)
 		return
 
 	# Non-animations

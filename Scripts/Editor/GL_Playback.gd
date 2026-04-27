@@ -29,6 +29,7 @@ var _scrub_pending_time: float = -1.0
 # Built once on load/prime. Pre-parses keys so _process never touches strings.
 var _dispatch: Array = []
 var _dispatch_valid: bool = false
+var _retry_groups: Dictionary = {}
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
@@ -69,11 +70,11 @@ func _build_dispatch_table() -> void:
 
 	_dispatch_valid = true
 
+
 func _physics_process(delta: float) -> void:
 	if master.currentlyLoadedPath == "":
 		return
 
-	# Build dispatch table on first frame if not yet done
 	if not _dispatch_valid:
 		_build_dispatch_table()
 
@@ -89,10 +90,12 @@ func _physics_process(delta: float) -> void:
 			var type: String    = rec["type"]
 			var group: String   = rec["group"]
 
-			# Dynamically fetch nodes to avoid stale empty caches if models load late
 			var nodes: Array = get_tree().get_nodes_in_group(group)
 			if nodes.is_empty():
+				_retry_groups[group] = 3 
 				continue
+
+			_retry_groups.erase(group)
 
 			var ch = channels[id]
 			var data = ch["data"]
@@ -102,10 +105,32 @@ func _physics_process(delta: float) -> void:
 			else:
 				var state = _get_state_for_type(type, data, id, t_int)
 				var signal_key: String = rec["signal_key"]
-				
-				# Fire signal continuously per-tick (removes broken last_value deduplication)
 				for node in nodes:
 					node._sent_signals(signal_key, state)
+
+	if not _retry_groups.is_empty():
+		var channels = master.currentlyLoadedFile["channels"]
+		var done: Array = []
+		for group in _retry_groups:
+			var nodes: Array = get_tree().get_nodes_in_group(group)
+			if nodes.is_empty():
+				_retry_groups[group] -= 1
+				if _retry_groups[group] <= 0:
+					done.append(group)
+				continue
+			done.append(group)
+			for rec in _dispatch:
+				if rec["group"] != group:
+					continue
+				var type: String = rec["type"]
+				if type == GL_ChannelData.TYPE_VIDEO or type == GL_ChannelData.TYPE_AUDIO:
+					continue 
+				var ch = channels[rec["id"]]
+				var state = _get_state_for_type(type, ch["data"], rec["id"], _lastTime_int)
+				for node in nodes:
+					node._sent_signals(rec["signal_key"], state)
+		for group in done:
+			_retry_groups.erase(group)
 
 	_process_audio(delta, time_changed)
 

@@ -1,169 +1,169 @@
 {
   "AA_FD|Microphone": {
-	"animation": "FD|Microphone",
+	"animation": "Microphone",
 	"in_speed": 2.0,
 	"out_speed": 3.0,
 	"type": "move_to"
   },
   "AA_FD|Jaw": {
-	"animation": "FD|Jaw",
+	"animation": "Jaw",
 	"in_speed": 5.5,
 	"out_speed": 6.5,
 	"type": "standard"
   },
   "AA_FD|Body Turn L": {
-	"animation": "FD|Body Turn L",
+	"animation": "Body Turn L",
 	"in_speed": 2.5,
 	"out_speed": 2.5,
 	"type": "standard"
   },
   "AA_FD|Body Turn R": {
-	"animation": "FD|Body Turn R",
+	"animation": "Body Turn R",
 	"in_speed": 2.5,
 	"out_speed": 2.5,
 	"type": "standard"
   },
   "AA_FD|Body Lean R": {
-	"animation": "FD|Body Lean R",
+	"animation": "Body Lean R",
 	"in_speed": 1.0,
 	"out_speed": 2.0,
 	"type": "standard"
   },
   "AA_FD|Body Lean L": {
-	"animation": "FD|Body Lean L",
+	"animation": "Body Lean L",
 	"in_speed": 1.0,
 	"out_speed": 2.0,
 	"type": "standard"
   },
   "AA_FD|Shoulder L": {
-	"animation": "FD|Shoulder L",
+	"animation": "Shoulder L",
 	"in_speed": 2.5,
 	"out_speed": 1.5,
 	"type": "standard"
   },
   "AA_FD|Arm Bend L": {
-	"animation": "FD|Arm Bend L",
+	"animation": "Arm Bend L",
 	"in_speed": 2.0,
 	"out_speed": 3.0,
 	"type": "standard"
   },
   "AA_FD|Hand Bend L": {
-	"animation": "FD|Hand Bend L",
+	"animation": "Hand Bend L",
 	"in_speed": 3.0,
 	"out_speed": 4.0,
 	"type": "standard"
   },
   "AA_FD|Arm Out L": {
-	"animation": "FD|Arm Out L",
+	"animation": "Arm Out L",
 	"in_speed": 2.5,
 	"out_speed": 1.0,
 	"type": "standard"
   },
   "AA_FD|Eyebrow Down L": {
-	"animation": "FD|Eyebrow Down L",
+	"animation": "Eyebrow Down L",
 	"in_speed": 7.0,
 	"out_speed": 9.0,
 	"type": "standard"
   },
   "AA_FD|Eyebrow Up L": {
-	"animation": "FD|Eyebrow Up L",
+	"animation": "Eyebrow Up L",
 	"in_speed": 7.0,
 	"out_speed": 9.0,
 	"type": "standard"
   },
   "AA_FD|Eyebrow Down R": {
-	"animation": "FD|Eyebrow Down R",
+	"animation": "Eyebrow Down R",
 	"in_speed": 7.0,
 	"out_speed": 9.0,
 	"type": "standard"
   },
   "AA_FD|Eyebrow Up R": {
-	"animation": "FD|Eyebrow Up R",
+	"animation": "Eyebrow Up R",
 	"in_speed": 7.0,
 	"out_speed": 9.0,
 	"type": "standard"
   },
   "AA_FD|Head Down L": {
-	"animation": "FD|Head Down L",
+	"animation": "Head Down L",
 	"in_speed": 3.0,
 	"out_speed": 4.0,
 	"type": "standard"
   },
   "AA_FD|Head Down R": {
-	"animation": "FD|Head Down R",
+	"animation": "Head Down R",
 	"in_speed": 3.0,
 	"out_speed": 4.0,
 	"type": "standard"
   },
   "AA_FD|Head Up L": {
-	"animation": "FD|Head Up L",
+	"animation": "Head Up L",
 	"in_speed": 3.0,
 	"out_speed": 4.0,
 	"type": "standard"
   },
   "AA_FD|Head Up R": {
-	"animation": "FD|Head Up R",
+	"animation": "Head Up R",
 	"in_speed": 3.0,
 	"out_speed": 4.0,
 	"type": "standard"
   },
   "AA_FD|Head Turn L": {
-	"animation": "FD|Head Turn L",
+	"animation": "Head Turn L",
 	"in_speed": 5.0,
 	"out_speed": 5.0,
 	"type": "standard"
   },
   "AA_FD|Head Turn R": {
-	"animation": "FD|Head Turn R",
+	"animation": "Head Turn R",
 	"in_speed": 5.0,
 	"out_speed": 5.0,
 	"type": "standard"
   },
   "AA_FD|Eyelid L": {
-	"animation": "FD|Eyelid L",
+	"animation": "Eyelid L",
 	"in_speed": 5.0,
 	"out_speed": 10.0,
 	"type": "move_to"
   },
   "AA_FD|Eyelid R": {
-	"animation": "FD|Eyelid R",
+	"animation": "Eyelid R",
 	"in_speed": 5.0,
 	"out_speed": 10.0,
 	"type": "move_to"
   },
   "AA_FD|Eyes Down": {
-	"animation": "FD|Eyes Down",
+	"animation": "Eyes Down",
 	"in_speed": 6.0,
 	"out_speed": 7.0,
 	"type": "standard"
   },
   "AA_FD|Eyes Left": {
-	"animation": "FD|Eyes Left",
+	"animation": "Eyes Left",
 	"in_speed": 6.0,
 	"out_speed": 7.0,
 	"type": "standard"
   },
   "AA_FD|Eyes Right": {
-	"animation": "FD|Eyes Right",
+	"animation": "Eyes Right",
 	"in_speed": 6.0,
 	"out_speed": 7.0,
 	"type": "standard"
   },
   "AA_FD|Eyes Up": {
-	"animation": "FD|Eyes Up",
+	"animation": "Eyes Up",
 	"in_speed": 6.0,
 	"out_speed": 7.0,
 	"type": "standard"
   },
   "AA_FD|Underlid L": {
-	"animation": "FD|Underlid L",
+	"animation": "Underlid L",
 	"in_speed": 5.0,
 	"out_speed": 10.0,
 	"type": "move_to",
 	"value": 5.70421e-21
   },
   "AA_FD|Underlid R": {
-	"animation": "FD|Underlid R",
+	"animation": "Underlid R",
 	"in_speed": 5.0,
 	"out_speed": 10.0,
 	"type": "move_to",
