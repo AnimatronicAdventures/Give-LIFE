@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://cron3phbvrasi" path="res://Sounds/Tick2.wav" id="12_ca78b"]
 [ext_resource type="AudioStream" uid="uid://cnu056nqhchk1" path="res://Sounds/Thack.wav" id="13_ufq68"]
 [ext_resource type="AudioStream" uid="uid://d32r2h55ktsse" path="res://Mods/Faz Anim 2/Custom Assets/Sounds/Trashed.wav" id="14_e12if"]
+[ext_resource type="Script" uid="uid://p57psuh23hii" path="res://Scripts/Player/PlayerCamera.gd" id="20_isteg"]
 
 [node name="GlEditor" type="Control" unique_id=270496900]
 texture_filter = 1
@@ -279,6 +280,8 @@ size = Vector2i(958, 513)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Full Editor/Editor/Viewer/SubViewport" unique_id=439023362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("20_isteg")
 
 [node name="TimeManager" type="PanelContainer" parent="Full Editor" unique_id=266066089]
 custom_minimum_size = Vector2(0, 20)

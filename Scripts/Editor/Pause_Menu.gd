@@ -203,7 +203,7 @@ func load_settings():
 	print("Settings loaded: ", currentSettings)
 
 func apply_settings():
-	#Window Mode
+	# Window Mode
 	if currentSettings["window_mode"] == 1:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
@@ -222,20 +222,26 @@ func apply_settings():
 	scaleMode.set_pressed_no_signal(currentSettings["scale_mode"])
 	renderscale.set_value_no_signal(currentSettings["render_scale"])
 	renderScaleText.text = "Render Scale (" + str(roundi(currentSettings["render_scale"]*100)) + "%)"
-
+	
 	var vp = get_tree().root.get_viewport()
 	vp.msaa_3d = currentSettings["msaa_3d"]
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(currentSettings["master_volume"]))
 	match currentSettings["scale_mode"]:
-		0:
-			vp.scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
-		1:
-			vp.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR
-		2:
-			vp.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR2
+		0: vp.scaling_3d_mode = Viewport.SCALING_3D_MODE_BILINEAR
+		1: vp.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR
+		2: vp.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR2
 	vp.scaling_3d_scale = currentSettings.get("render_scale", 1.0)
-
+	
+	for camera in get_tree().get_nodes_in_group("cameras"):
+		if camera.has_method("refresh"):
+			camera.refresh()
+	
 	get_tree().call_group("SettingsReceivers", "on_settings_applied", currentSettings)
+
+func _notify_cameras() -> void:
+	for camera in get_tree().get_nodes_in_group("cameras"):
+		if camera.has_method("refresh"):
+			camera.refresh()
 
 func update_simulator_button_text():
 	if currentMapInstance:
