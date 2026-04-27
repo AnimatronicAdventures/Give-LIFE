@@ -5,17 +5,17 @@ const PAINTABLE_SHADERS = [
 	"res://Shaders/Paintable_Simple.gdshader"
 ]
 
-@onready var skin_preview: TextureRect = $"HBoxContainer/VBoxContainer/Character Portrait"
-@onready var skin_author_label: Label = $HBoxContainer/VBoxContainer/Author
-@onready var character_option: OptionButton = $"HBoxContainer/VBoxContainer2/CharacterBox"
-@onready var skin_option: OptionButton = $"HBoxContainer/VBoxContainer2/SkinBox"
-@onready var material_option: OptionButton = $"HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2/MaterialBox"
-@onready var material_panel: PanelContainer = $HBoxContainer/VBoxContainer2/PanelContainer
+@onready var skin_preview: TextureRect = $"VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/Character Portrait"
+@onready var skin_author_label: Label = $VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/Author
+@onready var character_option: OptionButton = $VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/CharacterBox
+@onready var skin_option: OptionButton = $VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/SkinBox
+@onready var material_option: OptionButton = $VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2/MaterialBox
+@onready var material_panel: PanelContainer =$VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer
 @onready var color_pickers: Array = [
-	$"HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2/ColorA",
-	$"HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2/ColorB",
-	$"HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2/ColorC",
-	$"HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2/ColorD",
+$VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2/ColorA,
+$VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2/ColorB,
+$VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2/ColorC,
+$VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2/ColorD,
 ]
 
 const FALLBACK_ICON = preload("res://UI/Question.png")

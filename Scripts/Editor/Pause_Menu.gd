@@ -22,6 +22,7 @@ extends Node
 @onready var modMenu: MarginContainer = get_node("MarginContainer/PanelContainer/Mod Menu")
 @onready var mapMenu: MarginContainer = get_node("MarginContainer/PanelContainer/Map Menu")
 @onready var wikiMenu: MarginContainer = get_node("MarginContainer/PanelContainer/Wiki")
+@onready var skinMenu: MarginContainer = get_node("MarginContainer/PanelContainer/Skins")
 
 @onready var sideTitle: Label = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/Mod Title")
 @onready var sideAuthor: Label = get_node("MarginContainer/PanelContainer/Mod Menu/Mods/PanelContainer/HBoxContainer/MarginContainer/Mod Desc/MarginContainer/VBoxContainer/Mod Author")
@@ -138,6 +139,7 @@ func switchMenu(menu:String):
 	mapMenu.visible = false
 	modMenu.visible = false
 	wikiMenu.visible = false
+	skinMenu.visible = false
 	hide_sidebar()
 
 	match(menu):
@@ -151,7 +153,8 @@ func switchMenu(menu:String):
 			modMenu.visible =  true
 		"maps":
 			mapMenu.visible =  true
-
+		"skins":
+			skinMenu.visible =  true
 func _on_slider_changed(value:float, name:String):
 	currentSettings[name] = value
 	save_settings()

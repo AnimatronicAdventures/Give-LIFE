@@ -37,6 +37,8 @@
 [ext_resource type="AudioStream" uid="uid://d32r2h55ktsse" path="res://Mods/Faz Anim 2/Custom Assets/Sounds/Trashed.wav" id="32_2uws7"]
 [ext_resource type="Script" uid="uid://t56kwrd7w4b7" path="res://Scripts/Editor/GL_Wiki.gd" id="32_8dgrc"]
 [ext_resource type="FontFile" uid="uid://k0v7y7qxnu2g" path="res://UI/Fonts/Amarna-Medium.ttf" id="33_lrdyb"]
+[ext_resource type="Script" uid="uid://b38xb3any5ay" path="res://Scripts/Editor/GL_SkinChanger.gd" id="38_c6h6d"]
+[ext_resource type="Texture2D" uid="uid://mikgrvtytpiy" path="res://UI/Question.png" id="39_fygpv"]
 
 [sub_resource type="Theme" id="Theme_6gw5s"]
 default_font = ExtResource("17_l5do0")
@@ -134,6 +136,19 @@ press_sound = ExtResource("7_mu3iq")
 press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 
+[node name="Showtapes" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=1748901703]
+custom_minimum_size = Vector2(300, 38.025)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Showtapes"
+script = ExtResource("5_8r7np")
+hover_sound = ExtResource("6_571ku")
+hover_pitch_randomize_enabled = false
+press_sound = ExtResource("7_mu3iq")
+press_pitch_randomize_enabled = false
+press_pitch_multiplier_off = 0.5
+
 [node name="Wiki" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=1847943778]
 custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
@@ -147,12 +162,12 @@ press_sound = ExtResource("7_mu3iq")
 press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 
-[node name="Mods" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=1121930228]
+[node name="Skins" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=1830897139]
 custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Mods"
+text = "Skins"
 script = ExtResource("5_8r7np")
 hover_sound = ExtResource("6_571ku")
 hover_pitch_randomize_enabled = false
@@ -166,6 +181,19 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Settings"
+script = ExtResource("5_8r7np")
+hover_sound = ExtResource("6_571ku")
+hover_pitch_randomize_enabled = false
+press_sound = ExtResource("7_mu3iq")
+press_pitch_randomize_enabled = false
+press_pitch_multiplier_off = 0.5
+
+[node name="Mods" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=1121930228]
+custom_minimum_size = Vector2(300, 38.025)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Mods"
 script = ExtResource("5_8r7np")
 hover_sound = ExtResource("6_571ku")
 hover_pitch_randomize_enabled = false
@@ -885,6 +913,143 @@ press_sound = ExtResource("7_mu3iq")
 press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 
+[node name="Skins" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=1778073316]
+visible = false
+self_modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("38_c6h6d")
+metadata/_tab_index = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/Skins" unique_id=1902449166]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Skins/VBoxContainer" unique_id=1785080939]
+layout_mode = 2
+text = "Skin Changer"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/Skins/VBoxContainer" unique_id=575506335]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="HBoxContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/Skins/VBoxContainer" unique_id=762667071]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("28_lijsr")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer" unique_id=1053845732]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer" unique_id=815166602]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Character Portrait" type="TextureRect" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=1481072702]
+texture_filter = 6
+texture_repeat = 1
+custom_minimum_size = Vector2(350, 350)
+layout_mode = 2
+texture = ExtResource("39_fygpv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Author" type="Label" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=118284699]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Skin by ???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=908471782]
+layout_mode = 2
+text = "
+Character"
+horizontal_alignment = 1
+
+[node name="CharacterBox" type="OptionButton" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=1065423139]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=1523188697]
+layout_mode = 2
+text = "
+Set Skin"
+horizontal_alignment = 1
+
+[node name="SkinBox" type="OptionButton" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=616108431]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=284541659]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=1762249669]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer" unique_id=1771161714]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer" unique_id=1258905595]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2" unique_id=347509560]
+layout_mode = 2
+text = "Material"
+horizontal_alignment = 1
+
+[node name="MaterialBox" type="OptionButton" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2" unique_id=29460867]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2" unique_id=552252632]
+layout_mode = 2
+text = "
+Set Paint"
+horizontal_alignment = 1
+
+[node name="ColorA" type="ColorPickerButton" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1115635156]
+layout_mode = 2
+text = " "
+
+[node name="ColorB" type="ColorPickerButton" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1815216834]
+layout_mode = 2
+text = " "
+
+[node name="ColorC" type="ColorPickerButton" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2" unique_id=586060156]
+layout_mode = 2
+text = " "
+
+[node name="ColorD" type="ColorPickerButton" parent="MarginContainer/PanelContainer/Skins/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer2/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1865934946]
+layout_mode = 2
+text = " "
+
+[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/Skins/VBoxContainer" unique_id=1784455917]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="Back Button" type="Button" parent="MarginContainer/PanelContainer/Skins/VBoxContainer" unique_id=1148919811]
+custom_minimum_size = Vector2(300, 38.025)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+text = "Back"
+script = ExtResource("5_8r7np")
+hover_sound = ExtResource("6_571ku")
+hover_pitch_randomize_enabled = false
+press_sound = ExtResource("7_mu3iq")
+press_pitch_randomize_enabled = false
+press_pitch_multiplier_off = 0.5
+
 [node name="ExportDialog" type="FileDialog" parent="." unique_id=939270388]
 auto_translate_mode = 1
 size = Vector2i(1086, 360)
@@ -904,9 +1069,11 @@ filters = PackedStringArray("*.pck")
 volume_db = 4.0
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Start Button" to="." method="_on_simulator_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Showtapes" to="." method="setEditorVisibility" binds= [true]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Wiki" to="." method="switchMenu" binds= ["wiki"]]
-[connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Mods" to="." method="switchMenu" binds= ["mods"]]
+[connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Skins" to="." method="switchMenu" binds= ["skins"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Settings" to="." method="switchMenu" binds= ["settings"]]
+[connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Mods" to="." method="switchMenu" binds= ["mods"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Exit" to="." method="_on_quit_button_pressed"]
 [connection signal="text_changed" from="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Username/LineEdit" to="." method="_on_line_edit_changed" binds= ["username"]]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/Settings/Settings/TabContainer/General/VBoxContainer/Boot on Start/OptionButton" to="." method="_on_option_changed" binds= ["boot_on_start"]]
@@ -924,5 +1091,6 @@ volume_db = 4.0
 [connection signal="pressed" from="MarginContainer/PanelContainer/Mod Menu/Mods/Back Button" to="." method="switchMenu" binds= ["title"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Wiki/Mods/Back Button" to="." method="switchMenu" binds= ["title"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Map Menu/Mods/Back Button" to="." method="switchMenu" binds= ["title"]]
+[connection signal="pressed" from="MarginContainer/PanelContainer/Skins/VBoxContainer/Back Button" to="." method="switchMenu" binds= ["title"]]
 [connection signal="file_selected" from="ExportDialog" to="." method="_on_export_mod_selected"]
 [connection signal="file_selected" from="ImportDialog" to="." method="_on_import_mod_selected"]
