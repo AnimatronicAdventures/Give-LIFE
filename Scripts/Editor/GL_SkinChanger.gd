@@ -210,24 +210,27 @@ func _on_color_changed(color: Color, param_index: int) -> void:
 	var signal_id = "%s|%s|%d" % [current_group, current_material, param_index]
 	_broadcast_signal(signal_id, color)
 
-
-func _broadcast_signal(signal_id: String, value) -> void:
+func _get_group_nodes() -> Array:
 	var tree = get_tree()
 	if not tree:
-		return
-	var nodes = tree.get_nodes_in_group(current_group)
-	for node in nodes:
+		return []
+	return get_tree().get_nodes_in_group("Animatable").filter(
+		func(n): return n.is_in_group(current_group)
+	)
+
+
+func _broadcast_signal(signal_id: String, value) -> void:
+	for node in _get_group_nodes():
 		if node.has_method("_sent_signals"):
 			node._sent_signals(signal_id, value)
+
 
 func _swap_scene() -> void:
 	var data = _current_skin_data()
 	if not data:
 		return
-	var tree = get_tree()
-	if not tree:
-		return
-	var existing = tree.get_nodes_in_group(current_group)
+
+	var existing = _get_group_nodes()
 	if existing.is_empty():
 		return
 
@@ -251,6 +254,7 @@ func _swap_scene() -> void:
 	for node in existing:
 		if is_instance_valid(node):
 			node.free()
+
 	for i in transforms.size():
 		var parent = parents[i]
 		if not is_instance_valid(parent):

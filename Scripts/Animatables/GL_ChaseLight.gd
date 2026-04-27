@@ -15,6 +15,7 @@ var current_intensity: float = 1.0
 var _chase_offset: float = 0.0       # accumulated position, 0.0–1.0
 
 func _ready():
+	super()
 	light = self.get_parent()
 	visible_energy = light.light_energy
 
@@ -49,6 +50,7 @@ func _update_light():
 	visible_energy = target_energy
 
 func _process(delta: float) -> void:
+	super(delta)
 	if current_chase > 0.0:
 		_chase_offset = fmod(_chase_offset + current_chase * MAX_CHASE_SPEED * delta, 1.0)
 		_update_light()

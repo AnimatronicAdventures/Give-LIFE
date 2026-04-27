@@ -13,6 +13,7 @@ var target_energy: float = 0.0
 var target_color: Color = Color.WHITE
 
 func _ready():
+	super()
 	var light = self.get_parent()
 	if light is SpotLight3D:
 		spotLight = light
@@ -24,6 +25,7 @@ func _ready():
 		target_color = light.light_color
 
 func _process(delta: float) -> void:
+	super(delta)
 	if spotLight != null:
 		spotLight.light_energy = lerp(spotLight.light_energy, target_energy, delta * lerp_speed)
 		spotLight.visible = spotLight.light_energy > 0.001 

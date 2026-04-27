@@ -13,6 +13,7 @@ var animCache: Dictionary   # raw anim name → animParameters key
 var displayCache: Dictionary  # stripped display name → animParameters key
 
 func _ready():
+	super()
 	print(name + " Animatable Loaded " + str(position))
 	initialPos = position
 	initialRot = rotation
@@ -148,6 +149,7 @@ func _load_anim_parameters(file_name: String) -> void:
 		mod_name = mods_dir.get_next()
 
 func _process(delta):
+	super(delta)
 	if not anim_tree:
 		return
 	var anim_player = get_child(0).get_node("AnimationPlayer") as AnimationPlayer

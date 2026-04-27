@@ -162,19 +162,6 @@ press_sound = ExtResource("7_mu3iq")
 press_pitch_randomize_enabled = false
 press_pitch_multiplier_off = 0.5
 
-[node name="Skins" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=1830897139]
-custom_minimum_size = Vector2(300, 38.025)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Skins"
-script = ExtResource("5_8r7np")
-hover_sound = ExtResource("6_571ku")
-hover_pitch_randomize_enabled = false
-press_sound = ExtResource("7_mu3iq")
-press_pitch_randomize_enabled = false
-press_pitch_multiplier_off = 0.5
-
 [node name="Settings" type="Button" parent="MarginContainer/PanelContainer/Title Screen" unique_id=750860307]
 custom_minimum_size = Vector2(300, 38.025)
 layout_mode = 2
@@ -1069,9 +1056,8 @@ filters = PackedStringArray("*.pck")
 volume_db = 4.0
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Start Button" to="." method="_on_simulator_button_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Showtapes" to="." method="setEditorVisibility" binds= [true]]
+[connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Showtapes" to="." method="swapEditorPause"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Wiki" to="." method="switchMenu" binds= ["wiki"]]
-[connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Skins" to="." method="switchMenu" binds= ["skins"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Settings" to="." method="switchMenu" binds= ["settings"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Mods" to="." method="switchMenu" binds= ["mods"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Title Screen/Exit" to="." method="_on_quit_button_pressed"]

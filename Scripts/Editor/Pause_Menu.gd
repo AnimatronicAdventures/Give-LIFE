@@ -125,13 +125,16 @@ func setEditorVisibility(visible: bool):
 func _unhandled_input(event):	
 	if currentMapInstance == null:
 		if event.is_action_pressed("Pause") or event.is_action_pressed("Editor"):
-			toggleEditorVisibility()
-			self.visible = !editorInstance.visible
+			swapEditorPause()
 	else:
 		if event.is_action_pressed("Pause"):
 			toggle_pause_menu()
 		elif event.is_action_pressed("Editor"):
 			toggle_editor()
+
+func swapEditorPause() -> void:
+	toggleEditorVisibility()
+	self.visible = !editorInstance.visible
 
 func switchMenu(menu:String):
 	titleScreenMenu.visible = false

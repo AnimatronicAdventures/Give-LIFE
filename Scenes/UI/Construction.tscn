@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://xsfiixsaniho"]
+
+[ext_resource type="Theme" uid="uid://b3wjoiiv6sq22" path="res://UI/Themes/Theme Node.tres" id="1_myjoq"]
+[ext_resource type="StyleBox" uid="uid://dc8kkag77ptu2" path="res://UI/Themes/Sub.tres" id="3_5f7vf"]
+[ext_resource type="Texture2D" uid="uid://g3x10ge11yel" path="res://UI/Icons/file-pen-solid-full.svg" id="3_ue6r3"]
+[ext_resource type="Texture2D" uid="uid://c5gdmoee4sxtf" path="res://UI/Icons/up-down-left-right-solid-full.svg" id="4_dgb4g"]
+[ext_resource type="Texture2D" uid="uid://dksnt63ajeoqv" path="res://UI/Icons/rotate-solid-full.svg" id="5_pn7e3"]
+[ext_resource type="Texture2D" uid="uid://dyiswdb1owyty" path="res://UI/Icons/trash-can-solid-full.svg" id="6_5ro2f"]
+[ext_resource type="Texture2D" uid="uid://dd1fpawllh8lo" path="res://UI/Icons/arrows-up-down-solid-full.svg" id="6_dgb4g"]
+[ext_resource type="Texture2D" uid="uid://dgv0clw6kj7bk" path="res://UI/Icons/copy-solid-full.svg" id="6_ue6r3"]
+[ext_resource type="Texture2D" uid="uid://dcc0teyc1a71" path="res://UI/Icons/circle-xmark-regular-full.svg" id="8_ue6r3"]
+
+[node name="Construction" type="Control" unique_id=1229924864 groups=["Construction UI"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_myjoq")
+
+[node name="Menu" type="HBoxContainer" parent="." unique_id=1166042135]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Edit" type="PanelContainer" parent="Menu" unique_id=1778424609]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_5f7vf")
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Edit" unique_id=47279974]
+layout_mode = 2
+texture = ExtResource("3_ue6r3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Move" type="PanelContainer" parent="Menu" unique_id=796618976]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_5f7vf")
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Move" unique_id=1079402538]
+layout_mode = 2
+texture = ExtResource("4_dgb4g")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Rotate" type="PanelContainer" parent="Menu" unique_id=614967311]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_5f7vf")
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Rotate" unique_id=699564617]
+layout_mode = 2
+texture = ExtResource("5_pn7e3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Scale" type="PanelContainer" parent="Menu" unique_id=1084453524]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_5f7vf")
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Scale" unique_id=102149111]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_dgb4g")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Duplicate" type="PanelContainer" parent="Menu" unique_id=1912153883]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_5f7vf")
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Duplicate" unique_id=434801208]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_ue6r3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Delete" type="PanelContainer" parent="Menu" unique_id=1261960560]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_5f7vf")
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Delete" unique_id=447344277]
+layout_mode = 2
+texture = ExtResource("6_5ro2f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Exit" type="PanelContainer" parent="Menu" unique_id=1968813908]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_5f7vf")
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Exit" unique_id=1849954359]
+layout_mode = 2
+texture = ExtResource("8_ue6r3")
+expand_mode = 1
+stretch_mode = 5

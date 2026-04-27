@@ -92,6 +92,10 @@ func _ready():
 	rotation_x = camera.rotation.x
 	rotation_y = camera.rotation.y
 
+signal construction_toggled(is_active: bool)
+
+var construction_mode: bool = false
+
 func _input(event):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
@@ -106,6 +110,22 @@ func _input(event):
 				var collider = interact_ray.get_collider()
 				if collider.has_method("interact"):
 					collider.interact()
+			elif construction_mode:
+				create_animatable()
+				
+		if Input.is_action_just_pressed("Toggle Construction"):
+			construction_mode = !construction_mode
+			_notify_animatables(construction_mode)
+
+func create_animatable():
+	pass
+
+func _notify_animatables(is_active: bool) -> void:
+	construction_toggled.emit(is_active)
+	var animatables = get_tree().get_nodes_in_group("Animatable")
+	for node in animatables:
+		if node.has_method("on_construction_toggled"):
+			node.on_construction_toggled(is_active)
 
 func freeze_player()-> void:
 	frozen_mode = true

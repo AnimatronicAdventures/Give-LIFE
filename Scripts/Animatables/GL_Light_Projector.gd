@@ -8,6 +8,7 @@ var oldPath: String
 var target_energy: float = 0.0
 
 func _ready():
+	super()
 	spot_light = self.get_parent() as SpotLight3D
 	if not spot_light:
 		printerr("Parent must be a SpotLight3D for projector")
@@ -19,6 +20,7 @@ func _ready():
 	set_process(true)
 
 func _process(delta: float) -> void:
+	super(delta)
 	spot_light.light_energy = lerp(spot_light.light_energy, target_energy, delta * lerp_speed)
 	spot_light.visible = spot_light.light_energy > 0.0
 	if video_player.stream:

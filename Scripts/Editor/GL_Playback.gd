@@ -70,6 +70,11 @@ func _build_dispatch_table() -> void:
 
 	_dispatch_valid = true
 
+func _get_group_nodes(group: String) -> Array:
+	return get_tree().get_nodes_in_group("Animatable").filter(
+		func(n): return n.is_in_group(group)
+	)
+
 
 func _physics_process(delta: float) -> void:
 	if master.currentlyLoadedPath == "":
@@ -86,13 +91,13 @@ func _physics_process(delta: float) -> void:
 		var channels = master.currentlyLoadedFile["channels"]
 
 		for rec in _dispatch:
-			var id: String      = rec["id"]
-			var type: String    = rec["type"]
-			var group: String   = rec["group"]
+			var id: String   = rec["id"]
+			var type: String = rec["type"]
+			var group: String = rec["group"]
 
-			var nodes: Array = get_tree().get_nodes_in_group(group)
+			var nodes: Array = _get_group_nodes(group)
 			if nodes.is_empty():
-				_retry_groups[group] = 3 
+				_retry_groups[group] = 3
 				continue
 
 			_retry_groups.erase(group)
@@ -112,7 +117,7 @@ func _physics_process(delta: float) -> void:
 		var channels = master.currentlyLoadedFile["channels"]
 		var done: Array = []
 		for group in _retry_groups:
-			var nodes: Array = get_tree().get_nodes_in_group(group)
+			var nodes: Array = _get_group_nodes(group)
 			if nodes.is_empty():
 				_retry_groups[group] -= 1
 				if _retry_groups[group] <= 0:
@@ -124,7 +129,7 @@ func _physics_process(delta: float) -> void:
 					continue
 				var type: String = rec["type"]
 				if type == GL_ChannelData.TYPE_VIDEO or type == GL_ChannelData.TYPE_AUDIO:
-					continue 
+					continue
 				var ch = channels[rec["id"]]
 				var state = _get_state_for_type(type, ch["data"], rec["id"], _lastTime_int)
 				for node in nodes:
@@ -134,6 +139,7 @@ func _physics_process(delta: float) -> void:
 
 	_process_audio(delta, time_changed)
 
+
 func _process_media_channel(rec: Dictionary, data, delta: float, t_int: int) -> void:
 	var entries: Array = data
 	if entries.is_empty():
@@ -141,7 +147,6 @@ func _process_media_channel(rec: Dictionary, data, delta: float, t_int: int) -> 
 
 	var channel_id: String = rec["id"]
 
-	# Binary search for active entry
 	var active_entry: Dictionary = {}
 	var lo = 0
 	var hi = entries.size() - 1
@@ -186,10 +191,43 @@ func _process_media_channel(rec: Dictionary, data, delta: float, t_int: int) -> 
 			time_to_send = max(offset + (timeline.timeCurrent - stamp_time), 0.0)
 
 		var signal_key: String = rec["signal_key"]
-		var nodes: Array = get_tree().get_nodes_in_group(rec["group"])
+		var nodes: Array = _get_group_nodes(rec["group"])
 		for node in nodes:
 			node._sent_signals(signal_key, path_to_send)
 			node._sent_signals("Current Time", time_to_send)
+
+
+func _send_null_media_signals() -> void:
+	if not master or master.currentlyLoadedPath == "":
+		return
+	var scene_tree = Engine.get_main_loop() as SceneTree
+	if not scene_tree:
+		return
+	for rec in _dispatch:
+		if rec["type"] != GL_ChannelData.TYPE_VIDEO and rec["type"] != GL_ChannelData.TYPE_AUDIO:
+			continue
+		var nodes = scene_tree.get_nodes_in_group("Animatable").filter(
+			func(n): return n.is_in_group(rec["group"])
+		)
+		for node in nodes:
+			node._sent_signals(rec["signal_key"], null)
+			node._sent_signals("Current Time", 0.0)
+
+
+func clean_sweep() -> void:
+	if master.currentlyLoadedPath == "":
+		return
+	var channels = master.currentlyLoadedFile["channels"]
+	for rec in _dispatch:
+		var id: String = rec["id"]
+		var data = channels[id]["data"]
+		var is_empty = (data is Array and data.is_empty()) or (data is String and data == "")
+		if not is_empty:
+			continue
+		var nodes = _get_group_nodes(rec["group"])
+		for node in nodes:
+			node._sent_signals(rec["signal_key"], 0.0)
+			
 func _get_state_for_type(type: String, data, channel_id: String, t_int: int):
 	match type:
 		GL_ChannelData.TYPE_BOOL:
@@ -225,33 +263,6 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
 		_send_null_media_signals()
 
-func _send_null_media_signals() -> void:
-	if not master or master.currentlyLoadedPath == "":
-		return
-	var scene_tree = Engine.get_main_loop() as SceneTree
-	if not scene_tree:
-		return
-	for rec in _dispatch:
-		if rec["type"] != GL_ChannelData.TYPE_VIDEO and rec["type"] != GL_ChannelData.TYPE_AUDIO:
-			continue
-		var nodes = scene_tree.get_nodes_in_group(rec["group"])
-		for node in nodes:
-			node._sent_signals(rec["signal_key"], null)
-			node._sent_signals("Current Time", 0.0)
-
-func clean_sweep() -> void:
-	if master.currentlyLoadedPath == "":
-		return
-	var channels = master.currentlyLoadedFile["channels"]
-	for rec in _dispatch:
-		var id: String = rec["id"]
-		var data = channels[id]["data"]
-		var is_empty = (data is Array and data.is_empty()) or (data is String and data == "")
-		if not is_empty:
-			continue
-		var nodes = get_tree().get_nodes_in_group(rec["group"])
-		for node in nodes:
-			node._sent_signals(rec["signal_key"], 0.0)
 
 # ── Default media seeding ─────────────────────────────────────────────────────
 

@@ -4,6 +4,7 @@ var oldPath:String
 var oldTime:float
 
 func _ready():
+	super()
 	speaker = get_child(0)
 	
 func _sent_signals(anim_name: String, value):
@@ -14,23 +15,23 @@ func _sent_signals(anim_name: String, value):
 		
 	match(anim_name):
 		"Audio":
-			if value is not GL_AudioType:
+			#if value is not GL_AudioType:
 				return
-			var path = (value as GL_AudioType).value
-			if path != "" && path != oldPath:
-				var stream
-				match(path.get_extension().to_lower()):
-					"mp3":
-						stream = AudioStreamMP3.load_from_file(path)
-					"wav":
-						stream = AudioStreamWAV.load_from_file(path)
-					"ogg":
-						stream = AudioStreamOggVorbis.load_from_file(path)
-				if stream and stream is AudioStream:
-					speaker.stream = stream
-					oldPath = path
-				else:
-					printerr("Invalid audio stream at path: ", path)
+			#var path = (value as GL_AudioType).value
+			#if path != "" && path != oldPath:
+				#var stream
+				#match(path.get_extension().to_lower()):
+					#"mp3":
+					#	stream = AudioStreamMP3.load_from_file(path)
+					#"wav":
+					#	stream = AudioStreamWAV.load_from_file(path)
+					#"ogg":
+					#	stream = AudioStreamOggVorbis.load_from_file(path)
+				#if stream and stream is AudioStream:
+				#	speaker.stream = stream
+				#	oldPath = path
+				#else:
+				#	printerr("Invalid audio stream at path: ", path)
 		"Volume":
 			speaker.volume_linear = value
 		"Current Time":

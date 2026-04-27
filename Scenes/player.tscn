@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ktqnj6yjrsbn" path="res://UI/Flashlight.png" id="4_8erm5"]
 [ext_resource type="Script" uid="uid://r3akx4cd0pjd" path="res://Scripts/Player/Flashlight.gd" id="5_f1ek2"]
 [ext_resource type="Script" uid="uid://ca1u85mg47y1v" path="res://Scripts/Player/NightLight.gd" id="5_fkybt"]
+[ext_resource type="PackedScene" uid="uid://xsfiixsaniho" path="res://Scenes/UI/Construction.tscn" id="7_3smsa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_em00n"]
 radius = 0.25
@@ -43,8 +44,8 @@ spot_attenuation = 2.0
 spot_angle_attenuation = 1.32065e-05
 script = ExtResource("5_f1ek2")
 
-[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Camera3D" unique_id=157651667]
-target_position = Vector3(0, 0, -2)
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Camera3D" unique_id=157651667 groups=["Player Raycast"]]
+target_position = Vector3(0, 0, -4)
 collide_with_areas = true
 collide_with_bodies = false
 
@@ -55,6 +56,8 @@ light_size = 3.0
 light_specular = 0.0
 omni_range = 15.0
 script = ExtResource("5_fkybt")
+
+[node name="Construction" parent="CharacterBody3D/Camera3D" unique_id=1229924864 instance=ExtResource("7_3smsa")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1342189859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

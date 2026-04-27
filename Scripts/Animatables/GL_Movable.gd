@@ -5,6 +5,7 @@ var initialRot: Vector3
 var initialScale: Vector3
 
 func _ready():
+	super()
 	initialPos = position
 	initialRot = rotation
 	initialScale = scale
