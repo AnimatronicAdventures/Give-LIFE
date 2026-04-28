@@ -80,6 +80,8 @@ func _ready():
 	_load_mods()
 	_populate_mod_list()
 	load_maps()
+	skinMenu.initialize()
+	wikiMenu.initialize()
 
 	editorInstance = nodeMapScene.instantiate()
 	get_tree().root.add_child.call_deferred(editorInstance)

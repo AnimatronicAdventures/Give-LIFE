@@ -2140,28 +2140,18 @@ enable_shadows = true
 
 [node name="Chica" parent="Map/Animatables" unique_id=2121303090 instance=ExtResource("8_ey3tq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9581, 1.74247, -3.28439)
-delete_parent_instead = null
-animatable_group = null
 
 [node name="Vennard" parent="Map/Animatables" unique_id=2099849415 instance=ExtResource("6_1ynf4")]
 transform = Transform3D(-1, 6.855066e-08, 1.3453824e-07, 0, 0.8910065, -0.45399052, -1.509958e-07, -0.45399052, -0.8910065, -8.304195, 5.0373955, -13.131941)
-delete_parent_instead = null
-animatable_group = null
 
 [node name="AC" parent="Map/Animatables" unique_id=1602886423 instance=ExtResource("8_wr3ah")]
 transform = Transform3D(-1, -6.855066e-08, -1.3453824e-07, 0, 0.8910065, -0.45399052, 1.509958e-07, -0.45399052, -0.8910065, -9.63371, 5.0835156, -13.351537)
-delete_parent_instead = null
-animatable_group = null
 
 [node name="HVAC" parent="Map/Animatables" unique_id=1334172021 instance=ExtResource("7_twqsy")]
 transform = Transform3D(-1, -6.855066e-08, -1.3453824e-07, 0, 0.8910065, -0.45399052, 1.509958e-07, -0.45399052, -0.8910065, -10.644432, 4.9602556, -13.270801)
-delete_parent_instead = null
-animatable_group = null
 
 [node name="FD" parent="Map/Animatables" unique_id=137685558 instance=ExtResource("26_sceim")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107827, 1.74247, -1.81819)
-delete_parent_instead = null
-animatable_group = null
 
 [node name="Projector" type="SpotLight3D" parent="Map/Animatables" unique_id=154841648]
 transform = Transform3D(1, 0, 0, 0, 0.9371603, 0.3488992, 0, -0.3488992, 0.9371603, 0.15763903, 6.5825133, -1.4346392)

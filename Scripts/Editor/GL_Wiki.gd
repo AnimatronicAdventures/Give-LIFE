@@ -8,9 +8,14 @@ const WIKI_FOLDER := "Wiki"
 
 func _ready() -> void:
 	content_display.bbcode_enabled = true
+
+func initialize() -> void:
 	_load_all_wikis()
 
 func _load_all_wikis() -> void:
+	for child in category_list.get_children():
+		child.queue_free()
+
 	var dir := DirAccess.open(MODS_PATH)
 	if not dir:
 		return

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c5dh0vxqdur1v" path="res://Scenes/player.tscn" id="1_qx2ia"]
 [ext_resource type="PackedScene" uid="uid://ddu57vroqecy8" path="res://Mods/True FNaF/Custom Assets/Models/Maps/FNaF 3.glb" id="2_qrd33"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dwy7awvebemu6" path="res://Mods/True FNaF/Mod Directory/Maps/FNaF3/FNaF3.occ" id="2_vq32d"]
+[ext_resource type="PackedScene" uid="uid://cyv0l6ob3f1o5" path="res://Mods/True FNaF/Mod Directory/Animatables/Toy Robot.tscn" id="4_vepnj"]
 
 [sub_resource type="Environment" id="Environment_dsuk6"]
 background_mode = 1
@@ -56,6 +57,9 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 15.996221, 0.902, -93.0
 [node name="Map Props" type="Node" parent="Map" unique_id=890356910]
 
 [node name="Animatables" type="Node" parent="Map" unique_id=1193136051]
+
+[node name="Toy Robot" parent="Map/Animatables" unique_id=233530727 instance=ExtResource("4_vepnj")]
+transform = Transform3D(-0.7134461, 0, -0.7007101, 0, 1, 0, 0.7007101, 0, -0.7134461, 3.564148, -0.27489522, 2.0162315)
 
 [node name="Map Lights" type="Node" parent="Map" unique_id=82908035]
 
