@@ -29,8 +29,15 @@ func _sent_signals(_signal_ID: String, _the_signal): pass
 
 func _ready():
 	add_to_group("Animatable")
+	var old_bbox = get_node_or_null("_bbox_debug")
+	if old_bbox:
+		old_bbox.free()
+		var old_area = get_node_or_null("_construction_area")
+		if old_area:
+			old_area.free()
+		on_construction_toggled(true)
+		
 	_build_bbox()
-
 func on_construction_toggled(is_active: bool) -> void:
 	if _bbox_visual: _bbox_visual.visible = is_active
 	if _construction_area: _construction_area.visible = is_active
@@ -89,15 +96,27 @@ func _confirm_menu_selection() -> void:
 	get_viewport().set_input_as_handled()
 
 	match _menu_items[_menu_selection].name:
-		"Edit":      pass
+		"Edit":
+			var pause_menus = get_tree().get_nodes_in_group("Pause Menu")
+			if not pause_menus.is_empty():
+				pause_menus[0].open_skin_editor(self)
+			_construction_ui.visible = false
+			_close_interaction()
 		"Move": 
 			_interact_state = InteractState.MOVING
 			_construction_ui.visible = false		
-		"Rotate":    _interact_state = InteractState.ROTATING; _construction_ui.visible = false
-		"Scale": _interact_state = InteractState.SCALING; _construction_ui.visible = false
-		"Duplicate": _do_duplicate();
-		"Delete":    _do_delete()
-		"Exit":      _close_interaction()
+		"Rotate":    
+			_interact_state = InteractState.ROTATING
+			_construction_ui.visible = false
+		"Scale": 
+			_interact_state = InteractState.SCALING
+			_construction_ui.visible = false
+		"Duplicate": 
+			_do_duplicate()
+		"Delete":    
+			_do_delete()
+		"Exit":      
+			_close_interaction()
 
 func _do_duplicate() -> void:
 	var dup = duplicate()

@@ -50,7 +50,7 @@ MarginContainer/constants/margin_top = 10
 Panel/styles/panel = ExtResource("15_o2xf1")
 PanelContainer/styles/panel = ExtResource("16_xrto2")
 
-[node name="PauseMenu" type="Control" unique_id=22474638 node_paths=PackedStringArray("fpsButton")]
+[node name="PauseMenu" type="Control" unique_id=22474638 node_paths=PackedStringArray("fpsButton") groups=["Pause Menu"]]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -1029,7 +1029,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 toggle_mode = true
-text = "Back"
+text = "Exit"
 script = ExtResource("5_8r7np")
 hover_sound = ExtResource("6_571ku")
 hover_pitch_randomize_enabled = false
@@ -1077,6 +1077,6 @@ volume_db = 4.0
 [connection signal="pressed" from="MarginContainer/PanelContainer/Mod Menu/Mods/Back Button" to="." method="switchMenu" binds= ["title"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Wiki/Mods/Back Button" to="." method="switchMenu" binds= ["title"]]
 [connection signal="pressed" from="MarginContainer/PanelContainer/Map Menu/Mods/Back Button" to="." method="switchMenu" binds= ["title"]]
-[connection signal="pressed" from="MarginContainer/PanelContainer/Skins/VBoxContainer/Back Button" to="." method="switchMenu" binds= ["title"]]
+[connection signal="pressed" from="MarginContainer/PanelContainer/Skins/VBoxContainer/Back Button" to="MarginContainer/PanelContainer/Skins" method="confirm_changes"]
 [connection signal="file_selected" from="ExportDialog" to="." method="_on_export_mod_selected"]
 [connection signal="file_selected" from="ImportDialog" to="." method="_on_import_mod_selected"]

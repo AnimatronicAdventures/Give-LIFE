@@ -125,12 +125,44 @@ func setEditorVisibility(visible: bool):
 func _unhandled_input(event):	
 	if currentMapInstance == null:
 		if event.is_action_pressed("Pause") or event.is_action_pressed("Editor"):
-			swapEditorPause()
+			if skinMenu.visible:
+				close_skin_editor()
+			else:
+				swapEditorPause()
 	else:
 		if event.is_action_pressed("Pause"):
-			toggle_pause_menu()
+			if skinMenu.visible:
+				close_skin_editor()
+			else:
+				toggle_pause_menu()
 		elif event.is_action_pressed("Editor"):
-			toggle_editor()
+			if skinMenu.visible:
+				close_skin_editor()
+			else:
+				toggle_editor()
+
+func open_skin_editor(target: Node3D) -> void:
+	var changer = skinMenu if skinMenu.has_method("start_editing") else null
+	if not changer:
+		for child in skinMenu.get_children():
+			if child.has_method("start_editing"):
+				changer = child
+				break
+				
+	if changer:
+		changer.start_editing(target)
+	else:
+		push_warning("Could not find GL_SkinChanger script in skinMenu.")
+
+	self.visible = true
+	setEditorVisibility(false)
+	update_mouse_mode()
+	switchMenu("skins")
+
+func close_skin_editor() -> void:
+	switchMenu("title")
+	self.visible = false
+	update_mouse_mode()
 
 func swapEditorPause() -> void:
 	toggleEditorVisibility()

@@ -27,7 +27,7 @@ var current_group: String = ""
 var current_skin_name: String = ""
 var current_material: String = ""
 var _active_instances: Array = []
-
+var editing_target: Node3D = null
 
 func _ready() -> void:
 	_scan_mods()
@@ -96,6 +96,47 @@ func _extract_paintable_materials(node: Node) -> Dictionary:
 	_recurse_materials(node, found)
 	return found
 
+func start_editing(target: Node3D) -> void:
+	editing_target = target
+	
+	# 1. Reverse-engineer the group
+	var found_group = ""
+	for g in skin_db.keys():
+		if target.is_in_group(g):
+			found_group = g
+			break
+			
+	if found_group == "" and skin_db.size() > 0:
+		found_group = skin_db.keys()[0] # Default fallback
+		
+	# 2. Reverse-engineer the specific skin using skinIcon
+	var found_skin = ""
+	if found_group != "" and skin_db.has(found_group):
+		var target_icon = target.get("skinIcon") if "skinIcon" in target else null
+		for s_name in skin_db[found_group].keys():
+			if skin_db[found_group][s_name].icon == target_icon:
+				found_skin = s_name
+				break
+		if found_skin == "" and skin_db[found_group].size() > 0:
+			found_skin = skin_db[found_group].keys()[0] # Default fallback
+
+	# 3. Apply to UI options
+	for i in character_option.item_count:
+		if character_option.get_item_text(i) == found_group:
+			character_option.select(i)
+			_on_character_selected(i)
+			break
+			
+	for i in skin_option.item_count:
+		if skin_option.get_item_text(i) == found_skin:
+			skin_option.select(i)
+			_on_skin_selected(i)
+			break
+
+func confirm_changes() -> void:
+	var pause_menus = get_tree().get_nodes_in_group("Pause Menu")
+	if not pause_menus.is_empty():
+		pause_menus[0].close_skin_editor()
 
 func _recurse_materials(node: Node, found: Dictionary) -> void:
 	if node is MeshInstance3D:
@@ -210,62 +251,38 @@ func _on_color_changed(color: Color, param_index: int) -> void:
 	var signal_id = "%s|%s|%d" % [current_group, current_material, param_index]
 	_broadcast_signal(signal_id, color)
 
-func _get_group_nodes() -> Array:
-	var tree = get_tree()
-	if not tree:
-		return []
-	return get_tree().get_nodes_in_group("Animatable").filter(
-		func(n): return n.is_in_group(current_group)
-	)
-
-
-func _broadcast_signal(signal_id: String, value) -> void:
-	for node in _get_group_nodes():
-		if node.has_method("_sent_signals"):
-			node._sent_signals(signal_id, value)
-
-
 func _swap_scene() -> void:
+	if not is_instance_valid(editing_target):
+		return
+		
 	var data = _current_skin_data()
 	if not data:
-		return
-
-	var existing = _get_group_nodes()
-	if existing.is_empty():
-		return
-
-	var transforms: Array = []
-	var parents: Array = []
-	for node in existing:
-		var parent = node.get_parent()
-		if node is Node3D and parent:
-			transforms.append(node.global_transform)
-			parents.append(parent)
-		node.remove_from_group(current_group)
-		node.queue_free()
-
-	if transforms.is_empty():
 		return
 
 	var packed = load(data["path"])
 	if not packed:
 		return
 
-	for node in existing:
-		if is_instance_valid(node):
-			node.free()
+	var parent = editing_target.get_parent()
+	if not is_instance_valid(parent):
+		return
 
-	for i in transforms.size():
-		var parent = parents[i]
-		if not is_instance_valid(parent):
-			push_warning("SkinSwapper: parent for slot %d was freed, skipping." % i)
-			continue
-		var instance = packed.instantiate()
-		parent.add_child(instance)
-		if instance is Node3D:
-			instance.global_transform = transforms[i]
+	var tform = editing_target.global_transform
+	editing_target.queue_free()
 
+	var instance = packed.instantiate()
+	parent.add_child(instance)
+	if instance is Node3D:
+		instance.global_transform = tform
+		
+	editing_target = instance
+	
 	_reapply_custom_colors()
+
+func _broadcast_signal(signal_id: String, value) -> void:
+	if is_instance_valid(editing_target) and editing_target.has_method("_sent_signals"):
+		editing_target._sent_signals(signal_id, value)
+
 
 func _reapply_custom_colors() -> void:
 	for key in custom_colors.keys():
