@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cawd52mwjiyof"]
+
+[ext_resource type="Script" uid="uid://iqrmm33dxvui" path="res://Scripts/Animatables/GL_Animatronic.gd" id="1_6ntc2"]
+[ext_resource type="PackedScene" uid="uid://cre7wphuaphpx" path="res://Mods/True FNaF/Custom Assets/Models/Animatronics/Jug Band Monty.glb" id="2_jei37"]
+[ext_resource type="Script" uid="uid://60lyan8oproc" path="res://Scripts/Animatables/Physics_Bones.gd" id="3_jpx28"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_um21q"]
+size = Vector3(1.3438562, 3.200069, 1.4037695)
+
+[node name="Jug Band Monty" type="Node3D" unique_id=233530727 groups=["SOTM_MONTY"]]
+script = ExtResource("1_6ntc2")
+animParametersFileName = "Jug Band Monty"
+skinAuthors = "Steel Wool"
+
+[node name="Jug Band Monty" parent="." unique_id=553181949 instance=ExtResource("2_jei37")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+script = ExtResource("3_jpx28")
+boneConfigFileName = "Jug Band Monty"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=723801955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1095323835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0022012591, 1.599302, -0.009538174)
+shape = SubResource("BoxShape3D_um21q")
