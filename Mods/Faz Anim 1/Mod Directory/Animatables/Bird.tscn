@@ -14,7 +14,7 @@ script = ExtResource("1_h3jdu")
 animParametersFileName = "Bird"
 
 [node name="FoxyParrot" parent="." unique_id=105100726 instance=ExtResource("2_h3jdu")]
-transform = Transform3D(-8.742278e-07, 0, -20, 0, 20, 0, 20, 0, -8.742278e-07, 55.880985, -11.087742, 101.268845)
+transform = Transform3D(-1.0053619e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.0053619e-07, 6.426, -1.275, 11.646)
 script = ExtResource("3_6cgbm")
 boneConfigFileName = "Bird"
 
@@ -23,6 +23,7 @@ script = ExtResource("4_bqrdj")
 check_siblings = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=723801955]
+transform = Transform3D(0.115, 0, 0, 0, 0.115, 0, 0, 0, 0.115, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1095323835]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5497484, 4.225708, 1.1413536)

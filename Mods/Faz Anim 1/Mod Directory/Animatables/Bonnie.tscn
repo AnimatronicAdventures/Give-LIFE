@@ -14,7 +14,7 @@ script = ExtResource("1_irsr8")
 animParametersFileName = "Bonnie"
 
 [node name="Bonnie FNaF" parent="." unique_id=760411560 instance=ExtResource("2_irsr8")]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
 script = ExtResource("3_k1p82")
 boneConfigFileName = "Bonnie"
 
@@ -23,6 +23,7 @@ script = ExtResource("3_d1yn3")
 check_siblings = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1472888580]
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=231660550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.902466, 0)

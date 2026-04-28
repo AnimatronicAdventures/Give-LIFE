@@ -14,7 +14,7 @@ script = ExtResource("1_v24xh")
 animParametersFileName = "Freddy"
 
 [node name="Freddy" parent="." unique_id=333598121 instance=ExtResource("3_v24xh")]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
 script = ExtResource("4_ih3pj")
 boneConfigFileName = "Freddy"
 
@@ -23,6 +23,7 @@ script = ExtResource("3_baeyu")
 check_siblings = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=184460475]
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1893282418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.461838, 0)

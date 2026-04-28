@@ -17,7 +17,7 @@ script = ExtResource("1_pw3yd")
 animParametersFileName = "Chica"
 
 [node name="Chica FNaF1" parent="." unique_id=288875953 instance=ExtResource("2_5oist")]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
 script = ExtResource("3_5oist")
 boneConfigFileName = "Chica"
 
@@ -26,7 +26,7 @@ script = ExtResource("3_53281")
 check_siblings = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=641989216]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1594710748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8055649, 0)

@@ -14,7 +14,7 @@ script = ExtResource("1_78mci")
 animParametersFileName = "Foxy"
 
 [node name="Foxy FNaF1" parent="." unique_id=1159389777 instance=ExtResource("2_78mci")]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
 script = ExtResource("3_l6iry")
 boneConfigFileName = "Foxy"
 
@@ -23,6 +23,7 @@ script = ExtResource("3_yturc")
 check_siblings = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=339525734]
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=13025137]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.659668, 0)
