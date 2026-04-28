@@ -11,6 +11,7 @@ animParametersFileName = "CCa"
 skinAuthors = "sudo trans --pony"
 
 [node name="CCA Mech2" parent="." unique_id=250172871 instance=ExtResource("3_64a77")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 script = ExtResource("3_gfes3")
 boneConfigFileName = "CCa"
 

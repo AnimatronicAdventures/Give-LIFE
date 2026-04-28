@@ -12,5 +12,6 @@ skinIcon = ExtResource("2_j2rxa")
 skinAuthors = "sudo trans --pony"
 
 [node name="Vennard2" parent="." unique_id=1367234588 instance=ExtResource("2_uvd57")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 script = ExtResource("3_cn81c")
 boneConfigFileName = "Vennard"

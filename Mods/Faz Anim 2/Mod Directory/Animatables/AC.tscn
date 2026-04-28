@@ -11,3 +11,4 @@ skinIcon = ExtResource("2_lbis5")
 skinAuthors = "sudo trans --pony"
 
 [node name="AC2" parent="." unique_id=1061858407 instance=ExtResource("2_6xdrl")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)

@@ -11,6 +11,7 @@ animParametersFileName = "FD"
 skinAuthors = "sudo trans --pony"
 
 [node name="FD Mech" parent="." unique_id=1499328489 instance=ExtResource("2_0slsm")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 script = ExtResource("3_g3334")
 boneConfigFileName = "FD"
 

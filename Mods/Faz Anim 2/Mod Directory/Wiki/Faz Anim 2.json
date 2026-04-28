@@ -20,14 +20,20 @@ Ctrl (Hold) + Scroll = Change Camera Zoom
 Alt (Hold) + Scroll = Change Camera Tilt
 
 R = Smooth Out Movement Toggle
-R (Hold) + Scroll = Change Smooth Amount
+	R (Hold) + Scroll = Change Smooth Amount
 
 F = Smooth Out Camera Toggle
-F (Hold) + Scroll = Change Smooth Amount
+	F (Hold) + Scroll = Change Smooth Amount
+
+C = Construction Mode
+	Clicking on Construction Mode Items = Open Options
+	Selection + Scroll = Change Option
+	Option Selected + Scroll = Rotate/Scale
+ 
 
 V = Fly
-Flying + Q = Descend
-Flying + Space = Ascend
+	Flying + Q = Descend
+	Flying + Space = Ascend
 
 [font_size=26]In-Editor[/font_size]
 P = Play/Pause Show (Works In-Game Too)
@@ -61,6 +67,7 @@ Right clicking any plotted signal deletes it. Left click dragging can move the s
 	"Credits": "Made by sudo trans --pony
 Showtape format documentation - Palazzol
 Welcome Show asset extraction - fredmilk
+Secret of the Mimic assets - Steel Wool
 
 Iterated from the DEAD-Engine and RR-Engine
 Fully Open Source, GNU General Public License v3.0"

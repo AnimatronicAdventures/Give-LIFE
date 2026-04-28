@@ -11,3 +11,4 @@ skinIcon = ExtResource("2_glnju")
 skinAuthors = "sudo trans --pony"
 
 [node name="HVAC2" parent="." unique_id=1801061979 instance=ExtResource("2_on63g")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
