@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://tki03nnnvuu2"]
+
+[ext_resource type="PackedScene" uid="uid://c81bywtfrx2ab" path="res://Mods/True FNaF/Custom Assets/Models/Props/Pixel Lamp.glb" id="2_agak6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jl30e"]
+size = Vector3(1, 0.44421387, 0.4989624)
+
+[node name="Lamp Green" type="Node3D" unique_id=1311252977]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1617215409]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=525352401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.026123047, -0.0093688965)
+shape = SubResource("BoxShape3D_jl30e")
+
+[node name="Pixel Lamp" parent="." unique_id=1491323251 instance=ExtResource("2_agak6")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)

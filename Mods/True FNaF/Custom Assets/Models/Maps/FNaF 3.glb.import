@@ -41,59 +41,63 @@ _subresources={
 "materials": {
 "Black": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/PitchBlack.tres",
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF4/PitchBlack.tres",
 "use_external/path": "uid://dgjyqclarukel"
 },
 "DRAPPY STUFF": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/Scott Grime.tres",
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF4/Scott Grime.tres",
 "use_external/path": "uid://ci1lr1wh71ro3"
 },
 "Dirt Grime 2": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/Scott Grime Faded.tres",
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF4/Scott Grime Faded.tres",
 "use_external/path": "uid://bc4pbdj25tv4g"
 },
 "Drawings 2": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3Drawings.tres",
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/FNaF3Drawings.tres",
 "use_external/path": "uid://bkgmt4bd7ueis"
 },
 "Messy Grime": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/Scott Grime Blur.tres",
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/Scott Grime Blur.tres",
 "use_external/path": "uid://ce5fkgangu87m"
 },
 "Messy Grime 2": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/Scott Grime Blur.tres",
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/Scott Grime Blur.tres",
 "use_external/path": "uid://ce5fkgangu87m"
+},
+"Orange Wallpaper": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/WallpaperOrange.tres",
+"use_external/path": "uid://upfdgd1dubty"
+},
+"Shiny Black": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/ShinyBlack.tres",
+"use_external/path": "uid://d1vtdpuwfkvb4"
 },
 "Tiled Floor": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3FloorTile.tres",
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/FNaF3FloorTile.tres",
 "use_external/path": "uid://ckyuhnn5u2bsc"
 },
 "Tiles": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3Tile.tres",
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/FNaF3Tile.tres",
 "use_external/path": "uid://buggc2kyi236t"
-}
 },
-"meshes": {
-"FNaF 3_Part 1": {
-"generate/lightmap_uv": 1,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": false,
-"save_to_file/fallback_path": "",
-"save_to_file/path": ""
-}
+"WALLPAPER": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/WallpaperRed.tres",
+"use_external/path": "uid://cfyfk6qvysuw7"
 },
-"nodes": {
-"PATH:Part 1_001": {
-"generate/physics": true
+"White Tile": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/White Tile.tres",
+"use_external/path": "uid://cwj7kmwcr118l"
 }
 }
 }

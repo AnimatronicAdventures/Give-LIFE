@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cercgp5jlv3a8"]
+
+[ext_resource type="PackedScene" uid="uid://3mujnqt5go2x" path="res://Mods/True FNaF/Custom Assets/Models/Props/Vent Medium.glb" id="1_xlvo6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jl30e"]
+size = Vector3(1.2208862, 0.7408695, 0.31907654)
+
+[node name="Vent Medium" type="Node3D" unique_id=1311252977]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1617215409]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=525352401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0009460449, 0.0015096664, -0.15549469)
+shape = SubResource("BoxShape3D_jl30e")
+
+[node name="Vent Medium2" parent="." unique_id=562207751 instance=ExtResource("1_xlvo6")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)

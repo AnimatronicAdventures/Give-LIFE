@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cwj7kmwcr118l"]
+
+[ext_resource type="Texture2D" uid="uid://cstrsoqyum3jq" path="res://Mods/True FNaF/Custom Assets/Textures/White Tile.webp" id="1_86s68"]
+
+[resource]
+albedo_texture = ExtResource("1_86s68")
+roughness = 0.0
+texture_filter = 2

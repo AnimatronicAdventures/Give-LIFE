@@ -3,7 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://c5dh0vxqdur1v" path="res://Scenes/player.tscn" id="1_qx2ia"]
 [ext_resource type="PackedScene" uid="uid://ddu57vroqecy8" path="res://Mods/True FNaF/Custom Assets/Models/Maps/FNaF 3.glb" id="2_qrd33"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dwy7awvebemu6" path="res://Mods/True FNaF/Mod Directory/Maps/FNaF3/FNaF3.occ" id="2_vq32d"]
+[ext_resource type="PackedScene" uid="uid://tki03nnnvuu2" path="res://Mods/True FNaF/Custom Assets/Props/Lamp Green.tscn" id="4_24g2q"]
 [ext_resource type="PackedScene" uid="uid://cyv0l6ob3f1o5" path="res://Mods/True FNaF/Mod Directory/Animatables/Toy Robot.tscn" id="4_vepnj"]
+[ext_resource type="PackedScene" uid="uid://ckx67o45nshq" path="res://Mods/True FNaF/Custom Assets/Props/Tube.tscn" id="6_hprm1"]
+[ext_resource type="PackedScene" uid="uid://br4cq371jiuju" path="res://Mods/True FNaF/Custom Assets/Props/Vent Small.tscn" id="6_rinlt"]
+[ext_resource type="PackedScene" uid="uid://6ppkfq6mfblm" path="res://Mods/True FNaF/Custom Assets/Props/Vent Large.tscn" id="7_u6exr"]
+[ext_resource type="PackedScene" uid="uid://cercgp5jlv3a8" path="res://Mods/True FNaF/Custom Assets/Props/Vent Medium.tscn" id="8_sbsv7"]
+[ext_resource type="PackedScene" uid="uid://ulv78l02p0lr" path="res://Mods/True FNaF/Custom Assets/Props/Tube Big.tscn" id="10_qx2ia"]
 
 [sub_resource type="Environment" id="Environment_dsuk6"]
 background_mode = 1
@@ -51,10 +57,118 @@ shape = SubResource("WorldBoundaryShape3D_stiks")
 
 [node name="Map Mesh & Collision" type="Node" parent="Map" unique_id=807558692]
 
-[node name="FNaF 3" parent="Map/Map Mesh & Collision" unique_id=24695193 instance=ExtResource("2_qrd33")]
+[node name="FNaF 3" parent="Map/Map Mesh & Collision" unique_id=86801356 instance=ExtResource("2_qrd33")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 15.996221, 0.902, -93.01223)
 
 [node name="Map Props" type="Node" parent="Map" unique_id=890356910]
+
+[node name="Vent Small" parent="Map/Map Props" unique_id=94979211 instance=ExtResource("6_rinlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4940739, 4.092678, -8.631272)
+
+[node name="Vent Small11" parent="Map/Map Props" unique_id=1764160080 instance=ExtResource("6_rinlt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.953006, 4.164487, -13.918968)
+
+[node name="Vent Small2" parent="Map/Map Props" unique_id=1648236881 instance=ExtResource("6_rinlt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.598631, 0.5136351, -7.238226)
+
+[node name="Vent Small3" parent="Map/Map Props" unique_id=1753647018 instance=ExtResource("6_rinlt")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.0210567, 0.037675872, 3.925348)
+
+[node name="Vent Small4" parent="Map/Map Props" unique_id=1690651484 instance=ExtResource("6_rinlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.650785, 0.1711902, -23.927097)
+
+[node name="Vent Small5" parent="Map/Map Props" unique_id=1162195905 instance=ExtResource("6_rinlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.005929, 0.149245, -23.957556)
+
+[node name="Vent Small6" parent="Map/Map Props" unique_id=1310058916 instance=ExtResource("6_rinlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33908796, 0.16092074, -18.9524)
+
+[node name="Vent Small7" parent="Map/Map Props" unique_id=1931073221 instance=ExtResource("6_rinlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.165453, 0.16092074, -18.9524)
+
+[node name="Vent Small8" parent="Map/Map Props" unique_id=1950289219 instance=ExtResource("6_rinlt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.043877, 0.07904887, -16.211155)
+
+[node name="Vent Large" parent="Map/Map Props" unique_id=185991102 instance=ExtResource("7_u6exr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.643062, -0.1912557, -34.93775)
+
+[node name="Vent Large2" parent="Map/Map Props" unique_id=377958056 instance=ExtResource("7_u6exr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0451784, 0.4558491, -33.125626)
+
+[node name="Vent Medium" parent="Map/Map Props" unique_id=1100901071 instance=ExtResource("8_sbsv7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95266455, 0.20788994, -34.167084)
+
+[node name="Vent Medium2" parent="Map/Map Props" unique_id=922916643 instance=ExtResource("8_sbsv7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.007546, 0.20789042, -40.707626)
+
+[node name="Vent Small9" parent="Map/Map Props" unique_id=1171943135 instance=ExtResource("6_rinlt")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.3217945, 0.13547935, -33.11611)
+
+[node name="Vent Small10" parent="Map/Map Props" unique_id=169607382 instance=ExtResource("6_rinlt")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.290384, 0.13547955, -39.907192)
+
+[node name="LampOrangeTan" parent="Map/Map Props" unique_id=1311252977 instance=ExtResource("4_24g2q")]
+transform = Transform3D(0.8006477, 0, -0.59913534, 0, 1, 0, 0.59913534, 0, 0.8006477, 3.4490573, 4.4540243, -8.309826)
+
+[node name="LampOrangeTan2" parent="Map/Map Props" unique_id=2009572911 instance=ExtResource("4_24g2q")]
+transform = Transform3D(0.6522042, 0, 0.7580432, 0, 1, 0, -0.7580432, 0, 0.6522042, -9.211016, 4.4007635, -8.07283)
+
+[node name="LampOrangeTan3" parent="Map/Map Props" unique_id=24679411 instance=ExtResource("4_24g2q")]
+transform = Transform3D(-0.6481464, 0, 0.7615156, 0, 1, 0, -0.7615156, 0, -0.6481464, -4.8155894, 4.4046583, 3.7063653)
+
+[node name="Vent Small12" parent="Map/Map Props" unique_id=285468566 instance=ExtResource("6_rinlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9794197, 4.187727, -5.3703837)
+
+[node name="Tube2" parent="Map/Map Props" unique_id=1188768153 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.791139, -0.32936573, 1.5353348)
+
+[node name="Tube5" parent="Map/Map Props" unique_id=1648297719 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.177547, -0.31321537, -20.45318)
+
+[node name="Tube6" parent="Map/Map Props" unique_id=445794415 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.177547, -0.31321537, -21.692844)
+
+[node name="Tube7" parent="Map/Map Props" unique_id=1668415601 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 19.177547, -0.31321537, -23.070637)
+
+[node name="Tube8" parent="Map/Map Props" unique_id=2052295411 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 19.586014, -0.63077277, -36.374016)
+
+[node name="Tube9" parent="Map/Map Props" unique_id=188336093 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 20.424479, -0.63077277, -36.374016)
+
+[node name="Tube10" parent="Map/Map Props" unique_id=1282543881 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 21.231785, -0.63077277, -36.374016)
+
+[node name="Tube11" parent="Map/Map Props" unique_id=1218293275 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 9.455703, -0.59965533, -29.292107)
+
+[node name="Tube12" parent="Map/Map Props" unique_id=920075309 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 8.675857, -0.59965533, -29.292107)
+
+[node name="Tube13" parent="Map/Map Props" unique_id=556826928 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 7.826909, -0.59965533, -29.292107)
+
+[node name="Tube14" parent="Map/Map Props" unique_id=1596513840 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 14.68376, 4.8462315, -11.610023)
+
+[node name="Tube15" parent="Map/Map Props" unique_id=554059043 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-4.371139e-08, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 12.160838, 4.8512273, -9.266271)
+
+[node name="Tube16" parent="Map/Map Props" unique_id=1101159549 instance=ExtResource("6_hprm1")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4.092518, 4.792889, -34.495693)
+
+[node name="Tube17" parent="Map/Map Props" unique_id=1095724168 instance=ExtResource("6_hprm1")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 13.826134, 4.903898, -40.99624)
+
+[node name="Tube3" parent="Map/Map Props" unique_id=897601901 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.791139, -0.32936573, 2.4092097)
+
+[node name="Tube4" parent="Map/Map Props" unique_id=85936048 instance=ExtResource("6_hprm1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.791139, -0.32936573, 3.2202883)
+
+[node name="Tube" parent="Map/Map Props" unique_id=547737119 instance=ExtResource("10_qx2ia")]
+transform = Transform3D(-4.371139e-08, -0.9238795, -0.38268343, 0, 0.38268343, -0.9238795, 1, -4.0384055e-08, -1.6727624e-08, 5.0247564, 4.9417057, -5.0205407)
 
 [node name="Animatables" type="Node" parent="Map" unique_id=1193136051]
 
@@ -83,11 +197,68 @@ light_color = Color(0.8509804, 1, 0.48235294, 1)
 light_energy = 0.05
 omni_range = 10.0
 
+[node name="OmniLight3D6" type="OmniLight3D" parent="Map/Map Lights" unique_id=1063611356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1870747, 3.6888962, 3.056811)
+light_color = Color(1, 0.47843137, 0.47843137, 1)
+light_energy = 0.05
+shadow_enabled = true
+omni_range = 6.0
+
 [node name="OmniLight3D4" type="OmniLight3D" parent="Map/Map Lights" unique_id=1456541329]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7421541, 3.787922, -8.407852)
 light_color = Color(0.8509804, 1, 0.48235294, 1)
 light_energy = 0.05
 omni_range = 10.0
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="Map/Map Lights" unique_id=1538388799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.510085, 3.8561218, -7.728176)
+light_color = Color(0.9529412, 1, 0.8509804, 1)
+light_energy = 0.05
+omni_range = 10.0
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="Map/Map Lights" unique_id=1297727910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.783136, 3.8931963, -5.05205)
+light_color = Color(0.84313726, 0.9490196, 1, 1)
+light_energy = 0.05
+omni_range = 10.0
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="Map/Map Lights" unique_id=1292559021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.783136, 3.4122894, -23.681215)
+light_color = Color(1, 0.89411765, 0.6862745, 1)
+light_energy = 0.09
+omni_range = 10.0
+
+[node name="OmniLight3D13" type="SpotLight3D" parent="Map/Map Lights" unique_id=1419116053]
+transform = Transform3D(1, 0, 0, 0, -0.60777783, 0.7941071, 0, -0.7941071, -0.60777783, 16.783136, 4.473138, -14.685077)
+light_color = Color(1, 0.7058824, 0.7058824, 1)
+light_energy = 0.528
+shadow_enabled = true
+spot_range = 6.39
+spot_angle = 60.25
+
+[node name="OmniLight3D15" type="SpotLight3D" parent="Map/Map Lights" unique_id=1546005606]
+transform = Transform3D(-3.9529457e-08, -0.45916137, -0.8883529, -1.865764e-08, -0.8883529, 0.45916137, -1, 3.472497e-08, 2.6549237e-08, 13.213404, 3.5926712, -21.092999)
+light_color = Color(0.9137255, 1, 0.7294118, 1)
+light_energy = 0.528
+shadow_enabled = true
+spot_range = 6.39
+spot_angle = 66.35
+
+[node name="OmniLight3D16" type="SpotLight3D" parent="Map/Map Lights" unique_id=1151393943]
+transform = Transform3D(3.6149714e-09, 0.45864958, 0.8886173, 7.7685385e-08, -0.8886173, 0.45864955, 1, 6.737458e-08, -3.8842693e-08, 13.666961, 3.5926712, -21.092999)
+light_color = Color(1, 0.69803923, 0.63529414, 1)
+light_energy = 0.528
+shadow_enabled = true
+spot_range = 6.39
+spot_angle = 66.35
+
+[node name="OmniLight3D17" type="SpotLight3D" parent="Map/Map Lights" unique_id=1044020103]
+transform = Transform3D(3.6149714e-09, -0.45864958, -0.8886173, -7.7685385e-08, -0.8886173, 0.45864955, -1, 6.737457e-08, -3.8842693e-08, 7.4133644, 3.4696844, -16.593287)
+light_color = Color(1, 0.61960787, 0.6862745, 1)
+light_energy = 0.283
+shadow_enabled = true
+spot_range = 6.39
+spot_angle = 70.93
 
 [node name="OmniLight3D5" type="SpotLight3D" parent="Map/Map Lights" unique_id=394103295]
 transform = Transform3D(1, 0, 0, 0, -0.5800208, 0.8146017, 0, -0.8146017, -0.5800208, 1.9445398, 4.087391, -5.765956)

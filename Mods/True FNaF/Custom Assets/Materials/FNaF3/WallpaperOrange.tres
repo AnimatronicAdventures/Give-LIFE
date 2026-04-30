@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://upfdgd1dubty"]
+
+[ext_resource type="Texture2D" uid="uid://c8cocnsrdb3me" path="res://Mods/True FNaF/Custom Assets/Textures/OrangeFazFrightWallpaper.webp" id="1_vrku5"]
+
+[resource]
+albedo_texture = ExtResource("1_vrku5")
