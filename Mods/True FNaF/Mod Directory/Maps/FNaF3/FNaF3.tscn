@@ -228,6 +228,112 @@ light_color = Color(1, 0.89411765, 0.6862745, 1)
 light_energy = 0.09
 omni_range = 10.0
 
+[node name="OmniLight3D19" type="OmniLight3D" parent="Map/Map Lights" unique_id=701462528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6965656, 3.226796, -20.353626)
+light_color = Color(1, 0.92941177, 0.7176471, 1)
+light_energy = 0.205
+shadow_enabled = true
+omni_range = 5.875
+
+[node name="OmniLight3D22" type="OmniLight3D" parent="Map/Map Lights" unique_id=991010690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9679134, 3.2267969, -24.276176)
+light_color = Color(1, 0.92941177, 0.7176471, 1)
+light_energy = 0.205
+shadow_enabled = true
+omni_range = 5.875
+
+[node name="OmniLight3D20" type="OmniLight3D" parent="Map/Map Lights" unique_id=1358997248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.819347, 1.8802357, -17.265646)
+light_color = Color(0.84313726, 0.9490196, 1, 1)
+light_energy = 0.13
+shadow_enabled = true
+omni_range = 5.875
+
+[node name="OmniLight3D21" type="OmniLight3D" parent="Map/Map Lights" unique_id=1517830441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.181949, 3.8281608, -15.992927)
+light_color = Color(0.6862745, 0.89411765, 1, 1)
+light_energy = 0.17
+shadow_enabled = true
+omni_range = 5.875
+
+[node name="OmniLight3D23" type="OmniLight3D" parent="Map/Map Lights" unique_id=1370072106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.181949, 3.8281608, -27.893742)
+light_color = Color(0.6862745, 0.89411765, 1, 1)
+light_energy = 0.17
+shadow_enabled = true
+omni_range = 5.875
+
+[node name="OmniLight3D27" type="OmniLight3D" parent="Map/Map Lights" unique_id=24238645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.987756, 3.7484303, -38.999264)
+light_color = Color(0.72156864, 0.8352941, 1, 1)
+light_energy = 0.125
+shadow_enabled = true
+omni_range = 5.875
+
+[node name="OmniLight3D28" type="OmniLight3D" parent="Map/Map Lights" unique_id=1243126225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.993205, 4.10585, -38.999264)
+light_color = Color(0.83137256, 1, 0.92156863, 1)
+light_energy = 0.125
+shadow_enabled = true
+omni_range = 5.875
+
+[node name="OmniLight3D29" type="OmniLight3D" parent="Map/Map Lights" unique_id=250821964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.255041, 3.860231, -39.853233)
+light_color = Color(1, 0.74509805, 0.73333335, 1)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 5.875
+
+[node name="OmniLight3D30" type="OmniLight3D" parent="Map/Map Lights" unique_id=1915952527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.053667, 3.5550423, -43.697174)
+light_color = Color(0.972549, 1, 0.84313726, 1)
+light_energy = 0.5
+omni_range = 5.34
+
+[node name="OmniLight3D31" type="OmniLight3D" parent="Map/Map Lights" unique_id=898295120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.053667, 3.5550423, -47.111057)
+light_color = Color(0.972549, 1, 0.84313726, 1)
+light_energy = 0.5
+omni_range = 5.34
+
+[node name="OmniLight3D32" type="OmniLight3D" parent="Map/Map Lights" unique_id=2073473168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.053667, 3.5550423, -50.864708)
+light_color = Color(0.972549, 1, 0.84313726, 1)
+light_energy = 0.5
+omni_range = 5.34
+
+[node name="OmniLight3D33" type="OmniLight3D" parent="Map/Map Lights" unique_id=1333798665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.053667, 3.5550423, -56.094204)
+light_color = Color(0.972549, 1, 0.84313726, 1)
+light_energy = 0.5
+omni_range = 5.34
+
+[node name="OmniLight3D34" type="OmniLight3D" parent="Map/Map Lights" unique_id=352614267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.909157, 9.337942, -73.105705)
+light_color = Color(0.81960785, 1, 0.85490197, 1)
+light_energy = 0.5
+omni_range = 30.0
+
+[node name="OmniLight3D35" type="OmniLight3D" parent="Map/Map Lights" unique_id=2121909517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.077501, 9.337942, -89.40284)
+light_color = Color(0.81960785, 1, 0.85490197, 1)
+light_energy = 0.5
+omni_range = 30.0
+
+[node name="OmniLight3D24" type="OmniLight3D" parent="Map/Map Lights" unique_id=1892271345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6539745, 3.1556194, -31.726124)
+light_color = Color(0.89411765, 1, 0.89411765, 1)
+light_energy = 0.13
+shadow_enabled = true
+omni_range = 5.875
+
+[node name="OmniLight3D25" type="OmniLight3D" parent="Map/Map Lights" unique_id=338848183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4948492, 0.28443208, -33.552162)
+light_color = Color(1, 0.9254902, 0.62352943, 1)
+light_energy = 0.915
+shadow_enabled = true
+omni_range = 5.875
+
 [node name="OmniLight3D13" type="SpotLight3D" parent="Map/Map Lights" unique_id=1419116053]
 transform = Transform3D(1, 0, 0, 0, -0.60777783, 0.7941071, 0, -0.7941071, -0.60777783, 16.783136, 4.473138, -14.685077)
 light_color = Color(1, 0.7058824, 0.7058824, 1)
@@ -235,6 +341,14 @@ light_energy = 0.528
 shadow_enabled = true
 spot_range = 6.39
 spot_angle = 60.25
+
+[node name="OmniLight3D26" type="SpotLight3D" parent="Map/Map Lights" unique_id=2082219809]
+transform = Transform3D(1, 0, 0, 0, -0.9526721, 0.3039999, 0, -0.3039999, -0.9526721, 8.010564, 3.0808342, -35.58412)
+light_color = Color(1, 0.7058824, 0.7058824, 1)
+light_energy = 0.418
+shadow_enabled = true
+spot_range = 6.39
+spot_angle = 68.15
 
 [node name="OmniLight3D15" type="SpotLight3D" parent="Map/Map Lights" unique_id=1546005606]
 transform = Transform3D(-3.9529457e-08, -0.45916137, -0.8883529, -1.865764e-08, -0.8883529, 0.45916137, -1, 3.472497e-08, 2.6549237e-08, 13.213404, 3.5926712, -21.092999)
@@ -259,6 +373,14 @@ light_energy = 0.283
 shadow_enabled = true
 spot_range = 6.39
 spot_angle = 70.93
+
+[node name="OmniLight3D18" type="SpotLight3D" parent="Map/Map Lights" unique_id=1698840511]
+transform = Transform3D(-5.805774e-08, -0.31443995, 0.94927746, 5.1743452e-08, 0.9492774, 0.3144399, -1, 6.7374565e-08, -3.8842693e-08, 7.220167, 3.4696844, -16.593287)
+light_color = Color(0.73333335, 0.8352941, 1, 1)
+light_energy = 0.283
+shadow_enabled = true
+spot_range = 9.09
+spot_angle = 67.4
 
 [node name="OmniLight3D5" type="SpotLight3D" parent="Map/Map Lights" unique_id=394103295]
 transform = Transform3D(1, 0, 0, 0, -0.5800208, 0.8146017, 0, -0.8146017, -0.5800208, 1.9445398, 4.087391, -5.765956)
