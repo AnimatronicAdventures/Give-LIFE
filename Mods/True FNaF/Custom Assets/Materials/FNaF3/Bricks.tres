@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bwmkymhflka2g"]
+
+[ext_resource type="Texture2D" uid="uid://h3yfwe64wicr" path="res://Mods/True FNaF/Custom Assets/Textures/Frights Bricks.webp" id="1_oe86j"]
+
+[resource]
+albedo_texture = ExtResource("1_oe86j")

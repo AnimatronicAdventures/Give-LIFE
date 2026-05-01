@@ -44,6 +44,11 @@ _subresources={
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF4/PitchBlack.tres",
 "use_external/path": "uid://dgjyqclarukel"
 },
+"Bush.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/Bush.tres",
+"use_external/path": "uid://fvlmawhxdxnd"
+},
 "DRAPPY STUFF": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF4/Scott Grime.tres",
@@ -54,10 +59,20 @@ _subresources={
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF4/Scott Grime Faded.tres",
 "use_external/path": "uid://bc4pbdj25tv4g"
 },
+"Drawings": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/FNaF3Drawings.tres",
+"use_external/path": "uid://bkgmt4bd7ueis"
+},
 "Drawings 2": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/FNaF3Drawings.tres",
 "use_external/path": "uid://bkgmt4bd7ueis"
+},
+"FRIGHT BRICK.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/Bricks.tres",
+"use_external/path": "uid://bwmkymhflka2g"
 },
 "Messy Grime": {
 "use_external/enabled": true,
@@ -73,6 +88,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/WallpaperOrange.tres",
 "use_external/path": "uid://upfdgd1dubty"
+},
+"Roof Tiles.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/MetalRoof.tres",
+"use_external/path": "uid://dd013sky7m3ok"
 },
 "Shiny Black": {
 "use_external/enabled": true,
@@ -98,6 +118,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/White Tile.tres",
 "use_external/path": "uid://cwj7kmwcr118l"
+},
+"Wooden Texture.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/Wood.tres",
+"use_external/path": "uid://c18xhtmfl53q3"
 }
 }
 }

@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c18xhtmfl53q3"]
+
+[ext_resource type="Texture2D" uid="uid://428oys8ao63s" path="res://Mods/True FNaF/Custom Assets/Textures/WoodTable.webp" id="1_4kqsa"]
+
+[resource]
+albedo_texture = ExtResource("1_4kqsa")

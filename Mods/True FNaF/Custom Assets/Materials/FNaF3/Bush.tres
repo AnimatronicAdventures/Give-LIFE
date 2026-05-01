@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://fvlmawhxdxnd"]
+
+[ext_resource type="Texture2D" uid="uid://dlgwv1i38pigf" path="res://Mods/True FNaF/Custom Assets/Textures/bush.png" id="1_pumpn"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.28
+alpha_antialiasing_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("1_pumpn")

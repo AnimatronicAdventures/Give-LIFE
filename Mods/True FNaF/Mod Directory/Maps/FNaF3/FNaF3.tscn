@@ -57,7 +57,7 @@ shape = SubResource("WorldBoundaryShape3D_stiks")
 
 [node name="Map Mesh & Collision" type="Node" parent="Map" unique_id=807558692]
 
-[node name="FNaF 3" parent="Map/Map Mesh & Collision" unique_id=86801356 instance=ExtResource("2_qrd33")]
+[node name="FNaF 3" parent="Map/Map Mesh & Collision" unique_id=149143586 instance=ExtResource("2_qrd33")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 15.996221, 0.902, -93.01223)
 
 [node name="Map Props" type="Node" parent="Map" unique_id=890356910]
@@ -208,6 +208,7 @@ omni_range = 6.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7421541, 3.787922, -8.407852)
 light_color = Color(0.8509804, 1, 0.48235294, 1)
 light_energy = 0.05
+shadow_enabled = true
 omni_range = 10.0
 
 [node name="OmniLight3D11" type="OmniLight3D" parent="Map/Map Lights" unique_id=1538388799]
