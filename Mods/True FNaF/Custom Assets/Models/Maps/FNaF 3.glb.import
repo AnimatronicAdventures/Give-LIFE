@@ -39,11 +39,6 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"Black": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF4/PitchBlack.tres",
-"use_external/path": "uid://dgjyqclarukel"
-},
 "Bush.001": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/Bush.tres",
@@ -54,15 +49,15 @@ _subresources={
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF4/Scott Grime.tres",
 "use_external/path": "uid://ci1lr1wh71ro3"
 },
+"Desk": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/ShinyBlack.tres",
+"use_external/path": "uid://d1vtdpuwfkvb4"
+},
 "Dirt Grime 2": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF4/Scott Grime Faded.tres",
 "use_external/path": "uid://bc4pbdj25tv4g"
-},
-"Drawings": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/FNaF3Drawings.tres",
-"use_external/path": "uid://bkgmt4bd7ueis"
 },
 "Drawings 2": {
 "use_external/enabled": true,
@@ -73,6 +68,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/Bricks.tres",
 "use_external/path": "uid://bwmkymhflka2g"
+},
+"Light": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Mods/True FNaF/Custom Assets/Materials/FNaF3/OfficeLight.tres",
+"use_external/path": "uid://dv72xdc5vas6v"
 },
 "Messy Grime": {
 "use_external/enabled": true,

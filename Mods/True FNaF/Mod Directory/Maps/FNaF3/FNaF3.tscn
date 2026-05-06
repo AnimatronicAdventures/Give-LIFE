@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://6ppkfq6mfblm" path="res://Mods/True FNaF/Custom Assets/Props/Vent Large.tscn" id="7_u6exr"]
 [ext_resource type="PackedScene" uid="uid://cercgp5jlv3a8" path="res://Mods/True FNaF/Custom Assets/Props/Vent Medium.tscn" id="8_sbsv7"]
 [ext_resource type="PackedScene" uid="uid://ulv78l02p0lr" path="res://Mods/True FNaF/Custom Assets/Props/Tube Big.tscn" id="10_qx2ia"]
+[ext_resource type="PackedScene" uid="uid://cetwr43y1kjiv" path="res://Mods/True FNaF/Custom Assets/Props/Trash Can.tscn" id="11_qrd33"]
 
 [sub_resource type="Environment" id="Environment_dsuk6"]
 background_mode = 1
@@ -57,7 +58,7 @@ shape = SubResource("WorldBoundaryShape3D_stiks")
 
 [node name="Map Mesh & Collision" type="Node" parent="Map" unique_id=807558692]
 
-[node name="FNaF 3" parent="Map/Map Mesh & Collision" unique_id=149143586 instance=ExtResource("2_qrd33")]
+[node name="FNaF 3" parent="Map/Map Mesh & Collision" unique_id=2113314251 instance=ExtResource("2_qrd33")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 15.996221, 0.902, -93.01223)
 
 [node name="Map Props" type="Node" parent="Map" unique_id=890356910]
@@ -389,3 +390,6 @@ light_color = Color(0.5176471, 0.75686276, 1, 1)
 light_energy = 1.239
 shadow_enabled = true
 spot_angle = 34.05
+
+[node name="Tube" parent="Map" unique_id=1512817607 instance=ExtResource("11_qrd33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55672467, -0.28291255, -4.3591905)
